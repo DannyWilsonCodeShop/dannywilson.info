@@ -1,0 +1,93 @@
+Danny Wilson
+Atlanta, GA 30317 ● (404) 803-7330 ● wilson.danny@me.com
+
+PROFESSIONAL EXPERIENCE
+
+Atlanta Public Schools, Drew Charter School, Cristo Rey Atlanta Jesuit High School                    Atlanta, GA
+Professional Educator & EdTech Developer                                                           2009-2014, 2023-Present
+● Developed ClassCast.com, an AI-enhanced EdTech learning platform designed for modern video assignments and peer-to-peer learning connections, currently serving 100+ users in educational environments
+● Built full-stack web application using TypeScript, Next.js, React, PostgreSQL, and Prisma ORM with secure JWT-based authentication, encrypted data storage, and FERPA-compliant educational data protection
+● Created teacher update board system with real-time classroom event broadcasting and image tagging capabilities, implementing role-based access control systems for parents and educators
+● Increased team performance by 21.4% through innovative teaching methodologies and technology integration while developing comprehensive curriculum and assessment strategies for mathematics and computer science
+● Mentored students and collaborated with administration to improve school-wide performance metrics, integrating modern teaching tools and educational technology to enhance student engagement
+
+United States Army - Fort Drum, NY                                                                 Fort Drum, NY
+Signal Support Systems Specialist (Sergeant)                                                       March 2005 - September 2009
+● Operated as Senior LAN Manager and Command Post Platform Team Leader providing 24-hour tactical communications support for Light Infantry Division Special Troops Battalion serving 500+ personnel
+● Supervised installation, maintenance, and troubleshooting of signal support systems including satellite, radio, wire, and battlefield automated systems (AN/TSQ-232(V)4 Tactical Command System)
+● Managed network operations and LAN management for tactical communications while providing technical assistance and unit-level training for automation, communication, and user-operated signal equipment
+● Supervised health, welfare, and professional development of 5 Soldiers, leading to 5+ promotions and managed equipment valued at over $1,500,000 during wartime operations in Iraq
+● Promoted to Sergeant at first opening with Superior Senior Rater score, planned and implemented tactical support team for travel to two forward operating bases
+● Organized travel arrangements and living support for high-ranking officers (30+ per month) and counseled 8 Soldiers as Non-commissioned Officer in Main Support Platoon
+
+Heartland Payment Systems - Frisco, Texas                                                          Frisco, TX
+Systems Analysis / Computer Operator                                                               March 2002 - June 2004
+● Monitored, maintained, and troubleshot network, hardware, operating systems, and applications in Fortune 500 payment processing environment ensuring 99.9% system uptime
+● Designed and implemented Standard Operation Procedures for Preventative Maintenance Checks and Services while working with Network Administrators to improve operational procedures and system reliability
+● Tracked and resolved critical issues in high-volume payment processing systems and collaborated with cross-functional teams to maintain system performance
+● Performed system monitoring and performance optimization for payment processing infrastructure supporting millions of daily transactions
+
+PROJECTS
+
+ClassCast - AI-Enhanced Learning Platform (Live Production)                                         2023-Present
+● Lead development of full-stack EdTech application serving 100+ users with TypeScript, Next.js, React, PostgreSQL, and Prisma ORM technology stack
+● Implemented AI-powered learning analytics, video assignment management, real-time classroom broadcasting, and peer collaboration tools with FERPA-compliant data protection
+● Utilized AI-assisted development methodologies for accelerated delivery and comprehensive API testing with Postman for educational workflow validation
+
+Chord Progression App - Music Theory Tool (Live Production)                                        2024-Present
+● Developed interactive music application serving 30+ users with modern web technologies and music theory algorithms for chord progression generation and exploration
+● Combined music theory expertise with software development skills targeting musicians, music students, and composers
+
+Network Infrastructure & Security Implementation (Heartland Payment Systems)                       2002-2004
+● Designed Standard Operation Procedures for Preventative Maintenance in Fortune 500 payment processing environment
+● Managed network operations for Light Infantry Division Special Troops Battalion and supervised installation/maintenance of AN/TSQ-232(V)4 Tactical Command System
+● Implemented security protocols for mission-critical communications systems
+
+AWS Cloud Application Developer Program Capstone Projects                                          2024-Present
+● Designed scalable, high-availability architectures using AWS services (EC2, RDS, DynamoDB, S3, IAM, CloudFront) with secure network architectures using VPCs, subnets, route tables, and security groups
+● Automated cloud infrastructure deployments using CI/CD pipelines (CodePipeline, CodeBuild, CodeDeploy) and developed serverless applications with AWS Lambda, API Gateway, and DynamoDB
+● Completed 100+ interactive AWS Labs integrating AI/ML services (SageMaker, Rekognition, AWS Bedrock)
+
+SKILLS
+
+Design:                    Full Stack Web Development, Cloud Architecture, Database Design, UI/UX Development, 
+                          Microservices Architecture, API Development, System Design
+
+Software:                 AWS Services (EC2, RDS, DynamoDB, S3, IAM, Lambda, API Gateway, CloudFront, CodePipeline, 
+                          CodeBuild, CodeDeploy, CloudFormation, CloudWatch), TypeScript, JavaScript, React, Next.js, 
+                          Node.js, Python, C, C++, PostgreSQL, MySQL, MongoDB, Prisma ORM, Git, GitHub, Docker, 
+                          Kubernetes, Postman, Jest, Cypress
+
+Communication:            Technical Documentation, Stakeholder Presentations, Cross-functional Collaboration, 
+                          Team Leadership, Military Briefings, Educational Instruction
+
+RECOGNITION
+
+● 3X Army Commendation Medals (Operation Iraqi Freedom, Secure Network Operations, Civil-Military Coordination)
+● 2X Army Achievement Medals (Senior LAN Manager Excellence, Exemplary Military Service)
+● Good Conduct Medal
+● New Volunteer (Rookie) of the Year
+● Superior Senior Rater Score with Accelerated Promotion
+● 21.4% Team Performance Improvement Achievement
+
+EDUCATION
+
+AWS Cloud Institute - Atlanta, GA                                          AWS Cloud Application Developer Program
+                                                                           2024-Present
+
+South Carolina State University - Orangeburg, SC                          B.S. in Computer Science, Minor in Mathematics
+                                                                           2001
+
+CERTIFICATIONS
+
+● AWS Cloud Practitioner - Certified
+● AWS Developer Associate - Certified  
+● Secret Security Clearance - Active
+● Information Assurance Security Officer Certification
+● United States Army Noncommissioned Officers Academy Certification
+● Computer User Security Course Certification
+● Army Distance Learning Vocational Program (625 hours)
+● SMART-T Training Certification
+● FBCB2-BFT Leader OpNet Course Certification
+● Army G3 Computer Security Training Certification
+● Ku-Band TDMA DAMA VSAT Satellite Communications Certification
