@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+             <!--Customize-->
+            <h1>Danny Wilson</h1>
+            <p>Full Stack Developer | AWS Cloud Developer | IT Specialist</p>
+            <nav>
+                <ul>
+                    <li><a href="#about" onclick="showSection('about')">About</a></li>
+                    <li><a href="#education" onclick="showSection('education')">Education</a></li>
+                    <li><a href="#skills" onclick="showSection('skills')">Skills</a></li>
+                    <li><a href="#certifications" onclick="showSection('certifications')">Certifications</a></li>
+                    <li><a href="#apps" onclick="showSection('apps')">Apps</a></li>
+                    <li><a href="#experience" onclick="showSection('experience')">Experience</a></li>
+                    <li><a href="#projects" onclick="showSection('projects')">Achievements</a></li>
+                    <li><a href="#awards" onclick="showSection('awards')">Awards</a></li>
+                    <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="about" class="section">
+                
+                    <h2>About</h2>
+                    <div class="about-content">
+                        <div class="profile-image">
+                            <!--Customize-->
+                            <img src="images/headshot.jpeg" alt="Danny Wilson Profile" id="profile-image">
+                        </div>
+                        <div class="about-text">
+                             <!--Customize-->
+                             <p>Hi, I am Danny Wilson, a Full Stack Developer and AWS Cloud Developer with a strong background in building modern web applications, signal support systems, and network management. I bring proven expertise from military service as a Signal Support Systems Specialist and civilian experience in payment systems technology.</p>
+                             <br>
+                             <p>As a full stack developer, I specialize in TypeScript, Next.js, React, and modern database technologies like PostgreSQL with Prisma ORM. I've built complete applications from concept to deployment, including ClassCast - an educational platform connecting teachers and parents. Currently advancing my cloud development skills through the AWS Cloud Institute's comprehensive program, I excel at designing scalable cloud architectures, implementing CI/CD pipelines, and developing serverless applications.</p>
+                             <br>
+                             <p><a href="mailto:wilson.danny@me.com" style="color: white; text-decoration: none;">Email: wilson.danny@me.com</a></p>
+                             <br>
+                             <p><a href="tel:404-803-7330" style="color: white; text-decoration: none;">Phone: (404) 803-7330</a></p>
+                             <br>
+                             <p><a href="https://www.linkedin.com/in/danny-wilson-2274465" target="_blank" style="color: white; text-decoration: underline;">LinkedIn</a> | <a href="https://github.com/DannyWilsonCodeShop" target="_blank" style="color: white; text-decoration: underline;">GitHub</a></p>
+                             
+                        </div>
+                    </div>
+                </section>
+               
+            </section>
+
+            <section id="education" class="section">
+                 <!--Customize add add'l educattion-->
+                <h2>Education</h2>
+                <div class="education-item"> 
+                    <div class="education-title">Bachelor of Science in Computer Science</div>
+                    <div class="education-subtitle">South Carolina State University</div>
+                    <div class="education-date">2001</div>
+                    <ul class="education-details">
+                        <li>Minor in Mathematics</li>
+                        <li>Completed comprehensive coursework in computer logic, programming languages, algorithm analysis, computer networking, software engineering, operating systems, database management, and data structures</li>
+                        <li>Developed strong foundational background in cultural awareness and social implications of technology</li>
+                    </ul>
+                </div>
+
+             <div class="education-item"> 
+                    <div class="education-title">AWS Cloud Application Developer Program</div>
+                    <div class="education-subtitle">AWS Cloud Institute</div>
+                    <div class="education-date">2024 - Present</div>
+                    <ul class="education-details">
+                        <li>Designed and implemented scalable, high availability architectures using AWS services such as EC2, RDS, DynamoDB, S3, IAM, Redshift, and CloudFront to optimize performance and reliability</li>
+                        <li>Built and secured network architectures with VPCs, subnets, route tables, and security groups, ensuring compliance with security best practices</li>
+                        <li>Automated cloud infrastructure and application deployments using CI/CD pipelines (AWS CodePipeline, CodeBuild and CodeDeploy) to improve efficiency, consistency, and release management</li>
+                        <li>Developed serverless applications with AWS Lambda, API Gateway, and DynamoDB, optimizing cost efficiency and scalability</li>
+                        <li>Gained hands-on experience through 100+ interactive AWS Labs and two capstone projects, applying cloud architecture and DevOps best practices in real-world scenarios</li>
+                        <li>Integrated AI/ML services such as Amazon SageMaker, Rekognition, and AWS Bedrock, exploring AI-powered automation predictive analysis, and natural language processing in cloud applications</li>
+                    </ul>
+                </div> 
+            </section>
+
+            <section id="skills" class="section">
+                <h2>Technical Skills</h2>
+                <div class="education-item">
+                    <div class="education-title">Full Stack Development</div>
+                    <ul class="education-details">
+                        <li>Frontend: TypeScript, Next.js, React, HTML5, CSS3, JavaScript</li>
+                        <li>Backend: Node.js, Next.js Server Actions, RESTful APIs</li>
+                        <li>Database: PostgreSQL, Prisma ORM, Database Design & Optimization</li>
+                        <li>Authentication: JSON Web Tokens (JWT), Secure Authentication Systems</li>
+                        <li>UI/UX Development and Optimization</li>
+                        <li>API Development and Testing (Postman)</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Cloud Development & Architecture</div>
+                    <ul class="education-details">
+                        <li>AWS Services: EC2, RDS, DynamoDB, S3, IAM, Lambda, API Gateway, CloudFront</li>
+                        <li>CI/CD Pipelines: AWS CodePipeline, CodeBuild, CodeDeploy</li>
+                        <li>Serverless Architecture and Microservices Design</li>
+                        <li>Infrastructure as Code and DevOps Best Practices</li>
+                        <li>AI/ML Integration: Amazon SageMaker, Rekognition, AWS Bedrock</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Programming & Development</div>
+                    <ul class="education-details">
+                        <li>Programming Languages: TypeScript, JavaScript, Python, C, C++</li>
+                        <li>Database Management and Data Structures</li>
+                        <li>Algorithm Analysis and Software Engineering</li>
+                        <li>Computer Logic and System Architecture</li>
+                        <li>Version Control: Git, GitHub</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Network & Protocols</div>
+                    <ul class="education-details">
+                        <li>TCP/IP, TelNet, FTP, DHCP, DNS, SMTP, POP3</li>
+                        <li>LAN Management and Network Operations</li>
+                        <li>Cisco Switches and Router Configuration</li>
+                        <li>Satellite Communications (Ku-Band TDMA DAMA VSAT)</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Systems & Hardware</div>
+                    <ul class="education-details">
+                        <li>Operating Systems: Windows 10/11, macOS, Linux, Windows Server 2019/2022</li>
+                        <li>Hardware: Desktop/Laptop Computers, Printers, Network Equipment</li>
+                        <li>Signal Support Systems: AN/TSQ-232(V)4 Tactical Command System</li>
+                        <li>Military Communications Equipment and GPS Systems</li>
+                        <li>Microsoft Office Suite: Excel, Word, PowerPoint, Outlook</li>
+                        <li>System Troubleshooting and Maintenance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="certifications" class="section">
+                <h2>Certifications & Clearances</h2>
+                
+                <div class="education-item">
+                    <div class="education-title">AWS Certifications</div>
+                    <div style="display: flex; gap: 2rem; margin: 1rem 0; flex-wrap: wrap;">
+                        <img src="images/Cloud Practitioner.png" alt="AWS Cloud Practitioner" style="height: 120px; width: auto;">
+                        <img src="images/Developer Associate.png" alt="AWS Developer Associate" style="height: 120px; width: auto;">
+                        <img src="images/cloud_app_badge_credly.png" alt="AWS Cloud Institute" style="height: 120px; width: auto;">
+                    </div>
+                    <ul class="education-details">
+                        <li>AWS Cloud Practitioner</li>
+                        <li>AWS Developer Associate</li>
+                        <li>AWS Cloud Institute - Cloud Application Developer Program</li>
+                        <li><a href="https://www.credly.com/users/danny-wilson.aff32cb3" target="_blank" style="color: white; text-decoration: underline;">View all certifications on Credly</a></li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Military & Technical Certifications</div>
+                    <ul class="education-details">
+                        <li>Secret Security Clearance</li>
+                        <li>Information Assurance Security Officer Certification</li>
+                        <li>SMART-T Training Certification</li>
+                        <li>FBCB2-BFT Leader OpNet Course Certification</li>
+                        <li>United States Army Noncommissioned Officers Academy Certification</li>
+                        <li>Army G3 Computer Security Training Certification</li>
+                        <li>Computer User Security Course Certification</li>
+                        <li>Ku-Band TDMA DAMA VSAT Satellite Communications Certification</li>
+                        <li>Army Distance Learning Vocational Program (625 hours)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <h2>Featured Applications & Projects</h2>
+                 <!--Customize-->
+                 <div>
+                    <div class="education-item">ClassCast - Educational Communication Platform</div>
+                        <ul class="education-details">
+                        <li>Built a full-stack web application connecting teachers and parents to improve classroom communication</li>
+                        <li>Developed using TypeScript, Next.js, React for frontend with responsive design and intuitive UI</li>
+                        <li>Implemented secure backend with Next.js Server Actions, PostgreSQL database, and Prisma ORM</li>
+                        <li>Features secure JWT-based authentication, encrypted data storage, and image compression/storage</li>
+                        <li>Created teacher "update board" system allowing real-time classroom event broadcasting with image tagging</li>
+                        <li>Designed separate user management systems for parents and educators with role-based access control</li>
+                        <li>Utilized Postman for comprehensive API endpoint testing and validation</li>
+                        <li><a href="https://devpost.com/software/classcast" target="_blank" style="color: white; text-decoration: underline;">View Project Details</a> | <a href="https://github.com/dannywils" target="_blank" style="color: white; text-decoration: underline;">GitHub Portfolio</a></li>
+                    </ul>
+                </div>
+            
+                <div class="line-break"></div>
+            
+                 <div>
+                    <div class="education-item">Network Infrastructure & Security Implementation</div>
+                        <ul class="education-details">
+                        <li>Designed and implemented Standard Operation Procedures for Preventative Maintenance Checks and Services for Heartland Payment Systems (Fortune 500 company)</li>
+                        <li>Operated as Senior LAN Manager and Command Post Platform Team Leader providing 24-hour tactical communications support</li>
+                        <li>Managed network operations for Light Infantry Division Special Troops Battalion</li>
+                        <li>Supervised installation, repair, operation and maintenance of AN/TSQ-232(V)4 Tactical Command System</li>
+                    </ul>
+                </div>
+            
+                <div class="line-break"></div>
+            
+                <div class="experience-item">
+                    <div>Military Leadership & Operations</div>
+                        <ul class="education-details">
+                        <li>Planned and implemented tactical support team for travel to two forward operating bases</li>
+                        <li>Organized travel arrangements and living support for high-ranking officers (30+ per month with seamless success)</li>
+                        <li>Counseled 8 Soldiers as Non-commissioned Officer, leading to 5+ promotions</li>
+                        <li>Managed equipment valued at over $1,500,000 during wartime operations</li>
+                    </ul>
+                </div>
+
+                <div class="line-break"></div>
+            
+                <div class="experience-item">
+                    <div>Educational Impact & Performance</div>
+                        <ul class="education-details">
+                        <li>Developed and implemented comprehensive curriculum and assessment strategies</li>
+                        <li>Increased team performance by 21.4% through innovative teaching methodologies</li>
+                        <li>Met and exceeded expectations in all areas of teacher evaluations consistently</li>
+                        <li>Integrated technology and modern teaching tools to enhance student engagement</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="apps" class="section">
+                <h2>Applications</h2>
+                
+                <div class="education-item">
+                    <div class="education-title">ClassCast - Educational Communication Platform</div>
+                    <div style="margin: 1rem 0;">
+                        <strong>Full Stack Web Application</strong>
+                    </div>
+                    <ul class="education-details">
+                        <li><strong>Purpose:</strong> Connects teachers and parents to improve classroom communication and engagement</li>
+                        <li><strong>Frontend:</strong> TypeScript, Next.js, React with responsive design and intuitive UI</li>
+                        <li><strong>Backend:</strong> Next.js Server Actions, RESTful API architecture</li>
+                        <li><strong>Database:</strong> PostgreSQL with Prisma ORM for data management</li>
+                        <li><strong>Security:</strong> JWT-based authentication, encrypted data storage</li>
+                        <li><strong>Key Features:</strong> Teacher update board, image tagging, real-time classroom event broadcasting, role-based access control for parents and educators</li>
+                        <li><strong>Testing:</strong> Comprehensive API testing with Postman</li>
+                        <li><strong>Innovation:</strong> Custom image compression and storage solution, separate user management systems</li>
+                        <li><a href="https://devpost.com/software/classcast" target="_blank" style="color: white; text-decoration: underline;">View Project Details</a> | <a href="https://github.com/DannyWilsonCodeShop" target="_blank" style="color: white; text-decoration: underline;">GitHub</a></li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Chord Progression App - Music Theory Tool</div>
+                    <div style="margin: 1rem 0;">
+                        <strong>Music Application</strong>
+                    </div>
+                    <ul class="education-details">
+                        <li><strong>Purpose:</strong> Interactive tool for musicians to explore and generate chord progressions</li>
+                        <li><strong>Technology:</strong> Modern web technologies for music theory implementation</li>
+                        <li><strong>Features:</strong> Chord progression generation, music theory algorithms, interactive interface</li>
+                        <li><strong>Target Users:</strong> Musicians, music students, and composers</li>
+                        <li><strong>Innovation:</strong> Combines music theory with software development expertise</li>
+                        <li><a href="https://github.com/DannyWilsonCodeShop/chord-progression-app" target="_blank" style="color: white; text-decoration: underline;">GitHub Repository</a> (Coming Soon)</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Development Philosophy</div>
+                    <ul class="education-details">
+                        <li>Focus on user-centered design and intuitive interfaces</li>
+                        <li>Emphasis on security best practices and data protection</li>
+                        <li>Full stack approach from concept to deployment</li>
+                        <li>Integration of domain expertise (education, music) with technical skills</li>
+                        <li>Continuous learning and adoption of modern development practices</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <h2>Professional Experience</h2>
+                <!--Customize-->
+                <div class="education-item">
+                    <div class="experience-title">Signal Support Systems Specialist (Sergeant)</div>
+                    <div class="experience-subtitle">United States Army - Fort Drum, NY</div>
+                    <div class="experience-date">March 2005 - September 2009</div>
+                    <ul class="education-details">
+                        <li>Supervised installation, maintenance, and troubleshooting of signal support systems and terminal devices including satellite, radio, wire, and battlefield automated systems</li>
+                        <li>Provided technical assistance and unit-level training for automation, communication, and user-operated signal equipment</li>
+                        <li>Managed network operations and LAN management for tactical communications</li>
+                        <li>Supervised health, welfare, and professional development of 5 Soldiers</li>
+                        <li>Promoted to Sergeant at first opening with Superior Senior Rater score</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="experience-title">Systems Analysis / Computer Operator</div>
+                    <div class="experience-subtitle">Heartland Payment Systems - Frisco, Texas</div>
+                    <div class="experience-date">March 2002 - June 2004</div>
+                    <ul class="education-details">
+                        <li>Monitored, maintained, and troubleshot network, hardware, operating systems, and applications</li>
+                        <li>Worked with Network Administrators to improve operational procedures</li>
+                        <li>Tracked and resolved surfaced issues in Fortune 500 payment processing environment</li>
+                        <li>Designed Standard Operation Procedures for Preventative Maintenance</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="experience-title">Professional Educator</div>
+                    <div class="experience-subtitle">Atlanta Public Schools, Drew Charter School, Cristo Rey Atlanta Jesuit High School</div>
+                    <div class="experience-date">2009 - 2014, 2023 - Present</div>
+                    <ul class="education-details">
+                        <li>Taught mathematics and computer science in diverse educational environments including Title 1 schools</li>
+                        <li>Developed and implemented comprehensive curriculum and assessment strategies</li>
+                        <li>Created and managed extensive student portfolio systems and academic tracking</li>
+                        <li>Increased team performance by 21.4% through innovative teaching methodologies</li>
+                        <li>Met and exceeded expectations in all areas of teacher evaluations consistently</li>
+                        <li>Mentored and supported student academic achievement and personal development</li>
+                        <li>Collaborated with administration and fellow educators to improve school-wide performance</li>
+                        <li>Integrated technology and modern teaching tools to enhance student engagement</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="awards" class="section">
+                <h2>Military Awards & Recognition</h2>
+                <div class="education-item">
+                    <div class="education-title">Army Commendation Medals (3)</div>
+                    <ul class="education-details">
+                        <li>Exceptional service as Team Leader supporting Multi-National Division-Center during Operation Iraqi Freedom</li>
+                        <li>Exceptional and meritorious service as Retransmission Team Member with tactical expertise under secure network</li>
+                        <li>Achievement in ensuring success of civil-military coordination conference in International Zone, Baghdad</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Army Achievement Medals (2)</div>
+                    <ul class="education-details">
+                        <li>Outstanding service as Senior LAN Manager for Data Support Team, Network Support Company</li>
+                        <li>Exemplary behavior, efficiency and fidelity in active federal military service</li>
+                    </ul>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Additional Recognition</div>
+                    <ul class="education-details">
+                        <li>Good Conduct Medal (2008)</li>
+                        <li>New Volunteer (Rookie) of the Year (2009)</li>
+                        <li>Promoted to Sergeant at first opening with Superior Senior Rater score</li>
+                        <li>Recommended for promotion "at first available opportunity"</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <h2>Contact Information</h2>
+                <div class="education-item">
+                    <div class="education-title">Get In Touch</div>
+                    <ul class="education-details">
+                        <li><strong>Email:</strong> wilson.danny@me.com</li>
+                        <li><strong>Phone:</strong> (404) 803-7330</li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/danny-wilson-2274465" target="_blank" style="color: white; text-decoration: underline;">danny-wilson-2274465</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/DannyWilsonCodeShop" target="_blank" style="color: white; text-decoration: underline;">DannyWilsonCodeShop</a></li>
+                        <li><strong>Security Clearance:</strong> Secret (held)</li>
+                    </ul>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-title">Professional Summary</div>
+                    <ul class="education-details">
+                        <li>Proven track record in IT systems, network management, and team leadership</li>
+                        <li>Military veteran with extensive experience in secure communications</li>
+                        <li>Strong background in both technical operations and educational environments</li>
+                        <li>Available for opportunities in IT, cybersecurity, and technical leadership roles</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.style.borderColor = 'var(--text-color)';
+                } else {
+                    link.style.borderColor = 'var(--border-color)';
+                }
+            });
+        }
+
+        // Show about section by default
+        window.onload = () => showSection('about');
+    </script>
+</body>
+</html>
