@@ -35,6 +35,7 @@
             flex-direction: column;
             min-height: 100vh;
             padding: 3rem 2rem;
+            background: transparent;
         }
 
         header {
@@ -211,6 +212,7 @@
             html, body {
                 height: 100%;
                 overflow-x: hidden;
+                background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
             }
 
             body {
@@ -218,11 +220,13 @@
                 line-height: 1.6;
                 min-height: 100vh;
                 position: relative;
+                background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
             }
 
             #wrapper {
                 padding: 2rem 1.5rem;
                 min-height: calc(100vh - 4rem);
+                background: transparent;
             }
 
             header {
@@ -378,9 +382,14 @@
         }
 
         @media screen and (max-width: 480px) {
+            html, body {
+                background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
+            }
+
             #wrapper {
                 padding: 1.5rem 1rem;
                 min-height: calc(100vh - 3rem);
+                background: transparent;
             }
 
             h1 {
