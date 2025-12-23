@@ -26,7 +26,7 @@
             font-family: "Source Sans Pro", sans-serif;
             font-weight: 300;
             line-height: 1.65;
-            font-size: 16pt;
+            font-size: 14pt;
         }
 
         #wrapper {
@@ -107,8 +107,7 @@
             transition: border-color var(--transition-speed);
             text-transform: uppercase;
             letter-spacing: 0.2rem;
-            font-size: 0.9rem;
-            font-weight: 400;
+            font-size: 0.8rem;
         }
 
         nav a:hover {
