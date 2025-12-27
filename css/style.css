@@ -17,10 +17,14 @@
         html {
             height: 100%;
             overflow-x: hidden;
+            background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
         }
 
         body {
-            background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
+            background: transparent;
             color: var(--text-color);
             font-family: "Source Sans Pro", sans-serif;
             font-weight: 300;
@@ -209,18 +213,24 @@
         }
 
         @media screen and (max-width: 768px) {
+            html {
+                background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
             html, body {
                 height: 100%;
                 overflow-x: hidden;
-                background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
             }
 
             body {
+                background: transparent;
                 font-size: 14pt;
                 line-height: 1.6;
                 min-height: 100vh;
                 position: relative;
-                background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
             }
 
             #wrapper {
@@ -382,8 +392,15 @@
         }
 
         @media screen and (max-width: 480px) {
-            html, body {
+            html {
                 background: linear-gradient(165deg, #1a1616 0%, #1a1f2c 100%);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+
+            body {
+                background: transparent;
             }
 
             #wrapper {
