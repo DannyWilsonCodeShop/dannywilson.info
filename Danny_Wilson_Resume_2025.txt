@@ -73,7 +73,7 @@ RECOGNITION
 EDUCATION
 
 AWS Cloud Institute - Atlanta, GA                                          AWS Cloud Application Developer Program
-                                                                           2024-Present
+                                                                           2024-2025
 
 South Carolina State University - Orangeburg, SC                          B.S. in Computer Science, Minor in Mathematics
                                                                            2001

@@ -101,7 +101,7 @@ Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, s
 - Minor in Mathematics
 - Coursework: Computer Logic, Programming Languages, Algorithm Analysis, Computer Networking, Software Engineering, Operating Systems, Database Management, Data Structures
 
-**AWS Cloud Application Developer Program** | *AWS Cloud Institute* | 2024-Present
+**AWS Cloud Application Developer Program** | *AWS Cloud Institute* | 2024-2025
 - Designed scalable, high-availability architectures using AWS services (EC2, RDS, DynamoDB, S3, IAM, CloudFront)
 - Built secure network architectures with VPCs, subnets, route tables, and security groups
 - Automated cloud infrastructure deployments using CI/CD pipelines (CodePipeline, CodeBuild, CodeDeploy)
@@ -112,7 +112,7 @@ Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, s
 ### AWS Certifications
 - **AWS Cloud Practitioner** - *Certified*
 - **AWS Developer Associate** - *Certified*
-- **AWS Cloud Institute Certification** - *In Progress*
+- **AWS Cloud Institute Certification** - *Completed*
 
 ### Military & Technical Certifications
 - **Secret Security Clearance** - *Active*
