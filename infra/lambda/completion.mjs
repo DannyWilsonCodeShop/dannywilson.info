@@ -1,4 +1,4 @@
-import { DynamoDBClient, PutItemCommand, ScanCommand } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, PutItemCommand, DeleteItemCommand, ScanCommand } from '@aws-sdk/client-dynamodb';
 import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
 
 const ddb = new DynamoDBClient({ region: 'us-east-1' });
@@ -14,7 +14,7 @@ const PHONES = {
   Courtnee: process.env.COURTNEE_PHONE || '+14048037877',
 };
 
-const PARENTS = ['Danny', 'Courtnee'];
+const ALL5 = ['Shane', 'Austin', 'Olivia', 'Danny', 'Courtnee'];
 const KIDS = ['Shane', 'Austin', 'Olivia'];
 
 async function sendSms(phone, msg) {
@@ -52,15 +52,25 @@ export const handler = async (event) => {
 
   if (method === 'POST') {
     const body = JSON.parse(event.body || '{}');
-    const { person, chore, date } = body;
+    const { person, chore, date, undo } = body;
 
     if (!person || !chore || !date) {
       return response(400, { error: 'person, chore, and date required' });
     }
 
     const personDate = `${person}#${chore}#${date}`;
-    const now = new Date().toISOString();
 
+    if (undo) {
+      // Remove the completion record
+      await ddb.send(new DeleteItemCommand({
+        TableName: TABLE,
+        Key: { personDate: { S: personDate } }
+      }));
+      return response(200, { success: true, undone: true, personDate });
+    }
+
+    // Mark complete
+    const now = new Date().toISOString();
     await ddb.send(new PutItemCommand({
       TableName: TABLE,
       Item: {
@@ -72,28 +82,16 @@ export const handler = async (event) => {
       }
     }));
 
-    // Send notifications
-    const isKid = KIDS.includes(person);
-
-    if (isKid) {
-      // Text the kid: "You marked X complete and ready for review"
-      const kidPhone = PHONES[person];
-      if (kidPhone) {
-        await sendSms(kidPhone, `✅ You marked "${chore}" complete and ready for review! Nice work, ${person}! 💪`);
-      }
-
-      // Text both parents: "X has marked X complete and ready for review"
-      for (const parent of PARENTS) {
-        const parentPhone = PHONES[parent];
-        if (parentPhone) {
-          await sendSms(parentPhone, `📋 ${person} has marked "${chore}" complete and ready for review. (${date})`);
+    // Send notifications to EVERYONE when a kid completes a chore
+    if (KIDS.includes(person)) {
+      for (const member of ALL5) {
+        const phone = PHONES[member];
+        if (!phone) continue;
+        if (member === person) {
+          await sendSms(phone, `✅ You marked "${chore}" complete and ready for review! Nice work, ${person}! 💪`);
+        } else {
+          await sendSms(phone, `📋 ${person} has marked "${chore}" complete and ready for review. (${date})`);
         }
-      }
-    } else {
-      // Parent completed a chore — just a quiet confirmation
-      const parentPhone = PHONES[person];
-      if (parentPhone) {
-        await sendSms(parentPhone, `✅ You completed "${chore}". Nice one! 👍`);
       }
     }
 

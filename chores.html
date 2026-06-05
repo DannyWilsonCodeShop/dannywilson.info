@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family Chore Schedule</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Chores">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ff6b6b">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/app-icon.png">
+<link rel="icon" type="image/png" href="/app-icon.png">
+<title>Wilson Family Chores</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff9f0;--card:#fff;--text:#2d2d2d;--muted:#999;--radius:18px;--shadow:0 4px 24px rgba(0,0,0,.08);}
@@ -29,14 +37,18 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 .user-bar .user-name{font-weight:800;color:#ff6b6b;}
 .user-bar button{background:none;border:none;color:var(--muted);cursor:pointer;font-weight:700;font-size:.8rem;text-decoration:underline;}
 
+/* TABS */
+.tabs{display:flex;justify-content:center;gap:8px;padding:12px 16px 4px;}
+.tab{padding:8px 20px;border-radius:24px;border:2px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;color:var(--muted);transition:all .2s;}
+.tab.active{background:#ff6b6b;border-color:#ff6b6b;color:#fff;box-shadow:0 3px 10px rgba(255,107,107,.3);}
+
 /* DATE NAV */
-.date-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 16px 6px;}
+.date-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 6px;}
 .date-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
 .date-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
 #date-display{font-family:'Fredoka One',cursive;font-size:1.15rem;min-width:220px;text-align:center;}
 .today-btn{display:block;margin:6px auto 14px;background:#4d96ff;color:#fff;border:none;border-radius:24px;padding:7px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 3px 10px rgba(77,150,255,.3);transition:transform .15s;}
 .today-btn:hover{transform:translateY(-2px);}
-.week-label{text-align:center;font-family:'Fredoka One',cursive;font-size:.9rem;color:var(--muted);margin-bottom:14px;}
 
 /* CARDS */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;padding:0 14px;max-width:960px;margin:0 auto;}
@@ -47,8 +59,8 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 .ch h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:#fff;text-shadow:1px 2px 0 rgba(0,0,0,.1);}
 .ch .role{font-size:.7rem;color:rgba(255,255,255,.85);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
 .points-display{margin-left:auto;display:flex;gap:4px;align-items:center;}
-.point-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:transparent;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;font-weight:800;}
-.point-dot.filled{background:#fff;border-color:#fff;color:#d63031;}
+.point-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,80,80,.4);background:transparent;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;font-weight:800;}
+.point-dot.filled{background:#d63031;border-color:#d63031;color:#fff;}
 .point-dot.overflow{background:#d63031;border-color:#d63031;color:#fff;font-size:.5rem;}
 .cl{padding:10px 16px 14px;display:flex;flex-direction:column;gap:8px;}
 .ci{display:flex;align-items:center;gap:10px;background:#f8f8f8;border-radius:11px;padding:9px 12px;transition:background .2s;}
@@ -64,6 +76,23 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 .cs{background:linear-gradient(135deg,#ff6b6b,#ee5a24)}.ca{background:linear-gradient(135deg,#ffd93d,#f0932b)}
 .co{background:linear-gradient(135deg,#6bcb77,#20bf6b)}.cd{background:linear-gradient(135deg,#4d96ff,#0652DD)}
 .cc{background:linear-gradient(135deg,#c77dff,#9b59b6)}
+
+/* CALENDAR */
+.cal-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 10px;}
+.cal-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.cal-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
+#cal-month-display{font-family:'Fredoka One',cursive;font-size:1.15rem;min-width:200px;text-align:center;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:0 10px 20px;max-width:1100px;margin:0 auto;}
+.cal-header{font-family:'Fredoka One',cursive;font-size:.75rem;color:var(--muted);text-align:center;padding:6px 0;}
+.cal-day{background:var(--card);border-radius:10px;padding:5px;min-height:100px;box-shadow:0 2px 8px rgba(0,0,0,.04);cursor:pointer;transition:transform .15s;}
+.cal-day:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.cal-day.today{outline:3px solid #4d96ff;outline-offset:-2px;}
+.cal-day.outside{opacity:.3;}
+.cal-day .day-num{font-family:'Fredoka One',cursive;font-size:.8rem;color:var(--text);margin-bottom:3px;}
+.cal-chore{font-size:.58rem;font-weight:700;padding:1px 3px;border-radius:5px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.cal-chore.cShane{background:#ffe0e0;color:#d63031;}.cal-chore.cAustin{background:#fff3cd;color:#e67e22;}
+.cal-chore.cOlivia{background:#d4edda;color:#27ae60;}.cal-chore.cDanny{background:#e0e7ff;color:#0652DD;}
+.cal-chore.cCourtnee{background:#f3e0ff;color:#9b59b6;}
 
 /* PARENT BOTTOM BAR */
 .parent-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #eee;padding:12px 16px;display:flex;gap:10px;justify-content:center;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
@@ -113,21 +142,40 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <!-- MAIN APP -->
 <div id="app" class="hidden">
 <header>
-<h1>🏠 Today's Chores</h1>
+<h1>🏠 Family Chores</h1>
 </header>
 <div class="user-bar">
 <span>Hey <span class="user-name" id="current-user-display"></span>! 👋</span>
 <button onclick="doLogout()">Logout</button>
 </div>
 
+<div class="tabs">
+<button class="tab active" onclick="switchTab('today')">📋 Today</button>
+<button class="tab" onclick="switchTab('cal')">📅 Month</button>
+</div>
+
+<!-- TODAY VIEW -->
+<div id="vt">
 <div class="date-nav">
 <button onclick="changeDay(-1)">◀</button>
 <div id="date-display"></div>
 <button onclick="changeDay(1)">▶</button>
 </div>
 <button class="today-btn" onclick="goToday()">⬤ Today</button>
-<div class="week-label" id="wlabel"></div>
 <div class="grid" id="grid"></div>
+</div>
+
+<!-- CALENDAR VIEW -->
+<div id="vc" class="hidden">
+<div class="cal-nav">
+<button onclick="changeMonth(-1)">◀</button>
+<div id="cal-month-display"></div>
+<button onclick="changeMonth(1)">▶</button>
+</div>
+<div class="cal-grid" id="cal-grid">
+<div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
+</div>
+</div>
 
 <!-- Parent-only bottom bar -->
 <div id="parent-bar" class="parent-bar hidden">
@@ -139,16 +187,18 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 
 <!-- POINT MODAL -->
 <div id="point-modal" class="modal-overlay hidden">
-<div class="modal">
+<div class="modal" id="pm-modal-inner">
 <h3 id="pm-title">Add a Point</h3>
-<label>Who gets the point?</label>
+<label>Who?</label>
 <select id="pm-person">
 <option value="Shane">🧒🏾 Shane</option>
 <option value="Austin">👦🏾 Austin</option>
 <option value="Olivia">👧🏾 Olivia</option>
 </select>
+<div id="pm-day-section">
 <label>For which day?</label>
 <input type="text" id="pm-day" placeholder="e.g. Monday, yesterday, June 4">
+</div>
 <div class="modal-btns">
 <button class="cancel" onclick="closePointModal()">Cancel</button>
 <button class="confirm" id="pm-confirm" onclick="confirmPoint()">Add Point</button>
@@ -251,9 +301,7 @@ function showApp(){
   document.getElementById('login-screen').classList.add('hidden');
   document.getElementById('app').classList.remove('hidden');
   document.getElementById('current-user-display').textContent = currentUser;
-  // Show parent bar only for parents
   document.getElementById('parent-bar').classList.toggle('hidden', !PARENTS.includes(currentUser));
-  renderToday();
   loadPoints();
   loadCompletions();
 }
@@ -314,7 +362,6 @@ function getDailyChores(date){
 
 // ============ DISPLAY ORDER ============
 function getDisplayOrder(){
-  // Current user first, then other kids, then parents
   const isKid = KIDS.includes(currentUser);
   if(isKid){
     const otherKids = KIDS.filter(k => k !== currentUser);
@@ -338,12 +385,20 @@ async function loadCompletions(){
   renderToday();
 }
 
-async function markComplete(person, chore){
+async function toggleComplete(person, chore){
   const key = person + '#' + chore;
-  if(completions[key]) return;
-  completions[key] = true;
-  renderToday();
-  await apiPost('/completion', { person, chore, date: formatDateKey(cur) });
+  if(completions[key]){
+    // Uncheck — only parents can uncheck anyone, kids can uncheck their own
+    if(person !== currentUser && !PARENTS.includes(currentUser)) return;
+    delete completions[key];
+    renderToday();
+    await apiPost('/completion', { person, chore, date: formatDateKey(cur), undo: true });
+  } else {
+    // Check
+    completions[key] = true;
+    renderToday();
+    await apiPost('/completion', { person, chore, date: formatDateKey(cur) });
+  }
 }
 
 function formatDateKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -372,15 +427,13 @@ function getPointDots(person){
   return html;
 }
 
-// ============ RENDER ============
+// ============ RENDER TODAY ============
 let cur = new Date(); cur.setHours(0,0,0,0);
 
 function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
 
 function renderToday(){
   document.getElementById('date-display').textContent = fmtDate(cur);
-  const wi = getWeekIndex(cur), wr = wi%3;
-  document.getElementById('wlabel').textContent = 'Week '+(wi+1)+' · Rotation '+(wr+1)+' of 3';
   const ch = getDailyChores(cur);
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
@@ -395,17 +448,17 @@ function renderToday(){
     const isKid = KIDS.includes(p);
     const pointsDots = isKid ? `<div class="points-display">${getPointDots(p)}</div>` : '';
 
+    // Permission: kids mark only their own, parents mark anyone
+    const canMark = (p === currentUser && KIDS.includes(currentUser)) || PARENTS.includes(currentUser);
+
     const choreHtml = list.map(c => {
       const key = p + '#' + c.nm;
       const done = completions[key];
-      // Current user can mark their own, parents can mark anyone
-      const canMark = (p === currentUser || PARENTS.includes(currentUser)) && !done;
       return `<div class="ci ${done?'completed':''}">
         <span class="ico">${c.ico}</span>
         <span class="nm">${c.nm}</span>
         ${done ? '<span class="badge easy">Done ✓</span>' : `<span class="badge ${c.badge}">${c.bl}</span>`}
-        ${canMark ? `<button class="done-btn" onclick="markComplete('${p}','${c.nm.replace(/'/g,"\\'")}')"></button>` : ''}
-        ${done ? '<span class="done-btn checked">✓</span>' : ''}
+        ${canMark ? `<button class="done-btn ${done?'checked':''}" onclick="toggleComplete('${p}','${c.nm.replace(/'/g,"\\'")}')">${done?'✓':''}</button>` : (done ? '<span class="done-btn checked">✓</span>' : '')}
       </div>`;
     }).join('');
 
@@ -423,6 +476,55 @@ function renderToday(){
 function changeDay(d){ cur.setDate(cur.getDate()+d); loadCompletions(); }
 function goToday(){ cur = new Date(); cur.setHours(0,0,0,0); loadCompletions(); }
 
+// ============ CALENDAR ============
+let calMonth = new Date(); calMonth.setDate(1); calMonth.setHours(0,0,0,0);
+
+function changeMonth(d){ calMonth.setMonth(calMonth.getMonth()+d); renderCalendar(); }
+
+function renderCalendar(){
+  const year=calMonth.getFullYear(), month=calMonth.getMonth();
+  document.getElementById('cal-month-display').textContent = MONTHS[month]+' '+year;
+  const calGrid = document.getElementById('cal-grid');
+  while(calGrid.children.length > 7) calGrid.removeChild(calGrid.lastChild);
+  const firstDay = new Date(year, month, 1);
+  const startDow = firstDay.getDay();
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const today = new Date(); today.setHours(0,0,0,0);
+  const prevMonthDays = new Date(year, month, 0).getDate();
+  for(let i=startDow-1; i>=0; i--){ calGrid.appendChild(buildCalDay(new Date(year, month-1, prevMonthDays-i), today, true)); }
+  for(let day=1; day<=daysInMonth; day++){ calGrid.appendChild(buildCalDay(new Date(year, month, day), today, false)); }
+  const totalCells = startDow + daysInMonth;
+  const remaining = (7 - totalCells%7)%7;
+  for(let i=1; i<=remaining; i++){ calGrid.appendChild(buildCalDay(new Date(year, month+1, i), today, true)); }
+}
+
+function buildCalDay(date, today, outside){
+  const div = document.createElement('div');
+  div.className = 'cal-day' + (date.getTime()===today.getTime()?' today':'') + (outside?' outside':'');
+  const ch = getDailyChores(date);
+  let html = '<div class="day-num">'+date.getDate()+'</div>';
+  ALL5.forEach(p => { ch[p].forEach(c => { html += `<span class="cal-chore c${p}" title="${p}: ${c.nm}">${AVATARS[p]} ${c.nm}</span>`; }); });
+  div.innerHTML = html;
+  div.addEventListener('click', () => { cur = new Date(date); switchTab('today'); });
+  return div;
+}
+
+// ============ TABS ============
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.getElementById('vt').classList.add('hidden');
+  document.getElementById('vc').classList.add('hidden');
+  if(t === 'today'){
+    document.getElementById('vt').classList.remove('hidden');
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    loadCompletions();
+  } else {
+    document.getElementById('vc').classList.remove('hidden');
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    renderCalendar();
+  }
+}
+
 // ============ POINT MODAL ============
 let pendingAction = null;
 
@@ -431,6 +533,8 @@ function openPointModal(action){
   document.getElementById('pm-title').textContent = action==='add' ? '⚠️ Add a Point' : '✅ Remove a Point';
   document.getElementById('pm-confirm').textContent = action==='add' ? 'Add Point' : 'Remove Point';
   document.getElementById('pm-confirm').className = 'confirm' + (action==='remove'?' green':'');
+  // Only show "for which day" when adding
+  document.getElementById('pm-day-section').classList.toggle('hidden', action==='remove');
   document.getElementById('pm-day').value = '';
   document.getElementById('point-modal').classList.remove('hidden');
 }
@@ -442,7 +546,7 @@ function closePointModal(){
 
 async function confirmPoint(){
   const person = document.getElementById('pm-person').value;
-  const day = document.getElementById('pm-day').value.trim() || 'today';
+  const day = pendingAction === 'add' ? (document.getElementById('pm-day').value.trim() || 'today') : '';
   if(!pendingAction) return;
   closePointModal();
   await apiPost('/points', { person, action: pendingAction, day, requestedBy: currentUser });
