@@ -8,206 +8,174 @@
 <style>
 :root{--bg:#fff9f0;--card:#fff;--text:#2d2d2d;--muted:#999;--radius:18px;--shadow:0 4px 24px rgba(0,0,0,.08);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:40px;}
-header{background:linear-gradient(135deg,#ff6b6b,#ffd93d);padding:26px 20px 20px;text-align:center;position:relative;overflow:hidden;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:100px;}
+
+/* LOGIN */
+.login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:linear-gradient(135deg,#fff9f0,#ffe0e0);}
+.login-box{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:36px 28px;width:100%;max-width:320px;text-align:center;}
+.login-box h2{font-family:'Fredoka One',cursive;font-size:1.8rem;margin-bottom:6px;color:var(--text);}
+.login-box .login-sub{font-size:.9rem;color:var(--muted);font-weight:700;margin-bottom:20px;}
+.login-box input{width:100%;padding:13px 16px;border:2px solid #eee;border-radius:12px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;margin-bottom:12px;transition:border-color .2s;}
+.login-box input:focus{outline:none;border-color:#ff6b6b;}
+.login-box button{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#ff6b6b,#ffd93d);color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;cursor:pointer;transition:transform .15s;}
+.login-box button:hover{transform:translateY(-2px);}
+.login-error{color:#d63031;font-size:.85rem;font-weight:700;margin-top:10px;min-height:20px;}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#ff6b6b,#ffd93d);padding:22px 20px 18px;text-align:center;position:relative;overflow:hidden;}
 header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.12);border-radius:50%;}
-header h1{font-family:'Fredoka One',cursive;font-size:2.1rem;color:#fff;text-shadow:2px 3px 0 rgba(0,0,0,.12);}
-header p{color:rgba(255,255,255,.9);font-weight:700;font-size:.95rem;margin-top:4px;}
+header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-shadow:2px 3px 0 rgba(0,0,0,.12);}
 .user-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#fff;border-bottom:1px solid #eee;font-size:.85rem;}
 .user-bar .user-name{font-weight:800;color:#ff6b6b;}
-.user-bar button{background:none;border:none;color:var(--muted);cursor:pointer;font-weight:700;font-size:.8rem;}
-.tabs{display:flex;justify-content:center;gap:8px;padding:16px 16px 4px;flex-wrap:wrap;}
-.tab{padding:8px 22px;border-radius:24px;border:2px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;color:var(--muted);transition:all .2s;}
-.tab.active{background:#ff6b6b;border-color:#ff6b6b;color:#fff;box-shadow:0 3px 10px rgba(255,107,107,.3);}
+.user-bar button{background:none;border:none;color:var(--muted);cursor:pointer;font-weight:700;font-size:.8rem;text-decoration:underline;}
+
+/* DATE NAV */
 .date-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 16px 6px;}
 .date-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
 .date-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
-#date-display{font-family:'Fredoka One',cursive;font-size:1.25rem;min-width:230px;text-align:center;}
-.today-btn{display:block;margin:6px auto 16px;background:#4d96ff;color:#fff;border:none;border-radius:24px;padding:7px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;box-shadow:0 3px 10px rgba(77,150,255,.3);transition:transform .15s,box-shadow .15s;}
-.today-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(77,150,255,.4);}
-.week-label{text-align:center;font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--muted);margin-bottom:14px;}
+#date-display{font-family:'Fredoka One',cursive;font-size:1.15rem;min-width:220px;text-align:center;}
+.today-btn{display:block;margin:6px auto 14px;background:#4d96ff;color:#fff;border:none;border-radius:24px;padding:7px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 3px 10px rgba(77,150,255,.3);transition:transform .15s;}
+.today-btn:hover{transform:translateY(-2px);}
+.week-label{text-align:center;font-family:'Fredoka One',cursive;font-size:.9rem;color:var(--muted);margin-bottom:14px;}
+
+/* CARDS */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;padding:0 14px;max-width:960px;margin:0 auto;}
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;animation:popIn .35s ease both;}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;animation:popIn .3s ease both;}
 @keyframes popIn{from{opacity:0;transform:scale(.93) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.10s}.card:nth-child(3){animation-delay:.15s}.card:nth-child(4){animation-delay:.20s}.card:nth-child(5){animation-delay:.25s}
 .ch{padding:13px 16px;display:flex;align-items:center;gap:10px;}
-.av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:rgba(255,255,255,.28);flex-shrink:0;}
-.ch h2{font-family:'Fredoka One',cursive;font-size:1.3rem;color:#fff;text-shadow:1px 2px 0 rgba(0,0,0,.1);}
-.ch .role{font-size:.75rem;color:rgba(255,255,255,.85);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(255,255,255,.28);flex-shrink:0;}
+.ch h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:#fff;text-shadow:1px 2px 0 rgba(0,0,0,.1);}
+.ch .role{font-size:.7rem;color:rgba(255,255,255,.85);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
 .points-display{margin-left:auto;display:flex;gap:4px;align-items:center;}
-.point-dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:transparent;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#fff;font-weight:800;}
-.point-dot.filled{background:rgba(255,255,255,.9);border-color:rgba(255,255,255,.9);color:#d63031;}
-.point-dot.danger{background:#d63031;border-color:#d63031;color:#fff;}
-.cl{padding:12px 16px 16px;display:flex;flex-direction:column;gap:9px;}
-.ci{display:flex;align-items:center;gap:10px;background:#f8f8f8;border-radius:11px;padding:9px 12px;transition:all .2s;}
-.ci.completed{background:#d4edda;opacity:.7;}
-.ci.completed .nm{text-decoration:line-through;}
-.ico{font-size:1.2rem;flex-shrink:0;}
-.nm{font-weight:800;font-size:.92rem;flex:1;}
-.badge{font-size:.68rem;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;flex-shrink:0;}
+.point-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:transparent;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;font-weight:800;}
+.point-dot.filled{background:#fff;border-color:#fff;color:#d63031;}
+.point-dot.overflow{background:#d63031;border-color:#d63031;color:#fff;font-size:.5rem;}
+.cl{padding:10px 16px 14px;display:flex;flex-direction:column;gap:8px;}
+.ci{display:flex;align-items:center;gap:10px;background:#f8f8f8;border-radius:11px;padding:9px 12px;transition:background .2s;}
+.ci.completed{background:#d4edda;}.ci.completed .nm{text-decoration:line-through;opacity:.6;}
+.ico{font-size:1.1rem;flex-shrink:0;}
+.nm{font-weight:800;font-size:.9rem;flex:1;}
+.badge{font-size:.65rem;font-weight:800;padding:3px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;flex-shrink:0;}
 .hard{background:#ffe0e0;color:#d63031}.medium{background:#fff3cd;color:#e67e22}.easy{background:#d4edda;color:#27ae60}
 .laundry{background:#e0e7ff;color:#4d96ff}.daily{background:#f3e0ff;color:#9b59b6}.deep{background:#e8f5e9;color:#2e7d32}
-.done-btn{width:28px;height:28px;border-radius:50%;border:2px solid #ccc;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;flex-shrink:0;}
+.done-btn{width:26px;height:26px;border-radius:50%;border:2px solid #ccc;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s;flex-shrink:0;}
 .done-btn:hover{border-color:#27ae60;background:#d4edda;}
 .done-btn.checked{background:#27ae60;border-color:#27ae60;color:#fff;}
 .cs{background:linear-gradient(135deg,#ff6b6b,#ee5a24)}.ca{background:linear-gradient(135deg,#ffd93d,#f0932b)}
 .co{background:linear-gradient(135deg,#6bcb77,#20bf6b)}.cd{background:linear-gradient(135deg,#4d96ff,#0652DD)}
 .cc{background:linear-gradient(135deg,#c77dff,#9b59b6)}
-.hidden{display:none;}
-/* Calendar */
-.cal-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 16px 12px;}
-.cal-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
-.cal-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
-#cal-month-display{font-family:'Fredoka One',cursive;font-size:1.25rem;min-width:200px;text-align:center;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:0 10px 20px;max-width:1100px;margin:0 auto;}
-.cal-header{font-family:'Fredoka One',cursive;font-size:.8rem;color:var(--muted);text-align:center;padding:6px 0;}
-.cal-day{background:var(--card);border-radius:10px;padding:6px;min-height:110px;box-shadow:0 2px 8px rgba(0,0,0,.05);position:relative;transition:transform .15s;cursor:pointer;}
-.cal-day:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
-.cal-day.today{outline:3px solid #4d96ff;outline-offset:-2px;}
-.cal-day.outside{opacity:.35;}
-.cal-day .day-num{font-family:'Fredoka One',cursive;font-size:.85rem;color:var(--text);margin-bottom:4px;}
-.cal-day .cal-chore{font-size:.62rem;font-weight:700;padding:2px 4px;border-radius:6px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
-.cal-chore.cShane{background:#ffe0e0;color:#d63031;}.cal-chore.cAustin{background:#fff3cd;color:#e67e22;}
-.cal-chore.cOlivia{background:#d4edda;color:#27ae60;}.cal-chore.cDanny{background:#e0e7ff;color:#0652DD;}
-.cal-chore.cCourtnee{background:#f3e0ff;color:#9b59b6;}
-/* Points tab */
-.points-section{max-width:600px;margin:0 auto;padding:16px;}
-.points-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:14px;}
-.points-card h3{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:10px;}
-.points-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0;}
-.points-row:last-child{border:none;}
-.points-person{font-weight:800;font-size:1rem;display:flex;align-items:center;gap:8px;}
-.points-count{font-family:'Fredoka One',cursive;font-size:1.5rem;color:#d63031;}
-.points-count.safe{color:#27ae60;}
-.points-actions{display:flex;gap:8px;}
-.pt-btn{width:36px;height:36px;border-radius:50%;border:2px solid #ddd;background:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.pt-btn:hover{transform:scale(1.1);}
-.pt-btn.add:hover{background:#ffe0e0;border-color:#d63031;}
-.pt-btn.remove:hover{background:#d4edda;border-color:#27ae60;}
-.pt-btn:disabled{opacity:.3;cursor:not-allowed;transform:none;}
-/* Rules info */
-.rules-box{background:linear-gradient(135deg,#fff3cd,#ffe0e0);border-radius:var(--radius);padding:18px;margin:14px;max-width:600px;margin:14px auto;}
-.rules-box h3{font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:8px;color:#d63031;}
-.rules-box p,.rules-box li{font-size:.88rem;line-height:1.5;font-weight:600;}
-.rules-box ul{padding-left:18px;margin-top:6px;}
-.rules-box li{margin-bottom:4px;}
-/* Login */
-.login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;padding:20px;}
-.login-box{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:32px;width:100%;max-width:340px;text-align:center;}
-.login-box h2{font-family:'Fredoka One',cursive;font-size:1.6rem;margin-bottom:16px;color:var(--text);}
-.login-box input{width:100%;padding:12px 16px;border:2px solid #eee;border-radius:12px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;margin-bottom:12px;transition:border-color .2s;}
-.login-box input:focus{outline:none;border-color:#ff6b6b;}
-.login-box button{width:100%;padding:12px;border:none;border-radius:12px;background:linear-gradient(135deg,#ff6b6b,#ffd93d);color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;cursor:pointer;transition:transform .15s;}
-.login-box button:hover{transform:translateY(-2px);}
-.login-error{color:#d63031;font-size:.85rem;font-weight:700;margin-top:8px;}
-/* Modal */
+
+/* PARENT BOTTOM BAR */
+.parent-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #eee;padding:12px 16px;display:flex;gap:10px;justify-content:center;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
+.parent-bar button{padding:10px 24px;border:none;border-radius:24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .15s;}
+.parent-bar .add-pt-btn{background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;}
+.parent-bar .remove-pt-btn{background:linear-gradient(135deg,#6bcb77,#20bf6b);color:#fff;}
+.parent-bar .info-btn{background:#f0f0f0;color:var(--muted);width:40px;height:40px;border-radius:50%;padding:0;font-size:1.1rem;display:flex;align-items:center;justify-content:center;}
+
+/* MODAL */
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;}
-.modal{background:#fff;border-radius:var(--radius);padding:24px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2);}
-.modal h3{font-family:'Fredoka One',cursive;margin-bottom:12px;}
-.modal input,.modal select{width:100%;padding:10px 14px;border:2px solid #eee;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:700;margin-bottom:10px;}
-.modal-btns{display:flex;gap:8px;margin-top:12px;}
-.modal-btns button{flex:1;padding:10px;border:none;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;font-size:.9rem;}
+.modal{background:#fff;border-radius:var(--radius);padding:24px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:popIn .25s ease;}
+.modal h3{font-family:'Fredoka One',cursive;margin-bottom:14px;font-size:1.2rem;}
+.modal label{font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);}
+.modal select,.modal input{width:100%;padding:11px 14px;border:2px solid #eee;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:12px;}
+.modal select:focus,.modal input:focus{outline:none;border-color:#ff6b6b;}
+.modal-btns{display:flex;gap:8px;margin-top:6px;}
+.modal-btns button{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;font-size:.9rem;transition:transform .15s;}
+.modal-btns button:hover{transform:translateY(-1px);}
 .modal-btns .confirm{background:#ff6b6b;color:#fff;}
+.modal-btns .confirm.green{background:#27ae60;}
 .modal-btns .cancel{background:#f0f0f0;color:var(--text);}
-footer{text-align:center;margin-top:28px;font-size:.78rem;color:var(--muted);font-weight:600;}
+
+/* RULES MODAL */
+.rules-content{padding:4px 0;}
+.rules-content p{font-size:.9rem;line-height:1.6;font-weight:600;margin-bottom:8px;}
+.rules-content ul{padding-left:18px;margin:8px 0;}
+.rules-content li{font-size:.88rem;line-height:1.5;font-weight:600;margin-bottom:4px;}
+.rules-content .bottom-line{margin-top:12px;font-weight:800;color:#d63031;font-size:.9rem;}
+
+.hidden{display:none;}
 </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
 <div id="login-screen" class="login-screen">
 <div class="login-box">
 <h2>🏠 Family Chores</h2>
-<input type="text" id="login-user" placeholder="Name (e.g. Shane)" autocomplete="username">
+<p class="login-sub">Who's checking in today?</p>
+<input type="text" id="login-user" placeholder="Your name" autocomplete="username" autocapitalize="words">
 <input type="password" id="login-pass" placeholder="Password" autocomplete="current-password">
-<button onclick="doLogin()">Let's Go!</button>
+<button onclick="doLogin()">Let's Go! 🚀</button>
 <div class="login-error" id="login-error"></div>
 </div>
 </div>
 
-<!-- MAIN APP (hidden until login) -->
+<!-- MAIN APP -->
 <div id="app" class="hidden">
 <header>
-<h1>🏠 Family Chores</h1>
-<p>Shane · Austin · Olivia · Danny · Courtnee</p>
+<h1>🏠 Today's Chores</h1>
 </header>
 <div class="user-bar">
-<span>Logged in as <span class="user-name" id="current-user-display"></span></span>
+<span>Hey <span class="user-name" id="current-user-display"></span>! 👋</span>
 <button onclick="doLogout()">Logout</button>
 </div>
-<div class="tabs">
-<button class="tab active" onclick="switchTab('today')">📅 Today</button>
-<button class="tab" onclick="switchTab('cal')">📅 Calendar</button>
-<button class="tab" onclick="switchTab('points')">⚠️ Points</button>
-<button class="tab" onclick="switchTab('rules')">📖 Rules</button>
-</div>
 
-<!-- TODAY VIEW -->
-<div id="vt">
 <div class="date-nav">
 <button onclick="changeDay(-1)">◀</button>
 <div id="date-display"></div>
 <button onclick="changeDay(1)">▶</button>
 </div>
-<button class="today-btn" onclick="goToday()">⬤ Jump to Today</button>
+<button class="today-btn" onclick="goToday()">⬤ Today</button>
 <div class="week-label" id="wlabel"></div>
 <div class="grid" id="grid"></div>
-</div>
 
-<!-- CALENDAR VIEW -->
-<div id="vc" class="hidden">
-<div class="cal-nav">
-<button onclick="changeMonth(-1)">◀</button>
-<div id="cal-month-display"></div>
-<button onclick="changeMonth(1)">▶</button>
-</div>
-<div class="cal-grid">
-<div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
+<!-- Parent-only bottom bar -->
+<div id="parent-bar" class="parent-bar hidden">
+<button class="add-pt-btn" onclick="openPointModal('add')">+ Add Point</button>
+<button class="remove-pt-btn" onclick="openPointModal('remove')">− Remove Point</button>
+<button class="info-btn" onclick="openRulesModal()">?</button>
 </div>
 </div>
 
-<!-- POINTS VIEW -->
-<div id="vp" class="hidden">
-<div class="points-section">
-<div class="points-card">
-<h3>⚠️ Point Tracker</h3>
-<div id="points-list"></div>
+<!-- POINT MODAL -->
+<div id="point-modal" class="modal-overlay hidden">
+<div class="modal">
+<h3 id="pm-title">Add a Point</h3>
+<label>Who gets the point?</label>
+<select id="pm-person">
+<option value="Shane">🧒🏾 Shane</option>
+<option value="Austin">👦🏾 Austin</option>
+<option value="Olivia">👧🏾 Olivia</option>
+</select>
+<label>For which day?</label>
+<input type="text" id="pm-day" placeholder="e.g. Monday, yesterday, June 4">
+<div class="modal-btns">
+<button class="cancel" onclick="closePointModal()">Cancel</button>
+<button class="confirm" id="pm-confirm" onclick="confirmPoint()">Add Point</button>
 </div>
 </div>
 </div>
 
-<!-- RULES VIEW -->
-<div id="vr" class="hidden">
-<div class="rules-box">
-<h3>📖 Points System Rules</h3>
+<!-- RULES MODAL -->
+<div id="rules-modal" class="modal-overlay hidden">
+<div class="modal">
+<h3>📖 Points System</h3>
+<div class="rules-content">
 <p>Each day you are expected to do your chore and clean your room.</p>
 <ul>
 <li>When you forget, you get a <strong>point</strong>.</li>
 <li>When you reach <strong>3 points</strong>, you lose your phone/device.</li>
-<li>To get your device back, you must do <strong>extra chores</strong> to get back to <strong>zero points</strong>.</li>
-<li>That means at 3 points = 3 EXTRA chores before you get your device back.</li>
-<li>If days keep going by without doing chores, points keep adding up — meaning even more extra chores to work off!</li>
+<li>To get your device back, you must do <strong>extra chores</strong> to get back to <strong>zero</strong>.</li>
+<li>3 points = 3 EXTRA chores before your device comes back.</li>
+<li>If more days go by without doing chores, more points pile up — more extra chores to work off!</li>
 </ul>
-<p style="margin-top:12px;font-weight:800;color:#d63031;">Bottom line: Do your chores every day and you'll never lose your device. Simple! ✅</p>
+<p class="bottom-line">Do your chores every day and you keep your device. Simple! ✅</p>
 </div>
-</div>
-
-</div><!-- /app -->
-
-<!-- MODAL (for adding/removing points) -->
-<div id="modal-overlay" class="modal-overlay hidden">
-<div class="modal">
-<h3 id="modal-title">Add Point</h3>
-<label style="font-weight:700;font-size:.85rem;">For which day?</label>
-<input type="text" id="modal-day" placeholder="e.g. Monday, yesterday, June 4...">
 <div class="modal-btns">
-<button class="cancel" onclick="closeModal()">Cancel</button>
-<button class="confirm" id="modal-confirm" onclick="confirmModal()">Add Point</button>
+<button class="cancel" onclick="closeRulesModal()" style="flex:1">Got it 👍</button>
 </div>
 </div>
 </div>
-
-<footer>Everyone contributes every day · Max 2 chores per day · Rotates indefinitely</footer>
 
 <script>
 // ============ CONFIG ============
@@ -218,17 +186,31 @@ const CONFIG = {
   region: 'us-east-1'
 };
 
-// ============ AUTH (simple Cognito USER_PASSWORD_AUTH via fetch) ============
+// ============ CONSTANTS ============
+const SCHEDULE_START = new Date(2025,4,26);
+const MAX_CHORES = 2;
+const ALL5 = ['Shane','Austin','Olivia','Danny','Courtnee'];
+const KIDS = ['Shane','Austin','Olivia'];
+const PARENTS = ['Danny','Courtnee'];
+const AVATARS = {Shane:'🧒🏾',Austin:'👦🏾',Olivia:'👧🏾',Danny:'👨🏾',Courtnee:'👩🏾'};
+const COLOR = {Shane:'cs',Austin:'ca',Olivia:'co',Danny:'cd',Courtnee:'cc'};
+const DNAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DEEP_CLEANS = ['Deep Clean Bathrooms','Clean Windows & Mirrors','Vacuum All Bedrooms','Deep Clean Kitchen/Fridge','Sweep Porch & Garage','Yard & Outdoor Tidying','Baseboards & Laundry Room'];
+const KID_LAUNDRY = {Shane:[[1,4],[0,4],[2,5]],Austin:[[2,0],[1,5],[0,3]],Olivia:[[3,6],[2,3],[1,4]]};
+const ADULT_LAUNDRY = {Danny:[[1,5],[3,5],[1,4]],Courtnee:[[0,2],[0,4],[2,6]]};
+
+// ============ AUTH STATE ============
 let currentUser = null;
 let idToken = null;
 
+// ============ AUTH ============
 async function doLogin(){
   const username = document.getElementById('login-user').value.trim();
   const password = document.getElementById('login-pass').value;
   const errEl = document.getElementById('login-error');
   errEl.textContent = '';
-
-  if(!username || !password){ errEl.textContent='Please enter name and password'; return; }
+  if(!username || !password){ errEl.textContent = 'Enter your name and password'; return; }
 
   try {
     const res = await fetch(`https://cognito-idp.${CONFIG.region}.amazonaws.com/`, {
@@ -243,19 +225,16 @@ async function doLogin(){
     const data = await res.json();
     if(data.AuthenticationResult){
       idToken = data.AuthenticationResult.IdToken;
-      const refreshToken = data.AuthenticationResult.RefreshToken;
-      currentUser = username;
       localStorage.setItem('choreToken', idToken);
-      localStorage.setItem('choreRefresh', refreshToken);
+      localStorage.setItem('choreRefresh', data.AuthenticationResult.RefreshToken);
       localStorage.setItem('choreUser', username);
+      currentUser = username;
       showApp();
-    } else if(data.__type && data.__type.includes('NotAuthorized')){
-      errEl.textContent = 'Wrong name or password. Try again!';
     } else {
-      errEl.textContent = data.message || 'Login failed';
+      errEl.textContent = 'Wrong name or password. Try again!';
     }
   } catch(e){
-    errEl.textContent = 'Connection error. Try again.';
+    errEl.textContent = 'Connection error. Check your internet.';
   }
 }
 
@@ -272,53 +251,41 @@ function showApp(){
   document.getElementById('login-screen').classList.add('hidden');
   document.getElementById('app').classList.remove('hidden');
   document.getElementById('current-user-display').textContent = currentUser;
+  // Show parent bar only for parents
+  document.getElementById('parent-bar').classList.toggle('hidden', !PARENTS.includes(currentUser));
   renderToday();
   loadPoints();
   loadCompletions();
 }
 
-// Try to restore session
-(function tryRestore(){
+// Restore session on load
+(function(){
   const token = localStorage.getItem('choreToken');
   const user = localStorage.getItem('choreUser');
-  if(token && user){
-    idToken = token;
-    currentUser = user;
-    showApp();
-  }
+  if(token && user){ idToken = token; currentUser = user; showApp(); }
 })();
 
-function isParent(){ return currentUser === 'Danny' || currentUser === 'Courtnee'; }
-
-// ============ API HELPERS ============
+// ============ API ============
 async function apiGet(path){
-  const res = await fetch(CONFIG.apiEndpoint + path, { headers: { Authorization: 'Bearer ' + idToken } });
-  if(res.status === 401){ doLogout(); return null; }
-  return res.json();
+  try {
+    const res = await fetch(CONFIG.apiEndpoint + path, { headers: { Authorization: 'Bearer ' + idToken } });
+    if(res.status === 401){ doLogout(); return null; }
+    return res.json();
+  } catch(e){ return null; }
 }
 async function apiPost(path, body){
-  const res = await fetch(CONFIG.apiEndpoint + path, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + idToken },
-    body: JSON.stringify(body)
-  });
-  if(res.status === 401){ doLogout(); return null; }
-  return res.json();
+  try {
+    const res = await fetch(CONFIG.apiEndpoint + path, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', Authorization: 'Bearer ' + idToken },
+      body: JSON.stringify(body)
+    });
+    if(res.status === 401){ doLogout(); return null; }
+    return res.json();
+  } catch(e){ return null; }
 }
 
 // ============ CHORE LOGIC ============
-const SCHEDULE_START=new Date(2025,4,26);
-const MAX_CHORES=2;
-const ALL5=['Shane','Austin','Olivia','Danny','Courtnee'];
-const KIDS=['Shane','Austin','Olivia'];
-const AVATARS={Shane:'🧒',Austin:'👦',Olivia:'👧',Danny:'👨',Courtnee:'👩'};
-const COLOR={Shane:'cs',Austin:'ca',Olivia:'co',Danny:'cd',Courtnee:'cc'};
-const DNAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DEEP_CLEANS=['Deep Clean Bathrooms','Clean Windows & Mirrors','Vacuum All Bedrooms','Deep Clean Kitchen/Fridge','Sweep Porch & Garage','Yard & Outdoor Tidying','Baseboards & Laundry Room'];
-const KID_LAUNDRY={Shane:[[1,4],[0,4],[2,5]],Austin:[[2,0],[1,5],[0,3]],Olivia:[[3,6],[2,3],[1,4]]};
-const ADULT_LAUNDRY={Danny:[[1,5],[3,5],[1,4]],Courtnee:[[0,2],[0,4],[2,6]]};
-
 function localMidnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate(),0,0,0,0);}
 function getMondayOf(d){const x=localMidnight(d);const day=x.getDay();x.setDate(x.getDate()+(day===0?-6:1-day));return x;}
 function getWeekIndex(d){const m=getMondayOf(d),s=getMondayOf(SCHEDULE_START);return Math.max(0,Math.round((m-s)/(7*864e5)));}
@@ -330,191 +297,162 @@ function getEveningChores(dw,wr){const b=(wr+dw)%3;return{dishes:KIDS[b],sweep:K
 function canAdd(ch,p){return ch[p].length<MAX_CHORES;}
 
 function getDailyChores(date){
-const wi=getWeekIndex(date),wr=wi%3,di=getDayIndex(date),dw=dowNum(date);
-const ec=getEveningChores(dw,wr);
-const dog=getDog(di),din=getDinner(di);
-const ch={Shane:[],Austin:[],Olivia:[],Danny:[],Courtnee:[]};
-ch[ec.dishes].push({ico:'🍽️',nm:'Wash Dishes',badge:'hard',bl:'Hard'});
-ch[ec.sweep].push({ico:'🧹',nm:'Sweep & Mop',badge:'medium',bl:'Medium'});
-ch[ec.living].push({ico:'🛋️',nm:'Living Rm & Counters',badge:'easy',bl:'Easy'});
-if(canAdd(ch,dog)) ch[dog].push({ico:'🐶',nm:'Feed the Dog',badge:'daily',bl:'Daily'});
-if(canAdd(ch,din)) ch[din].push({ico:'🍳',nm:'Cook Dinner',badge:'daily',bl:'Daily'});
-KIDS.forEach(k=>{const[cd,td]=KID_LAUNDRY[k][wr];if(cd===dw&&canAdd(ch,k))ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,k))ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
-['Danny','Courtnee'].forEach(a=>{const[cd,td]=ADULT_LAUNDRY[a][wr];if(cd===dw&&canAdd(ch,a))ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,a))ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
-['Danny','Courtnee'].forEach(a=>{if(ch[a].length<MAX_CHORES)ch[a].push({ico:'🧽',nm:DEEP_CLEANS[((dw%7)+7)%7],badge:'deep',bl:'Deep Clean'});});
-return ch;
+  const wi=getWeekIndex(date),wr=wi%3,di=getDayIndex(date),dw=dowNum(date);
+  const ec=getEveningChores(dw,wr);
+  const dog=getDog(di),din=getDinner(di);
+  const ch={Shane:[],Austin:[],Olivia:[],Danny:[],Courtnee:[]};
+  ch[ec.dishes].push({ico:'🍽️',nm:'Wash Dishes',badge:'hard',bl:'Hard'});
+  ch[ec.sweep].push({ico:'🧹',nm:'Sweep & Mop',badge:'medium',bl:'Medium'});
+  ch[ec.living].push({ico:'🛋️',nm:'Living Rm & Counters',badge:'easy',bl:'Easy'});
+  if(canAdd(ch,dog)) ch[dog].push({ico:'🐶',nm:'Feed the Dog',badge:'daily',bl:'Daily'});
+  if(canAdd(ch,din)) ch[din].push({ico:'🍳',nm:'Cook Dinner',badge:'daily',bl:'Daily'});
+  KIDS.forEach(k=>{const[cd,td]=KID_LAUNDRY[k][wr];if(cd===dw&&canAdd(ch,k))ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,k))ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
+  PARENTS.forEach(a=>{const[cd,td]=ADULT_LAUNDRY[a][wr];if(cd===dw&&canAdd(ch,a))ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,a))ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
+  PARENTS.forEach(a=>{if(ch[a].length<MAX_CHORES)ch[a].push({ico:'🧽',nm:DEEP_CLEANS[((dw%7)+7)%7],badge:'deep',bl:'Deep Clean'});});
+  return ch;
 }
 
-// ============ COMPLETION STATE ============
+// ============ DISPLAY ORDER ============
+function getDisplayOrder(){
+  // Current user first, then other kids, then parents
+  const isKid = KIDS.includes(currentUser);
+  if(isKid){
+    const otherKids = KIDS.filter(k => k !== currentUser);
+    return [currentUser, ...otherKids, ...PARENTS];
+  } else {
+    const otherParent = PARENTS.filter(p => p !== currentUser);
+    return [currentUser, ...KIDS, ...otherParent];
+  }
+}
+
+// ============ COMPLETIONS ============
 let completions = {};
 
 async function loadCompletions(){
   const dateStr = formatDateKey(cur);
-  try {
-    const data = await apiGet('/completion?date=' + dateStr);
-    if(data){
-      completions = {};
-      data.forEach(c => { completions[c.person + '#' + c.chore] = true; });
-      renderToday();
-    }
-  } catch(e){}
+  const data = await apiGet('/completion?date=' + dateStr);
+  completions = {};
+  if(data && Array.isArray(data)){
+    data.forEach(c => { completions[c.person + '#' + c.chore] = true; });
+  }
+  renderToday();
 }
 
 async function markComplete(person, chore){
-  const dateStr = formatDateKey(cur);
   const key = person + '#' + chore;
   if(completions[key]) return;
   completions[key] = true;
   renderToday();
-  await apiPost('/completion', { person, chore, date: dateStr });
+  await apiPost('/completion', { person, chore, date: formatDateKey(cur) });
 }
 
 function formatDateKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 
-// ============ POINTS STATE ============
+// ============ POINTS ============
 let pointsData = { Shane:{points:0}, Austin:{points:0}, Olivia:{points:0} };
 
 async function loadPoints(){
-  try {
-    const data = await apiGet('/points');
-    if(data) pointsData = data;
-    renderPoints();
-  } catch(e){}
+  const data = await apiGet('/points');
+  if(data){
+    KIDS.forEach(k => { if(!data[k]) data[k] = {points:0}; });
+    pointsData = data;
+  }
 }
 
-function renderPoints(){
-  const list = document.getElementById('points-list');
-  if(!list) return;
-  list.innerHTML = '';
-  KIDS.forEach(k => {
-    const pts = pointsData[k]?.points || 0;
-    const row = document.createElement('div');
-    row.className = 'points-row';
-    row.innerHTML = `
-      <div class="points-person">${AVATARS[k]} ${k}</div>
-      <div class="points-count ${pts < 3 ? 'safe' : ''}">${pts}</div>
-      <div class="points-actions">
-        ${isParent() ? `<button class="pt-btn add" onclick="openPointModal('${k}','add')" title="Add point">+</button>
-        <button class="pt-btn remove" onclick="openPointModal('${k}','remove')" ${pts===0?'disabled':''} title="Remove point">−</button>` : ''}
-      </div>
-    `;
-    list.appendChild(row);
-  });
+function getPointDots(person){
+  const pts = pointsData[person]?.points || 0;
+  let html = '';
+  if(pts <= 3){
+    for(let i=0;i<3;i++){
+      html += `<div class="point-dot ${i<pts?'filled':''}"></div>`;
+    }
+  } else {
+    html += `<div class="point-dot filled"></div><div class="point-dot filled"></div><div class="point-dot overflow">${pts}</div>`;
+  }
+  return html;
 }
 
-// Modal for points
-let pendingPointAction = null;
-
-function openPointModal(person, action){
-  pendingPointAction = { person, action };
-  document.getElementById('modal-title').textContent = action === 'add' ? `Add Point to ${person}` : `Remove Point from ${person}`;
-  document.getElementById('modal-confirm').textContent = action === 'add' ? 'Add Point' : 'Remove Point';
-  document.getElementById('modal-day').value = '';
-  document.getElementById('modal-overlay').classList.remove('hidden');
-}
-
-function closeModal(){
-  document.getElementById('modal-overlay').classList.add('hidden');
-  pendingPointAction = null;
-}
-
-async function confirmModal(){
-  if(!pendingPointAction) return;
-  const day = document.getElementById('modal-day').value.trim() || 'today';
-  const { person, action } = pendingPointAction;
-  closeModal();
-  await apiPost('/points', { person, action, day, requestedBy: currentUser });
-  await loadPoints();
-}
-
-// ============ RENDER TODAY ============
+// ============ RENDER ============
 let cur = new Date(); cur.setHours(0,0,0,0);
 
 function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
 
 function renderToday(){
-  document.getElementById('date-display').textContent=fmtDate(cur);
-  const wi=getWeekIndex(cur),wr=wi%3;
-  document.getElementById('wlabel').textContent='Week '+(wi+1)+' · Rotation '+(wr+1)+' of 3';
-  const ch=getDailyChores(cur);
-  const grid=document.getElementById('grid');grid.innerHTML='';
-  ALL5.forEach((p,i)=>{
-    const list=ch[p];
-    const card=document.createElement('div');
-    card.className='card';card.style.animationDelay=(i*.07)+'s';
+  document.getElementById('date-display').textContent = fmtDate(cur);
+  const wi = getWeekIndex(cur), wr = wi%3;
+  document.getElementById('wlabel').textContent = 'Week '+(wi+1)+' · Rotation '+(wr+1)+' of 3';
+  const ch = getDailyChores(cur);
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  const order = getDisplayOrder();
 
-    // Points dots for kids
-    let pointsDots = '';
-    if(KIDS.includes(p)){
-      const pts = pointsData[p]?.points || 0;
-      for(let i=0;i<3;i++){
-        if(i < pts && pts >= 3) pointsDots += '<div class="point-dot danger">'+(pts>3&&i===2?pts:'')+'</div>';
-        else if(i < pts) pointsDots += '<div class="point-dot filled"></div>';
-        else pointsDots += '<div class="point-dot"></div>';
-      }
-      if(pts > 3) pointsDots = '<div class="point-dot danger"></div><div class="point-dot danger"></div><div class="point-dot danger">'+pts+'</div>';
-    }
+  order.forEach((p,i) => {
+    const list = ch[p];
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = (i*.06)+'s';
 
-    const body = list.map(c => {
+    const isKid = KIDS.includes(p);
+    const pointsDots = isKid ? `<div class="points-display">${getPointDots(p)}</div>` : '';
+
+    const choreHtml = list.map(c => {
       const key = p + '#' + c.nm;
       const done = completions[key];
-      const canCheck = (p === currentUser || isParent());
+      // Current user can mark their own, parents can mark anyone
+      const canMark = (p === currentUser || PARENTS.includes(currentUser)) && !done;
       return `<div class="ci ${done?'completed':''}">
-        <span class="ico">${c.ico}</span><span class="nm">${c.nm}</span>
-        <span class="badge ${c.badge}">${c.bl}</span>
-        ${canCheck ? `<button class="done-btn ${done?'checked':''}" onclick="markComplete('${p}','${c.nm.replace(/'/g,"\\'")}')"><span>${done?'✓':''}</span></button>` : ''}
+        <span class="ico">${c.ico}</span>
+        <span class="nm">${c.nm}</span>
+        ${done ? '<span class="badge easy">Done ✓</span>' : `<span class="badge ${c.badge}">${c.bl}</span>`}
+        ${canMark ? `<button class="done-btn" onclick="markComplete('${p}','${c.nm.replace(/'/g,"\\'")}')"></button>` : ''}
+        ${done ? '<span class="done-btn checked">✓</span>' : ''}
       </div>`;
     }).join('');
 
-    card.innerHTML=`<div class="ch ${COLOR[p]}"><div class="av">${AVATARS[p]}</div><div><h2>${p}</h2><div class="role">${['Danny','Courtnee'].includes(p)?'Parent':'Kid'}</div></div>${pointsDots?'<div class="points-display">'+pointsDots+'</div>':''}</div><div class="cl">${body}</div>`;
+    card.innerHTML = `
+      <div class="ch ${COLOR[p]}">
+        <div class="av">${AVATARS[p]}</div>
+        <div><h2>${p}</h2><div class="role">${PARENTS.includes(p)?'Parent':'Kid'}</div></div>
+        ${pointsDots}
+      </div>
+      <div class="cl">${choreHtml}</div>`;
     grid.appendChild(card);
   });
 }
 
-function changeDay(d){cur.setDate(cur.getDate()+d);loadCompletions();}
-function goToday(){cur=new Date();cur.setHours(0,0,0,0);loadCompletions();}
+function changeDay(d){ cur.setDate(cur.getDate()+d); loadCompletions(); }
+function goToday(){ cur = new Date(); cur.setHours(0,0,0,0); loadCompletions(); }
 
-// ============ CALENDAR ============
-let calMonth=new Date();calMonth.setDate(1);calMonth.setHours(0,0,0,0);
+// ============ POINT MODAL ============
+let pendingAction = null;
 
-function changeMonth(d){calMonth.setMonth(calMonth.getMonth()+d);renderCalendar();}
-
-function renderCalendar(){
-  const year=calMonth.getFullYear(),month=calMonth.getMonth();
-  document.getElementById('cal-month-display').textContent=MONTHS[month]+' '+year;
-  const calGrid=document.querySelector('.cal-grid');
-  while(calGrid.children.length>7) calGrid.removeChild(calGrid.lastChild);
-  const firstDay=new Date(year,month,1);
-  const startDow=firstDay.getDay();
-  const daysInMonth=new Date(year,month+1,0).getDate();
-  const today=new Date();today.setHours(0,0,0,0);
-  const prevMonthDays=new Date(year,month,0).getDate();
-  for(let i=startDow-1;i>=0;i--){const d=new Date(year,month-1,prevMonthDays-i);calGrid.appendChild(buildCalDay(d,today,true));}
-  for(let day=1;day<=daysInMonth;day++){const d=new Date(year,month,day);calGrid.appendChild(buildCalDay(d,today,false));}
-  const totalCells=startDow+daysInMonth;const remaining=(7-totalCells%7)%7;
-  for(let i=1;i<=remaining;i++){const d=new Date(year,month+1,i);calGrid.appendChild(buildCalDay(d,today,true));}
+function openPointModal(action){
+  pendingAction = action;
+  document.getElementById('pm-title').textContent = action==='add' ? '⚠️ Add a Point' : '✅ Remove a Point';
+  document.getElementById('pm-confirm').textContent = action==='add' ? 'Add Point' : 'Remove Point';
+  document.getElementById('pm-confirm').className = 'confirm' + (action==='remove'?' green':'');
+  document.getElementById('pm-day').value = '';
+  document.getElementById('point-modal').classList.remove('hidden');
 }
 
-function buildCalDay(date,today,outside){
-  const div=document.createElement('div');
-  div.className='cal-day'+(date.getTime()===today.getTime()?' today':'')+(outside?' outside':'');
-  const ch=getDailyChores(date);
-  let html='<div class="day-num">'+date.getDate()+'</div>';
-  ALL5.forEach(p=>{ch[p].forEach(c=>{html+=`<span class="cal-chore c${p}" title="${p}: ${c.nm}">${AVATARS[p]} ${c.nm}</span>`;});});
-  div.innerHTML=html;
-  div.addEventListener('click',()=>{cur=new Date(date);switchTab('today');});
-  return div;
+function closePointModal(){
+  document.getElementById('point-modal').classList.add('hidden');
+  pendingAction = null;
 }
 
-// ============ TABS ============
-function switchTab(t){
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  ['vt','vc','vp','vr'].forEach(id=>document.getElementById(id).classList.add('hidden'));
-  if(t==='today'){document.getElementById('vt').classList.remove('hidden');document.querySelectorAll('.tab')[0].classList.add('active');loadCompletions();}
-  else if(t==='cal'){document.getElementById('vc').classList.remove('hidden');document.querySelectorAll('.tab')[1].classList.add('active');renderCalendar();}
-  else if(t==='points'){document.getElementById('vp').classList.remove('hidden');document.querySelectorAll('.tab')[2].classList.add('active');loadPoints();}
-  else if(t==='rules'){document.getElementById('vr').classList.remove('hidden');document.querySelectorAll('.tab')[3].classList.add('active');}
+async function confirmPoint(){
+  const person = document.getElementById('pm-person').value;
+  const day = document.getElementById('pm-day').value.trim() || 'today';
+  if(!pendingAction) return;
+  closePointModal();
+  await apiPost('/points', { person, action: pendingAction, day, requestedBy: currentUser });
+  await loadPoints();
+  renderToday();
 }
+
+// ============ RULES MODAL ============
+function openRulesModal(){ document.getElementById('rules-modal').classList.remove('hidden'); }
+function closeRulesModal(){ document.getElementById('rules-modal').classList.add('hidden'); }
 </script>
 </body>
 </html>

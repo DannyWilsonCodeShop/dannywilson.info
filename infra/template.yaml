@@ -185,11 +185,15 @@ Resources:
       Runtime: nodejs20.x
       Handler: index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
-      Timeout: 10
+      Timeout: 15
       Environment:
         Variables:
-          NOTIFICATION_EMAIL: !Ref NotificationEmail
           COMPLETION_TABLE: !Ref CompletionTable
+          DANNY_PHONE: !Ref DannyPhone
+          COURTNEE_PHONE: !Ref CourtneePhone
+          OLIVIA_PHONE: !Ref OliviaPhone
+          SHANE_PHONE: !Ref ShanePhone
+          AUSTIN_PHONE: !Ref AustinPhone
       Code:
         ZipFile: |
           exports.handler = async () => ({ statusCode: 200, body: 'placeholder' });
