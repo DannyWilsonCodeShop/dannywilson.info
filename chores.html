@@ -70,7 +70,7 @@ footer{text-align:center;margin-top:28px;font-size:.78rem;color:var(--muted);fon
 </header>
 <div class="tabs">
 <button class="tab active" onclick="switchTab('today')">📅 Today</button>
-<button class="tab" onclick="switchTab('full')">📋 Full Summer</button>
+<button class="tab" onclick="switchTab('full')">📋 12-Week View</button>
 </div>
 <div id="vt">
 <div class="date-nav">
@@ -92,9 +92,10 @@ footer{text-align:center;margin-top:28px;font-size:.78rem;color:var(--muted);fon
 </table>
 </div>
 </div>
-<footer>Summer 2025 · Everyone contributes every day · Max 2 chores per day</footer>
+<footer>Everyone contributes every day · Max 2 chores per day · Rotates indefinitely</footer>
 <script>
-const SUMMER_START=new Date(2025,4,26);
+const SCHEDULE_START=new Date(2025,4,26);
+const MAX_CHORES=2;
 const ALL5=['Shane','Austin','Olivia','Danny','Courtnee'];
 const KIDS=['Shane','Austin','Olivia'];
 const AVATARS={Shane:'🧒',Austin:'👦',Olivia:'👧',Danny:'👨',Courtnee:'👩'};
@@ -104,7 +105,7 @@ const MONTHS=['January','February','March','April','May','June','July','August',
 const DEEP_CLEANS=['Deep Clean Bathrooms','Clean Windows & Mirrors','Vacuum All Bedrooms','Deep Clean Kitchen/Fridge','Sweep Porch & Garage','Yard & Outdoor Tidying','Baseboards & Laundry Room'];
 
 function getDinner(di){return di%2===0?'Courtnee':'Danny';}
-function getDog(di){return ALL5[di%5];}
+function getDog(di){return ALL5[((di%5)+5)%5];}
 function getEveningChores(dow,wr){const b=(wr+dow)%3;return{dishes:KIDS[b],sweep:KIDS[(b+1)%3],living:KIDS[(b+2)%3]};}
 
 const KID_LAUNDRY={Shane:[[1,4],[0,4],[2,5]],Austin:[[2,0],[1,5],[0,3]],Olivia:[[3,6],[2,3],[1,4]]};
@@ -112,33 +113,55 @@ const ADULT_LAUNDRY={Danny:[[1,5],[3,5],[1,4]],Courtnee:[[0,2],[0,4],[2,6]]};
 
 function localMidnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate(),0,0,0,0);}
 function getMondayOf(d){const x=localMidnight(d);const day=x.getDay();x.setDate(x.getDate()+(day===0?-6:1-day));return x;}
-function getWeekIndex(d){const m=getMondayOf(d),s=getMondayOf(SUMMER_START);return Math.max(0,Math.round((m-s)/(7*864e5)));}
-function getDayIndex(d){return Math.round((localMidnight(d)-localMidnight(SUMMER_START))/864e5);}
+function getWeekIndex(d){const m=getMondayOf(d),s=getMondayOf(SCHEDULE_START);return Math.max(0,Math.round((m-s)/(7*864e5)));}
+function getDayIndex(d){return Math.round((localMidnight(d)-localMidnight(SCHEDULE_START))/864e5);}
 function dow(d){const w=d.getDay();return w===0?6:w-1;}
+
+// Helper: can a person accept another chore?
+function canAdd(ch,person){return ch[person].length<MAX_CHORES;}
 
 function getDailyChores(date){
 const wi=getWeekIndex(date),wr=wi%3,di=getDayIndex(date),dw=dow(date);
 const ec=getEveningChores(dw,wr);
 const dog=getDog(di),din=getDinner(di);
 const ch={Shane:[],Austin:[],Olivia:[],Danny:[],Courtnee:[]};
+
+// Priority 1: Evening chores for kids (always assigned — these define the core rotation)
 ch[ec.dishes].push({ico:'🍽️',nm:'Wash Dishes',badge:'hard',bl:'Hard'});
 ch[ec.sweep].push({ico:'🧹',nm:'Sweep & Mop',badge:'medium',bl:'Medium'});
 ch[ec.living].push({ico:'🛋️',nm:'Living Rm & Counters',badge:'easy',bl:'Easy'});
+
+// Priority 2: Dog duty (cycles all 5)
+if(canAdd(ch,dog)){
 ch[dog].push({ico:'🐶',nm:'Feed the Dog',badge:'daily',bl:'Daily'});
+}
+
+// Priority 3: Dinner (alternates Danny/Courtnee)
+if(canAdd(ch,din)){
 ch[din].push({ico:'🍳',nm:'Cook Dinner',badge:'daily',bl:'Daily'});
+}
+
+// Priority 4: Laundry for kids (only if they have room)
 KIDS.forEach(k=>{
 const[cd,td]=KID_LAUNDRY[k][wr];
-if(cd===dw) ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});
-if(td===dw) ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});
+if(cd===dw && canAdd(ch,k)) ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});
+if(td===dw && canAdd(ch,k)) ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});
 });
+
+// Priority 5: Laundry for adults (only if they have room)
 ['Danny','Courtnee'].forEach(a=>{
 const[cd,td]=ADULT_LAUNDRY[a][wr];
-if(cd===dw) ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});
-if(td===dw) ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});
+if(cd===dw && canAdd(ch,a)) ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});
+if(td===dw && canAdd(ch,a)) ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});
 });
+
+// Priority 6: Deep cleans for parents if they have fewer than max chores
 ['Danny','Courtnee'].forEach(a=>{
-if(ch[a].length===0){ch[a].push({ico:'🧽',nm:DEEP_CLEANS[dw],badge:'deep',bl:'Deep Clean'});}
+if(ch[a].length<MAX_CHORES){
+ch[a].push({ico:'🧽',nm:DEEP_CLEANS[((dw%7)+7)%7],badge:'deep',bl:'Deep Clean'});
+}
 });
+
 return ch;
 }
 
@@ -149,7 +172,7 @@ function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.ge
 function renderToday(){
 document.getElementById('date-display').textContent=fmtDate(cur);
 const wi=getWeekIndex(cur),wr=wi%3;
-document.getElementById('wlabel').textContent='Summer Week '+(wi+1)+'  ·  Rotation '+(wr+1)+' of 3';
+document.getElementById('wlabel').textContent='Week '+(wi+1)+'  ·  Rotation '+(wr+1)+' of 3';
 const ch=getDailyChores(cur);
 const grid=document.getElementById('grid');grid.innerHTML='';
 ALL5.forEach((p,i)=>{
@@ -169,13 +192,13 @@ function goToday(){cur=new Date();cur.setHours(0,0,0,0);renderToday();}
 function renderFull(){
 const tbody=document.getElementById('ftbody');tbody.innerHTML='';
 const today=new Date();today.setHours(0,0,0,0);
-let d=getMondayOf(SUMMER_START);
-let wn=0;
-const end=new Date(2025,7,17);
+// Show 12 weeks: current week and 11 weeks ahead
+const startMon=getMondayOf(today);
+let d=new Date(startMon);
 const DN=['M','Tu','W','Th','F','Sa','Su'];
-while(d<=end){
-wn++;
-const wr=(wn-1)%3;
+for(let w=0;w<12;w++){
+const wi=getWeekIndex(d);
+const wr=wi%3;
 const sun=new Date(d);sun.setDate(sun.getDate()+6);
 const isCur=today>=d&&today<=sun;
 const di0=getDayIndex(new Date(d));
@@ -190,7 +213,7 @@ const dogList=Array.from({length:7},(_,i)=>getDog(di0+i));
 const dinList=Array.from({length:7},(_,i)=>getDinner(di0+i));
 const tr=document.createElement('tr');
 if(isCur)tr.className='cur';
-tr.innerHTML=`<td><span class="pill" style="background:#f0f0f0">Wk${wn}</span>${isCur?' 👈':''}</td><td style="color:#999;font-size:.73rem;white-space:nowrap">${fmt(d)}–${fmt(sun)}</td><td><span class="pill hard">${ec0.dishes}</span></td><td><span class="pill medium">${ec0.sweep}</span></td><td><span class="pill easy">${ec0.living}</span></td><td style="font-size:.72rem">${lsum}</td><td style="font-size:.72rem">${dogList.map((g,i)=>'<b>'+DN[i]+'</b>:'+g.slice(0,3)).join(' ')}</td><td style="font-size:.72rem">${dinList.map((g,i)=>'<b>'+DN[i]+'</b>:'+g.slice(0,3)).join(' ')}</td>`;
+tr.innerHTML=`<td><span class="pill" style="background:#f0f0f0">Wk${wi+1}</span>${isCur?' 👈':''}</td><td style="color:#999;font-size:.73rem;white-space:nowrap">${fmt(d)}–${fmt(sun)}</td><td><span class="pill hard">${ec0.dishes}</span></td><td><span class="pill medium">${ec0.sweep}</span></td><td><span class="pill easy">${ec0.living}</span></td><td style="font-size:.72rem">${lsum}</td><td style="font-size:.72rem">${dogList.map((g,i)=>'<b>'+DN[i]+'</b>:'+g.slice(0,3)).join(' ')}</td><td style="font-size:.72rem">${dinList.map((g,i)=>'<b>'+DN[i]+'</b>:'+g.slice(0,3)).join(' ')}</td>`;
 tbody.appendChild(tr);
 d.setDate(d.getDate()+7);
 }
