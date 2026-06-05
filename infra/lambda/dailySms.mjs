@@ -21,7 +21,7 @@ const GREETINGS = [
 ];
 
 // ---- Chore logic (mirrors frontend) ----
-const SCHEDULE_START = new Date(2025, 4, 26);
+const SCHEDULE_START = new Date(2026, 5, 5);
 const ALL5 = ['Shane','Austin','Olivia','Danny','Courtnee'];
 const KIDS = ['Shane','Austin','Olivia'];
 const DEEP_CLEANS = ['Deep Clean Bathrooms','Clean Windows & Mirrors','Vacuum All Bedrooms','Deep Clean Kitchen/Fridge','Sweep Porch & Garage','Yard & Outdoor Tidying','Baseboards & Laundry Room'];
@@ -36,7 +36,7 @@ function getDayIndex(d){ return Math.round((localMidnight(d)-localMidnight(SCHED
 function dow(d){ const w = d.getDay(); return w===0 ? 6 : w-1; }
 function getDinner(di){ return di%2===0 ? 'Courtnee' : 'Danny'; }
 function getDog(di){ return ALL5[((di%5)+5)%5]; }
-function getEveningChores(dw, wr){ const b=(wr+dw)%3; return {dishes:KIDS[b], sweep:KIDS[(b+1)%3], living:KIDS[(b+2)%3]}; }
+function getEveningChores(dw, wr){ const b=(wr*2+dw)%3; return {dishes:KIDS[b], sweep:KIDS[(b+1)%3], living:KIDS[(b+2)%3]}; }
 function canAdd(ch, person){ return ch[person].length < MAX_CHORES; }
 
 function getDailyChores(date){
@@ -49,7 +49,11 @@ function getDailyChores(date){
   ch[ec.sweep].push('🧹 Sweep & Mop');
   ch[ec.living].push('🛋️ Living Rm & Counters');
 
-  if(canAdd(ch, dog)) ch[dog].push('🐶 Feed the Dog');
+  // Dog: avoid stacking with Dishes
+  let dogPerson = dog;
+  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+1)%5+5)%5]; }
+  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+2)%5+5)%5]; }
+  if(canAdd(ch, dogPerson)) ch[dogPerson].push('🐶 Feed Chaka');
   if(canAdd(ch, din)) ch[din].push('🍳 Cook Dinner');
 
   KIDS.forEach(k => {

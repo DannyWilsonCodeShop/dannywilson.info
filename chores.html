@@ -237,7 +237,7 @@ const CONFIG = {
 };
 
 // ============ CONSTANTS ============
-const SCHEDULE_START = new Date(2025,4,26);
+const SCHEDULE_START = new Date(2026,5,5);
 const MAX_CHORES = 2;
 const ALL5 = ['Shane','Austin','Olivia','Danny','Courtnee'];
 const KIDS = ['Shane','Austin','Olivia'];
@@ -357,7 +357,7 @@ function getDayIndex(d){return Math.round((localMidnight(d)-localMidnight(SCHEDU
 function dowNum(d){const w=d.getDay();return w===0?6:w-1;}
 function getDinner(di){return di%2===0?'Courtnee':'Danny';}
 function getDog(di){return ALL5[((di%5)+5)%5];}
-function getEveningChores(dw,wr){const b=(wr+dw)%3;return{dishes:KIDS[b],sweep:KIDS[(b+1)%3],living:KIDS[(b+2)%3]};}
+function getEveningChores(dw,wr){const b=(wr*2+dw)%3;return{dishes:KIDS[b],sweep:KIDS[(b+1)%3],living:KIDS[(b+2)%3]};}
 function canAdd(ch,p){return ch[p].length<MAX_CHORES;}
 
 function getDailyChores(date){
@@ -368,7 +368,11 @@ function getDailyChores(date){
   ch[ec.dishes].push({ico:'🍽️',nm:'Wash Dishes',badge:'hard',bl:'Hard'});
   ch[ec.sweep].push({ico:'🧹',nm:'Sweep & Mop',badge:'medium',bl:'Medium'});
   ch[ec.living].push({ico:'🛋️',nm:'Living Rm & Counters',badge:'easy',bl:'Easy'});
-  if(canAdd(ch,dog)) ch[dog].push({ico:'🐶',nm:'Feed the Dog',badge:'daily',bl:'Daily'});
+  // Dog: if assigned person already has Dishes (hard chore), shift to next available
+  let dogPerson = dog;
+  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+1)%5+5)%5]; }
+  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+2)%5+5)%5]; }
+  if(canAdd(ch,dogPerson)) ch[dogPerson].push({ico:'🐶',nm:'Feed Chaka',badge:'daily',bl:'Daily'});
   if(canAdd(ch,din)) ch[din].push({ico:'🍳',nm:'Cook Dinner',badge:'daily',bl:'Daily'});
   KIDS.forEach(k=>{const[cd,td]=KID_LAUNDRY[k][wr];if(cd===dw&&canAdd(ch,k))ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,k))ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
   PARENTS.forEach(a=>{const[cd,td]=ADULT_LAUNDRY[a][wr];if(cd===dw&&canAdd(ch,a))ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,a))ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
