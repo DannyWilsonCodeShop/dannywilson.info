@@ -313,6 +313,22 @@ function showApp(){
   if(token && user){ idToken = token; currentUser = user; showApp(); }
 })();
 
+// Auto-refresh every 30 seconds so all users see changes
+setInterval(() => {
+  if(currentUser && !document.getElementById('app').classList.contains('hidden')){
+    loadCompletions();
+    loadPoints();
+  }
+}, 30000);
+
+// Also refresh when the app comes back to foreground (phone unlock, tab switch)
+document.addEventListener('visibilitychange', () => {
+  if(!document.hidden && currentUser){
+    loadCompletions();
+    loadPoints();
+  }
+});
+
 // ============ API ============
 async function apiGet(path){
   try {
