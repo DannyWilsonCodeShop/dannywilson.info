@@ -21,7 +21,7 @@ const GREETINGS = [
 ];
 
 // ---- Chore logic (mirrors frontend) ----
-const SCHEDULE_START = new Date(2026, 5, 5);
+const SCHEDULE_START = new Date(2026, 5, 4);
 const ALL5 = ['Shane','Austin','Olivia','Danny','Courtnee'];
 const KIDS = ['Shane','Austin','Olivia'];
 const DEEP_CLEANS = ['Deep Clean Bathrooms','Clean Windows & Mirrors','Vacuum All Bedrooms','Deep Clean Kitchen/Fridge','Sweep Porch & Garage','Yard & Outdoor Tidying','Baseboards & Laundry Room'];
