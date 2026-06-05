@@ -52,14 +52,23 @@ header p{color:rgba(255,255,255,.9);font-weight:700;font-size:.95rem;margin-top:
 .cd{background:linear-gradient(135deg,#4d96ff,#0652DD)}
 .cc{background:linear-gradient(135deg,#c77dff,#9b59b6)}
 .hidden{display:none;}
-.fs{padding:0 14px;max-width:1150px;margin:0 auto;overflow-x:auto;}
-.fs table{width:100%;border-collapse:separate;border-spacing:0 5px;font-size:.8rem;}
-.fs th{font-family:'Fredoka One',cursive;font-size:.85rem;color:var(--muted);text-align:left;padding:4px 8px;white-space:nowrap;}
-.fs td{background:#fff;padding:9px 8px;vertical-align:middle;box-shadow:var(--shadow);}
-.fs td:first-child{border-radius:11px 0 0 11px;font-weight:800;}
-.fs td:last-child{border-radius:0 11px 11px 0;}
-.fs tr.cur td{background:#fff8e1;}
-.pill{display:inline-block;padding:2px 7px;border-radius:9px;font-weight:700;font-size:.75rem;white-space:nowrap;}
+.cal-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px 16px 12px;}
+.cal-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.cal-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
+#cal-month-display{font-family:'Fredoka One',cursive;font-size:1.25rem;min-width:200px;text-align:center;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:0 10px 20px;max-width:1100px;margin:0 auto;}
+.cal-header{font-family:'Fredoka One',cursive;font-size:.8rem;color:var(--muted);text-align:center;padding:6px 0;}
+.cal-day{background:var(--card);border-radius:10px;padding:6px;min-height:110px;box-shadow:0 2px 8px rgba(0,0,0,.05);position:relative;transition:transform .15s;}
+.cal-day:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.cal-day.today{outline:3px solid #4d96ff;outline-offset:-2px;}
+.cal-day.outside{opacity:.35;}
+.cal-day .day-num{font-family:'Fredoka One',cursive;font-size:.85rem;color:var(--text);margin-bottom:4px;}
+.cal-day .cal-chore{font-size:.62rem;font-weight:700;padding:2px 4px;border-radius:6px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.cal-chore.cShane{background:#ffe0e0;color:#d63031;}
+.cal-chore.cAustin{background:#fff3cd;color:#e67e22;}
+.cal-chore.cOlivia{background:#d4edda;color:#27ae60;}
+.cal-chore.cDanny{background:#e0e7ff;color:#0652DD;}
+.cal-chore.cCourtnee{background:#f3e0ff;color:#9b59b6;}
 footer{text-align:center;margin-top:28px;font-size:.78rem;color:var(--muted);font-weight:600;}
 </style>
 </head>
@@ -70,7 +79,7 @@ footer{text-align:center;margin-top:28px;font-size:.78rem;color:var(--muted);fon
 </header>
 <div class="tabs">
 <button class="tab active" onclick="switchTab('today')">📅 Today</button>
-<button class="tab" onclick="switchTab('full')">📋 12-Week View</button>
+<button class="tab" onclick="switchTab('full')">📅 30-Day Calendar</button>
 </div>
 <div id="vt">
 <div class="date-nav">
@@ -83,13 +92,13 @@ footer{text-align:center;margin-top:28px;font-size:.78rem;color:var(--muted);fon
 <div class="grid" id="grid"></div>
 </div>
 <div id="vf" class="hidden">
-<div class="fs">
-<table>
-<thead>
-<tr><th>Wk</th><th>Dates</th><th>🍽 Dishes</th><th>🧹 Sweep</th><th>🛋 Living</th><th>👕 Laundry</th><th>🐶 Dog</th><th>🍳 Dinner</th></tr>
-</thead>
-<tbody id="ftbody"></tbody>
-</table>
+<div class="cal-nav">
+<button onclick="changeMonth(-1)">◀</button>
+<div id="cal-month-display"></div>
+<button onclick="changeMonth(1)">▶</button>
+</div>
+<div class="cal-grid">
+<div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
 </div>
 </div>
 <footer>Everyone contributes every day · Max 2 chores per day · Rotates indefinitely</footer>
@@ -189,34 +198,60 @@ grid.appendChild(card);
 function changeDay(d){cur.setDate(cur.getDate()+d);renderToday();}
 function goToday(){cur=new Date();cur.setHours(0,0,0,0);renderToday();}
 
-function renderFull(){
-const tbody=document.getElementById('ftbody');tbody.innerHTML='';
+// Calendar view state
+let calMonth=new Date();calMonth.setDate(1);calMonth.setHours(0,0,0,0);
+
+function changeMonth(d){calMonth.setMonth(calMonth.getMonth()+d);renderCalendar();}
+
+function renderCalendar(){
+const year=calMonth.getFullYear(),month=calMonth.getMonth();
+document.getElementById('cal-month-display').textContent=MONTHS[month]+' '+year;
+
+const calGrid=document.querySelector('.cal-grid');
+// Remove old day cells (keep the 7 header divs)
+while(calGrid.children.length>7) calGrid.removeChild(calGrid.lastChild);
+
+const firstDay=new Date(year,month,1);
+const startDow=firstDay.getDay(); // 0=Sun
+const daysInMonth=new Date(year,month+1,0).getDate();
 const today=new Date();today.setHours(0,0,0,0);
-// Show 12 weeks: current week and 11 weeks ahead
-const startMon=getMondayOf(today);
-let d=new Date(startMon);
-const DN=['M','Tu','W','Th','F','Sa','Su'];
-for(let w=0;w<12;w++){
-const wi=getWeekIndex(d);
-const wr=wi%3;
-const sun=new Date(d);sun.setDate(sun.getDate()+6);
-const isCur=today>=d&&today<=sun;
-const di0=getDayIndex(new Date(d));
-const ec0=getEveningChores(0,wr);
-const lsum=ALL5.map(p=>{
-const[cd,td]=KIDS.includes(p)?KID_LAUNDRY[p][wr]:ADULT_LAUNDRY[p][wr];
-const n=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-return '<b>'+p.slice(0,3)+'</b>:'+n[cd]+'+'+n[td];
-}).join(' ');
-const fmt=dt=>MONTHS[dt.getMonth()].slice(0,3)+' '+dt.getDate();
-const dogList=Array.from({length:7},(_,i)=>getDog(di0+i));
-const dinList=Array.from({length:7},(_,i)=>getDinner(di0+i));
-const tr=document.createElement('tr');
-if(isCur)tr.className='cur';
-tr.innerHTML=`<td><span class="pill" style="background:#f0f0f0">Wk${wi+1}</span>${isCur?' 👈':''}</td><td style="color:#999;font-size:.73rem;white-space:nowrap">${fmt(d)}–${fmt(sun)}</td><td><span class="pill hard">${ec0.dishes}</span></td><td><span class="pill medium">${ec0.sweep}</span></td><td><span class="pill easy">${ec0.living}</span></td><td style="font-size:.72rem">${lsum}</td><td style="font-size:.72rem">${dogList.map((g,i)=>'<b>'+DN[i]+'</b>:'+g.slice(0,3)).join(' ')}</td><td style="font-size:.72rem">${dinList.map((g,i)=>'<b>'+DN[i]+'</b>:'+g.slice(0,3)).join(' ')}</td>`;
-tbody.appendChild(tr);
-d.setDate(d.getDate()+7);
+
+// Previous month padding
+const prevMonthDays=new Date(year,month,0).getDate();
+for(let i=startDow-1;i>=0;i--){
+const d=new Date(year,month-1,prevMonthDays-i);
+calGrid.appendChild(buildCalDay(d,today,true));
 }
+
+// Current month days
+for(let day=1;day<=daysInMonth;day++){
+const d=new Date(year,month,day);
+calGrid.appendChild(buildCalDay(d,today,false));
+}
+
+// Next month padding to fill grid (up to 42 cells = 6 rows)
+const totalCells=startDow+daysInMonth;
+const remaining=(7-totalCells%7)%7;
+for(let i=1;i<=remaining;i++){
+const d=new Date(year,month+1,i);
+calGrid.appendChild(buildCalDay(d,today,true));
+}
+}
+
+function buildCalDay(date,today,outside){
+const div=document.createElement('div');
+div.className='cal-day'+(date.getTime()===today.getTime()?' today':'')+(outside?' outside':'');
+const ch=getDailyChores(date);
+let html='<div class="day-num">'+date.getDate()+'</div>';
+ALL5.forEach(p=>{
+ch[p].forEach(c=>{
+html+=`<span class="cal-chore c${p}" title="${p}: ${c.nm}">${AVATARS[p]} ${c.nm}</span>`;
+});
+});
+div.innerHTML=html;
+// Click to navigate to that day in Today view
+div.addEventListener('click',()=>{cur=new Date(date);switchTab('today');});
+return div;
 }
 
 function switchTab(t){
@@ -226,10 +261,11 @@ document.getElementById('vf').classList.add('hidden');
 if(t==='today'){
 document.getElementById('vt').classList.remove('hidden');
 document.querySelectorAll('.tab')[0].classList.add('active');
+renderToday();
 } else {
 document.getElementById('vf').classList.remove('hidden');
 document.querySelectorAll('.tab')[1].classList.add('active');
-renderFull();
+renderCalendar();
 }
 }
 
