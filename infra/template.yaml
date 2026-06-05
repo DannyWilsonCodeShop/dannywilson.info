@@ -1,0 +1,334 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Family Chores Backend - Cognito, DynamoDB, Lambda, API Gateway, SNS, SES
+
+Parameters:
+  DannyPhone:
+    Type: String
+    Default: '+14048037330'
+  CourtneePhone:
+    Type: String
+    Default: '+14048037877'
+  OliviaPhone:
+    Type: String
+    Default: '+14708333224'
+  ShanePhone:
+    Type: String
+    Default: '+16789842089'
+  AustinPhone:
+    Type: String
+    Default: '+14044932795'
+  NotificationEmail:
+    Type: String
+    Default: 'dwilson1919@gmail.com'
+
+Resources:
+
+  # ============ COGNITO ============
+  ChoreUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: FamilyChoresUserPool
+      UsernameConfiguration:
+        CaseSensitive: false
+      Schema:
+        - Name: phone_number
+          Required: false
+          Mutable: true
+        - Name: name
+          Required: false
+          Mutable: true
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 6
+          RequireUppercase: false
+          RequireLowercase: false
+          RequireNumbers: false
+          RequireSymbols: false
+      MfaConfiguration: 'OFF'
+
+  ChoreUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: FamilyChoresWebClient
+      UserPoolId: !Ref ChoreUserPool
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+        - ALLOW_USER_SRP_AUTH
+      PreventUserExistenceErrors: ENABLED
+      AccessTokenValidity: 24
+      IdTokenValidity: 24
+      RefreshTokenValidity: 365
+      TokenValidityUnits:
+        AccessToken: hours
+        IdToken: hours
+        RefreshToken: days
+
+  # ============ DYNAMODB ============
+  PointsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: FamilyChoresPoints
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: person
+          AttributeType: S
+      KeySchema:
+        - AttributeName: person
+          KeyType: HASH
+
+  CompletionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: FamilyChoresCompletion
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: personDate
+          AttributeType: S
+      KeySchema:
+        - AttributeName: personDate
+          KeyType: HASH
+
+  # ============ SNS TOPIC ============
+  ChoreReminderTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: FamilyChoreReminders
+
+  # ============ IAM ROLE FOR LAMBDAS ============
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: FamilyChoresLambdaRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: FamilyChoresLambdaPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                Resource:
+                  - !GetAtt PointsTable.Arn
+                  - !GetAtt CompletionTable.Arn
+              - Effect: Allow
+                Action:
+                  - sns:Publish
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - ses:SendEmail
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - cognito-idp:AdminGetUser
+                  - cognito-idp:ListUsers
+                Resource: !GetAtt ChoreUserPool.Arn
+
+  # ============ LAMBDA: DAILY SMS ============
+  DailySmsFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: FamilyChores-DailySms
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 30
+      Environment:
+        Variables:
+          DANNY_PHONE: !Ref DannyPhone
+          COURTNEE_PHONE: !Ref CourtneePhone
+          OLIVIA_PHONE: !Ref OliviaPhone
+          SHANE_PHONE: !Ref ShanePhone
+          AUSTIN_PHONE: !Ref AustinPhone
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: 'placeholder' });
+
+  DailySmsSchedule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: FamilyChores-DailyReminder
+      Description: Send chore reminders at 10am ET daily
+      ScheduleExpression: 'cron(0 14 * * ? *)'
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt DailySmsFunction.Arn
+          Id: DailySmsTarget
+
+  DailySmsPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref DailySmsFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt DailySmsSchedule.Arn
+
+  # ============ LAMBDA: COMPLETION ============
+  CompletionFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: FamilyChores-Completion
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 10
+      Environment:
+        Variables:
+          NOTIFICATION_EMAIL: !Ref NotificationEmail
+          COMPLETION_TABLE: !Ref CompletionTable
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: 'placeholder' });
+
+  # ============ LAMBDA: POINTS ============
+  PointsFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: FamilyChores-Points
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 10
+      Environment:
+        Variables:
+          POINTS_TABLE: !Ref PointsTable
+          SHANE_PHONE: !Ref ShanePhone
+          AUSTIN_PHONE: !Ref AustinPhone
+          OLIVIA_PHONE: !Ref OliviaPhone
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: 'placeholder' });
+
+  # ============ API GATEWAY ============
+  ChoresApi:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: FamilyChoresAPI
+      ProtocolType: HTTP
+      CorsConfiguration:
+        AllowOrigins:
+          - 'https://dannywilson.info'
+          - 'http://localhost:3000'
+        AllowMethods:
+          - GET
+          - POST
+          - PUT
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+        AllowCredentials: true
+
+  ApiStage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId: !Ref ChoresApi
+      StageName: '$default'
+      AutoDeploy: true
+
+  CognitoAuthorizer:
+    Type: AWS::ApiGatewayV2::Authorizer
+    Properties:
+      ApiId: !Ref ChoresApi
+      AuthorizerType: JWT
+      IdentitySource:
+        - '$request.header.Authorization'
+      Name: CognitoAuth
+      JwtConfiguration:
+        Audience:
+          - !Ref ChoreUserPoolClient
+        Issuer: !Sub 'https://cognito-idp.${AWS::Region}.amazonaws.com/${ChoreUserPool}'
+
+  # Completion endpoints
+  CompletionIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref ChoresApi
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt CompletionFunction.Arn
+      PayloadFormatVersion: '2.0'
+
+  CompletionPostRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref ChoresApi
+      RouteKey: 'POST /completion'
+      AuthorizationType: JWT
+      AuthorizerId: !Ref CognitoAuthorizer
+      Target: !Sub 'integrations/${CompletionIntegration}'
+
+  CompletionGetRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref ChoresApi
+      RouteKey: 'GET /completion'
+      AuthorizationType: JWT
+      AuthorizerId: !Ref CognitoAuthorizer
+      Target: !Sub 'integrations/${CompletionIntegration}'
+
+  CompletionLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref CompletionFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ChoresApi}/*'
+
+  # Points endpoints
+  PointsIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref ChoresApi
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt PointsFunction.Arn
+      PayloadFormatVersion: '2.0'
+
+  PointsPostRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref ChoresApi
+      RouteKey: 'POST /points'
+      AuthorizationType: JWT
+      AuthorizerId: !Ref CognitoAuthorizer
+      Target: !Sub 'integrations/${PointsIntegration}'
+
+  PointsGetRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref ChoresApi
+      RouteKey: 'GET /points'
+      AuthorizationType: JWT
+      AuthorizerId: !Ref CognitoAuthorizer
+      Target: !Sub 'integrations/${PointsIntegration}'
+
+  PointsLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref PointsFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ChoresApi}/*'
+
+Outputs:
+  UserPoolId:
+    Value: !Ref ChoreUserPool
+  UserPoolClientId:
+    Value: !Ref ChoreUserPoolClient
+  ApiEndpoint:
+    Value: !GetAtt ChoresApi.ApiEndpoint
+  Region:
+    Value: !Ref AWS::Region
