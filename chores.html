@@ -275,10 +275,11 @@ async function doLogin(){
     const data = await res.json();
     if(data.AuthenticationResult){
       idToken = data.AuthenticationResult.IdToken;
+      // Normalize username to match ALL5 casing
+      currentUser = ALL5.find(n => n.toLowerCase() === username.toLowerCase()) || username;
       localStorage.setItem('choreToken', idToken);
       localStorage.setItem('choreRefresh', data.AuthenticationResult.RefreshToken);
-      localStorage.setItem('choreUser', username);
-      currentUser = username;
+      localStorage.setItem('choreUser', currentUser);
       showApp();
     } else {
       errEl.textContent = 'Wrong name or password. Try again!';
@@ -312,7 +313,13 @@ function showApp(){
 (function(){
   const token = localStorage.getItem('choreToken');
   const user = localStorage.getItem('choreUser');
-  if(token && user){ idToken = token; currentUser = user; showApp(); }
+  if(token && user){
+    idToken = token;
+    // Normalize username to match ALL5 casing
+    currentUser = ALL5.find(n => n.toLowerCase() === user.toLowerCase()) || user;
+    localStorage.setItem('choreUser', currentUser);
+    showApp();
+  }
 })();
 
 // Auto-refresh every 30 seconds so all users see changes
@@ -384,13 +391,15 @@ function getDailyChores(date){
 
 // ============ DISPLAY ORDER ============
 function getDisplayOrder(){
-  const isKid = KIDS.includes(currentUser);
+  // Normalize currentUser to match ALL5 (case-insensitive match)
+  const me = ALL5.find(n => n.toLowerCase() === (currentUser||'').toLowerCase()) || currentUser;
+  const isKid = KIDS.includes(me);
   if(isKid){
-    const otherKids = KIDS.filter(k => k !== currentUser);
-    return [currentUser, ...otherKids, ...PARENTS];
+    const otherKids = KIDS.filter(k => k !== me);
+    return [me, ...otherKids, ...PARENTS];
   } else {
-    const otherParent = PARENTS.filter(p => p !== currentUser);
-    return [currentUser, ...KIDS, ...otherParent];
+    const otherParent = PARENTS.filter(p => p !== me);
+    return [me, ...KIDS, ...otherParent];
   }
 }
 
@@ -455,6 +464,7 @@ let cur = new Date(); cur.setHours(0,0,0,0);
 function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
 
 function renderToday(){
+  if(!currentUser) return;
   document.getElementById('date-display').textContent = fmtDate(cur);
   const ch = getDailyChores(cur);
   const grid = document.getElementById('grid');
@@ -462,6 +472,7 @@ function renderToday(){
   const order = getDisplayOrder();
 
   order.forEach((p,i) => {
+    if(!ch[p]) return; // safety check
     const list = ch[p];
     const card = document.createElement('div');
     card.className = 'card';
