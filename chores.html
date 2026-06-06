@@ -8,6 +8,8 @@
 <meta name="apple-mobile-web-app-title" content="Chores">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#ff6b6b">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/app-icon.png">
 <link rel="icon" type="image/png" href="/app-icon.png">
@@ -465,45 +467,49 @@ function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.ge
 
 function renderToday(){
   if(!currentUser) return;
-  document.getElementById('date-display').textContent = fmtDate(cur);
-  const ch = getDailyChores(cur);
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  const order = getDisplayOrder();
+  try {
+    document.getElementById('date-display').textContent = fmtDate(cur);
+    const ch = getDailyChores(cur);
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    const order = getDisplayOrder();
 
-  order.forEach((p,i) => {
-    if(!ch[p]) return; // safety check
-    const list = ch[p];
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.animationDelay = (i*.06)+'s';
+    order.forEach((p,i) => {
+      if(!ch[p]) return;
+      const list = ch[p];
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = (i*.06)+'s';
 
-    const isKid = KIDS.includes(p);
-    const pointsDots = isKid ? `<div class="points-display">${getPointDots(p)}</div>` : '';
+      const isKid = KIDS.includes(p);
+      const pointsDots = isKid ? `<div class="points-display">${getPointDots(p)}</div>` : '';
 
-    // Permission: kids mark only their own, parents mark anyone
-    const canMark = (p === currentUser && KIDS.includes(currentUser)) || PARENTS.includes(currentUser);
+      // Permission: kids mark only their own, parents mark anyone
+      const canMark = (p === currentUser && KIDS.includes(currentUser)) || PARENTS.includes(currentUser);
 
-    const choreHtml = list.map(c => {
-      const key = p + '#' + c.nm;
-      const done = completions[key];
-      return `<div class="ci ${done?'completed':''}">
-        <span class="ico">${c.ico}</span>
-        <span class="nm">${c.nm}</span>
-        ${done ? '<span class="badge easy">Done ✓</span>' : `<span class="badge ${c.badge}">${c.bl}</span>`}
-        ${canMark ? `<button class="done-btn ${done?'checked':''}" onclick="toggleComplete('${p}','${c.nm.replace(/'/g,"\\'")}')">${done?'✓':''}</button>` : (done ? '<span class="done-btn checked">✓</span>' : '')}
-      </div>`;
-    }).join('');
+      const choreHtml = list.map(c => {
+        const key = p + '#' + c.nm;
+        const done = completions[key];
+        return `<div class="ci ${done?'completed':''}">
+          <span class="ico">${c.ico}</span>
+          <span class="nm">${c.nm}</span>
+          ${done ? '<span class="badge easy">Done ✓</span>' : `<span class="badge ${c.badge}">${c.bl}</span>`}
+          ${canMark ? `<button class="done-btn ${done?'checked':''}" onclick="toggleComplete('${p}','${c.nm.replace(/'/g,"\\'")}')">${done?'✓':''}</button>` : (done ? '<span class="done-btn checked">✓</span>' : '')}
+        </div>`;
+      }).join('');
 
-    card.innerHTML = `
-      <div class="ch ${COLOR[p]}">
-        <div class="av">${AVATARS[p]}</div>
-        <div><h2>${p}</h2><div class="role">${PARENTS.includes(p)?'Parent':'Kid'}</div></div>
-        ${pointsDots}
-      </div>
-      <div class="cl">${choreHtml}</div>`;
-    grid.appendChild(card);
-  });
+      card.innerHTML = `
+        <div class="ch ${COLOR[p]}">
+          <div class="av">${AVATARS[p]}</div>
+          <div><h2>${p}</h2><div class="role">${PARENTS.includes(p)?'Parent':'Kid'}</div></div>
+          ${pointsDots}
+        </div>
+        <div class="cl">${choreHtml}</div>`;
+      grid.appendChild(card);
+    });
+  } catch(e) {
+    document.getElementById('grid').innerHTML = '<p style="padding:20px;color:red;font-weight:800;">Error: '+e.message+'</p>';
+  }
 }
 
 function changeDay(d){ cur.setDate(cur.getDate()+d); loadCompletions(); }
