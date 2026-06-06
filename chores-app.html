@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Chores">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ff6b6b">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/app-icon.png">
+<link rel="icon" type="image/png" href="/app-icon.png">
+<title>Wilson Family Chores</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff9f0;--card:#fff;--text:#2d2d2d;--muted:#999;--radius:18px;--shadow:0 4px 24px rgba(0,0,0,.08);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:100px;}
+
+/* LOGIN */
+.login-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:linear-gradient(135deg,#fff9f0,#ffe0e0);}
+.login-box{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:36px 28px;width:100%;max-width:320px;text-align:center;}
+.login-box h2{font-family:'Fredoka One',cursive;font-size:1.8rem;margin-bottom:6px;color:var(--text);}
+.login-box .login-sub{font-size:.9rem;color:var(--muted);font-weight:700;margin-bottom:20px;}
+.login-box input{width:100%;padding:13px 16px;border:2px solid #eee;border-radius:12px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;margin-bottom:12px;transition:border-color .2s;}
+.login-box input:focus{outline:none;border-color:#ff6b6b;}
+.login-box button{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#ff6b6b,#ffd93d);color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;cursor:pointer;transition:transform .15s;}
+.login-box button:hover{transform:translateY(-2px);}
+.login-error{color:#d63031;font-size:.85rem;font-weight:700;margin-top:10px;min-height:20px;}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#ff6b6b,#ffd93d);padding:calc(env(safe-area-inset-top, 20px) + 16px) 20px 18px;text-align:center;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.12);border-radius:50%;}
+header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-shadow:2px 3px 0 rgba(0,0,0,.12);}
+.user-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#fff;border-bottom:1px solid #eee;font-size:.85rem;}
+.user-bar .user-name{font-weight:800;color:#ff6b6b;}
+.user-bar button{background:none;border:none;color:var(--muted);cursor:pointer;font-weight:700;font-size:.8rem;text-decoration:underline;}
+
+/* TABS */
+.tabs{display:flex;justify-content:center;gap:8px;padding:12px 16px 4px;}
+.tab{padding:8px 20px;border-radius:24px;border:2px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;color:var(--muted);transition:all .2s;}
+.tab.active{background:#ff6b6b;border-color:#ff6b6b;color:#fff;box-shadow:0 3px 10px rgba(255,107,107,.3);}
+
+/* DATE NAV */
+.date-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 6px;}
+.date-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.date-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
+#date-display{font-family:'Fredoka One',cursive;font-size:1.15rem;min-width:220px;text-align:center;}
+.today-btn{display:block;margin:6px auto 14px;background:#4d96ff;color:#fff;border:none;border-radius:24px;padding:7px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 3px 10px rgba(77,150,255,.3);transition:transform .15s;}
+.today-btn:hover{transform:translateY(-2px);}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;padding:0 14px;max-width:960px;margin:0 auto;}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;animation:popIn .3s ease both;}
+@keyframes popIn{from{opacity:0;transform:scale(.93) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.ch{padding:13px 16px;display:flex;align-items:center;gap:10px;}
+.av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(255,255,255,.28);flex-shrink:0;}
+.ch h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:#fff;text-shadow:1px 2px 0 rgba(0,0,0,.1);}
+.ch .role{font-size:.7rem;color:rgba(255,255,255,.85);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.points-display{margin-left:auto;display:flex;gap:4px;align-items:center;}
+.point-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,80,80,.4);background:transparent;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;font-weight:800;}
+.point-dot.filled{background:#d63031;border-color:#d63031;color:#fff;}
+.point-dot.overflow{background:#d63031;border-color:#d63031;color:#fff;font-size:.5rem;}
+.cl{padding:10px 16px 14px;display:flex;flex-direction:column;gap:8px;}
+.ci{display:flex;align-items:center;gap:10px;background:#f8f8f8;border-radius:11px;padding:9px 12px;transition:background .2s;}
+.ci.completed{background:#d4edda;}.ci.completed .nm{text-decoration:line-through;opacity:.6;}
+.ico{font-size:1.1rem;flex-shrink:0;}
+.nm{font-weight:800;font-size:.9rem;flex:1;}
+.badge{font-size:.65rem;font-weight:800;padding:3px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;flex-shrink:0;}
+.hard{background:#ffe0e0;color:#d63031}.medium{background:#fff3cd;color:#e67e22}.easy{background:#d4edda;color:#27ae60}
+.laundry{background:#e0e7ff;color:#4d96ff}.daily{background:#f3e0ff;color:#9b59b6}.deep{background:#e8f5e9;color:#2e7d32}
+.done-btn{width:26px;height:26px;border-radius:50%;border:2px solid #ccc;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s;flex-shrink:0;}
+.done-btn:hover{border-color:#27ae60;background:#d4edda;}
+.done-btn.checked{background:#27ae60;border-color:#27ae60;color:#fff;}
+.cs{background:linear-gradient(135deg,#ff6b6b,#ee5a24)}.ca{background:linear-gradient(135deg,#ffd93d,#f0932b)}
+.co{background:linear-gradient(135deg,#6bcb77,#20bf6b)}.cd{background:linear-gradient(135deg,#4d96ff,#0652DD)}
+.cc{background:linear-gradient(135deg,#c77dff,#9b59b6)}
+
+/* CALENDAR */
+.cal-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 10px;}
+.cal-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.cal-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
+#cal-month-display{font-family:'Fredoka One',cursive;font-size:1.15rem;min-width:200px;text-align:center;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:0 10px 20px;max-width:1100px;margin:0 auto;}
+.cal-header{font-family:'Fredoka One',cursive;font-size:.75rem;color:var(--muted);text-align:center;padding:6px 0;}
+.cal-day{background:var(--card);border-radius:10px;padding:5px;min-height:100px;box-shadow:0 2px 8px rgba(0,0,0,.04);cursor:pointer;transition:transform .15s;}
+.cal-day:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.cal-day.today{outline:3px solid #4d96ff;outline-offset:-2px;}
+.cal-day.outside{opacity:.3;}
+.cal-day .day-num{font-family:'Fredoka One',cursive;font-size:.8rem;color:var(--text);margin-bottom:3px;}
+.cal-chore{font-size:.58rem;font-weight:700;padding:1px 3px;border-radius:5px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.cal-chore.cShane{background:#ffe0e0;color:#d63031;}.cal-chore.cAustin{background:#fff3cd;color:#e67e22;}
+.cal-chore.cOlivia{background:#d4edda;color:#27ae60;}.cal-chore.cDanny{background:#e0e7ff;color:#0652DD;}
+.cal-chore.cCourtnee{background:#f3e0ff;color:#9b59b6;}
+
+/* PARENT BOTTOM BAR */
+.parent-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #eee;padding:12px 16px;display:flex;gap:10px;justify-content:center;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
+.parent-bar button{padding:10px 24px;border:none;border-radius:24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .15s;}
+.parent-bar .add-pt-btn{background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;}
+.parent-bar .remove-pt-btn{background:linear-gradient(135deg,#6bcb77,#20bf6b);color:#fff;}
+.parent-bar .info-btn{background:#f0f0f0;color:var(--muted);width:40px;height:40px;border-radius:50%;padding:0;font-size:1.1rem;display:flex;align-items:center;justify-content:center;}
+
+/* MODAL */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+.modal{background:#fff;border-radius:var(--radius);padding:24px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:popIn .25s ease;}
+.modal h3{font-family:'Fredoka One',cursive;margin-bottom:14px;font-size:1.2rem;}
+.modal label{font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);}
+.modal select,.modal input{width:100%;padding:11px 14px;border:2px solid #eee;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:12px;}
+.modal select:focus,.modal input:focus{outline:none;border-color:#ff6b6b;}
+.modal-btns{display:flex;gap:8px;margin-top:6px;}
+.modal-btns button{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;font-size:.9rem;transition:transform .15s;}
+.modal-btns button:hover{transform:translateY(-1px);}
+.modal-btns .confirm{background:#ff6b6b;color:#fff;}
+.modal-btns .confirm.green{background:#27ae60;}
+.modal-btns .cancel{background:#f0f0f0;color:var(--text);}
+
+/* RULES MODAL */
+.rules-content{padding:4px 0;}
+.rules-content p{font-size:.9rem;line-height:1.6;font-weight:600;margin-bottom:8px;}
+.rules-content ul{padding-left:18px;margin:8px 0;}
+.rules-content li{font-size:.88rem;line-height:1.5;font-weight:600;margin-bottom:4px;}
+.rules-content .bottom-line{margin-top:12px;font-weight:800;color:#d63031;font-size:.9rem;}
+
+.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
+<div class="login-box">
+<h2>🏠 Family Chores</h2>
+<p class="login-sub">Who's checking in today?</p>
+<input type="text" id="login-user" placeholder="Your name" autocomplete="username" autocapitalize="words">
+<input type="password" id="login-pass" placeholder="Password" autocomplete="current-password">
+<button onclick="doLogin()">Let's Go! 🚀</button>
+<div class="login-error" id="login-error"></div>
+</div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="hidden">
+<header>
+<h1>🏠 Family Chores</h1>
+</header>
+<div class="user-bar">
+<span>Hey <span class="user-name" id="current-user-display"></span>! 👋</span>
+<button onclick="doLogout()">Logout</button>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="switchTab('today')">📋 Today</button>
+<button class="tab" onclick="switchTab('cal')">📅 Month</button>
+</div>
+
+<!-- TODAY VIEW -->
+<div id="vt">
+<div class="date-nav">
+<button onclick="changeDay(-1)">◀</button>
+<div id="date-display"></div>
+<button onclick="changeDay(1)">▶</button>
+</div>
+<button class="today-btn" onclick="goToday()">⬤ Today</button>
+<div class="grid" id="grid"></div>
+</div>
+
+<!-- CALENDAR VIEW -->
+<div id="vc" class="hidden">
+<div class="cal-nav">
+<button onclick="changeMonth(-1)">◀</button>
+<div id="cal-month-display"></div>
+<button onclick="changeMonth(1)">▶</button>
+</div>
+<div class="cal-grid" id="cal-grid">
+<div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
+</div>
+</div>
+
+<!-- Parent-only bottom bar -->
+<div id="parent-bar" class="parent-bar hidden">
+<button class="add-pt-btn" onclick="openPointModal('add')">+ Add Point</button>
+<button class="remove-pt-btn" onclick="openPointModal('remove')">− Remove Point</button>
+<button class="info-btn" onclick="openRulesModal()">?</button>
+</div>
+</div>
+
+<!-- POINT MODAL -->
+<div id="point-modal" class="modal-overlay hidden">
+<div class="modal" id="pm-modal-inner">
+<h3 id="pm-title">Add a Point</h3>
+<label>Who?</label>
+<select id="pm-person">
+<option value="Shane">🧒🏾 Shane</option>
+<option value="Austin">👦🏾 Austin</option>
+<option value="Olivia">👧🏾 Olivia</option>
+</select>
+<div id="pm-day-section">
+<label>For which day?</label>
+<input type="text" id="pm-day" placeholder="e.g. Monday, yesterday, June 4">
+</div>
+<div class="modal-btns">
+<button class="cancel" onclick="closePointModal()">Cancel</button>
+<button class="confirm" id="pm-confirm" onclick="confirmPoint()">Add Point</button>
+</div>
+</div>
+</div>
+
+<!-- RULES MODAL -->
+<div id="rules-modal" class="modal-overlay hidden">
+<div class="modal">
+<h3>📖 Points System</h3>
+<div class="rules-content">
+<p>Each day you are expected to do your chore and clean your room.</p>
+<ul>
+<li>When you forget, you get a <strong>point</strong>.</li>
+<li>When you reach <strong>3 points</strong>, you lose your phone/device.</li>
+<li>To get your device back, you must do <strong>extra chores</strong> to get back to <strong>zero</strong>.</li>
+<li>3 points = 3 EXTRA chores before your device comes back.</li>
+<li>If more days go by without doing chores, more points pile up — more extra chores to work off!</li>
+</ul>
+<p class="bottom-line">Do your chores every day and you keep your device. Simple! ✅</p>
+</div>
+<div class="modal-btns">
+<button class="cancel" onclick="closeRulesModal()" style="flex:1">Got it 👍</button>
+</div>
+</div>
+</div>
+
+<script>
+// ============ CONFIG ============
+const CONFIG = {
+  userPoolId: 'us-east-1_5YidAMwbK',
+  clientId: '31p3snnqs2l00ln5if1fu3e1b2',
+  apiEndpoint: 'https://10rgcui6d6.execute-api.us-east-1.amazonaws.com',
+  region: 'us-east-1'
+};
+
+// ============ CONSTANTS ============
+const SCHEDULE_START = new Date(2026,5,4);
+const MAX_CHORES = 2;
+const ALL5 = ['Shane','Austin','Olivia','Danny','Courtnee'];
+const KIDS = ['Shane','Austin','Olivia'];
+const PARENTS = ['Danny','Courtnee'];
+const AVATARS = {Shane:'🧒🏾',Austin:'👦🏾',Olivia:'👧🏾',Danny:'👨🏾',Courtnee:'👩🏾'};
+const COLOR = {Shane:'cs',Austin:'ca',Olivia:'co',Danny:'cd',Courtnee:'cc'};
+const DNAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DEEP_CLEANS = ['Deep Clean Bathrooms','Clean Windows & Mirrors','Vacuum All Bedrooms','Deep Clean Kitchen/Fridge','Sweep Porch & Garage','Yard & Outdoor Tidying','Baseboards & Laundry Room'];
+const KID_LAUNDRY = {Shane:[[1,4],[0,4],[2,5]],Austin:[[2,0],[1,5],[0,3]],Olivia:[[3,6],[2,3],[1,4]]};
+const ADULT_LAUNDRY = {Danny:[[1,5],[3,5],[1,4]],Courtnee:[[0,2],[0,4],[2,6]]};
+
+// ============ AUTH STATE ============
+let currentUser = null;
+let idToken = null;
+
+// ============ AUTH ============
+async function doLogin(){
+  const username = document.getElementById('login-user').value.trim();
+  const password = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  if(!username || !password){ errEl.textContent = 'Enter your name and password'; return; }
+
+  try {
+    const res = await fetch(`https://cognito-idp.${CONFIG.region}.amazonaws.com/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'AWSCognitoIdentityProviderService.InitiateAuth' },
+      body: JSON.stringify({
+        AuthFlow: 'USER_PASSWORD_AUTH',
+        ClientId: CONFIG.clientId,
+        AuthParameters: { USERNAME: username, PASSWORD: password }
+      })
+    });
+    const data = await res.json();
+    if(data.AuthenticationResult){
+      idToken = data.AuthenticationResult.IdToken;
+      // Normalize username to match ALL5 casing
+      currentUser = ALL5.find(n => n.toLowerCase() === username.toLowerCase()) || username;
+      localStorage.setItem('choreToken', idToken);
+      localStorage.setItem('choreRefresh', data.AuthenticationResult.RefreshToken);
+      localStorage.setItem('choreUser', currentUser);
+      showApp();
+    } else {
+      errEl.textContent = 'Wrong name or password. Try again!';
+    }
+  } catch(e){
+    errEl.textContent = 'Connection error. Check your internet.';
+  }
+}
+
+function doLogout(){
+  localStorage.removeItem('choreToken');
+  localStorage.removeItem('choreRefresh');
+  localStorage.removeItem('choreUser');
+  currentUser = null; idToken = null;
+  document.getElementById('app').classList.add('hidden');
+  document.getElementById('login-screen').classList.remove('hidden');
+}
+
+function showApp(){
+  document.getElementById('login-screen').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  document.getElementById('current-user-display').textContent = currentUser;
+  document.getElementById('parent-bar').classList.toggle('hidden', !PARENTS.includes(currentUser));
+  // Render immediately with whatever we have, then refresh from API
+  renderToday();
+  loadPoints();
+  loadCompletions();
+}
+
+// Restore session on load
+(function(){
+  const token = localStorage.getItem('choreToken');
+  const user = localStorage.getItem('choreUser');
+  if(token && user){
+    idToken = token;
+    // Normalize username to match ALL5 casing
+    currentUser = ALL5.find(n => n.toLowerCase() === user.toLowerCase()) || user;
+    localStorage.setItem('choreUser', currentUser);
+    showApp();
+  }
+})();
+
+// Auto-refresh every 30 seconds so all users see changes
+setInterval(() => {
+  if(currentUser && !document.getElementById('app').classList.contains('hidden')){
+    loadCompletions();
+    loadPoints();
+  }
+}, 30000);
+
+// Also refresh when the app comes back to foreground (phone unlock, tab switch)
+document.addEventListener('visibilitychange', () => {
+  if(!document.hidden && currentUser){
+    loadCompletions();
+    loadPoints();
+  }
+});
+
+// ============ API ============
+async function apiGet(path){
+  try {
+    const res = await fetch(CONFIG.apiEndpoint + path, { headers: { Authorization: 'Bearer ' + idToken } });
+    if(res.status === 401){ doLogout(); return null; }
+    return res.json();
+  } catch(e){ return null; }
+}
+async function apiPost(path, body){
+  try {
+    const res = await fetch(CONFIG.apiEndpoint + path, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', Authorization: 'Bearer ' + idToken },
+      body: JSON.stringify(body)
+    });
+    if(res.status === 401){ doLogout(); return null; }
+    return res.json();
+  } catch(e){ return null; }
+}
+
+// ============ CHORE LOGIC ============
+function localMidnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate(),0,0,0,0);}
+function getMondayOf(d){const x=localMidnight(d);const day=x.getDay();x.setDate(x.getDate()+(day===0?-6:1-day));return x;}
+function getWeekIndex(d){const m=getMondayOf(d),s=getMondayOf(SCHEDULE_START);return Math.max(0,Math.round((m-s)/(7*864e5)));}
+function getDayIndex(d){return Math.round((localMidnight(d)-localMidnight(SCHEDULE_START))/864e5);}
+function dowNum(d){const w=d.getDay();return w===0?6:w-1;}
+function getDinner(di){return di%2===0?'Courtnee':'Danny';}
+function getDog(di){return ALL5[((di%5)+5)%5];}
+function getEveningChores(dw,wr){const b=(wr*2+dw)%3;return{dishes:KIDS[b],sweep:KIDS[(b+1)%3],living:KIDS[(b+2)%3]};}
+function canAdd(ch,p){return ch[p].length<MAX_CHORES;}
+
+function getDailyChores(date){
+  const wi=getWeekIndex(date),wr=wi%3,di=getDayIndex(date),dw=dowNum(date);
+  const ec=getEveningChores(dw,wr);
+  const dog=getDog(di),din=getDinner(di);
+  const ch={Shane:[],Austin:[],Olivia:[],Danny:[],Courtnee:[]};
+  ch[ec.dishes].push({ico:'🍽️',nm:'Wash Dishes',badge:'hard',bl:'Hard'});
+  ch[ec.sweep].push({ico:'🧹',nm:'Sweep & Mop',badge:'medium',bl:'Medium'});
+  ch[ec.living].push({ico:'🛋️',nm:'Living Rm & Counters',badge:'easy',bl:'Easy'});
+  // Dog: if assigned person already has Dishes (hard chore), shift to next available
+  let dogPerson = dog;
+  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+1)%5+5)%5]; }
+  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+2)%5+5)%5]; }
+  if(canAdd(ch,dogPerson)) ch[dogPerson].push({ico:'🐶',nm:'Feed Chaka',badge:'daily',bl:'Daily'});
+  if(canAdd(ch,din)) ch[din].push({ico:'🍳',nm:'Cook Dinner',badge:'daily',bl:'Daily'});
+  KIDS.forEach(k=>{const[cd,td]=KID_LAUNDRY[k][wr];if(cd===dw&&canAdd(ch,k))ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,k))ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
+  PARENTS.forEach(a=>{const[cd,td]=ADULT_LAUNDRY[a][wr];if(cd===dw&&canAdd(ch,a))ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,a))ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
+  PARENTS.forEach(a=>{if(ch[a].length<MAX_CHORES)ch[a].push({ico:'🧽',nm:DEEP_CLEANS[((dw%7)+7)%7],badge:'deep',bl:'Deep Clean'});});
+  return ch;
+}
+
+// ============ DISPLAY ORDER ============
+function getDisplayOrder(){
+  // Normalize currentUser to match ALL5 (case-insensitive match)
+  const me = ALL5.find(n => n.toLowerCase() === (currentUser||'').toLowerCase()) || currentUser;
+  const isKid = KIDS.includes(me);
+  if(isKid){
+    const otherKids = KIDS.filter(k => k !== me);
+    return [me, ...otherKids, ...PARENTS];
+  } else {
+    const otherParent = PARENTS.filter(p => p !== me);
+    return [me, ...KIDS, ...otherParent];
+  }
+}
+
+// ============ COMPLETIONS ============
+let completions = {};
+
+async function loadCompletions(){
+  const dateStr = formatDateKey(cur);
+  const data = await apiGet('/completion?date=' + dateStr);
+  completions = {};
+  if(data && Array.isArray(data)){
+    data.forEach(c => { completions[c.person + '#' + c.chore] = true; });
+  }
+  renderToday();
+}
+
+async function toggleComplete(person, chore){
+  const key = person + '#' + chore;
+  if(completions[key]){
+    // Uncheck — only parents can uncheck anyone, kids can uncheck their own
+    if(person !== currentUser && !PARENTS.includes(currentUser)) return;
+    delete completions[key];
+    renderToday();
+    await apiPost('/completion', { person, chore, date: formatDateKey(cur), undo: true });
+  } else {
+    // Check
+    completions[key] = true;
+    renderToday();
+    await apiPost('/completion', { person, chore, date: formatDateKey(cur) });
+  }
+}
+
+function formatDateKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+// ============ POINTS ============
+let pointsData = { Shane:{points:0}, Austin:{points:0}, Olivia:{points:0} };
+
+async function loadPoints(){
+  const data = await apiGet('/points');
+  if(data){
+    KIDS.forEach(k => { if(!data[k]) data[k] = {points:0}; });
+    pointsData = data;
+  }
+}
+
+function getPointDots(person){
+  const pts = pointsData[person]?.points || 0;
+  let html = '';
+  if(pts <= 3){
+    for(let i=0;i<3;i++){
+      html += `<div class="point-dot ${i<pts?'filled':''}"></div>`;
+    }
+  } else {
+    html += `<div class="point-dot filled"></div><div class="point-dot filled"></div><div class="point-dot overflow">${pts}</div>`;
+  }
+  return html;
+}
+
+// ============ RENDER TODAY ============
+let cur = new Date(); cur.setHours(0,0,0,0);
+
+function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
+
+function renderToday(){
+  if(!currentUser) return;
+  try {
+    document.getElementById('date-display').textContent = fmtDate(cur);
+    const ch = getDailyChores(cur);
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    const order = getDisplayOrder();
+
+    order.forEach((p,i) => {
+      if(!ch[p]) return;
+      const list = ch[p];
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = (i*.06)+'s';
+
+      const isKid = KIDS.includes(p);
+      const pointsDots = isKid ? `<div class="points-display">${getPointDots(p)}</div>` : '';
+
+      // Permission: kids mark only their own, parents mark anyone
+      const canMark = (p === currentUser && KIDS.includes(currentUser)) || PARENTS.includes(currentUser);
+
+      const choreHtml = list.map(c => {
+        const key = p + '#' + c.nm;
+        const done = completions[key];
+        return `<div class="ci ${done?'completed':''}">
+          <span class="ico">${c.ico}</span>
+          <span class="nm">${c.nm}</span>
+          ${done ? '<span class="badge easy">Done ✓</span>' : `<span class="badge ${c.badge}">${c.bl}</span>`}
+          ${canMark ? `<button class="done-btn ${done?'checked':''}" onclick="toggleComplete('${p}','${c.nm.replace(/'/g,"\\'")}')">${done?'✓':''}</button>` : (done ? '<span class="done-btn checked">✓</span>' : '')}
+        </div>`;
+      }).join('');
+
+      card.innerHTML = `
+        <div class="ch ${COLOR[p]}">
+          <div class="av">${AVATARS[p]}</div>
+          <div><h2>${p}</h2><div class="role">${PARENTS.includes(p)?'Parent':'Kid'}</div></div>
+          ${pointsDots}
+        </div>
+        <div class="cl">${choreHtml}</div>`;
+      grid.appendChild(card);
+    });
+  } catch(e) {
+    document.getElementById('grid').innerHTML = '<p style="padding:20px;color:red;font-weight:800;">Error: '+e.message+'</p>';
+  }
+}
+
+function changeDay(d){ cur.setDate(cur.getDate()+d); loadCompletions(); }
+function goToday(){ cur = new Date(); cur.setHours(0,0,0,0); loadCompletions(); }
+
+// ============ CALENDAR ============
+let calMonth = new Date(); calMonth.setDate(1); calMonth.setHours(0,0,0,0);
+
+function changeMonth(d){ calMonth.setMonth(calMonth.getMonth()+d); renderCalendar(); }
+
+function renderCalendar(){
+  const year=calMonth.getFullYear(), month=calMonth.getMonth();
+  document.getElementById('cal-month-display').textContent = MONTHS[month]+' '+year;
+  const calGrid = document.getElementById('cal-grid');
+  while(calGrid.children.length > 7) calGrid.removeChild(calGrid.lastChild);
+  const firstDay = new Date(year, month, 1);
+  const startDow = firstDay.getDay();
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const today = new Date(); today.setHours(0,0,0,0);
+  const prevMonthDays = new Date(year, month, 0).getDate();
+  for(let i=startDow-1; i>=0; i--){ calGrid.appendChild(buildCalDay(new Date(year, month-1, prevMonthDays-i), today, true)); }
+  for(let day=1; day<=daysInMonth; day++){ calGrid.appendChild(buildCalDay(new Date(year, month, day), today, false)); }
+  const totalCells = startDow + daysInMonth;
+  const remaining = (7 - totalCells%7)%7;
+  for(let i=1; i<=remaining; i++){ calGrid.appendChild(buildCalDay(new Date(year, month+1, i), today, true)); }
+}
+
+function buildCalDay(date, today, outside){
+  const div = document.createElement('div');
+  div.className = 'cal-day' + (date.getTime()===today.getTime()?' today':'') + (outside?' outside':'');
+  const ch = getDailyChores(date);
+  let html = '<div class="day-num">'+date.getDate()+'</div>';
+  ALL5.forEach(p => { ch[p].forEach(c => { html += `<span class="cal-chore c${p}" title="${p}: ${c.nm}">${AVATARS[p]} ${c.nm}</span>`; }); });
+  div.innerHTML = html;
+  div.addEventListener('click', () => { cur = new Date(date); switchTab('today'); });
+  return div;
+}
+
+// ============ TABS ============
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.getElementById('vt').classList.add('hidden');
+  document.getElementById('vc').classList.add('hidden');
+  if(t === 'today'){
+    document.getElementById('vt').classList.remove('hidden');
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    loadCompletions();
+  } else {
+    document.getElementById('vc').classList.remove('hidden');
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    renderCalendar();
+  }
+}
+
+// ============ POINT MODAL ============
+let pendingAction = null;
+
+function openPointModal(action){
+  pendingAction = action;
+  document.getElementById('pm-title').textContent = action==='add' ? '⚠️ Add a Point' : '✅ Remove a Point';
+  document.getElementById('pm-confirm').textContent = action==='add' ? 'Add Point' : 'Remove Point';
+  document.getElementById('pm-confirm').className = 'confirm' + (action==='remove'?' green':'');
+  // Only show "for which day" when adding
+  document.getElementById('pm-day-section').classList.toggle('hidden', action==='remove');
+  document.getElementById('pm-day').value = '';
+  document.getElementById('point-modal').classList.remove('hidden');
+}
+
+function closePointModal(){
+  document.getElementById('point-modal').classList.add('hidden');
+  pendingAction = null;
+}
+
+async function confirmPoint(){
+  const person = document.getElementById('pm-person').value;
+  const day = pendingAction === 'add' ? (document.getElementById('pm-day').value.trim() || 'today') : '';
+  if(!pendingAction) return;
+  closePointModal();
+  await apiPost('/points', { person, action: pendingAction, day, requestedBy: currentUser });
+  await loadPoints();
+  renderToday();
+}
+
+// ============ RULES MODAL ============
+function openRulesModal(){ document.getElementById('rules-modal').classList.remove('hidden'); }
+function closeRulesModal(){ document.getElementById('rules-modal').classList.add('hidden'); }
+</script>
+</body>
+</html>
