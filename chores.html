@@ -30,7 +30,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .login-error{color:#d63031;font-size:.85rem;font-weight:700;margin-top:10px;min-height:20px;}
 
 /* HEADER */
-header{background:linear-gradient(135deg,#ff6b6b,#ffd93d);padding:22px 20px 18px;text-align:center;position:relative;overflow:hidden;}
+header{background:linear-gradient(135deg,#ff6b6b,#ffd93d);padding:calc(env(safe-area-inset-top, 20px) + 16px) 20px 18px;text-align:center;position:relative;overflow:hidden;}
 header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.12);border-radius:50%;}
 header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-shadow:2px 3px 0 rgba(0,0,0,.12);}
 .user-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#fff;border-bottom:1px solid #eee;font-size:.85rem;}
@@ -302,6 +302,8 @@ function showApp(){
   document.getElementById('app').classList.remove('hidden');
   document.getElementById('current-user-display').textContent = currentUser;
   document.getElementById('parent-bar').classList.toggle('hidden', !PARENTS.includes(currentUser));
+  // Render immediately with whatever we have, then refresh from API
+  renderToday();
   loadPoints();
   loadCompletions();
 }
