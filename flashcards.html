@@ -24,12 +24,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .splash-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.7) 100%);}
 .splash-title{font-family:'Fredoka One',cursive;font-size:2.8rem;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.8),0 0 60px rgba(235,94,33,.4);position:relative;z-index:1;opacity:0;animation:titleReveal 1.2s ease .5s forwards;}
 .splash-sub{color:rgba(255,255,255,.9);font-weight:800;font-size:1.1rem;margin-top:10px;text-shadow:0 2px 15px rgba(0,0,0,.7);position:relative;z-index:1;opacity:0;animation:titleReveal 1s ease 1.2s forwards;}
-.splash-screen.fade-out{animation:splashFadeOut .8s ease forwards;}
-.splash-screen.fade-out .splash-title,.splash-screen.fade-out .splash-sub{animation:titleExit .5s ease forwards;}
+.splash-screen.fade-out{animation:splashFadeOut 1s ease forwards;}
+.splash-screen.fade-out .splash-title,.splash-screen.fade-out .splash-sub{animation:titleExit .6s ease forwards;}
 @keyframes splashZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
-@keyframes splashFadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.1)}}
+@keyframes splashFadeOut{0%{opacity:1;filter:blur(0)}60%{opacity:.8;filter:blur(8px)}100%{opacity:0;filter:blur(20px)}}
 @keyframes titleReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes titleExit{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-20px)}}
+@keyframes titleExit{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.5)}}
 
 /* AUTH */
 .auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);background-image:url('/login-bg.png');background-size:120%;background-position:center top;}
