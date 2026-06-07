@@ -5,410 +5,423 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="BH365 Study">
+<meta name="apple-mobile-web-app-title" content="BH365">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#e94560">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<title>BH365 Flashcards</title>
+<link rel="apple-touch-icon" href="/bh365-icon.png">
+<link rel="icon" type="image/png" href="/bh365-icon.png">
+<title>BH365 Study</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1a1a2e;--card:#16213e;--text:#eee;--muted:#888;--accent:#e94560;--gold:#ffd93d;--green:#6bcb77;--radius:18px;--shadow:0 8px 32px rgba(0,0,0,.3);}
+:root{--bg:#1a1a2e;--card:#16213e;--card2:#0f3460;--text:#eee;--muted:#777;--accent:#e94560;--gold:#ffd93d;--green:#6bcb77;--blue:#4d96ff;--radius:16px;--shadow:0 6px 24px rgba(0,0,0,.3);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:40px;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;}
+header{background:linear-gradient(135deg,#e94560,#0f3460);padding:calc(env(safe-area-inset-top,20px) + 14px) 20px 14px;text-align:center;position:sticky;top:0;z-index:50;}
+header h1{font-family:'Fredoka One',cursive;font-size:1.5rem;color:#fff;}
+.header-sub{color:rgba(255,255,255,.7);font-size:.8rem;font-weight:700;}
+.header-bar{display:flex;justify-content:space-between;align-items:center;padding:0 4px;margin-top:6px;}
+.header-bar button{background:rgba(255,255,255,.12);border:none;color:#fff;padding:5px 12px;border-radius:20px;font-size:.75rem;font-weight:700;cursor:pointer;}
+.hidden{display:none!important;}
 
-header{background:linear-gradient(135deg,#e94560,#0f3460);padding:calc(env(safe-area-inset-top,20px) + 16px) 20px 16px;text-align:center;}
-header h1{font-family:'Fredoka One',cursive;font-size:1.6rem;color:#fff;}
-header p{color:rgba(255,255,255,.7);font-size:.85rem;font-weight:700;margin-top:4px;}
+/* AUTH */
+.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:90vh;padding:20px;}
+.auth-box{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px 24px;width:100%;max-width:320px;text-align:center;}
+.auth-box h2{font-family:'Fredoka One',cursive;font-size:1.5rem;margin-bottom:6px;}
+.auth-box .auth-sub{font-size:.85rem;color:var(--muted);font-weight:700;margin-bottom:18px;}
+.auth-box input{width:100%;padding:12px 14px;border:2px solid #333;border-radius:10px;background:#0d1b2a;color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:10px;}
+.auth-box input:focus{outline:none;border-color:var(--accent);}
+.auth-box .btn-primary{width:100%;padding:13px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-family:'Fredoka One',cursive;font-size:1.05rem;cursor:pointer;margin-top:4px;}
+.auth-box .btn-link{background:none;border:none;color:var(--blue);font-weight:700;font-size:.85rem;cursor:pointer;margin-top:12px;}
+.auth-error{color:var(--accent);font-size:.8rem;font-weight:700;margin-top:8px;min-height:18px;}
 
-.back-btn{position:absolute;left:16px;top:calc(env(safe-area-inset-top,20px) + 16px);background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer;}
+/* NAV TABS */
+.nav-tabs{display:flex;justify-content:center;gap:6px;padding:12px 12px 6px;flex-wrap:wrap;}
+.nav-tab{padding:7px 16px;border-radius:20px;border:2px solid #333;background:var(--card);color:var(--muted);font-weight:800;font-size:.8rem;cursor:pointer;transition:all .2s;}
+.nav-tab.active{border-color:var(--accent);background:var(--accent);color:#fff;}
 
-/* MODE SELECT */
-.mode-select{display:flex;flex-direction:column;align-items:center;gap:14px;padding:40px 20px;max-width:400px;margin:0 auto;}
-.mode-btn{width:100%;padding:20px;border:none;border-radius:var(--radius);font-family:'Fredoka One',cursive;font-size:1.2rem;cursor:pointer;transition:transform .15s;text-align:left;display:flex;align-items:center;gap:14px;}
-.mode-btn:hover{transform:translateY(-3px);}
-.mode-btn .mode-ico{font-size:1.8rem;}
-.mode-btn .mode-info{font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:700;opacity:.8;margin-top:4px;}
-.mode-practice{background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;}
-.mode-quiz{background:linear-gradient(135deg,#e94560,#c23616);color:#fff;}
-.mode-stats{background:linear-gradient(135deg,#ffd93d,#f0932b);color:#1a1a2e;}
+/* CHAPTER SELECT */
+.chapter-list{max-width:500px;margin:0 auto;padding:12px 14px;}
+.ch-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
+.ch-btn:hover{border-color:var(--blue);}
+.ch-btn .ch-num{font-family:'Fredoka One',cursive;color:var(--gold);margin-right:8px;}
+.ch-btn .ch-count{float:right;color:var(--muted);font-size:.75rem;}
 
-/* SET SELECT */
-.set-select{display:flex;gap:8px;justify-content:center;padding:16px;flex-wrap:wrap;}
-.set-btn{padding:10px 20px;border:2px solid #333;border-radius:24px;background:var(--card);color:var(--text);font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .2s;}
-.set-btn.active{border-color:var(--accent);background:var(--accent);color:#fff;}
+/* SET TOGGLE */
+.set-toggle{display:flex;justify-content:center;gap:6px;padding:8px 14px;}
+.set-btn{padding:7px 14px;border-radius:20px;border:2px solid #333;background:var(--card);color:var(--muted);font-weight:800;font-size:.75rem;cursor:pointer;transition:all .2s;}
+.set-btn.active{border-color:var(--green);background:var(--green);color:#1a1a2e;}
 
 /* FLASHCARD */
-.card-container{perspective:1000px;max-width:500px;margin:20px auto;padding:0 16px;}
-.flashcard{position:relative;width:100%;min-height:300px;transition:transform .6s;transform-style:preserve-3d;cursor:pointer;border-radius:var(--radius);}
-.flashcard.flipped{transform:rotateY(180deg);}
-.flashcard.flipped .card-front{pointer-events:none;}
-.flashcard.flipped .card-back{pointer-events:auto;overflow-y:auto;}
-.card-face{position:absolute;top:0;left:0;right:0;backface-visibility:hidden;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:var(--shadow);}
-.card-front{min-height:300px;background:linear-gradient(135deg,#16213e,#0f3460);}
-.card-back{min-height:300px;max-height:70vh;overflow-y:auto;background:linear-gradient(135deg,#1a4a1a,#0d2d0d);transform:rotateY(180deg);justify-content:flex-start;align-items:flex-start;}
-.card-front h2{font-family:'Fredoka One',cursive;font-size:1.4rem;color:#fff;margin-bottom:8px;}
-.card-front .card-hint{font-size:.8rem;color:var(--muted);margin-top:12px;}
-.card-back p{font-size:.88rem;line-height:1.5;font-weight:600;margin-bottom:8px;text-align:left;width:100%;}
-.card-back .back-label{font-family:'Fredoka One',cursive;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;text-align:left;width:100%;}
-
-.card-nav{display:flex;justify-content:center;gap:12px;padding:16px;align-items:center;}
-.card-nav button{padding:10px 24px;border:none;border-radius:24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .15s;}
-.card-nav button:hover{transform:translateY(-2px);}
-.nav-btn{background:#333;color:#fff;}
-.card-counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.9rem;min-width:80px;text-align:center;}
+.card-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
+.flashcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;min-height:200px;cursor:pointer;transition:all .3s;}
+.card-front-content,.card-back-content{padding:24px 20px;}
+.card-front-content{text-align:center;}
+.card-front-content h2{font-family:'Fredoka One',cursive;font-size:1.3rem;color:#fff;margin-bottom:8px;}
+.card-front-content .tap-hint{font-size:.75rem;color:var(--muted);}
+.card-back-content{border-top:2px solid rgba(255,255,255,.05);}
+.back-label{font-family:'Fredoka One',cursive;font-size:.65rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-top:10px;margin-bottom:2px;}
+.back-text{font-size:.85rem;line-height:1.5;font-weight:600;color:#ccc;}
+.card-nav{display:flex;justify-content:center;gap:12px;padding:12px;align-items:center;}
+.card-nav button{padding:9px 20px;border:none;border-radius:20px;background:#333;color:#fff;font-weight:800;font-size:.85rem;cursor:pointer;}
+.card-counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.85rem;min-width:70px;text-align:center;}
 
 /* QUIZ */
-.quiz-question{max-width:500px;margin:20px auto;padding:0 16px;}
-.quiz-prompt{background:var(--card);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow);margin-bottom:16px;}
-.quiz-prompt h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:#fff;margin-bottom:8px;}
-.quiz-prompt p{font-size:.9rem;color:var(--muted);font-weight:700;}
-.quiz-options{display:flex;flex-direction:column;gap:10px;}
-.quiz-opt{padding:14px 18px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;text-align:left;}
-.quiz-opt:hover{border-color:var(--accent);}
-.quiz-opt.correct{border-color:var(--green);background:rgba(107,203,119,.15);color:var(--green);}
-.quiz-opt.wrong{border-color:var(--accent);background:rgba(233,69,96,.1);color:var(--accent);}
-.quiz-opt.disabled{pointer-events:none;opacity:.6;}
-.quiz-score{text-align:center;padding:12px;font-family:'Fredoka One',cursive;color:var(--gold);font-size:1rem;}
-.quiz-next{display:block;margin:16px auto;padding:12px 32px;border:none;border-radius:24px;background:var(--accent);color:#fff;font-family:'Fredoka One',cursive;font-size:1rem;cursor:pointer;}
+.quiz-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
+.quiz-header{text-align:center;font-family:'Fredoka One',cursive;color:var(--gold);font-size:.9rem;margin-bottom:12px;}
+.quiz-card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:14px;text-align:center;}
+.quiz-card h2{font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:6px;}
+.quiz-card p{font-size:.85rem;color:var(--muted);font-weight:700;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.q-opt{padding:13px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .15s;}
+.q-opt:hover{border-color:var(--accent);}
+.q-opt.correct{border-color:var(--green);background:rgba(107,203,119,.12);color:var(--green);}
+.q-opt.wrong{border-color:var(--accent);background:rgba(233,69,96,.1);color:var(--accent);}
+.q-opt.disabled{pointer-events:none;opacity:.5;}
+.quiz-next{display:block;margin:14px auto;padding:11px 28px;border:none;border-radius:20px;background:var(--accent);color:#fff;font-family:'Fredoka One',cursive;font-size:.95rem;cursor:pointer;}
+
+/* LEADERBOARD */
+.lb-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
+.lb-card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:10px;}
+.lb-card h3{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--gold);margin-bottom:10px;}
+.lb-row{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.lb-row:last-child{border:none;}
+.lb-rank{font-family:'Fredoka One',cursive;width:28px;color:var(--muted);font-size:.9rem;}
+.lb-name{flex:1;font-weight:800;font-size:.9rem;}
+.lb-score{font-family:'Fredoka One',cursive;color:var(--green);font-size:.9rem;}
+.lb-pct{color:var(--muted);font-size:.75rem;margin-left:8px;}
 
 /* STATS */
-.stats-page{max-width:500px;margin:20px auto;padding:0 16px;}
-.stat-card{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);}
-.stat-card h3{font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:10px;color:var(--gold);}
-.stat-row{display:flex;justify-content:space-between;padding:6px 0;font-weight:700;font-size:.9rem;}
-.stat-row .val{color:var(--green);}
-.awards{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
-.award{background:rgba(255,217,61,.1);border:2px solid var(--gold);border-radius:12px;padding:8px 12px;font-size:.8rem;font-weight:800;color:var(--gold);}
-
-.hidden{display:none;}
+.stats-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
+.stat-box{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:12px;}
+.stat-box h3{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--gold);margin-bottom:10px;}
+.stat-row{display:flex;justify-content:space-between;padding:5px 0;font-weight:700;font-size:.88rem;}
+.stat-val{color:var(--green);}
+.awards-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.award-badge{background:rgba(255,217,61,.1);border:2px solid var(--gold);border-radius:10px;padding:6px 10px;font-size:.75rem;font-weight:800;color:var(--gold);}
 </style>
 </head>
 <body>
-<header style="position:relative;">
-<button class="back-btn" onclick="goBack()">←</button>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen" class="auth-screen">
+<div class="auth-box">
+<h2>📚 BH365 Study</h2>
+<p class="auth-sub">Black History Flashcards</p>
+<div id="auth-login">
+<input type="text" id="auth-user" placeholder="Username" autocapitalize="none" autocomplete="username">
+<input type="password" id="auth-pass" placeholder="Password" autocomplete="current-password">
+<button class="btn-primary" onclick="doLogin()">Log In</button>
+<button class="btn-link" onclick="showSignup()">New here? Sign up</button>
+</div>
+<div id="auth-signup" class="hidden">
+<input type="text" id="signup-user" placeholder="Choose a username" autocapitalize="none">
+<input type="password" id="signup-pass" placeholder="Choose a password (6+ chars)">
+<button class="btn-primary" onclick="doSignup()">Create Account</button>
+<button class="btn-link" onclick="showLogin()">Already have an account? Log in</button>
+</div>
+<div class="auth-error" id="auth-error"></div>
+</div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="hidden">
+<header>
 <h1>📚 BH365 Study</h1>
-<p>Black History Flashcards</p>
+<div class="header-bar">
+<span class="header-sub" id="user-display"></span>
+<button onclick="doLogout()">Logout</button>
+</div>
 </header>
 
-<!-- MODE SELECT -->
-<div id="v-mode" class="mode-select">
-<button class="mode-btn mode-practice" onclick="startPractice()">
-<span class="mode-ico">🃏</span>
-<div><div>Practice Mode</div><div class="mode-info">Flip through cards at your own pace</div></div>
-</button>
-<button class="mode-btn mode-quiz" onclick="startQuiz()">
-<span class="mode-ico">🎯</span>
-<div><div>Quiz Mode</div><div class="mode-info">Test yourself — earn points & awards</div></div>
-</button>
-<button class="mode-btn mode-stats" onclick="showStats()">
-<span class="mode-ico">🏆</span>
-<div><div>My Progress</div><div class="mode-info">See your scores and awards</div></div>
-</button>
+<div class="nav-tabs">
+<button class="nav-tab active" onclick="navTo('chapters')">📖 Study</button>
+<button class="nav-tab" onclick="navTo('quiz')">🎯 Quiz</button>
+<button class="nav-tab" onclick="navTo('leaderboard')">🏆 Leaderboard</button>
+<button class="nav-tab" onclick="navTo('stats')">📊 My Stats</button>
 </div>
 
-<!-- SET SELECT (shared) -->
-<div id="v-sets" class="hidden">
-<div class="set-select">
-<button class="set-btn active" onclick="selectSet('events')">📅 Events → Details</button>
-<button class="set-btn" onclick="selectSet('people')">👤 People → Events</button>
-</div>
+<!-- CHAPTERS -->
+<div id="v-chapters">
+<div class="chapter-list" id="chapter-list"></div>
 </div>
 
-<!-- PRACTICE VIEW -->
+<!-- PRACTICE -->
 <div id="v-practice" class="hidden">
-<div class="card-container">
-<div class="flashcard" id="flashcard" onclick="flipCard()">
-<div class="card-face card-front">
-<h2 id="fc-front"></h2>
-<div class="card-hint">Tap to flip</div>
+<div class="set-toggle">
+<button class="set-btn active" onclick="setMode('events')">📅 Events</button>
+<button class="set-btn" onclick="setMode('people')">👤 People</button>
 </div>
-<div class="card-face card-back" id="fc-back"></div>
+<div class="card-wrap">
+<div class="flashcard" id="flashcard" onclick="flipCard()">
+<div class="card-front-content" id="fc-front"><h2></h2><div class="tap-hint">Tap to reveal</div></div>
+<div class="card-back-content hidden" id="fc-back"></div>
 </div>
 </div>
 <div class="card-nav">
-<button class="nav-btn" onclick="prevCard()">← Prev</button>
+<button onclick="prevCard()">← Prev</button>
 <span class="card-counter" id="card-counter"></span>
-<button class="nav-btn" onclick="nextCard()">Next →</button>
+<button onclick="nextCard()">Next →</button>
 </div>
 </div>
 
-<!-- QUIZ VIEW -->
+<!-- QUIZ -->
 <div id="v-quiz" class="hidden">
-<div class="quiz-score" id="quiz-score"></div>
-<div class="quiz-question">
-<div class="quiz-prompt">
-<h2 id="q-prompt"></h2>
-<p id="q-sub"></p>
+<div class="chapter-list" id="quiz-chapter-list"></div>
 </div>
-<div class="quiz-options" id="q-options"></div>
-<button class="quiz-next hidden" id="q-next" onclick="nextQuestion()">Next →</button>
+
+<!-- QUIZ ACTIVE -->
+<div id="v-quiz-active" class="hidden">
+<div class="quiz-wrap">
+<div class="quiz-header" id="quiz-header"></div>
+<div class="quiz-card"><h2 id="qp-title"></h2><p id="qp-clue"></p></div>
+<div class="quiz-opts" id="q-opts"></div>
+<button class="quiz-next hidden" id="q-next" onclick="nextQ()">Next →</button>
 </div>
 </div>
 
-<!-- STATS VIEW -->
+<!-- LEADERBOARD -->
+<div id="v-leaderboard" class="hidden">
+<div class="lb-wrap" id="lb-content"></div>
+</div>
+
+<!-- STATS -->
 <div id="v-stats" class="hidden">
-<div class="stats-page" id="stats-content"></div>
+<div class="stats-wrap" id="stats-content"></div>
+</div>
 </div>
 
 <script src="/flashcard-data.js"></script>
 <script>
-// ============ STATE ============
-let currentSet = 'events';
-let currentMode = '';
-let cardIndex = 0;
-let quizIndex = 0;
-let quizScore = 0;
-let quizTotal = 0;
-let quizCards = [];
-const STORAGE_KEY = 'bh365_stats';
+const CONFIG={userPoolId:'us-east-1_5YidAMwbK',clientId:'31p3snnqs2l00ln5if1fu3e1b2',api:'https://10rgcui6d6.execute-api.us-east-1.amazonaws.com',region:'us-east-1'};
+const STORE_KEY='bh365_stats';
+let currentUser=null,idToken=null,currentChapter=null,currentSet='events',cardIdx=0,isFlipped=false;
+let quizCards=[],quizIdx=0,quizScore=0;
 
-// Get user from chores app localStorage
-const studyUser = localStorage.getItem('choreUser') || 'Guest';
+// ============ AUTH ============
+function showSignup(){document.getElementById('auth-login').classList.add('hidden');document.getElementById('auth-signup').classList.remove('hidden');document.getElementById('auth-error').textContent='';}
+function showLogin(){document.getElementById('auth-signup').classList.add('hidden');document.getElementById('auth-login').classList.remove('hidden');document.getElementById('auth-error').textContent='';}
 
-function getStats(){
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if(!raw) return { quizzesTaken:0, totalCorrect:0, totalQuestions:0, bestStreak:0, currentStreak:0, awards:[], bySet:{events:{correct:0,total:0},people:{correct:0,total:0}} };
-  return JSON.parse(raw);
-}
-function saveStats(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
-
-// ============ DATA PREP ============
-function getEventCards(){
-  return FLASHCARD_DATA.map(c => ({
-    front: c.title,
-    back: { who: c.who, what: c.what, when: c.when, where: c.where, why: c.why, summary: c.summary }
-  }));
+async function doLogin(){
+  const u=document.getElementById('auth-user').value.trim(),p=document.getElementById('auth-pass').value;
+  if(!u||!p){document.getElementById('auth-error').textContent='Enter username and password';return;}
+  try{
+    const r=await fetch(`https://cognito-idp.${CONFIG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':'AWSCognitoIdentityProviderService.InitiateAuth'},body:JSON.stringify({AuthFlow:'USER_PASSWORD_AUTH',ClientId:CONFIG.clientId,AuthParameters:{USERNAME:u,PASSWORD:p}})});
+    const d=await r.json();
+    if(d.AuthenticationResult){idToken=d.AuthenticationResult.IdToken;currentUser=u;localStorage.setItem('bh365token',idToken);localStorage.setItem('bh365user',u);showApp();}
+    else{document.getElementById('auth-error').textContent='Wrong username or password';}
+  }catch(e){document.getElementById('auth-error').textContent='Connection error';}
 }
 
-function getPeopleCards(){
-  // Group events by primary person mentioned in WHO
-  const people = {};
-  FLASHCARD_DATA.forEach(c => {
-    if(!c.who) return;
-    // Extract first name/person from WHO
-    const firstPerson = c.who.split(';')[0].split('(')[0].trim();
-    if(!firstPerson || firstPerson.length > 50) return;
-    if(!people[firstPerson]) people[firstPerson] = [];
-    people[firstPerson].push({ title: c.title, what: c.what, when: c.when, where: c.where });
+async function doSignup(){
+  const u=document.getElementById('signup-user').value.trim(),p=document.getElementById('signup-pass').value;
+  if(!u||!p){document.getElementById('auth-error').textContent='Pick a username and password';return;}
+  if(p.length<6){document.getElementById('auth-error').textContent='Password must be 6+ characters';return;}
+  try{
+    const r=await fetch(`https://cognito-idp.${CONFIG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':'AWSCognitoIdentityProviderService.SignUp'},body:JSON.stringify({ClientId:CONFIG.clientId,Username:u,Password:p})});
+    const d=await r.json();
+    if(d.UserSub){
+      // Auto-confirm and login
+      document.getElementById('auth-error').textContent='';
+      document.getElementById('auth-user').value=u;document.getElementById('auth-pass').value=p;
+      showLogin();
+      await doLogin();
+    } else {
+      document.getElementById('auth-error').textContent=d.message||'Signup failed';
+    }
+  }catch(e){document.getElementById('auth-error').textContent='Connection error';}
+}
+
+function doLogout(){localStorage.removeItem('bh365token');localStorage.removeItem('bh365user');currentUser=null;idToken=null;document.getElementById('app').classList.add('hidden');document.getElementById('auth-screen').classList.remove('hidden');}
+
+function showApp(){document.getElementById('auth-screen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('user-display').textContent=currentUser;renderChapters();loadLeaderboard();}
+
+(function(){const t=localStorage.getItem('bh365token'),u=localStorage.getItem('bh365user');if(t&&u){idToken=t;currentUser=u;showApp();}})();
+
+// ============ API ============
+async function apiGet(p){try{const r=await fetch(CONFIG.api+p,{headers:{Authorization:'Bearer '+idToken}});if(r.status===401){doLogout();return null;}return r.json();}catch(e){return null;}}
+async function apiPost(p,b){try{const r=await fetch(CONFIG.api+p,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+idToken},body:JSON.stringify(b)});if(r.status===401){doLogout();return null;}return r.json();}catch(e){return null;}}
+
+// ============ NAV ============
+function navTo(v){
+  document.querySelectorAll('.nav-tab').forEach((t,i)=>t.classList.toggle('active',['chapters','quiz','leaderboard','stats'][i]===v));
+  ['v-chapters','v-practice','v-quiz','v-quiz-active','v-leaderboard','v-stats'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  if(v==='chapters'){document.getElementById('v-chapters').classList.remove('hidden');renderChapters();}
+  if(v==='quiz'){document.getElementById('v-quiz').classList.remove('hidden');renderQuizChapters();}
+  if(v==='leaderboard'){document.getElementById('v-leaderboard').classList.remove('hidden');loadLeaderboard();}
+  if(v==='stats'){document.getElementById('v-stats').classList.remove('hidden');renderStats();}
+}
+
+// ============ CHAPTERS ============
+function renderChapters(){
+  const list=document.getElementById('chapter-list');
+  list.innerHTML='<h3 style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:12px;text-align:center;">Select a Chapter to Study</h3>';
+  Object.entries(CHAPTERS).sort((a,b)=>parseInt(a[0])-parseInt(b[0])).forEach(([num,title])=>{
+    const count=FLASHCARD_DATA.filter(c=>c.chapter===parseInt(num)).length;
+    list.innerHTML+=`<button class="ch-btn" onclick="startPractice(${num})"><span class="ch-num">Ch ${num}</span>${title}<span class="ch-count">${count} cards</span></button>`;
   });
-  return Object.entries(people).map(([person, events]) => ({
-    front: person,
-    back: events
-  }));
+  // All chapters
+  list.innerHTML+=`<button class="ch-btn" onclick="startPractice(0)" style="border-color:var(--gold)"><span class="ch-num">ALL</span>All Chapters<span class="ch-count">${FLASHCARD_DATA.length} cards</span></button>`;
 }
 
-function getDeck(){
-  return currentSet === 'events' ? getEventCards() : getPeopleCards();
-}
-
-// ============ NAVIGATION ============
-function goBack(){
-  if(currentMode){
-    currentMode = '';
-    document.getElementById('v-practice').classList.add('hidden');
-    document.getElementById('v-quiz').classList.add('hidden');
-    document.getElementById('v-stats').classList.add('hidden');
-    document.getElementById('v-sets').classList.add('hidden');
-    document.getElementById('v-mode').classList.remove('hidden');
-  } else {
-    window.location.href = '/chores.html';
-  }
-}
-
-function selectSet(set){
-  currentSet = set;
-  document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  if(currentMode === 'practice') initPractice();
-  if(currentMode === 'quiz') initQuiz();
-}
-
-// ============ PRACTICE MODE ============
-function startPractice(){
-  currentMode = 'practice';
-  document.getElementById('v-mode').classList.add('hidden');
-  document.getElementById('v-sets').classList.remove('hidden');
+// ============ PRACTICE ============
+function startPractice(ch){
+  currentChapter=ch;cardIdx=0;isFlipped=false;
+  ['v-chapters','v-quiz'].forEach(id=>document.getElementById(id).classList.add('hidden'));
   document.getElementById('v-practice').classList.remove('hidden');
-  initPractice();
-}
-
-function initPractice(){
-  cardIndex = 0;
   renderCard();
 }
 
+function getDeck(){
+  let cards=currentChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===currentChapter);
+  if(currentSet==='events') return cards.map(c=>({front:c.title,back:c}));
+  // People mode: group by WHO
+  const people={};
+  cards.forEach(c=>{if(!c.who)return;const p=c.who.split(';')[0].split('(')[0].trim();if(p.length>50)return;if(!people[p])people[p]=[];people[p].push(c);});
+  return Object.entries(people).map(([name,events])=>({front:name,back:events}));
+}
+
+function setMode(m){currentSet=m;cardIdx=0;isFlipped=false;document.querySelectorAll('.set-btn').forEach(b=>b.classList.toggle('active',b.textContent.includes(m==='events'?'Events':'People')));renderCard();}
+
 function renderCard(){
-  const deck = getDeck();
-  if(!deck.length) return;
-  const card = deck[cardIndex % deck.length];
-  document.getElementById('flashcard').classList.remove('flipped');
-  document.getElementById('fc-front').textContent = card.front;
-
-  // Build back content
-  let backHtml = '';
-  if(currentSet === 'events'){
-    const b = card.back;
-    if(b.summary) backHtml += `<p><strong>${b.summary}</strong></p>`;
-    if(b.who) backHtml += `<div class="back-label">WHO</div><p>${b.who}</p>`;
-    if(b.when) backHtml += `<div class="back-label">WHEN</div><p>${b.when}</p>`;
-    if(b.where) backHtml += `<div class="back-label">WHERE</div><p>${b.where}</p>`;
-    if(b.why) backHtml += `<div class="back-label">WHY</div><p>${b.why}</p>`;
+  const deck=getDeck();if(!deck.length)return;
+  const card=deck[cardIdx%deck.length];
+  isFlipped=false;
+  document.getElementById('fc-back').classList.add('hidden');
+  document.getElementById('fc-front').innerHTML=`<h2>${card.front}</h2><div class="tap-hint">Tap to reveal</div>`;
+  // Prep back
+  let html='';
+  if(currentSet==='events'){
+    const b=card.back;
+    if(b.summary) html+=`<p class="back-text"><strong>${b.summary}</strong></p>`;
+    if(b.who) html+=`<div class="back-label">WHO</div><p class="back-text">${b.who}</p>`;
+    if(b.what) html+=`<div class="back-label">WHAT</div><p class="back-text">${b.what}</p>`;
+    if(b.when) html+=`<div class="back-label">WHEN</div><p class="back-text">${b.when}</p>`;
+    if(b.where) html+=`<div class="back-label">WHERE</div><p class="back-text">${b.where}</p>`;
+    if(b.why) html+=`<div class="back-label">WHY</div><p class="back-text">${b.why}</p>`;
   } else {
-    card.back.forEach(ev => {
-      backHtml += `<div class="back-label">${ev.title}</div><p>${ev.what || ''} ${ev.when ? '('+ev.when+')' : ''}</p>`;
-    });
+    card.back.forEach(ev=>{html+=`<div class="back-label">${ev.title}</div><p class="back-text">${ev.what||''} ${ev.when?'('+ev.when+')':''}</p>`;});
   }
-  document.getElementById('fc-back').innerHTML = backHtml;
-  document.getElementById('card-counter').textContent = (cardIndex%deck.length+1) + ' / ' + deck.length;
+  document.getElementById('fc-back').innerHTML=html;
+  document.getElementById('card-counter').textContent=(cardIdx%deck.length+1)+' / '+deck.length;
 }
 
-function flipCard(){ document.getElementById('flashcard').classList.toggle('flipped'); }
-function nextCard(){ cardIndex++; renderCard(); }
-function prevCard(){ const deck=getDeck(); cardIndex = (cardIndex - 1 + deck.length) % deck.length; renderCard(); }
+function flipCard(){isFlipped=!isFlipped;document.getElementById('fc-back').classList.toggle('hidden',!isFlipped);document.getElementById('fc-front').querySelector('.tap-hint').textContent=isFlipped?'Tap to hide':'Tap to reveal';}
+function nextCard(){cardIdx++;renderCard();}
+function prevCard(){const deck=getDeck();cardIdx=(cardIdx-1+deck.length)%deck.length;renderCard();}
 
-// ============ QUIZ MODE ============
-function startQuiz(){
-  currentMode = 'quiz';
-  document.getElementById('v-mode').classList.add('hidden');
-  document.getElementById('v-sets').classList.remove('hidden');
-  document.getElementById('v-quiz').classList.remove('hidden');
-  initQuiz();
+// ============ QUIZ ============
+function renderQuizChapters(){
+  const list=document.getElementById('quiz-chapter-list');
+  list.innerHTML='<h3 style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:12px;text-align:center;padding-top:8px;">Select a Chapter to Quiz</h3>';
+  Object.entries(CHAPTERS).sort((a,b)=>parseInt(a[0])-parseInt(b[0])).forEach(([num,title])=>{
+    const count=FLASHCARD_DATA.filter(c=>c.chapter===parseInt(num)).length;
+    list.innerHTML+=`<button class="ch-btn" onclick="startQuiz(${num})"><span class="ch-num">Ch ${num}</span>${title}<span class="ch-count">${count} cards</span></button>`;
+  });
+  list.innerHTML+=`<button class="ch-btn" onclick="startQuiz(0)" style="border-color:var(--accent)"><span class="ch-num">ALL</span>All Chapters<span class="ch-count">${FLASHCARD_DATA.length} cards</span></button>`;
 }
 
-function initQuiz(){
-  const deck = getDeck();
-  // Shuffle and pick 10
-  quizCards = [...deck].sort(() => Math.random() - .5).slice(0, 10);
-  quizIndex = 0;
-  quizScore = 0;
-  quizTotal = quizCards.length;
-  renderQuestion();
+function startQuiz(ch){
+  currentChapter=ch;
+  const cards=ch===0?FLASHCARD_DATA:[...FLASHCARD_DATA.filter(c=>c.chapter===ch)];
+  quizCards=cards.sort(()=>Math.random()-.5).slice(0,Math.min(10,cards.length));
+  quizIdx=0;quizScore=0;
+  document.getElementById('v-quiz').classList.add('hidden');
+  document.getElementById('v-quiz-active').classList.remove('hidden');
+  renderQ();
 }
 
-function renderQuestion(){
-  if(quizIndex >= quizCards.length){
-    finishQuiz();
-    return;
-  }
-  const card = quizCards[quizIndex];
-  const deck = getDeck();
-  document.getElementById('quiz-score').textContent = `Question ${quizIndex+1}/${quizTotal} · Score: ${quizScore}`;
+function renderQ(){
+  if(quizIdx>=quizCards.length){finishQuiz();return;}
+  const card=quizCards[quizIdx];
+  const allCards=currentChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===currentChapter);
+  document.getElementById('quiz-header').textContent=`Question ${quizIdx+1}/${quizCards.length} · Score: ${quizScore}`;
   document.getElementById('q-next').classList.add('hidden');
-
-  if(currentSet === 'events'){
-    // Show a fact, ask which event
-    const facts = [card.back.when, card.back.where, card.back.who].filter(Boolean);
-    const clue = facts[Math.floor(Math.random()*facts.length)] || card.back.summary;
-    document.getElementById('q-prompt').textContent = 'Which event?';
-    document.getElementById('q-sub').textContent = clue;
-
-    // Options: correct + 3 random
-    const others = deck.filter(c => c.front !== card.front).sort(() => Math.random()-.5).slice(0,3);
-    const options = [card, ...others].sort(() => Math.random()-.5);
-    renderOptions(options.map(o => o.front), card.front);
-  } else {
-    // Show events, ask which person
-    const evTitles = card.back.map(e => e.title).join(', ');
-    document.getElementById('q-prompt').textContent = 'Who is associated with:';
-    document.getElementById('q-sub').textContent = evTitles;
-
-    const others = deck.filter(c => c.front !== card.front).sort(() => Math.random()-.5).slice(0,3);
-    const options = [card, ...others].sort(() => Math.random()-.5);
-    renderOptions(options.map(o => o.front), card.front);
-  }
-}
-
-function renderOptions(opts, correct){
-  const container = document.getElementById('q-options');
-  container.innerHTML = '';
-  opts.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-opt';
-    btn.textContent = opt;
-    btn.onclick = () => handleAnswer(opt, correct);
-    container.appendChild(btn);
+  // Show a clue, guess the event title
+  const clues=[card.when,card.where,card.who].filter(Boolean);
+  const clue=clues[Math.floor(Math.random()*clues.length)]||card.summary;
+  document.getElementById('qp-title').textContent='Which event/topic?';
+  document.getElementById('qp-clue').textContent=clue;
+  const others=allCards.filter(c=>c.title!==card.title).sort(()=>Math.random()-.5).slice(0,3);
+  const opts=[card,...others].sort(()=>Math.random()-.5);
+  const container=document.getElementById('q-opts');
+  container.innerHTML='';
+  opts.forEach(o=>{
+    const btn=document.createElement('button');btn.className='q-opt';btn.textContent=o.title;
+    btn.onclick=()=>answerQ(o.title,card.title);container.appendChild(btn);
   });
 }
 
-function handleAnswer(selected, correct){
-  const opts = document.querySelectorAll('.quiz-opt');
-  opts.forEach(o => {
-    o.classList.add('disabled');
-    if(o.textContent === correct) o.classList.add('correct');
-    if(o.textContent === selected && selected !== correct) o.classList.add('wrong');
-  });
-  if(selected === correct) quizScore++;
+function answerQ(sel,correct){
+  document.querySelectorAll('.q-opt').forEach(o=>{o.classList.add('disabled');if(o.textContent===correct)o.classList.add('correct');if(o.textContent===sel&&sel!==correct)o.classList.add('wrong');});
+  if(sel===correct)quizScore++;
   document.getElementById('q-next').classList.remove('hidden');
 }
-
-function nextQuestion(){ quizIndex++; renderQuestion(); }
+function nextQ(){quizIdx++;renderQ();}
 
 function finishQuiz(){
-  const pct = Math.round((quizScore/quizTotal)*100);
-  document.getElementById('q-options').innerHTML = '';
-  document.getElementById('q-prompt').textContent = `🎉 Quiz Complete!`;
-  document.getElementById('q-sub').textContent = `You got ${quizScore}/${quizTotal} (${pct}%)`;
-  document.getElementById('quiz-score').textContent = '';
-  document.getElementById('q-next').textContent = 'Play Again';
+  const pct=Math.round((quizScore/quizCards.length)*100);
+  document.getElementById('quiz-header').textContent='';
+  document.getElementById('qp-title').textContent='🎉 Quiz Complete!';
+  document.getElementById('qp-clue').textContent=`${quizScore}/${quizCards.length} correct (${pct}%)`;
+  document.getElementById('q-opts').innerHTML='';
+  document.getElementById('q-next').textContent='Play Again';
   document.getElementById('q-next').classList.remove('hidden');
-  document.getElementById('q-next').onclick = initQuiz;
-
+  document.getElementById('q-next').onclick=()=>{document.getElementById('v-quiz-active').classList.add('hidden');navTo('quiz');};
   // Save stats
-  const stats = getStats();
-  stats.quizzesTaken++;
-  stats.totalCorrect += quizScore;
-  stats.totalQuestions += quizTotal;
-  if(!stats.bySet[currentSet]) stats.bySet[currentSet] = {correct:0,total:0};
-  stats.bySet[currentSet].correct += quizScore;
-  stats.bySet[currentSet].total += quizTotal;
-  if(quizScore === quizTotal) stats.currentStreak++;
-  else stats.currentStreak = 0;
-  if(stats.currentStreak > stats.bestStreak) stats.bestStreak = stats.currentStreak;
-
-  // Awards
-  if(pct === 100 && !stats.awards.includes('Perfect 10')) stats.awards.push('Perfect 10');
-  if(stats.quizzesTaken >= 5 && !stats.awards.includes('Dedicated Student')) stats.awards.push('Dedicated Student');
-  if(stats.quizzesTaken >= 20 && !stats.awards.includes('Quiz Master')) stats.awards.push('Quiz Master');
-  if(stats.bestStreak >= 3 && !stats.awards.includes('On Fire 🔥')) stats.awards.push('On Fire 🔥');
-  if(stats.bestStreak >= 5 && !stats.awards.includes('Unstoppable')) stats.awards.push('Unstoppable');
-  if(stats.totalCorrect >= 50 && !stats.awards.includes('Half Century')) stats.awards.push('Half Century');
-  if(stats.totalCorrect >= 100 && !stats.awards.includes('Century Club')) stats.awards.push('Century Club');
-  if(pct >= 80 && !stats.awards.includes('Honor Roll')) stats.awards.push('Honor Roll');
-
-  saveStats(stats);
+  const s=getStats();
+  s.quizzesTaken++;s.totalCorrect+=quizScore;s.totalQuestions+=quizCards.length;
+  if(quizScore===quizCards.length)s.currentStreak++;else s.currentStreak=0;
+  if(s.currentStreak>s.bestStreak)s.bestStreak=s.currentStreak;
+  if(pct===100&&!s.awards.includes('Perfect 10'))s.awards.push('Perfect 10');
+  if(s.quizzesTaken>=5&&!s.awards.includes('Dedicated'))s.awards.push('Dedicated');
+  if(s.quizzesTaken>=20&&!s.awards.includes('Quiz Master'))s.awards.push('Quiz Master');
+  if(s.bestStreak>=3&&!s.awards.includes('On Fire 🔥'))s.awards.push('On Fire 🔥');
+  if(s.bestStreak>=5&&!s.awards.includes('Unstoppable'))s.awards.push('Unstoppable');
+  if(s.totalCorrect>=50&&!s.awards.includes('Half Century'))s.awards.push('Half Century');
+  if(s.totalCorrect>=100&&!s.awards.includes('Century Club'))s.awards.push('Century Club');
+  if(pct>=80&&!s.awards.includes('Honor Roll'))s.awards.push('Honor Roll');
+  saveStats(s);
+  // Sync to leaderboard
+  apiPost('/leaderboard',{username:currentUser,totalCorrect:s.totalCorrect,totalQuestions:s.totalQuestions,quizzesTaken:s.quizzesTaken,bestStreak:s.bestStreak,awards:s.awards});
 }
 
-// ============ STATS VIEW ============
-function showStats(){
-  currentMode = 'stats';
-  document.getElementById('v-mode').classList.add('hidden');
-  document.getElementById('v-stats').classList.remove('hidden');
+function getStats(){const r=localStorage.getItem(STORE_KEY);return r?JSON.parse(r):{quizzesTaken:0,totalCorrect:0,totalQuestions:0,bestStreak:0,currentStreak:0,awards:[]};}
+function saveStats(s){localStorage.setItem(STORE_KEY,JSON.stringify(s));}
 
-  const stats = getStats();
-  const pct = stats.totalQuestions ? Math.round((stats.totalCorrect/stats.totalQuestions)*100) : 0;
-  const evPct = stats.bySet.events?.total ? Math.round((stats.bySet.events.correct/stats.bySet.events.total)*100) : 0;
-  const ppPct = stats.bySet.people?.total ? Math.round((stats.bySet.people.correct/stats.bySet.people.total)*100) : 0;
+// ============ LEADERBOARD ============
+async function loadLeaderboard(){
+  const container=document.getElementById('lb-content');
+  container.innerHTML='<div class="lb-card"><h3>🏆 Leaderboard</h3><p style="color:var(--muted);font-size:.85rem;">Loading...</p></div>';
+  try{
+    const r=await fetch(CONFIG.api+'/leaderboard');
+    const data=await r.json();
+    if(!data||!data.length){container.innerHTML='<div class="lb-card"><h3>🏆 Leaderboard</h3><p style="color:var(--muted);font-size:.85rem;">No scores yet. Be the first to quiz!</p></div>';return;}
+    let html='<div class="lb-card"><h3>🏆 Leaderboard</h3>';
+    data.slice(0,20).forEach((entry,i)=>{
+      const pct=entry.totalQuestions?Math.round((entry.totalCorrect/entry.totalQuestions)*100):0;
+      const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
+      html+=`<div class="lb-row"><span class="lb-rank">${medal||i+1}</span><span class="lb-name">${entry.username}</span><span class="lb-score">${entry.totalCorrect}</span><span class="lb-pct">${pct}%</span></div>`;
+    });
+    html+='</div>';
+    container.innerHTML=html;
+  }catch(e){container.innerHTML='<div class="lb-card"><h3>🏆 Leaderboard</h3><p style="color:var(--muted);font-size:.85rem;">Could not load leaderboard</p></div>';}
+}
 
-  let html = `
-    <div class="stat-card">
-      <h3>📊 Overall Stats</h3>
-      <div class="stat-row"><span>Quizzes Taken</span><span class="val">${stats.quizzesTaken}</span></div>
-      <div class="stat-row"><span>Total Correct</span><span class="val">${stats.totalCorrect} / ${stats.totalQuestions}</span></div>
-      <div class="stat-row"><span>Overall Accuracy</span><span class="val">${pct}%</span></div>
-      <div class="stat-row"><span>Best Perfect Streak</span><span class="val">${stats.bestStreak} 🔥</span></div>
+// ============ STATS ============
+function renderStats(){
+  const s=getStats();
+  const pct=s.totalQuestions?Math.round((s.totalCorrect/s.totalQuestions)*100):0;
+  document.getElementById('stats-content').innerHTML=`
+    <div class="stat-box"><h3>📊 My Progress</h3>
+      <div class="stat-row"><span>Quizzes Taken</span><span class="stat-val">${s.quizzesTaken}</span></div>
+      <div class="stat-row"><span>Total Correct</span><span class="stat-val">${s.totalCorrect} / ${s.totalQuestions}</span></div>
+      <div class="stat-row"><span>Accuracy</span><span class="stat-val">${pct}%</span></div>
+      <div class="stat-row"><span>Best Streak</span><span class="stat-val">${s.bestStreak} 🔥</span></div>
     </div>
-    <div class="stat-card">
-      <h3>📅 Events Set</h3>
-      <div class="stat-row"><span>Accuracy</span><span class="val">${evPct}% (${stats.bySet.events?.correct||0}/${stats.bySet.events?.total||0})</span></div>
-    </div>
-    <div class="stat-card">
-      <h3>👤 People Set</h3>
-      <div class="stat-row"><span>Accuracy</span><span class="val">${ppPct}% (${stats.bySet.people?.correct||0}/${stats.bySet.people?.total||0})</span></div>
-    </div>
-    <div class="stat-card">
-      <h3>🏆 Awards</h3>
-      ${stats.awards.length ? '<div class="awards">' + stats.awards.map(a => `<div class="award">${a}</div>`).join('') + '</div>' : '<p style="color:var(--muted);font-weight:700;">Keep quizzing to earn awards!</p>'}
-    </div>
-  `;
-  document.getElementById('stats-content').innerHTML = html;
+    <div class="stat-box"><h3>🏆 Awards</h3>
+      ${s.awards.length?'<div class="awards-list">'+s.awards.map(a=>`<div class="award-badge">${a}</div>`).join('')+'</div>':'<p style="color:var(--muted);font-size:.85rem;">Keep quizzing to earn awards!</p>'}
+    </div>`;
 }
 </script>
 </body>
