@@ -3,16 +3,22 @@ import WebKit
 
 struct ContentView: View {
     var body: some View {
-        ZStack(alignment: .top) {
-            // Burnt orange status bar background
+        VStack(spacing: 0) {
+            // Burnt orange status bar area
             Color(red: 0.922, green: 0.369, blue: 0.129) // #eb5e21
-                .ignoresSafeArea(edges: .top)
                 .frame(height: 0)
+                .background(Color(red: 0.922, green: 0.369, blue: 0.129))
+                .ignoresSafeArea(edges: .top)
             
             WebView(url: URL(string: "https://dannywilson.info/flashcards.html")!)
         }
-        .background(Color(red: 0.922, green: 0.369, blue: 0.129))
-        .ignoresSafeArea(edges: .top)
+        .background(
+            VStack(spacing: 0) {
+                Color(red: 0.922, green: 0.369, blue: 0.129) // top
+                Color(red: 0.051, green: 0.051, blue: 0.051) // bottom #0d0d0d
+            }
+            .ignoresSafeArea()
+        )
     }
 }
 
