@@ -7,421 +7,365 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="BH365">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#e94560">
+<meta name="theme-color" content="#1a1a1a">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <link rel="apple-touch-icon" href="/bh365-icon.png">
 <link rel="icon" type="image/png" href="/bh365-icon.png">
 <title>BH365 Study</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1a1a2e;--card:#16213e;--card2:#0f3460;--text:#eee;--muted:#777;--accent:#e94560;--gold:#ffd93d;--green:#6bcb77;--blue:#4d96ff;--radius:16px;--shadow:0 6px 24px rgba(0,0,0,.3);}
+:root{--bg:#0d0d0d;--card:#1a1a1a;--card2:#222;--text:#f5f5f5;--muted:#777;--red:#d4213d;--green:#2d8b4e;--gold:#f2c94c;--black:#0d0d0d;--radius:14px;--shadow:0 4px 20px rgba(0,0,0,.5);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;}
-header{background:linear-gradient(135deg,#e94560,#0f3460);padding:calc(env(safe-area-inset-top,20px) + 14px) 20px 14px;text-align:center;position:sticky;top:0;z-index:50;}
-header h1{font-family:'Fredoka One',cursive;font-size:1.5rem;color:#fff;}
-.header-sub{color:rgba(255,255,255,.7);font-size:.8rem;font-weight:700;}
-.header-bar{display:flex;justify-content:space-between;align-items:center;padding:0 4px;margin-top:6px;}
-.header-bar button{background:rgba(255,255,255,.12);border:none;color:#fff;padding:5px 12px;border-radius:20px;font-size:.75rem;font-weight:700;cursor:pointer;}
-.hidden{display:none!important;}
+.gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
 /* AUTH */
-.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:90vh;padding:20px;}
-.auth-box{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:32px 24px;width:100%;max-width:320px;text-align:center;}
-.auth-box h2{font-family:'Fredoka One',cursive;font-size:1.5rem;margin-bottom:6px;}
-.auth-box .auth-sub{font-size:.85rem;color:var(--muted);font-weight:700;margin-bottom:18px;}
-.auth-box input{width:100%;padding:12px 14px;border:2px solid #333;border-radius:10px;background:#0d1b2a;color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:10px;}
-.auth-box input:focus{outline:none;border-color:var(--accent);}
-.auth-box .btn-primary{width:100%;padding:13px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-family:'Fredoka One',cursive;font-size:1.05rem;cursor:pointer;margin-top:4px;}
-.auth-box .btn-link{background:none;border:none;color:var(--blue);font-weight:700;font-size:.85rem;cursor:pointer;margin-top:12px;}
-.auth-error{color:var(--accent);font-size:.8rem;font-weight:700;margin-top:8px;min-height:18px;}
+.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:var(--bg);}
+.auth-box{background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:32px 24px;width:100%;max-width:320px;text-align:center;}
+.auth-box h2{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
+.auth-box .sub{color:var(--muted);font-weight:700;font-size:.85rem;margin-bottom:20px;}
+.auth-box input{width:100%;padding:12px 14px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:10px;}
+.auth-box input:focus{outline:none;border-color:var(--gold);}
+.btn-primary{width:100%;padding:13px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--red),#8b0000);color:#fff;font-family:'Fredoka One',cursive;font-size:1.05rem;cursor:pointer;}
+.btn-link{background:none;border:none;color:var(--gold);font-weight:700;font-size:.82rem;cursor:pointer;margin-top:12px;}
+.auth-error{color:var(--red);font-size:.8rem;font-weight:700;margin-top:8px;min-height:18px;}
 
-/* NAV TABS */
-.nav-tabs{display:flex;justify-content:center;gap:6px;padding:12px 12px 6px;flex-wrap:wrap;}
-.nav-tab{padding:7px 16px;border-radius:20px;border:2px solid #333;background:var(--card);color:var(--muted);font-weight:800;font-size:.8rem;cursor:pointer;transition:all .2s;}
-.nav-tab.active{border-color:var(--accent);background:var(--accent);color:#fff;}
+/* HOME */
+.home{max-width:480px;margin:0 auto;padding:20px 16px;}
+.greeting{text-align:center;margin-bottom:24px;}
+.greeting h1{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.greeting p{color:var(--muted);font-weight:700;font-size:.9rem;margin-top:4px;}
+.greeting .user-greeting{color:var(--gold);font-weight:800;font-size:1rem;margin-top:8px;}
+.home-actions{display:flex;flex-direction:column;gap:12px;}
+.action-card{display:flex;align-items:center;gap:14px;padding:18px 16px;border:2px solid #333;border-radius:var(--radius);background:var(--card);cursor:pointer;transition:all .2s;}
+.action-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.action-card .ac-icon{font-size:2rem;}
+.action-card h3{font-family:'Fredoka One',cursive;font-size:1.05rem;}
+.action-card p{font-size:.75rem;color:var(--muted);font-weight:700;margin-top:2px;}
+.home-footer{display:flex;justify-content:center;gap:16px;margin-top:24px;}
+.home-footer button{background:var(--card);border:2px solid #333;border-radius:10px;padding:10px 16px;color:var(--text);font-weight:800;font-size:.8rem;cursor:pointer;}
+.home-footer button:hover{border-color:var(--green);}
+.logout-btn{position:absolute;top:calc(env(safe-area-inset-top,16px) + 10px);right:14px;background:none;border:none;color:var(--muted);font-size:.75rem;font-weight:700;cursor:pointer;}
 
-/* CHAPTER SELECT */
-.chapter-list{max-width:500px;margin:0 auto;padding:12px 14px;}
-.ch-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
-.ch-btn:hover{border-color:var(--blue);}
-.ch-btn .ch-num{font-family:'Fredoka One',cursive;color:var(--gold);margin-right:8px;}
-.ch-btn .ch-count{float:right;color:var(--muted);font-size:.75rem;}
+/* SCOPE SELECT */
+.scope-page{max-width:480px;margin:0 auto;padding:16px;}
+.scope-page h2{font-family:'Fredoka One',cursive;font-size:1.2rem;text-align:center;margin-bottom:14px;color:var(--gold);}
+.scope-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
+.scope-btn:hover{border-color:var(--red);}
+.scope-btn .ch-num{font-family:'Fredoka One',cursive;color:var(--red);margin-right:8px;}
+.scope-btn .ch-count{float:right;color:var(--muted);font-size:.72rem;margin-top:2px;}
+.back-link{display:block;text-align:center;color:var(--gold);font-weight:800;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
 
-/* SET TOGGLE */
-.set-toggle{display:flex;justify-content:center;gap:6px;padding:8px 14px;}
-.set-btn{padding:7px 14px;border-radius:20px;border:2px solid #333;background:var(--card);color:var(--muted);font-weight:800;font-size:.75rem;cursor:pointer;transition:all .2s;}
-.set-btn.active{border-color:var(--green);background:var(--green);color:#1a1a2e;}
-
-/* FLASHCARD */
-.card-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
-.flashcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;min-height:200px;cursor:pointer;transition:all .3s;}
-.card-front-content,.card-back-content{padding:24px 20px;}
-.card-front-content{text-align:center;}
-.card-front-content h2{font-family:'Fredoka One',cursive;font-size:1.3rem;color:#fff;margin-bottom:8px;}
-.card-front-content .tap-hint{font-size:.75rem;color:var(--muted);}
-.card-back-content{border-top:2px solid rgba(255,255,255,.05);}
-.back-label{font-family:'Fredoka One',cursive;font-size:.65rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-top:10px;margin-bottom:2px;}
-.back-text{font-size:.85rem;line-height:1.5;font-weight:600;color:#ccc;}
-.card-nav{display:flex;justify-content:center;gap:12px;padding:12px;align-items:center;}
-.card-nav button{padding:9px 20px;border:none;border-radius:20px;background:#333;color:#fff;font-weight:800;font-size:.85rem;cursor:pointer;}
-.card-counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.85rem;min-width:70px;text-align:center;}
+/* PRACTICE CARD */
+.practice-page{max-width:480px;margin:0 auto;padding:16px;}
+.pcard{background:var(--card);border:2px solid #333;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:border-color .2s;}
+.pcard:hover{border-color:var(--gold);}
+.pcard-front{padding:28px 20px;text-align:center;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pcard-front h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--gold);}
+.pcard-front .hint{color:var(--muted);font-size:.75rem;margin-top:10px;}
+.pcard-back{padding:18px 20px;border-top:2px solid var(--red);max-height:55vh;overflow-y:auto;}
+.pcard-back .blabel{font-family:'Fredoka One',cursive;font-size:.6rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-top:10px;}
+.pcard-back .btext{font-size:.84rem;line-height:1.5;font-weight:600;color:#ccc;margin-top:2px;}
+.card-nav{display:flex;justify-content:center;gap:10px;padding:14px;align-items:center;}
+.card-nav button{padding:9px 18px;border:none;border-radius:20px;background:#333;color:#fff;font-weight:800;font-size:.82rem;cursor:pointer;}
+.card-nav .counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.82rem;min-width:60px;text-align:center;}
 
 /* QUIZ */
-.quiz-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
-.quiz-header{text-align:center;font-family:'Fredoka One',cursive;color:var(--gold);font-size:.9rem;margin-bottom:12px;}
-.quiz-card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:14px;text-align:center;}
-.quiz-card h2{font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:6px;}
-.quiz-card p{font-size:.85rem;color:var(--muted);font-weight:700;}
+.quiz-page{max-width:480px;margin:0 auto;padding:16px;}
+.quiz-hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding:10px 14px;background:var(--card);border-radius:10px;border:2px solid #333;}
+.hud-score{font-family:'Fredoka One',cursive;color:var(--gold);font-size:1rem;}
+.hud-streak{font-size:.8rem;font-weight:800;color:var(--red);}
+.hud-timer{font-family:'Fredoka One',cursive;color:var(--green);font-size:1rem;}
+.hud-qnum{font-size:.75rem;color:var(--muted);font-weight:800;}
+.quiz-prompt{background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:14px;}
+.quiz-prompt h2{font-family:'Fredoka One',cursive;font-size:1.05rem;color:#fff;}
+.quiz-prompt .qtype{font-size:.7rem;color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
 .quiz-opts{display:flex;flex-direction:column;gap:8px;}
-.q-opt{padding:13px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .15s;}
-.q-opt:hover{border-color:var(--accent);}
-.q-opt.correct{border-color:var(--green);background:rgba(107,203,119,.12);color:var(--green);}
-.q-opt.wrong{border-color:var(--accent);background:rgba(233,69,96,.1);color:var(--accent);}
-.q-opt.disabled{pointer-events:none;opacity:.5;}
-.quiz-next{display:block;margin:14px auto;padding:11px 28px;border:none;border-radius:20px;background:var(--accent);color:#fff;font-family:'Fredoka One',cursive;font-size:.95rem;cursor:pointer;}
+.qopt{padding:13px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.86rem;cursor:pointer;text-align:left;transition:all .15s;}
+.qopt:hover{border-color:var(--gold);}
+.qopt.correct{border-color:var(--green);background:rgba(45,139,78,.15);color:var(--green);}
+.qopt.wrong{border-color:var(--red);background:rgba(212,33,61,.1);color:var(--red);}
+.qopt.disabled{pointer-events:none;opacity:.5;}
+.quiz-feedback{text-align:center;padding:10px;font-family:'Fredoka One',cursive;font-size:.9rem;}
+.quiz-next{display:block;margin:12px auto;padding:11px 28px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--red),#8b0000);color:#fff;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;}
+.bonus-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card);border:3px solid var(--gold);border-radius:var(--radius);padding:24px;text-align:center;z-index:200;animation:popIn .3s ease;}
+@keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.8)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.bonus-popup h2{font-family:'Fredoka One',cursive;color:var(--gold);font-size:1.3rem;}
+.bonus-popup p{color:var(--muted);font-weight:700;margin-top:6px;}
+
+/* RESULTS */
+.results-page{max-width:480px;margin:0 auto;padding:16px;text-align:center;}
+.results-page h2{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--gold);margin-bottom:8px;}
+.results-page .big-score{font-family:'Fredoka One',cursive;font-size:3rem;color:var(--green);}
+.results-page .detail{color:var(--muted);font-weight:700;margin:4px 0;}
+.results-actions{display:flex;gap:10px;justify-content:center;margin-top:20px;}
+.results-actions button{padding:12px 24px;border:none;border-radius:20px;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;}
+.results-actions .again{background:var(--red);color:#fff;}
+.results-actions .home-btn{background:#333;color:#fff;}
 
 /* LEADERBOARD */
-.lb-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
-.lb-card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:10px;}
-.lb-card h3{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--gold);margin-bottom:10px;}
-.lb-row{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
-.lb-row:last-child{border:none;}
-.lb-rank{font-family:'Fredoka One',cursive;width:28px;color:var(--muted);font-size:.9rem;}
+.lb-page{max-width:480px;margin:0 auto;padding:16px;}
+.lb-page h2{font-family:'Fredoka One',cursive;color:var(--gold);text-align:center;margin-bottom:14px;}
+.lb-row{display:flex;align-items:center;padding:10px 14px;background:var(--card);border-radius:10px;margin-bottom:6px;border:2px solid #333;}
+.lb-rank{font-family:'Fredoka One',cursive;width:30px;color:var(--muted);font-size:.9rem;}
 .lb-name{flex:1;font-weight:800;font-size:.9rem;}
-.lb-score{font-family:'Fredoka One',cursive;color:var(--green);font-size:.9rem;}
-.lb-pct{color:var(--muted);font-size:.75rem;margin-left:8px;}
+.lb-pts{font-family:'Fredoka One',cursive;color:var(--green);font-size:.9rem;}
 
-/* STATS */
-.stats-wrap{max-width:500px;margin:16px auto;padding:0 14px;}
-.stat-box{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:12px;}
-.stat-box h3{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--gold);margin-bottom:10px;}
-.stat-row{display:flex;justify-content:space-between;padding:5px 0;font-weight:700;font-size:.88rem;}
-.stat-val{color:var(--green);}
-.awards-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.award-badge{background:rgba(255,217,61,.1);border:2px solid var(--gold);border-radius:10px;padding:6px 10px;font-size:.75rem;font-weight:800;color:var(--gold);}
+.hidden{display:none!important;}
 </style>
 </head>
 <body>
+<div class="gradient-bar"></div>
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen" class="auth-screen">
+<!-- AUTH -->
+<div id="v-auth" class="auth-screen">
 <div class="auth-box">
-<h2>📚 BH365 Study</h2>
-<p class="auth-sub">Black History Flashcards</p>
+<h2>BH365 Study</h2>
+<p class="sub">Black History · Learn · Compete</p>
 <div id="auth-login">
-<input type="text" id="auth-user" placeholder="Username" autocapitalize="none" autocomplete="username">
-<input type="password" id="auth-pass" placeholder="Password" autocomplete="current-password">
+<input type="text" id="a-user" placeholder="Username" autocapitalize="none" autocomplete="username">
+<input type="password" id="a-pass" placeholder="Password" autocomplete="current-password">
 <button class="btn-primary" onclick="doLogin()">Log In</button>
-<button class="btn-link" onclick="showSignup()">New here? Sign up</button>
+<button class="btn-link" onclick="toggleAuth()">New? Create an account</button>
 </div>
 <div id="auth-signup" class="hidden">
-<input type="text" id="signup-user" placeholder="Choose a username" autocapitalize="none">
-<input type="password" id="signup-pass" placeholder="Choose a password (6+ chars)">
-<button class="btn-primary" onclick="doSignup()">Create Account</button>
-<button class="btn-link" onclick="showLogin()">Already have an account? Log in</button>
+<input type="text" id="s-user" placeholder="Choose a username" autocapitalize="none">
+<input type="password" id="s-pass" placeholder="Password (6+ characters)">
+<button class="btn-primary" onclick="doSignup()">Sign Up</button>
+<button class="btn-link" onclick="toggleAuth()">Already have an account? Log in</button>
 </div>
-<div class="auth-error" id="auth-error"></div>
+<div class="auth-error" id="auth-err"></div>
+</div>
+</div>
+
+<!-- HOME -->
+<div id="v-home" class="hidden">
+<button class="logout-btn" onclick="doLogout()">Logout</button>
+<div class="home">
+<div class="greeting">
+<h1>BH365 Study</h1>
+<p>Black History 365 Days a Year</p>
+<div class="user-greeting" id="greet-user"></div>
+</div>
+<div class="home-actions">
+<div class="action-card" onclick="goScope('practice')">
+<span class="ac-icon">📖</span>
+<div><h3>Practice</h3><p>Flip through flashcards at your own pace</p></div>
+</div>
+<div class="action-card" onclick="goScope('quiz')">
+<span class="ac-icon">🎯</span>
+<div><h3>Challenge Mode</h3><p>Timed rounds · Streak bonuses · Earn points</p></div>
+</div>
+<div class="action-card" onclick="goScope('speed')">
+<span class="ac-icon">⚡</span>
+<div><h3>Speed Round</h3><p>30 seconds · How many can you get?</p></div>
+</div>
+</div>
+<div class="home-footer">
+<button onclick="navView('v-lb')">🏆 Leaderboard</button>
+<button onclick="navView('v-stats')">📊 My Stats</button>
+</div>
 </div>
 </div>
 
-<!-- MAIN APP -->
-<div id="app" class="hidden">
-<header>
-<h1>📚 BH365 Study</h1>
-<div class="header-bar">
-<span class="header-sub" id="user-display"></span>
-<button onclick="doLogout()">Logout</button>
+<!-- SCOPE SELECT -->
+<div id="v-scope" class="hidden">
+<div class="scope-page">
+<span class="back-link" onclick="navView('v-home')">← Back</span>
+<h2 id="scope-title">Select Chapter</h2>
+<div id="scope-list"></div>
 </div>
-</header>
-
-<div class="nav-tabs">
-<button class="nav-tab active" onclick="navTo('chapters')">📖 Study</button>
-<button class="nav-tab" onclick="navTo('quiz')">🎯 Quiz</button>
-<button class="nav-tab" onclick="navTo('leaderboard')">🏆 Leaderboard</button>
-<button class="nav-tab" onclick="navTo('stats')">📊 My Stats</button>
-</div>
-
-<!-- CHAPTERS -->
-<div id="v-chapters">
-<div class="chapter-list" id="chapter-list"></div>
 </div>
 
 <!-- PRACTICE -->
 <div id="v-practice" class="hidden">
-<div class="set-toggle">
-<button class="set-btn active" onclick="setMode('events')">📅 Events</button>
-<button class="set-btn" onclick="setMode('people')">👤 People</button>
-</div>
-<div class="card-wrap">
-<div class="flashcard" id="flashcard" onclick="flipCard()">
-<div class="card-front-content" id="fc-front"><h2></h2><div class="tap-hint">Tap to reveal</div></div>
-<div class="card-back-content hidden" id="fc-back"></div>
-</div>
+<div class="practice-page">
+<span class="back-link" onclick="navView('v-scope')">← Back to Chapters</span>
+<div class="pcard" onclick="flipPractice()">
+<div class="pcard-front" id="p-front"><h2></h2><div class="hint">Tap to reveal</div></div>
+<div class="pcard-back hidden" id="p-back"></div>
 </div>
 <div class="card-nav">
-<button onclick="prevCard()">← Prev</button>
-<span class="card-counter" id="card-counter"></span>
-<button onclick="nextCard()">Next →</button>
+<button onclick="pPrev()">← Prev</button>
+<span class="counter" id="p-counter"></span>
+<button onclick="pNext()">Next →</button>
+</div>
 </div>
 </div>
 
 <!-- QUIZ -->
 <div id="v-quiz" class="hidden">
-<div class="chapter-list" id="quiz-chapter-list"></div>
+<div class="quiz-page">
+<div class="quiz-hud">
+<span class="hud-score" id="hud-score">0 pts</span>
+<span class="hud-streak" id="hud-streak"></span>
+<span class="hud-timer" id="hud-timer"></span>
+<span class="hud-qnum" id="hud-qnum"></span>
+</div>
+<div class="quiz-prompt"><div class="qtype" id="q-type"></div><h2 id="q-text"></h2></div>
+<div class="quiz-opts" id="q-opts"></div>
+<div class="quiz-feedback hidden" id="q-feedback"></div>
+<button class="quiz-next hidden" id="q-next" onclick="nextQuizQ()">Next →</button>
+</div>
 </div>
 
-<!-- QUIZ ACTIVE -->
-<div id="v-quiz-active" class="hidden">
-<div class="quiz-wrap">
-<div class="quiz-header" id="quiz-header"></div>
-<div class="quiz-card"><h2 id="qp-title"></h2><p id="qp-clue"></p></div>
-<div class="quiz-opts" id="q-opts"></div>
-<button class="quiz-next hidden" id="q-next" onclick="nextQ()">Next →</button>
+<!-- RESULTS -->
+<div id="v-results" class="hidden">
+<div class="results-page">
+<h2>🎉 Round Complete!</h2>
+<div class="big-score" id="r-score"></div>
+<p class="detail" id="r-correct"></p>
+<p class="detail" id="r-streak"></p>
+<p class="detail" id="r-bonus"></p>
+<div class="results-actions">
+<button class="again" onclick="replayQuiz()">Play Again</button>
+<button class="home-btn" onclick="navView('v-home')">Home</button>
+</div>
 </div>
 </div>
 
 <!-- LEADERBOARD -->
-<div id="v-leaderboard" class="hidden">
-<div class="lb-wrap" id="lb-content"></div>
+<div id="v-lb" class="hidden">
+<div class="lb-page">
+<span class="back-link" onclick="navView('v-home')">← Home</span>
+<h2>🏆 Leaderboard</h2>
+<div id="lb-list"></div>
+</div>
 </div>
 
 <!-- STATS -->
 <div id="v-stats" class="hidden">
-<div class="stats-wrap" id="stats-content"></div>
+<div class="lb-page">
+<span class="back-link" onclick="navView('v-home')">← Home</span>
+<h2>📊 My Stats</h2>
+<div id="stats-content"></div>
 </div>
 </div>
 
 <script src="/flashcard-data.js"></script>
 <script>
-const CONFIG={userPoolId:'us-east-1_5YidAMwbK',clientId:'31p3snnqs2l00ln5if1fu3e1b2',api:'https://10rgcui6d6.execute-api.us-east-1.amazonaws.com',region:'us-east-1'};
-const STORE_KEY='bh365_stats';
-let currentUser=null,idToken=null,currentChapter=null,currentSet='events',cardIdx=0,isFlipped=false;
-let quizCards=[],quizIdx=0,quizScore=0;
+const CFG={clientId:'31p3snnqs2l00ln5if1fu3e1b2',api:'https://10rgcui6d6.execute-api.us-east-1.amazonaws.com',region:'us-east-1'};
+let user=null,token=null,mode='',selectedChapter=null,pIdx=0,pFlipped=false;
+let qList=[],qIdx=0,qScore=0,qStreak=0,qBestStreak=0,qCorrect=0,qTotal=0,qTimer=null,qTimeLeft=0,isSpeed=false;
 
-// ============ AUTH ============
-function showSignup(){document.getElementById('auth-login').classList.add('hidden');document.getElementById('auth-signup').classList.remove('hidden');document.getElementById('auth-error').textContent='';}
-function showLogin(){document.getElementById('auth-signup').classList.add('hidden');document.getElementById('auth-login').classList.remove('hidden');document.getElementById('auth-error').textContent='';}
-
+// AUTH
+function toggleAuth(){document.getElementById('auth-login').classList.toggle('hidden');document.getElementById('auth-signup').classList.toggle('hidden');document.getElementById('auth-err').textContent='';}
 async function doLogin(){
-  const u=document.getElementById('auth-user').value.trim(),p=document.getElementById('auth-pass').value;
-  if(!u||!p){document.getElementById('auth-error').textContent='Enter username and password';return;}
-  try{
-    const r=await fetch(`https://cognito-idp.${CONFIG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':'AWSCognitoIdentityProviderService.InitiateAuth'},body:JSON.stringify({AuthFlow:'USER_PASSWORD_AUTH',ClientId:CONFIG.clientId,AuthParameters:{USERNAME:u,PASSWORD:p}})});
-    const d=await r.json();
-    if(d.AuthenticationResult){idToken=d.AuthenticationResult.IdToken;currentUser=u;localStorage.setItem('bh365token',idToken);localStorage.setItem('bh365user',u);showApp();}
-    else{document.getElementById('auth-error').textContent='Wrong username or password';}
-  }catch(e){document.getElementById('auth-error').textContent='Connection error';}
+  const u=document.getElementById('a-user').value.trim(),p=document.getElementById('a-pass').value;
+  if(!u||!p){document.getElementById('auth-err').textContent='Enter username and password';return;}
+  const r=await cognitoAuth('InitiateAuth',{AuthFlow:'USER_PASSWORD_AUTH',ClientId:CFG.clientId,AuthParameters:{USERNAME:u,PASSWORD:p}});
+  if(r.AuthenticationResult){token=r.AuthenticationResult.IdToken;user=u;localStorage.setItem('bh365t',token);localStorage.setItem('bh365u',u);showHome();}
+  else document.getElementById('auth-err').textContent='Wrong username or password';
 }
-
 async function doSignup(){
-  const u=document.getElementById('signup-user').value.trim(),p=document.getElementById('signup-pass').value;
-  if(!u||!p){document.getElementById('auth-error').textContent='Pick a username and password';return;}
-  if(p.length<6){document.getElementById('auth-error').textContent='Password must be 6+ characters';return;}
-  try{
-    const r=await fetch(`https://cognito-idp.${CONFIG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':'AWSCognitoIdentityProviderService.SignUp'},body:JSON.stringify({ClientId:CONFIG.clientId,Username:u,Password:p})});
-    const d=await r.json();
-    if(d.UserSub){
-      // Auto-confirm and login
-      document.getElementById('auth-error').textContent='';
-      document.getElementById('auth-user').value=u;document.getElementById('auth-pass').value=p;
-      showLogin();
-      await doLogin();
-    } else {
-      document.getElementById('auth-error').textContent=d.message||'Signup failed';
-    }
-  }catch(e){document.getElementById('auth-error').textContent='Connection error';}
+  const u=document.getElementById('s-user').value.trim(),p=document.getElementById('s-pass').value;
+  if(!u||!p){document.getElementById('auth-err').textContent='Choose username and password';return;}
+  if(p.length<6){document.getElementById('auth-err').textContent='Password needs 6+ characters';return;}
+  const r=await cognitoAuth('SignUp',{ClientId:CFG.clientId,Username:u,Password:p});
+  if(r.UserSub){document.getElementById('a-user').value=u;document.getElementById('a-pass').value=p;toggleAuth();await doLogin();}
+  else document.getElementById('auth-err').textContent=r.message||'Signup failed — try a different username';
 }
-
-function doLogout(){localStorage.removeItem('bh365token');localStorage.removeItem('bh365user');currentUser=null;idToken=null;document.getElementById('app').classList.add('hidden');document.getElementById('auth-screen').classList.remove('hidden');}
-
-function showApp(){document.getElementById('auth-screen').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('user-display').textContent=currentUser;renderChapters();loadLeaderboard();}
-
-(function(){const t=localStorage.getItem('bh365token'),u=localStorage.getItem('bh365user');if(t&&u){idToken=t;currentUser=u;showApp();}})();
-
-// ============ API ============
-async function apiGet(p){try{const r=await fetch(CONFIG.api+p,{headers:{Authorization:'Bearer '+idToken}});if(r.status===401){doLogout();return null;}return r.json();}catch(e){return null;}}
-async function apiPost(p,b){try{const r=await fetch(CONFIG.api+p,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+idToken},body:JSON.stringify(b)});if(r.status===401){doLogout();return null;}return r.json();}catch(e){return null;}}
-
-// ============ NAV ============
-function navTo(v){
-  document.querySelectorAll('.nav-tab').forEach((t,i)=>t.classList.toggle('active',['chapters','quiz','leaderboard','stats'][i]===v));
-  ['v-chapters','v-practice','v-quiz','v-quiz-active','v-leaderboard','v-stats'].forEach(id=>document.getElementById(id).classList.add('hidden'));
-  if(v==='chapters'){document.getElementById('v-chapters').classList.remove('hidden');renderChapters();}
-  if(v==='quiz'){document.getElementById('v-quiz').classList.remove('hidden');renderQuizChapters();}
-  if(v==='leaderboard'){document.getElementById('v-leaderboard').classList.remove('hidden');loadLeaderboard();}
-  if(v==='stats'){document.getElementById('v-stats').classList.remove('hidden');renderStats();}
+async function cognitoAuth(action,body){
+  try{const r=await fetch(`https://cognito-idp.${CFG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':`AWSCognitoIdentityProviderService.${action}`},body:JSON.stringify(body)});return await r.json();}catch(e){return{};}
 }
+function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');user=null;token=null;navView('v-auth');}
+function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
+(function(){const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u');if(t&&u){token=t;user=u;showHome();}})();
 
-// ============ CHAPTERS ============
-function renderChapters(){
-  const list=document.getElementById('chapter-list');
-  list.innerHTML='<h3 style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:12px;text-align:center;">Select a Chapter to Study</h3>';
-  Object.entries(CHAPTERS).sort((a,b)=>parseInt(a[0])-parseInt(b[0])).forEach(([num,title])=>{
-    const count=FLASHCARD_DATA.filter(c=>c.chapter===parseInt(num)).length;
-    list.innerHTML+=`<button class="ch-btn" onclick="startPractice(${num})"><span class="ch-num">Ch ${num}</span>${title}<span class="ch-count">${count} cards</span></button>`;
+// NAV
+function navView(id){['v-auth','v-home','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+
+// SCOPE
+function goScope(m){mode=m;isSpeed=(m==='speed');document.getElementById('scope-title').textContent=m==='practice'?'Study by Chapter':'Choose Your Challenge';
+  let html='<button class="scope-btn" onclick="startMode(0)"><span class="ch-num">ALL</span>Full Guide<span class="ch-count">'+FLASHCARD_DATA.length+' cards</span></button>';
+  Object.entries(CHAPTERS).sort((a,b)=>a[0]-b[0]).forEach(([n,t])=>{
+    const cnt=mode==='practice'?FLASHCARD_DATA.filter(c=>c.chapter==n).length:QUIZ_BANK.filter(q=>q.chapter==n).length;
+    html+=`<button class="scope-btn" onclick="startMode(${n})"><span class="ch-num">Ch ${n}</span>${t}<span class="ch-count">${cnt}</span></button>`;
   });
-  // All chapters
-  list.innerHTML+=`<button class="ch-btn" onclick="startPractice(0)" style="border-color:var(--gold)"><span class="ch-num">ALL</span>All Chapters<span class="ch-count">${FLASHCARD_DATA.length} cards</span></button>`;
+  document.getElementById('scope-list').innerHTML=html;navView('v-scope');
 }
 
-// ============ PRACTICE ============
-function startPractice(ch){
-  currentChapter=ch;cardIdx=0;isFlipped=false;
-  ['v-chapters','v-quiz'].forEach(id=>document.getElementById(id).classList.add('hidden'));
-  document.getElementById('v-practice').classList.remove('hidden');
-  renderCard();
+// PRACTICE
+function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
+function getPDeck(){return selectedChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===selectedChapter);}
+function renderPCard(){const deck=getPDeck();if(!deck.length)return;const c=deck[pIdx%deck.length];pFlipped=false;document.getElementById('p-back').classList.add('hidden');document.getElementById('p-front').innerHTML=`<h2>${c.title}</h2><div class="hint">Tap to reveal</div>`;let h='';if(c.summary)h+=`<p class="btext"><strong>${c.summary}</strong></p>`;if(c.who)h+=`<div class="blabel">WHO</div><p class="btext">${c.who}</p>`;if(c.what)h+=`<div class="blabel">WHAT</div><p class="btext">${c.what}</p>`;if(c.when)h+=`<div class="blabel">WHEN</div><p class="btext">${c.when}</p>`;if(c.where)h+=`<div class="blabel">WHERE</div><p class="btext">${c.where}</p>`;if(c.why)h+=`<div class="blabel">WHY</div><p class="btext">${c.why}</p>`;document.getElementById('p-back').innerHTML=h;document.getElementById('p-counter').textContent=(pIdx%deck.length+1)+'/'+deck.length;}
+function flipPractice(){pFlipped=!pFlipped;document.getElementById('p-back').classList.toggle('hidden',!pFlipped);}
+function pNext(){pIdx++;renderPCard();}
+function pPrev(){const d=getPDeck();pIdx=(pIdx-1+d.length)%d.length;renderPCard();}
+
+// QUIZ
+function initQuiz(){
+  const pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(q=>q.chapter===selectedChapter);
+  qList=[...pool].sort(()=>Math.random()-.5).slice(0,isSpeed?50:15);
+  qIdx=0;qScore=0;qStreak=0;qBestStreak=0;qCorrect=0;qTotal=qList.length;
+  if(isSpeed){qTimeLeft=30;startTimer();}else{qTimeLeft=0;}
+  renderQuizQ();
 }
-
-function getDeck(){
-  let cards=currentChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===currentChapter);
-  if(currentSet==='events') return cards.map(c=>({front:c.title,back:c}));
-  // People mode: group by WHO
-  const people={};
-  cards.forEach(c=>{if(!c.who)return;const p=c.who.split(';')[0].split('(')[0].trim();if(p.length>50)return;if(!people[p])people[p]=[];people[p].push(c);});
-  return Object.entries(people).map(([name,events])=>({front:name,back:events}));
+function startTimer(){document.getElementById('hud-timer').textContent=qTimeLeft+'s';qTimer=setInterval(()=>{qTimeLeft--;document.getElementById('hud-timer').textContent=qTimeLeft+'s';if(qTimeLeft<=0){clearInterval(qTimer);endQuiz();}},1000);}
+function renderQuizQ(){
+  if(qIdx>=qList.length){endQuiz();return;}
+  const q=qList[qIdx];document.getElementById('hud-score').textContent=qScore+' pts';document.getElementById('hud-streak').textContent=qStreak>1?'🔥 '+qStreak+' streak':'';document.getElementById('hud-qnum').textContent=(qIdx+1)+'/'+qTotal;document.getElementById('hud-timer').textContent=isSpeed?qTimeLeft+'s':'';
+  document.getElementById('q-type').textContent=q.type==='when'?'WHEN':q.type==='who'?'WHO':q.type==='where'?'WHERE':q.type==='why'?'WHY':q.type==='identify'?'IDENTIFY':'WHAT';
+  document.getElementById('q-text').textContent=q.q;document.getElementById('q-feedback').classList.add('hidden');document.getElementById('q-next').classList.add('hidden');
+  // Generate options
+  const pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(qb=>qb.chapter===selectedChapter);
+  const sameType=pool.filter(qb=>qb.type===q.type&&qb.a!==q.a);
+  const wrongs=sameType.sort(()=>Math.random()-.5).slice(0,3).map(qb=>qb.a);
+  while(wrongs.length<3){const rnd=pool[Math.floor(Math.random()*pool.length)];if(rnd.a!==q.a&&!wrongs.includes(rnd.a))wrongs.push(rnd.a);}
+  const opts=[q.a,...wrongs.slice(0,3)].sort(()=>Math.random()-.5);
+  const container=document.getElementById('q-opts');container.innerHTML='';
+  opts.forEach(o=>{const b=document.createElement('button');b.className='qopt';b.textContent=o.length>120?o.slice(0,120)+'...':o;b.onclick=()=>answerQuiz(o,q.a);container.appendChild(b);});
 }
-
-function setMode(m){currentSet=m;cardIdx=0;isFlipped=false;document.querySelectorAll('.set-btn').forEach(b=>b.classList.toggle('active',b.textContent.includes(m==='events'?'Events':'People')));renderCard();}
-
-function renderCard(){
-  const deck=getDeck();if(!deck.length)return;
-  const card=deck[cardIdx%deck.length];
-  isFlipped=false;
-  document.getElementById('fc-back').classList.add('hidden');
-  document.getElementById('fc-front').innerHTML=`<h2>${card.front}</h2><div class="tap-hint">Tap to reveal</div>`;
-  // Prep back
-  let html='';
-  if(currentSet==='events'){
-    const b=card.back;
-    if(b.summary) html+=`<p class="back-text"><strong>${b.summary}</strong></p>`;
-    if(b.who) html+=`<div class="back-label">WHO</div><p class="back-text">${b.who}</p>`;
-    if(b.what) html+=`<div class="back-label">WHAT</div><p class="back-text">${b.what}</p>`;
-    if(b.when) html+=`<div class="back-label">WHEN</div><p class="back-text">${b.when}</p>`;
-    if(b.where) html+=`<div class="back-label">WHERE</div><p class="back-text">${b.where}</p>`;
-    if(b.why) html+=`<div class="back-label">WHY</div><p class="back-text">${b.why}</p>`;
-  } else {
-    card.back.forEach(ev=>{html+=`<div class="back-label">${ev.title}</div><p class="back-text">${ev.what||''} ${ev.when?'('+ev.when+')':''}</p>`;});
-  }
-  document.getElementById('fc-back').innerHTML=html;
-  document.getElementById('card-counter').textContent=(cardIdx%deck.length+1)+' / '+deck.length;
+function answerQuiz(sel,correct){
+  document.querySelectorAll('.qopt').forEach(o=>{o.classList.add('disabled');if(o.textContent===(correct.length>120?correct.slice(0,120)+'...':correct))o.classList.add('correct');if(o.textContent===(sel.length>120?sel.slice(0,120)+'...':sel)&&sel!==correct)o.classList.add('wrong');});
+  const fb=document.getElementById('q-feedback');
+  if(sel===correct){qCorrect++;qStreak++;if(qStreak>qBestStreak)qBestStreak=qStreak;let pts=10;if(qStreak>=3)pts+=5;if(qStreak>=5)pts+=10;if(isSpeed)pts+=5;qScore+=pts;fb.textContent=pts>10?`+${pts} pts 🔥 Streak Bonus!`:`+${pts} pts ✓`;fb.style.color='var(--green)';}
+  else{qStreak=0;fb.textContent='✗ Incorrect';fb.style.color='var(--red)';}
+  fb.classList.remove('hidden');
+  if(isSpeed){setTimeout(()=>{qIdx++;renderQuizQ();},800);}else{document.getElementById('q-next').classList.remove('hidden');}
 }
+function nextQuizQ(){qIdx++;renderQuizQ();}
+function endQuiz(){if(qTimer)clearInterval(qTimer);document.getElementById('r-score').textContent=qScore+' pts';document.getElementById('r-correct').textContent=`${qCorrect}/${qIdx} correct (${qIdx?Math.round(qCorrect/qIdx*100):0}%)`;document.getElementById('r-streak').textContent=`Best streak: ${qBestStreak} 🔥`;document.getElementById('r-bonus').textContent=isSpeed?'⚡ Speed Round Bonus: +'+(qCorrect*2)+' pts':'';if(isSpeed)qScore+=qCorrect*2;navView('v-results');saveProgress();}
+function replayQuiz(){initQuiz();navView('v-quiz');}
 
-function flipCard(){isFlipped=!isFlipped;document.getElementById('fc-back').classList.toggle('hidden',!isFlipped);document.getElementById('fc-front').querySelector('.tap-hint').textContent=isFlipped?'Tap to hide':'Tap to reveal';}
-function nextCard(){cardIdx++;renderCard();}
-function prevCard(){const deck=getDeck();cardIdx=(cardIdx-1+deck.length)%deck.length;renderCard();}
-
-// ============ QUIZ ============
-function renderQuizChapters(){
-  const list=document.getElementById('quiz-chapter-list');
-  list.innerHTML='<h3 style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:12px;text-align:center;padding-top:8px;">Select a Chapter to Quiz</h3>';
-  Object.entries(CHAPTERS).sort((a,b)=>parseInt(a[0])-parseInt(b[0])).forEach(([num,title])=>{
-    const count=FLASHCARD_DATA.filter(c=>c.chapter===parseInt(num)).length;
-    list.innerHTML+=`<button class="ch-btn" onclick="startQuiz(${num})"><span class="ch-num">Ch ${num}</span>${title}<span class="ch-count">${count} cards</span></button>`;
-  });
-  list.innerHTML+=`<button class="ch-btn" onclick="startQuiz(0)" style="border-color:var(--accent)"><span class="ch-num">ALL</span>All Chapters<span class="ch-count">${FLASHCARD_DATA.length} cards</span></button>`;
-}
-
-function startQuiz(ch){
-  currentChapter=ch;
-  const cards=ch===0?FLASHCARD_DATA:[...FLASHCARD_DATA.filter(c=>c.chapter===ch)];
-  quizCards=cards.sort(()=>Math.random()-.5).slice(0,Math.min(10,cards.length));
-  quizIdx=0;quizScore=0;
-  document.getElementById('v-quiz').classList.add('hidden');
-  document.getElementById('v-quiz-active').classList.remove('hidden');
-  renderQ();
-}
-
-function renderQ(){
-  if(quizIdx>=quizCards.length){finishQuiz();return;}
-  const card=quizCards[quizIdx];
-  const allCards=currentChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===currentChapter);
-  document.getElementById('quiz-header').textContent=`Question ${quizIdx+1}/${quizCards.length} · Score: ${quizScore}`;
-  document.getElementById('q-next').classList.add('hidden');
-  // Show a clue, guess the event title
-  const clues=[card.when,card.where,card.who].filter(Boolean);
-  const clue=clues[Math.floor(Math.random()*clues.length)]||card.summary;
-  document.getElementById('qp-title').textContent='Which event/topic?';
-  document.getElementById('qp-clue').textContent=clue;
-  const others=allCards.filter(c=>c.title!==card.title).sort(()=>Math.random()-.5).slice(0,3);
-  const opts=[card,...others].sort(()=>Math.random()-.5);
-  const container=document.getElementById('q-opts');
-  container.innerHTML='';
-  opts.forEach(o=>{
-    const btn=document.createElement('button');btn.className='q-opt';btn.textContent=o.title;
-    btn.onclick=()=>answerQ(o.title,card.title);container.appendChild(btn);
-  });
-}
-
-function answerQ(sel,correct){
-  document.querySelectorAll('.q-opt').forEach(o=>{o.classList.add('disabled');if(o.textContent===correct)o.classList.add('correct');if(o.textContent===sel&&sel!==correct)o.classList.add('wrong');});
-  if(sel===correct)quizScore++;
-  document.getElementById('q-next').classList.remove('hidden');
-}
-function nextQ(){quizIdx++;renderQ();}
-
-function finishQuiz(){
-  const pct=Math.round((quizScore/quizCards.length)*100);
-  document.getElementById('quiz-header').textContent='';
-  document.getElementById('qp-title').textContent='🎉 Quiz Complete!';
-  document.getElementById('qp-clue').textContent=`${quizScore}/${quizCards.length} correct (${pct}%)`;
-  document.getElementById('q-opts').innerHTML='';
-  document.getElementById('q-next').textContent='Play Again';
-  document.getElementById('q-next').classList.remove('hidden');
-  document.getElementById('q-next').onclick=()=>{document.getElementById('v-quiz-active').classList.add('hidden');navTo('quiz');};
-  // Save stats
-  const s=getStats();
-  s.quizzesTaken++;s.totalCorrect+=quizScore;s.totalQuestions+=quizCards.length;
-  if(quizScore===quizCards.length)s.currentStreak++;else s.currentStreak=0;
-  if(s.currentStreak>s.bestStreak)s.bestStreak=s.currentStreak;
-  if(pct===100&&!s.awards.includes('Perfect 10'))s.awards.push('Perfect 10');
-  if(s.quizzesTaken>=5&&!s.awards.includes('Dedicated'))s.awards.push('Dedicated');
-  if(s.quizzesTaken>=20&&!s.awards.includes('Quiz Master'))s.awards.push('Quiz Master');
-  if(s.bestStreak>=3&&!s.awards.includes('On Fire 🔥'))s.awards.push('On Fire 🔥');
-  if(s.bestStreak>=5&&!s.awards.includes('Unstoppable'))s.awards.push('Unstoppable');
-  if(s.totalCorrect>=50&&!s.awards.includes('Half Century'))s.awards.push('Half Century');
-  if(s.totalCorrect>=100&&!s.awards.includes('Century Club'))s.awards.push('Century Club');
-  if(pct>=80&&!s.awards.includes('Honor Roll'))s.awards.push('Honor Roll');
+// STATS
+function getStats(){const r=localStorage.getItem('bh365_stats');return r?JSON.parse(r):{quizzes:0,totalPts:0,totalCorrect:0,totalQs:0,bestStreak:0,awards:[]};}
+function saveStats(s){localStorage.setItem('bh365_stats',JSON.stringify(s));}
+function saveProgress(){
+  const s=getStats();s.quizzes++;s.totalPts+=qScore;s.totalCorrect+=qCorrect;s.totalQs+=qIdx;if(qBestStreak>s.bestStreak)s.bestStreak=qBestStreak;
+  if(qCorrect===qIdx&&qIdx>=10&&!s.awards.includes('💯 Perfect'))s.awards.push('💯 Perfect');
+  if(s.quizzes>=5&&!s.awards.includes('📚 Dedicated'))s.awards.push('📚 Dedicated');
+  if(s.quizzes>=20&&!s.awards.includes('🎓 Scholar'))s.awards.push('🎓 Scholar');
+  if(s.bestStreak>=5&&!s.awards.includes('🔥 On Fire'))s.awards.push('🔥 On Fire');
+  if(s.bestStreak>=10&&!s.awards.includes('⚡ Unstoppable'))s.awards.push('⚡ Unstoppable');
+  if(s.totalPts>=500&&!s.awards.includes('💎 500 Club'))s.awards.push('💎 500 Club');
+  if(s.totalPts>=1000&&!s.awards.includes('👑 1K Legend'))s.awards.push('👑 1K Legend');
   saveStats(s);
-  // Sync to leaderboard
-  apiPost('/leaderboard',{username:currentUser,totalCorrect:s.totalCorrect,totalQuestions:s.totalQuestions,quizzesTaken:s.quizzesTaken,bestStreak:s.bestStreak,awards:s.awards});
+  // Sync leaderboard
+  fetch(CFG.api+'/leaderboard',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({username:user,totalCorrect:s.totalCorrect,totalQuestions:s.totalQs,quizzesTaken:s.quizzes,bestStreak:s.bestStreak,awards:s.awards})}).catch(()=>{});
 }
-
-function getStats(){const r=localStorage.getItem(STORE_KEY);return r?JSON.parse(r):{quizzesTaken:0,totalCorrect:0,totalQuestions:0,bestStreak:0,currentStreak:0,awards:[]};}
-function saveStats(s){localStorage.setItem(STORE_KEY,JSON.stringify(s));}
-
-// ============ LEADERBOARD ============
-async function loadLeaderboard(){
-  const container=document.getElementById('lb-content');
-  container.innerHTML='<div class="lb-card"><h3>🏆 Leaderboard</h3><p style="color:var(--muted);font-size:.85rem;">Loading...</p></div>';
-  try{
-    const r=await fetch(CONFIG.api+'/leaderboard');
-    const data=await r.json();
-    if(!data||!data.length){container.innerHTML='<div class="lb-card"><h3>🏆 Leaderboard</h3><p style="color:var(--muted);font-size:.85rem;">No scores yet. Be the first to quiz!</p></div>';return;}
-    let html='<div class="lb-card"><h3>🏆 Leaderboard</h3>';
-    data.slice(0,20).forEach((entry,i)=>{
-      const pct=entry.totalQuestions?Math.round((entry.totalCorrect/entry.totalQuestions)*100):0;
-      const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';
-      html+=`<div class="lb-row"><span class="lb-rank">${medal||i+1}</span><span class="lb-name">${entry.username}</span><span class="lb-score">${entry.totalCorrect}</span><span class="lb-pct">${pct}%</span></div>`;
-    });
-    html+='</div>';
-    container.innerHTML=html;
-  }catch(e){container.innerHTML='<div class="lb-card"><h3>🏆 Leaderboard</h3><p style="color:var(--muted);font-size:.85rem;">Could not load leaderboard</p></div>';}
-}
-
-// ============ STATS ============
 function renderStats(){
-  const s=getStats();
-  const pct=s.totalQuestions?Math.round((s.totalCorrect/s.totalQuestions)*100):0;
+  const s=getStats();const pct=s.totalQs?Math.round(s.totalCorrect/s.totalQs*100):0;
   document.getElementById('stats-content').innerHTML=`
-    <div class="stat-box"><h3>📊 My Progress</h3>
-      <div class="stat-row"><span>Quizzes Taken</span><span class="stat-val">${s.quizzesTaken}</span></div>
-      <div class="stat-row"><span>Total Correct</span><span class="stat-val">${s.totalCorrect} / ${s.totalQuestions}</span></div>
-      <div class="stat-row"><span>Accuracy</span><span class="stat-val">${pct}%</span></div>
-      <div class="stat-row"><span>Best Streak</span><span class="stat-val">${s.bestStreak} 🔥</span></div>
+    <div class="lb-row" style="flex-direction:column;align-items:flex-start;gap:4px;padding:14px;">
+      <div style="display:flex;justify-content:space-between;width:100%"><span>Total Points</span><span style="color:var(--gold);font-family:Fredoka One,cursive">${s.totalPts}</span></div>
+      <div style="display:flex;justify-content:space-between;width:100%"><span>Quizzes Played</span><span style="color:var(--green)">${s.quizzes}</span></div>
+      <div style="display:flex;justify-content:space-between;width:100%"><span>Accuracy</span><span style="color:var(--green)">${pct}%</span></div>
+      <div style="display:flex;justify-content:space-between;width:100%"><span>Best Streak</span><span style="color:var(--red)">${s.bestStreak} 🔥</span></div>
     </div>
-    <div class="stat-box"><h3>🏆 Awards</h3>
-      ${s.awards.length?'<div class="awards-list">'+s.awards.map(a=>`<div class="award-badge">${a}</div>`).join('')+'</div>':'<p style="color:var(--muted);font-size:.85rem;">Keep quizzing to earn awards!</p>'}
+    <div class="lb-row" style="flex-direction:column;align-items:flex-start;padding:14px;">
+      <span style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:6px;">Awards</span>
+      ${s.awards.length?s.awards.map(a=>`<span style="display:inline-block;background:rgba(242,201,76,.1);border:2px solid var(--gold);border-radius:8px;padding:4px 10px;margin:3px;font-size:.8rem;font-weight:800;color:var(--gold)">${a}</span>`).join(''):'<span style="color:var(--muted)">Keep playing to earn awards!</span>'}
     </div>`;
+}
+
+// LEADERBOARD
+async function loadLB(){
+  const el=document.getElementById('lb-list');el.innerHTML='<p style="color:var(--muted);text-align:center">Loading...</p>';
+  try{const r=await fetch(CFG.api+'/leaderboard');const data=await r.json();
+    if(!data||!data.length){el.innerHTML='<p style="color:var(--muted);text-align:center">No scores yet!</p>';return;}
+    el.innerHTML=data.slice(0,20).map((e,i)=>{const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';return`<div class="lb-row"><span class="lb-rank">${medal||(i+1)}</span><span class="lb-name">${e.username}</span><span class="lb-pts">${e.totalCorrect} pts</span></div>`;}).join('');
+  }catch(e){el.innerHTML='<p style="color:var(--muted);text-align:center">Could not load</p>';}
 }
 </script>
 </body>
