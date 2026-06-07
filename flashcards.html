@@ -20,8 +20,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
 /* AUTH */
-.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);}
-.auth-box{background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:32px 24px;width:100%;max-width:320px;text-align:center;}
+.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);background-image:url('/login-bg.png');background-size:cover;background-position:center;}
+.auth-box{background:rgba(26,26,26,.92);border:2px solid #333;border-radius:var(--radius);padding:32px 24px;width:100%;max-width:320px;text-align:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
 .auth-box h2{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
 .auth-box .sub{color:var(--muted);font-weight:700;font-size:.85rem;margin-bottom:20px;}
 .auth-box input{width:100%;padding:12px 14px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:10px;}
