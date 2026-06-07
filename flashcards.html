@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="BH365">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#1a1a1a">
+<meta name="theme-color" content="#0d0d0d">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <link rel="apple-touch-icon" href="/bh365-icon.png">
 <link rel="icon" type="image/png" href="/bh365-icon.png">
@@ -54,7 +54,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .scope-btn:hover{border-color:var(--red);}
 .scope-btn .ch-num{font-family:'Fredoka One',cursive;color:var(--red);margin-right:8px;}
 .scope-btn .ch-count{float:right;color:var(--muted);font-size:.72rem;margin-top:2px;}
-.back-link{display:block;text-align:center;color:var(--gold);font-weight:800;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
+.back-link{display:block;text-align:right;color:var(--gold);font-weight:800;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
 
 /* PRACTICE CARD */
 .practice-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
@@ -168,10 +168,32 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 </div>
 </div>
 
-<!-- SCOPE SELECT -->
+<!-- SCOPE TYPE (By Chapter, By Unit, Whole Section) -->
+<div id="v-scope-type" class="hidden">
+<div class="scope-page">
+<span class="back-link" onclick="navView('v-home')">Back →</span>
+<h2 id="scope-type-title">How do you want to study?</h2>
+<div class="home-actions">
+<div class="action-card" onclick="goScopeDetail('chapter')">
+<span class="ac-icon">📑</span>
+<div><h3>By Chapter</h3><p>Pick a specific chapter</p></div>
+</div>
+<div class="action-card" onclick="goScopeDetail('unit')">
+<span class="ac-icon">📚</span>
+<div><h3>By Unit</h3><p>Unit 5 · Unit 6 · Unit 7</p></div>
+</div>
+<div class="action-card" onclick="startMode(0)">
+<span class="ac-icon">🌍</span>
+<div><h3>Whole Section</h3><p>All chapters combined</p></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- SCOPE SELECT (chapters or units) -->
 <div id="v-scope" class="hidden">
 <div class="scope-page">
-<span class="back-link" onclick="navView('v-home')">← Back</span>
+<span class="back-link" onclick="navView('v-scope-type')">Back →</span>
 <h2 id="scope-title">Select Chapter</h2>
 <div id="scope-list"></div>
 </div>
@@ -180,7 +202,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 <!-- PRACTICE -->
 <div id="v-practice" class="hidden">
 <div class="practice-page">
-<span class="back-link" onclick="navView('v-scope')">← Back to Chapters</span>
+<span class="back-link" onclick="navView('v-scope')">Back →</span>
 <div class="pcard" onclick="flipPractice()">
 <div class="pcard-front" id="p-front"><h2></h2><div class="hint">Tap to reveal</div></div>
 <div class="pcard-back hidden" id="p-back"></div>
@@ -227,7 +249,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 <!-- LEADERBOARD -->
 <div id="v-lb" class="hidden">
 <div class="lb-page">
-<span class="back-link" onclick="navView('v-home')">← Home</span>
+<span class="back-link" onclick="navView('v-home')">Back →</span>
 <h2>🏆 Leaderboard</h2>
 <div id="lb-list"></div>
 </div>
@@ -236,7 +258,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 <!-- STATS -->
 <div id="v-stats" class="hidden">
 <div class="lb-page">
-<span class="back-link" onclick="navView('v-home')">← Home</span>
+<span class="back-link" onclick="navView('v-home')">Back →</span>
 <h2>📊 My Stats</h2>
 <div id="stats-content"></div>
 </div>
@@ -273,21 +295,51 @@ function showHome(){document.getElementById('greet-user').textContent=`Welcome b
 (function(){const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u');if(t&&u){token=t;user=u;showHome();}})();
 
 // NAV
-function navView(id){['v-auth','v-home','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+
+// UNITS
+const UNITS = {
+  5: { name: 'Unit 5', chapters: [11,12,13,14,15], desc: 'The Great Migration through the Harlem Renaissance' },
+  6: { name: 'Unit 6', chapters: [16,17,18,19], desc: 'Civil Rights Movement' },
+  7: { name: 'Unit 7', chapters: [20,21,22,23,24], desc: 'Economic Systems, HBCUs & Modern Era' }
+};
 
 // SCOPE
-function goScope(m){mode=m;isSpeed=(m==='speed');document.getElementById('scope-title').textContent=m==='practice'?'Study by Chapter':'Choose Your Challenge';
-  let html='<button class="scope-btn" onclick="startMode(0)"><span class="ch-num">ALL</span>Full Guide<span class="ch-count">'+FLASHCARD_DATA.length+' cards</span></button>';
-  Object.entries(CHAPTERS).sort((a,b)=>a[0]-b[0]).forEach(([n,t])=>{
-    const cnt=mode==='practice'?FLASHCARD_DATA.filter(c=>c.chapter==n).length:QUIZ_BANK.filter(q=>q.chapter==n).length;
-    html+=`<button class="scope-btn" onclick="startMode(${n})"><span class="ch-num">Ch ${n}</span>${t}<span class="ch-count">${cnt}</span></button>`;
-  });
-  document.getElementById('scope-list').innerHTML=html;navView('v-scope');
+function goScope(m){mode=m;isSpeed=(m==='speed');
+  document.getElementById('scope-type-title').textContent=m==='practice'?'How do you want to study?':'Choose your challenge scope';
+  navView('v-scope-type');
 }
+
+function goScopeDetail(type){
+  if(type==='chapter'){
+    document.getElementById('scope-title').textContent='Select a Chapter';
+    let html='';
+    Object.entries(CHAPTERS).sort((a,b)=>a[0]-b[0]).forEach(([n,t])=>{
+      const cnt=mode==='practice'?FLASHCARD_DATA.filter(c=>c.chapter==n).length:QUIZ_BANK.filter(q=>q.chapter==n).length;
+      html+=`<button class="scope-btn" onclick="startMode(${n})"><span class="ch-num">Ch ${n}</span>${t}<span class="ch-count">${cnt}</span></button>`;
+    });
+    document.getElementById('scope-list').innerHTML=html;
+  } else {
+    document.getElementById('scope-title').textContent='Select a Unit';
+    let html='';
+    Object.entries(UNITS).forEach(([num,u])=>{
+      const chs=u.chapters;
+      const cnt=mode==='practice'?FLASHCARD_DATA.filter(c=>chs.includes(c.chapter)).length:QUIZ_BANK.filter(q=>chs.includes(q.chapter)).length;
+      html+=`<button class="scope-btn" onclick="startUnit([${chs}])"><span class="ch-num">${u.name}</span>${u.desc}<span class="ch-count">${cnt}</span></button>`;
+    });
+    document.getElementById('scope-list').innerHTML=html;
+  }
+  navView('v-scope');
+}
+
+function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx=0;pFlipped=false;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
 
 // PRACTICE
 function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
-function getPDeck(){return selectedChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===selectedChapter);}
+function getPDeck(){
+  if(Array.isArray(selectedChapter)) return FLASHCARD_DATA.filter(c=>selectedChapter.includes(c.chapter));
+  return selectedChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===selectedChapter);
+}
 function renderPCard(){const deck=getPDeck();if(!deck.length)return;const c=deck[pIdx%deck.length];pFlipped=false;document.getElementById('p-back').classList.add('hidden');document.getElementById('p-front').innerHTML=`<h2>${c.title}</h2><div class="hint">Tap to reveal</div>`;let h='';if(c.summary)h+=`<p class="btext"><strong>${c.summary}</strong></p>`;if(c.who)h+=`<div class="blabel">WHO</div><p class="btext">${c.who}</p>`;if(c.what)h+=`<div class="blabel">WHAT</div><p class="btext">${c.what}</p>`;if(c.when)h+=`<div class="blabel">WHEN</div><p class="btext">${c.when}</p>`;if(c.where)h+=`<div class="blabel">WHERE</div><p class="btext">${c.where}</p>`;if(c.why)h+=`<div class="blabel">WHY</div><p class="btext">${c.why}</p>`;document.getElementById('p-back').innerHTML=h;document.getElementById('p-counter').textContent=(pIdx%deck.length+1)+'/'+deck.length;}
 function flipPractice(){pFlipped=!pFlipped;document.getElementById('p-back').classList.toggle('hidden',!pFlipped);}
 function pNext(){pIdx++;renderPCard();}
@@ -295,7 +347,9 @@ function pPrev(){const d=getPDeck();pIdx=(pIdx-1+d.length)%d.length;renderPCard(
 
 // QUIZ
 function initQuiz(){
-  const pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(q=>q.chapter===selectedChapter);
+  let pool;
+  if(Array.isArray(selectedChapter)) pool=QUIZ_BANK.filter(q=>selectedChapter.includes(q.chapter));
+  else pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(q=>q.chapter===selectedChapter);
   qList=[...pool].sort(()=>Math.random()-.5).slice(0,isSpeed?50:15);
   qIdx=0;qScore=0;qStreak=0;qBestStreak=0;qCorrect=0;qTotal=qList.length;
   if(isSpeed){qTimeLeft=30;startTimer();}else{qTimeLeft=0;}
@@ -308,7 +362,9 @@ function renderQuizQ(){
   document.getElementById('q-type').textContent=q.type==='when'?'WHEN':q.type==='who'?'WHO':q.type==='where'?'WHERE':q.type==='why'?'WHY':q.type==='identify'?'IDENTIFY':'WHAT';
   document.getElementById('q-text').textContent=q.q;document.getElementById('q-feedback').classList.add('hidden');document.getElementById('q-next').classList.add('hidden');
   // Generate options
-  const pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(qb=>qb.chapter===selectedChapter);
+  let pool;
+  if(Array.isArray(selectedChapter)) pool=QUIZ_BANK.filter(qb=>selectedChapter.includes(qb.chapter));
+  else pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(qb=>qb.chapter===selectedChapter);
   const sameType=pool.filter(qb=>qb.type===q.type&&qb.a!==q.a);
   const wrongs=sameType.sort(()=>Math.random()-.5).slice(0,3).map(qb=>qb.a);
   while(wrongs.length<3){const rnd=pool[Math.floor(Math.random()*pool.length)];if(rnd.a!==q.a&&!wrongs.includes(rnd.a))wrongs.push(rnd.a);}
