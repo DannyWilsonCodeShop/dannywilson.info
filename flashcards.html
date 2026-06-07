@@ -19,8 +19,17 @@
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;}
 .gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
+/* SPLASH */
+.splash-screen{position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);background-image:url('/login-bg.png');background-size:120%;background-position:center top;animation:splashFadeIn .8s ease;}
+.splash-title{font-family:'Fredoka One',cursive;font-size:2.4rem;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.6);animation:splashPulse 1.5s ease infinite alternate;}
+.splash-sub{color:rgba(255,255,255,.8);font-weight:700;font-size:1rem;margin-top:8px;text-shadow:0 2px 10px rgba(0,0,0,.5);}
+.splash-screen.fade-out{animation:splashFadeOut .6s ease forwards;}
+@keyframes splashFadeIn{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
+@keyframes splashFadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.95)}}
+@keyframes splashPulse{from{transform:scale(1)}to{transform:scale(1.03)}}
+
 /* AUTH */
-.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);background-image:url('/login-bg.png');background-size:110%;background-position:center;}
+.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);background-image:url('/login-bg.png');background-size:120%;background-position:center top;}
 .auth-box{background:rgba(26,26,26,.92);border:2px solid #333;border-radius:var(--radius);padding:32px 24px;width:100%;max-width:320px;text-align:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
 .auth-box h2{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
 .auth-box .sub{color:var(--muted);font-weight:700;font-size:.85rem;margin-bottom:20px;}
@@ -117,8 +126,14 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 <body>
 <div class="gradient-bar"></div>
 
+<!-- SPLASH SCREEN -->
+<div id="v-splash" class="splash-screen">
+<h1 class="splash-title">BH365 Study</h1>
+<p class="splash-sub">Black History 365 Days a Year</p>
+</div>
+
 <!-- AUTH -->
-<div id="v-auth" class="auth-screen">
+<div id="v-auth" class="auth-screen hidden">
 <div class="auth-box">
 <h2>BH365 Study</h2>
 <p class="sub">Black History · Learn · Compete</p>
@@ -270,6 +285,21 @@ const CFG={clientId:'31p3snnqs2l00ln5if1fu3e1b2',api:'https://10rgcui6d6.execute
 let user=null,token=null,mode='',selectedChapter=null,pIdx=0,pFlipped=false;
 let qList=[],qIdx=0,qScore=0,qStreak=0,qBestStreak=0,qCorrect=0,qTotal=0,qTimer=null,qTimeLeft=0,isSpeed=false;
 
+// SPLASH
+(function initSplash(){
+  const splash = document.getElementById('v-splash');
+  setTimeout(()=>{
+    splash.classList.add('fade-out');
+    setTimeout(()=>{
+      splash.style.display='none';
+      // Check if already logged in
+      const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u');
+      if(t&&u){token=t;user=u;showHome();}
+      else{document.getElementById('v-auth').classList.remove('hidden');}
+    },600);
+  },2500);
+})();
+
 // AUTH
 function toggleAuth(){document.getElementById('auth-login').classList.toggle('hidden');document.getElementById('auth-signup').classList.toggle('hidden');document.getElementById('auth-err').textContent='';}
 async function doLogin(){
@@ -292,7 +322,6 @@ async function cognitoAuth(action,body){
 }
 function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');user=null;token=null;navView('v-auth');}
 function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
-(function(){const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u');if(t&&u){token=t;user=u;showHome();}})();
 
 // NAV
 function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
