@@ -256,6 +256,7 @@ const ADULT_LAUNDRY = {Danny:[[1,5],[3,5],[1,4]],Courtnee:[[0,2],[0,4],[2,6]]};
 // ============ AUTH STATE ============
 let currentUser = null;
 let idToken = null;
+let cur = new Date(); cur.setHours(0,0,0,0);
 
 // ============ AUTH ============
 async function doLogin(){
@@ -468,8 +469,6 @@ function studyBtn(){
   return '<button style="width:100%;border-radius:10px;padding:8px;font-size:.75rem;font-weight:800;background:linear-gradient(135deg,#e94560,#0f3460);color:#fff;border:none;margin-top:6px;cursor:pointer;" onclick="goStudy()">📚 Study Flashcards</button>';
 }
 function goStudy(){ window.location.href='/flashcards.html'; }
-
-let cur = new Date(); cur.setHours(0,0,0,0);
 
 function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
 
