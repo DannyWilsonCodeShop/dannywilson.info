@@ -39,9 +39,11 @@ header p{color:rgba(255,255,255,.7);font-size:.85rem;font-weight:700;margin-top:
 .card-container{perspective:1000px;max-width:500px;margin:20px auto;padding:0 16px;}
 .flashcard{position:relative;width:100%;min-height:300px;transition:transform .6s;transform-style:preserve-3d;cursor:pointer;border-radius:var(--radius);}
 .flashcard.flipped{transform:rotateY(180deg);}
-.card-face{position:absolute;top:0;left:0;right:0;bottom:0;backface-visibility:hidden;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:var(--shadow);}
-.card-front{background:linear-gradient(135deg,#16213e,#0f3460);}
-.card-back{background:linear-gradient(135deg,#1a4a1a,#0d2d0d);transform:rotateY(180deg);}
+.flashcard.flipped .card-front{pointer-events:none;}
+.flashcard.flipped .card-back{pointer-events:auto;overflow-y:auto;}
+.card-face{position:absolute;top:0;left:0;right:0;backface-visibility:hidden;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:var(--shadow);}
+.card-front{min-height:300px;background:linear-gradient(135deg,#16213e,#0f3460);}
+.card-back{min-height:300px;max-height:70vh;overflow-y:auto;background:linear-gradient(135deg,#1a4a1a,#0d2d0d);transform:rotateY(180deg);justify-content:flex-start;align-items:flex-start;}
 .card-front h2{font-family:'Fredoka One',cursive;font-size:1.4rem;color:#fff;margin-bottom:8px;}
 .card-front .card-hint{font-size:.8rem;color:var(--muted);margin-top:12px;}
 .card-back p{font-size:.88rem;line-height:1.5;font-weight:600;margin-bottom:8px;text-align:left;width:100%;}
