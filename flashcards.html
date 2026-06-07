@@ -364,13 +364,19 @@ function goScopeDetail(type){
   navView('v-scope');
 }
 
-function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx=0;pFlipped=false;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
+function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
 
 // PRACTICE
-function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
+function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
+let shuffledPDeck=null;
 function getPDeck(){
-  if(Array.isArray(selectedChapter)) return PRACTICE_CARDS.filter(c=>selectedChapter.includes(c.chapter));
-  return selectedChapter===0?PRACTICE_CARDS:PRACTICE_CARDS.filter(c=>c.chapter===selectedChapter);
+  if(!shuffledPDeck){
+    let deck;
+    if(Array.isArray(selectedChapter)) deck=PRACTICE_CARDS.filter(c=>selectedChapter.includes(c.chapter));
+    else deck=selectedChapter===0?[...PRACTICE_CARDS]:PRACTICE_CARDS.filter(c=>c.chapter===selectedChapter);
+    shuffledPDeck=[...deck].sort(()=>Math.random()-.5);
+  }
+  return shuffledPDeck;
 }
 function renderPCard(){const deck=getPDeck();if(!deck.length)return;const c=deck[pIdx%deck.length];pFlipped=false;document.getElementById('p-back').classList.add('hidden');document.getElementById('p-front').innerHTML=`<div class="hint" style="margin-bottom:8px;color:var(--red);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;">${c.type||''}</div><h2>${c.q}</h2><div class="hint" style="margin-top:12px;">Tap to see answer</div>`;document.getElementById('p-back').innerHTML=`<p class="btext">${c.a}</p>`;document.getElementById('p-counter').textContent=(pIdx%deck.length+1)+'/'+deck.length;}
 function flipPractice(){pFlipped=!pFlipped;document.getElementById('p-back').classList.toggle('hidden',!pFlipped);}
