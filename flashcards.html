@@ -347,7 +347,7 @@ function goScopeDetail(type){
     document.getElementById('scope-title').textContent='Select a Chapter';
     let html='';
     Object.entries(CHAPTERS).sort((a,b)=>a[0]-b[0]).forEach(([n,t])=>{
-      const cnt=mode==='practice'?FLASHCARD_DATA.filter(c=>c.chapter==n).length:QUIZ_BANK.filter(q=>q.chapter==n).length;
+      const cnt=mode==='practice'?PRACTICE_CARDS.filter(c=>c.chapter==n).length:QUIZ_BANK.filter(q=>q.chapter==n).length;
       html+=`<button class="scope-btn" onclick="startMode(${n})"><span class="ch-num">Ch ${n}</span>${t}<span class="ch-count">${cnt}</span></button>`;
     });
     document.getElementById('scope-list').innerHTML=html;
@@ -356,7 +356,7 @@ function goScopeDetail(type){
     let html='';
     Object.entries(UNITS).forEach(([num,u])=>{
       const chs=u.chapters;
-      const cnt=mode==='practice'?FLASHCARD_DATA.filter(c=>chs.includes(c.chapter)).length:QUIZ_BANK.filter(q=>chs.includes(q.chapter)).length;
+      const cnt=mode==='practice'?PRACTICE_CARDS.filter(c=>chs.includes(c.chapter)).length:QUIZ_BANK.filter(q=>chs.includes(q.chapter)).length;
       html+=`<button class="scope-btn" onclick="startUnit([${chs}])"><span class="ch-num">${u.name}</span>${u.desc}<span class="ch-count">${cnt}</span></button>`;
     });
     document.getElementById('scope-list').innerHTML=html;
@@ -369,10 +369,10 @@ function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx
 // PRACTICE
 function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
 function getPDeck(){
-  if(Array.isArray(selectedChapter)) return FLASHCARD_DATA.filter(c=>selectedChapter.includes(c.chapter));
-  return selectedChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===selectedChapter);
+  if(Array.isArray(selectedChapter)) return PRACTICE_CARDS.filter(c=>selectedChapter.includes(c.chapter));
+  return selectedChapter===0?PRACTICE_CARDS:PRACTICE_CARDS.filter(c=>c.chapter===selectedChapter);
 }
-function renderPCard(){const deck=getPDeck();if(!deck.length)return;const c=deck[pIdx%deck.length];pFlipped=false;document.getElementById('p-back').classList.add('hidden');document.getElementById('p-front').innerHTML=`<h2>${c.title}</h2><div class="hint">Tap to reveal</div>`;let h='';if(c.summary)h+=`<p class="btext"><strong>${c.summary}</strong></p>`;if(c.who)h+=`<div class="blabel">WHO</div><p class="btext">${c.who}</p>`;if(c.what)h+=`<div class="blabel">WHAT</div><p class="btext">${c.what}</p>`;if(c.when)h+=`<div class="blabel">WHEN</div><p class="btext">${c.when}</p>`;if(c.where)h+=`<div class="blabel">WHERE</div><p class="btext">${c.where}</p>`;if(c.why)h+=`<div class="blabel">WHY</div><p class="btext">${c.why}</p>`;document.getElementById('p-back').innerHTML=h;document.getElementById('p-counter').textContent=(pIdx%deck.length+1)+'/'+deck.length;}
+function renderPCard(){const deck=getPDeck();if(!deck.length)return;const c=deck[pIdx%deck.length];pFlipped=false;document.getElementById('p-back').classList.add('hidden');document.getElementById('p-front').innerHTML=`<div class="hint" style="margin-bottom:8px;color:var(--red);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;">${c.type||''}</div><h2>${c.q}</h2><div class="hint" style="margin-top:12px;">Tap to see answer</div>`;document.getElementById('p-back').innerHTML=`<p class="btext">${c.a}</p>`;document.getElementById('p-counter').textContent=(pIdx%deck.length+1)+'/'+deck.length;}
 function flipPractice(){pFlipped=!pFlipped;document.getElementById('p-back').classList.toggle('hidden',!pFlipped);}
 function pNext(){pIdx++;renderPCard();}
 function pPrev(){const d=getPDeck();pIdx=(pIdx-1+d.length)%d.length;renderPCard();}
