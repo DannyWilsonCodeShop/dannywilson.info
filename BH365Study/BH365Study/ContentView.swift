@@ -4,7 +4,7 @@ import WebKit
 struct ContentView: View {
     var body: some View {
         WebView(url: URL(string: "https://dannywilson.info/flashcards.html")!)
-            .edgesIgnoringSafeArea(.all)
+            .ignoresSafeArea(edges: [.bottom])
     }
 }
 
@@ -17,9 +17,8 @@ struct WebView: UIViewRepresentable {
 
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.isOpaque = false
-        webView.backgroundColor = UIColor(red: 0.102, green: 0.102, blue: 0.18, alpha: 1.0) // #1a1a2e
+        webView.backgroundColor = UIColor(red: 0.051, green: 0.051, blue: 0.051, alpha: 1.0) // #0d0d0d
         webView.scrollView.bounces = false
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
         webView.load(URLRequest(url: url))
         return webView
     }

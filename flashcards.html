@@ -20,7 +20,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
 /* AUTH */
-.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;background:var(--bg);}
+.auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);}
 .auth-box{background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:32px 24px;width:100%;max-width:320px;text-align:center;}
 .auth-box h2{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
 .auth-box .sub{color:var(--muted);font-weight:700;font-size:.85rem;margin-bottom:20px;}
@@ -31,7 +31,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .auth-error{color:var(--red);font-size:.8rem;font-weight:700;margin-top:8px;min-height:18px;}
 
 /* HOME */
-.home{max-width:480px;margin:0 auto;padding:20px 16px;}
+.home{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 20px;}
 .greeting{text-align:center;margin-bottom:24px;}
 .greeting h1{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .greeting p{color:var(--muted);font-weight:700;font-size:.9rem;margin-top:4px;}
@@ -48,7 +48,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .logout-btn{position:absolute;top:calc(env(safe-area-inset-top,16px) + 10px);right:14px;background:none;border:none;color:var(--muted);font-size:.75rem;font-weight:700;cursor:pointer;}
 
 /* SCOPE SELECT */
-.scope-page{max-width:480px;margin:0 auto;padding:16px;}
+.scope-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
 .scope-page h2{font-family:'Fredoka One',cursive;font-size:1.2rem;text-align:center;margin-bottom:14px;color:var(--gold);}
 .scope-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
 .scope-btn:hover{border-color:var(--red);}
@@ -57,7 +57,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .back-link{display:block;text-align:center;color:var(--gold);font-weight:800;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
 
 /* PRACTICE CARD */
-.practice-page{max-width:480px;margin:0 auto;padding:16px;}
+.practice-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
 .pcard{background:var(--card);border:2px solid #333;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:border-color .2s;}
 .pcard:hover{border-color:var(--gold);}
 .pcard-front{padding:28px 20px;text-align:center;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
@@ -71,7 +71,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .card-nav .counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.82rem;min-width:60px;text-align:center;}
 
 /* QUIZ */
-.quiz-page{max-width:480px;margin:0 auto;padding:16px;}
+.quiz-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
 .quiz-hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding:10px 14px;background:var(--card);border-radius:10px;border:2px solid #333;}
 .hud-score{font-family:'Fredoka One',cursive;color:var(--gold);font-size:1rem;}
 .hud-streak{font-size:.8rem;font-weight:800;color:var(--red);}
