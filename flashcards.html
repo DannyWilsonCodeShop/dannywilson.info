@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BH365 Study">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>BH365 Flashcards</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1a1a2e;--card:#16213e;--text:#eee;--muted:#888;--accent:#e94560;--gold:#ffd93d;--green:#6bcb77;--radius:18px;--shadow:0 8px 32px rgba(0,0,0,.3);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:40px;}
+
+header{background:linear-gradient(135deg,#e94560,#0f3460);padding:calc(env(safe-area-inset-top,20px) + 16px) 20px 16px;text-align:center;}
+header h1{font-family:'Fredoka One',cursive;font-size:1.6rem;color:#fff;}
+header p{color:rgba(255,255,255,.7);font-size:.85rem;font-weight:700;margin-top:4px;}
+
+.back-btn{position:absolute;left:16px;top:calc(env(safe-area-inset-top,20px) + 16px);background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer;}
+
+/* MODE SELECT */
+.mode-select{display:flex;flex-direction:column;align-items:center;gap:14px;padding:40px 20px;max-width:400px;margin:0 auto;}
+.mode-btn{width:100%;padding:20px;border:none;border-radius:var(--radius);font-family:'Fredoka One',cursive;font-size:1.2rem;cursor:pointer;transition:transform .15s;text-align:left;display:flex;align-items:center;gap:14px;}
+.mode-btn:hover{transform:translateY(-3px);}
+.mode-btn .mode-ico{font-size:1.8rem;}
+.mode-btn .mode-info{font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:700;opacity:.8;margin-top:4px;}
+.mode-practice{background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;}
+.mode-quiz{background:linear-gradient(135deg,#e94560,#c23616);color:#fff;}
+.mode-stats{background:linear-gradient(135deg,#ffd93d,#f0932b);color:#1a1a2e;}
+
+/* SET SELECT */
+.set-select{display:flex;gap:8px;justify-content:center;padding:16px;flex-wrap:wrap;}
+.set-btn{padding:10px 20px;border:2px solid #333;border-radius:24px;background:var(--card);color:var(--text);font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .2s;}
+.set-btn.active{border-color:var(--accent);background:var(--accent);color:#fff;}
+
+/* FLASHCARD */
+.card-container{perspective:1000px;max-width:500px;margin:20px auto;padding:0 16px;}
+.flashcard{position:relative;width:100%;min-height:300px;transition:transform .6s;transform-style:preserve-3d;cursor:pointer;border-radius:var(--radius);}
+.flashcard.flipped{transform:rotateY(180deg);}
+.card-face{position:absolute;top:0;left:0;right:0;bottom:0;backface-visibility:hidden;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:var(--shadow);}
+.card-front{background:linear-gradient(135deg,#16213e,#0f3460);}
+.card-back{background:linear-gradient(135deg,#1a4a1a,#0d2d0d);transform:rotateY(180deg);}
+.card-front h2{font-family:'Fredoka One',cursive;font-size:1.4rem;color:#fff;margin-bottom:8px;}
+.card-front .card-hint{font-size:.8rem;color:var(--muted);margin-top:12px;}
+.card-back p{font-size:.88rem;line-height:1.5;font-weight:600;margin-bottom:8px;text-align:left;width:100%;}
+.card-back .back-label{font-family:'Fredoka One',cursive;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;text-align:left;width:100%;}
+
+.card-nav{display:flex;justify-content:center;gap:12px;padding:16px;align-items:center;}
+.card-nav button{padding:10px 24px;border:none;border-radius:24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .15s;}
+.card-nav button:hover{transform:translateY(-2px);}
+.nav-btn{background:#333;color:#fff;}
+.card-counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.9rem;min-width:80px;text-align:center;}
+
+/* QUIZ */
+.quiz-question{max-width:500px;margin:20px auto;padding:0 16px;}
+.quiz-prompt{background:var(--card);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow);margin-bottom:16px;}
+.quiz-prompt h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:#fff;margin-bottom:8px;}
+.quiz-prompt p{font-size:.9rem;color:var(--muted);font-weight:700;}
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.quiz-opt{padding:14px 18px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;text-align:left;}
+.quiz-opt:hover{border-color:var(--accent);}
+.quiz-opt.correct{border-color:var(--green);background:rgba(107,203,119,.15);color:var(--green);}
+.quiz-opt.wrong{border-color:var(--accent);background:rgba(233,69,96,.1);color:var(--accent);}
+.quiz-opt.disabled{pointer-events:none;opacity:.6;}
+.quiz-score{text-align:center;padding:12px;font-family:'Fredoka One',cursive;color:var(--gold);font-size:1rem;}
+.quiz-next{display:block;margin:16px auto;padding:12px 32px;border:none;border-radius:24px;background:var(--accent);color:#fff;font-family:'Fredoka One',cursive;font-size:1rem;cursor:pointer;}
+
+/* STATS */
+.stats-page{max-width:500px;margin:20px auto;padding:0 16px;}
+.stat-card{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);}
+.stat-card h3{font-family:'Fredoka One',cursive;font-size:1.1rem;margin-bottom:10px;color:var(--gold);}
+.stat-row{display:flex;justify-content:space-between;padding:6px 0;font-weight:700;font-size:.9rem;}
+.stat-row .val{color:var(--green);}
+.awards{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.award{background:rgba(255,217,61,.1);border:2px solid var(--gold);border-radius:12px;padding:8px 12px;font-size:.8rem;font-weight:800;color:var(--gold);}
+
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<header style="position:relative;">
+<button class="back-btn" onclick="goBack()">←</button>
+<h1>📚 BH365 Study</h1>
+<p>Black History Flashcards</p>
+</header>
+
+<!-- MODE SELECT -->
+<div id="v-mode" class="mode-select">
+<button class="mode-btn mode-practice" onclick="startPractice()">
+<span class="mode-ico">🃏</span>
+<div><div>Practice Mode</div><div class="mode-info">Flip through cards at your own pace</div></div>
+</button>
+<button class="mode-btn mode-quiz" onclick="startQuiz()">
+<span class="mode-ico">🎯</span>
+<div><div>Quiz Mode</div><div class="mode-info">Test yourself — earn points & awards</div></div>
+</button>
+<button class="mode-btn mode-stats" onclick="showStats()">
+<span class="mode-ico">🏆</span>
+<div><div>My Progress</div><div class="mode-info">See your scores and awards</div></div>
+</button>
+</div>
+
+<!-- SET SELECT (shared) -->
+<div id="v-sets" class="hidden">
+<div class="set-select">
+<button class="set-btn active" onclick="selectSet('events')">📅 Events → Details</button>
+<button class="set-btn" onclick="selectSet('people')">👤 People → Events</button>
+</div>
+</div>
+
+<!-- PRACTICE VIEW -->
+<div id="v-practice" class="hidden">
+<div class="card-container">
+<div class="flashcard" id="flashcard" onclick="flipCard()">
+<div class="card-face card-front">
+<h2 id="fc-front"></h2>
+<div class="card-hint">Tap to flip</div>
+</div>
+<div class="card-face card-back" id="fc-back"></div>
+</div>
+</div>
+<div class="card-nav">
+<button class="nav-btn" onclick="prevCard()">← Prev</button>
+<span class="card-counter" id="card-counter"></span>
+<button class="nav-btn" onclick="nextCard()">Next →</button>
+</div>
+</div>
+
+<!-- QUIZ VIEW -->
+<div id="v-quiz" class="hidden">
+<div class="quiz-score" id="quiz-score"></div>
+<div class="quiz-question">
+<div class="quiz-prompt">
+<h2 id="q-prompt"></h2>
+<p id="q-sub"></p>
+</div>
+<div class="quiz-options" id="q-options"></div>
+<button class="quiz-next hidden" id="q-next" onclick="nextQuestion()">Next →</button>
+</div>
+</div>
+
+<!-- STATS VIEW -->
+<div id="v-stats" class="hidden">
+<div class="stats-page" id="stats-content"></div>
+</div>
+
+<script src="/flashcard-data.js"></script>
+<script>
+// ============ STATE ============
+let currentSet = 'events';
+let currentMode = '';
+let cardIndex = 0;
+let quizIndex = 0;
+let quizScore = 0;
+let quizTotal = 0;
+let quizCards = [];
+const STORAGE_KEY = 'bh365_stats';
+
+// Get user from chores app localStorage
+const studyUser = localStorage.getItem('choreUser') || 'Guest';
+
+function getStats(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(!raw) return { quizzesTaken:0, totalCorrect:0, totalQuestions:0, bestStreak:0, currentStreak:0, awards:[], bySet:{events:{correct:0,total:0},people:{correct:0,total:0}} };
+  return JSON.parse(raw);
+}
+function saveStats(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+// ============ DATA PREP ============
+function getEventCards(){
+  return FLASHCARD_DATA.map(c => ({
+    front: c.title,
+    back: { who: c.who, what: c.what, when: c.when, where: c.where, why: c.why, summary: c.summary }
+  }));
+}
+
+function getPeopleCards(){
+  // Group events by primary person mentioned in WHO
+  const people = {};
+  FLASHCARD_DATA.forEach(c => {
+    if(!c.who) return;
+    // Extract first name/person from WHO
+    const firstPerson = c.who.split(';')[0].split('(')[0].trim();
+    if(!firstPerson || firstPerson.length > 50) return;
+    if(!people[firstPerson]) people[firstPerson] = [];
+    people[firstPerson].push({ title: c.title, what: c.what, when: c.when, where: c.where });
+  });
+  return Object.entries(people).map(([person, events]) => ({
+    front: person,
+    back: events
+  }));
+}
+
+function getDeck(){
+  return currentSet === 'events' ? getEventCards() : getPeopleCards();
+}
+
+// ============ NAVIGATION ============
+function goBack(){
+  if(currentMode){
+    currentMode = '';
+    document.getElementById('v-practice').classList.add('hidden');
+    document.getElementById('v-quiz').classList.add('hidden');
+    document.getElementById('v-stats').classList.add('hidden');
+    document.getElementById('v-sets').classList.add('hidden');
+    document.getElementById('v-mode').classList.remove('hidden');
+  } else {
+    window.location.href = '/chores.html';
+  }
+}
+
+function selectSet(set){
+  currentSet = set;
+  document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  if(currentMode === 'practice') initPractice();
+  if(currentMode === 'quiz') initQuiz();
+}
+
+// ============ PRACTICE MODE ============
+function startPractice(){
+  currentMode = 'practice';
+  document.getElementById('v-mode').classList.add('hidden');
+  document.getElementById('v-sets').classList.remove('hidden');
+  document.getElementById('v-practice').classList.remove('hidden');
+  initPractice();
+}
+
+function initPractice(){
+  cardIndex = 0;
+  renderCard();
+}
+
+function renderCard(){
+  const deck = getDeck();
+  if(!deck.length) return;
+  const card = deck[cardIndex % deck.length];
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('fc-front').textContent = card.front;
+
+  // Build back content
+  let backHtml = '';
+  if(currentSet === 'events'){
+    const b = card.back;
+    if(b.summary) backHtml += `<p><strong>${b.summary}</strong></p>`;
+    if(b.who) backHtml += `<div class="back-label">WHO</div><p>${b.who}</p>`;
+    if(b.when) backHtml += `<div class="back-label">WHEN</div><p>${b.when}</p>`;
+    if(b.where) backHtml += `<div class="back-label">WHERE</div><p>${b.where}</p>`;
+    if(b.why) backHtml += `<div class="back-label">WHY</div><p>${b.why}</p>`;
+  } else {
+    card.back.forEach(ev => {
+      backHtml += `<div class="back-label">${ev.title}</div><p>${ev.what || ''} ${ev.when ? '('+ev.when+')' : ''}</p>`;
+    });
+  }
+  document.getElementById('fc-back').innerHTML = backHtml;
+  document.getElementById('card-counter').textContent = (cardIndex%deck.length+1) + ' / ' + deck.length;
+}
+
+function flipCard(){ document.getElementById('flashcard').classList.toggle('flipped'); }
+function nextCard(){ cardIndex++; renderCard(); }
+function prevCard(){ const deck=getDeck(); cardIndex = (cardIndex - 1 + deck.length) % deck.length; renderCard(); }
+
+// ============ QUIZ MODE ============
+function startQuiz(){
+  currentMode = 'quiz';
+  document.getElementById('v-mode').classList.add('hidden');
+  document.getElementById('v-sets').classList.remove('hidden');
+  document.getElementById('v-quiz').classList.remove('hidden');
+  initQuiz();
+}
+
+function initQuiz(){
+  const deck = getDeck();
+  // Shuffle and pick 10
+  quizCards = [...deck].sort(() => Math.random() - .5).slice(0, 10);
+  quizIndex = 0;
+  quizScore = 0;
+  quizTotal = quizCards.length;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  if(quizIndex >= quizCards.length){
+    finishQuiz();
+    return;
+  }
+  const card = quizCards[quizIndex];
+  const deck = getDeck();
+  document.getElementById('quiz-score').textContent = `Question ${quizIndex+1}/${quizTotal} · Score: ${quizScore}`;
+  document.getElementById('q-next').classList.add('hidden');
+
+  if(currentSet === 'events'){
+    // Show a fact, ask which event
+    const facts = [card.back.when, card.back.where, card.back.who].filter(Boolean);
+    const clue = facts[Math.floor(Math.random()*facts.length)] || card.back.summary;
+    document.getElementById('q-prompt').textContent = 'Which event?';
+    document.getElementById('q-sub').textContent = clue;
+
+    // Options: correct + 3 random
+    const others = deck.filter(c => c.front !== card.front).sort(() => Math.random()-.5).slice(0,3);
+    const options = [card, ...others].sort(() => Math.random()-.5);
+    renderOptions(options.map(o => o.front), card.front);
+  } else {
+    // Show events, ask which person
+    const evTitles = card.back.map(e => e.title).join(', ');
+    document.getElementById('q-prompt').textContent = 'Who is associated with:';
+    document.getElementById('q-sub').textContent = evTitles;
+
+    const others = deck.filter(c => c.front !== card.front).sort(() => Math.random()-.5).slice(0,3);
+    const options = [card, ...others].sort(() => Math.random()-.5);
+    renderOptions(options.map(o => o.front), card.front);
+  }
+}
+
+function renderOptions(opts, correct){
+  const container = document.getElementById('q-options');
+  container.innerHTML = '';
+  opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    btn.onclick = () => handleAnswer(opt, correct);
+    container.appendChild(btn);
+  });
+}
+
+function handleAnswer(selected, correct){
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(o => {
+    o.classList.add('disabled');
+    if(o.textContent === correct) o.classList.add('correct');
+    if(o.textContent === selected && selected !== correct) o.classList.add('wrong');
+  });
+  if(selected === correct) quizScore++;
+  document.getElementById('q-next').classList.remove('hidden');
+}
+
+function nextQuestion(){ quizIndex++; renderQuestion(); }
+
+function finishQuiz(){
+  const pct = Math.round((quizScore/quizTotal)*100);
+  document.getElementById('q-options').innerHTML = '';
+  document.getElementById('q-prompt').textContent = `🎉 Quiz Complete!`;
+  document.getElementById('q-sub').textContent = `You got ${quizScore}/${quizTotal} (${pct}%)`;
+  document.getElementById('quiz-score').textContent = '';
+  document.getElementById('q-next').textContent = 'Play Again';
+  document.getElementById('q-next').classList.remove('hidden');
+  document.getElementById('q-next').onclick = initQuiz;
+
+  // Save stats
+  const stats = getStats();
+  stats.quizzesTaken++;
+  stats.totalCorrect += quizScore;
+  stats.totalQuestions += quizTotal;
+  if(!stats.bySet[currentSet]) stats.bySet[currentSet] = {correct:0,total:0};
+  stats.bySet[currentSet].correct += quizScore;
+  stats.bySet[currentSet].total += quizTotal;
+  if(quizScore === quizTotal) stats.currentStreak++;
+  else stats.currentStreak = 0;
+  if(stats.currentStreak > stats.bestStreak) stats.bestStreak = stats.currentStreak;
+
+  // Awards
+  if(pct === 100 && !stats.awards.includes('Perfect 10')) stats.awards.push('Perfect 10');
+  if(stats.quizzesTaken >= 5 && !stats.awards.includes('Dedicated Student')) stats.awards.push('Dedicated Student');
+  if(stats.quizzesTaken >= 20 && !stats.awards.includes('Quiz Master')) stats.awards.push('Quiz Master');
+  if(stats.bestStreak >= 3 && !stats.awards.includes('On Fire 🔥')) stats.awards.push('On Fire 🔥');
+  if(stats.bestStreak >= 5 && !stats.awards.includes('Unstoppable')) stats.awards.push('Unstoppable');
+  if(stats.totalCorrect >= 50 && !stats.awards.includes('Half Century')) stats.awards.push('Half Century');
+  if(stats.totalCorrect >= 100 && !stats.awards.includes('Century Club')) stats.awards.push('Century Club');
+  if(pct >= 80 && !stats.awards.includes('Honor Roll')) stats.awards.push('Honor Roll');
+
+  saveStats(stats);
+}
+
+// ============ STATS VIEW ============
+function showStats(){
+  currentMode = 'stats';
+  document.getElementById('v-mode').classList.add('hidden');
+  document.getElementById('v-stats').classList.remove('hidden');
+
+  const stats = getStats();
+  const pct = stats.totalQuestions ? Math.round((stats.totalCorrect/stats.totalQuestions)*100) : 0;
+  const evPct = stats.bySet.events?.total ? Math.round((stats.bySet.events.correct/stats.bySet.events.total)*100) : 0;
+  const ppPct = stats.bySet.people?.total ? Math.round((stats.bySet.people.correct/stats.bySet.people.total)*100) : 0;
+
+  let html = `
+    <div class="stat-card">
+      <h3>📊 Overall Stats</h3>
+      <div class="stat-row"><span>Quizzes Taken</span><span class="val">${stats.quizzesTaken}</span></div>
+      <div class="stat-row"><span>Total Correct</span><span class="val">${stats.totalCorrect} / ${stats.totalQuestions}</span></div>
+      <div class="stat-row"><span>Overall Accuracy</span><span class="val">${pct}%</span></div>
+      <div class="stat-row"><span>Best Perfect Streak</span><span class="val">${stats.bestStreak} 🔥</span></div>
+    </div>
+    <div class="stat-card">
+      <h3>📅 Events Set</h3>
+      <div class="stat-row"><span>Accuracy</span><span class="val">${evPct}% (${stats.bySet.events?.correct||0}/${stats.bySet.events?.total||0})</span></div>
+    </div>
+    <div class="stat-card">
+      <h3>👤 People Set</h3>
+      <div class="stat-row"><span>Accuracy</span><span class="val">${ppPct}% (${stats.bySet.people?.correct||0}/${stats.bySet.people?.total||0})</span></div>
+    </div>
+    <div class="stat-card">
+      <h3>🏆 Awards</h3>
+      ${stats.awards.length ? '<div class="awards">' + stats.awards.map(a => `<div class="award">${a}</div>`).join('') + '</div>' : '<p style="color:var(--muted);font-weight:700;">Keep quizzing to earn awards!</p>'}
+    </div>
+  `;
+  document.getElementById('stats-content').innerHTML = html;
+}
+</script>
+</body>
+</html>

@@ -462,6 +462,11 @@ function getPointDots(person){
 }
 
 // ============ RENDER TODAY ============
+function studyBtn(){
+  return '<button style="width:100%;border-radius:10px;padding:8px;font-size:.75rem;font-weight:800;background:linear-gradient(135deg,#e94560,#0f3460);color:#fff;border:none;margin-top:6px;cursor:pointer;" onclick="goStudy()">📚 Study Flashcards</button>';
+}
+function goStudy(){ window.location.href='/flashcards.html'; }
+
 let cur = new Date(); cur.setHours(0,0,0,0);
 
 function fmtDate(d){return DNAMES[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();}
@@ -505,7 +510,7 @@ function renderToday(){
           <div><h2>${p}</h2><div class="role">${PARENTS.includes(p)?'Parent':'Kid'}</div></div>
           ${pointsDots}
         </div>
-        <div class="cl">${choreHtml}</div>`;
+        <div class="cl">${choreHtml}${(p==='Danny'||p==='Shane')?studyBtn():''}</div>`;
       grid.appendChild(card);
     });
   } catch(e) {
