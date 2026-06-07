@@ -380,15 +380,17 @@ function getDailyChores(date){
   ch[ec.dishes].push({ico:'🍽️',nm:'Wash Dishes',badge:'hard',bl:'Hard'});
   ch[ec.sweep].push({ico:'🧹',nm:'Sweep & Mop',badge:'medium',bl:'Medium'});
   ch[ec.living].push({ico:'🛋️',nm:'Living Rm & Counters',badge:'easy',bl:'Easy'});
-  // Dog: if assigned person already has Dishes (hard chore), shift to next available
-  let dogPerson = dog;
-  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+1)%5+5)%5]; }
-  if(dogPerson === ec.dishes){ dogPerson = ALL5[((di+2)%5+5)%5]; }
+  // Dog: guaranteed even rotation across all 5, never same person two days in a row
+  // Use a 5-day cycle offset so consecutive days always differ
+  const dogOrder = ['Shane','Austin','Olivia','Danny','Courtnee'];
+  const dogPerson = dogOrder[di % 5];
   if(canAdd(ch,dogPerson)) ch[dogPerson].push({ico:'🐶',nm:'Feed Chaka',badge:'daily',bl:'Daily'});
   if(canAdd(ch,din)) ch[din].push({ico:'🍳',nm:'Cook Dinner',badge:'daily',bl:'Daily'});
   KIDS.forEach(k=>{const[cd,td]=KID_LAUNDRY[k][wr];if(cd===dw&&canAdd(ch,k))ch[k].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,k))ch[k].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
   PARENTS.forEach(a=>{const[cd,td]=ADULT_LAUNDRY[a][wr];if(cd===dw&&canAdd(ch,a))ch[a].push({ico:'👕',nm:'Wash Clothes',badge:'laundry',bl:'Laundry'});if(td===dw&&canAdd(ch,a))ch[a].push({ico:'🏠',nm:'Wash Towels/Linens',badge:'laundry',bl:'Laundry'});});
-  PARENTS.forEach(a=>{if(ch[a].length<MAX_CHORES)ch[a].push({ico:'🧽',nm:DEEP_CLEANS[((dw%7)+7)%7],badge:'deep',bl:'Deep Clean'});});
+  // Deep cleans: Danny and Courtnee get DIFFERENT tasks (offset by 3)
+  if(ch['Danny'].length<MAX_CHORES) ch['Danny'].push({ico:'🧽',nm:DEEP_CLEANS[((dw)%7)],badge:'deep',bl:'Deep Clean'});
+  if(ch['Courtnee'].length<MAX_CHORES) ch['Courtnee'].push({ico:'🧽',nm:DEEP_CLEANS[((dw+3)%7)],badge:'deep',bl:'Deep Clean'});
   return ch;
 }
 
