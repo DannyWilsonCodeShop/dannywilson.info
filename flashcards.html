@@ -408,7 +408,7 @@ async function cognitoAuth(action,body){
   try{const r=await fetch(`https://cognito-idp.${CFG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':`AWSCognitoIdentityProviderService.${action}`},body:JSON.stringify(body)});return await r.json();}catch(e){return{};}
 }
 function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');user=null;token=null;navView('v-auth');}
-function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
+function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');loadProgressFromServer();}
 
 // NAV
 function showInfo(mode){
@@ -590,7 +590,35 @@ async function loadLB(){
 // ============ STUDY MAP ============
 const MAP_STORE = 'bh365_map';
 function getMapProgress(){ const r=localStorage.getItem(MAP_STORE); return r?JSON.parse(r):{completed:[],perfectCount:0,sessionStreak:0,awards:[]}; }
-function saveMapProgress(p){ localStorage.setItem(MAP_STORE, JSON.stringify(p)); }
+function saveMapProgress(p){ localStorage.setItem(MAP_STORE, JSON.stringify(p)); syncProgressToServer(); }
+
+async function syncProgressToServer(){
+  const mapProg = getMapProgress();
+  const stats = getStats();
+  try{ await fetch(CFG.api+'/leaderboard',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({username:user,totalCorrect:stats.totalCorrect||0,totalQuestions:stats.totalQs||0,quizzesTaken:stats.quizzes||0,bestStreak:stats.bestStreak||0,awards:[...(stats.awards||[]),...(mapProg.awards||[])],mapProgress:mapProg,stats:stats})}); }catch(e){}
+}
+
+async function loadProgressFromServer(){
+  try{
+    const r = await fetch(CFG.api+'/leaderboard?username='+encodeURIComponent(user),{headers:{Authorization:'Bearer '+token}});
+    if(r.ok){
+      const data = await r.json();
+      if(data.mapProgress && data.mapProgress.completed && data.mapProgress.completed.length > 0){
+        const local = getMapProgress();
+        // Merge: keep whichever has more progress
+        if(data.mapProgress.completed.length > local.completed.length){
+          localStorage.setItem(MAP_STORE, JSON.stringify(data.mapProgress));
+        }
+      }
+      if(data.stats && data.stats.totalPts > 0){
+        const localStats = getStats();
+        if((data.stats.totalPts||0) > (localStats.totalPts||0)){
+          localStorage.setItem('bh365_stats', JSON.stringify(data.stats));
+        }
+      }
+    }
+  }catch(e){}
+}
 
 function openStudyMap(){
   const prog = getMapProgress();
