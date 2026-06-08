@@ -16,14 +16,14 @@
 <style>
 :root{--bg:#0d0d0d;--card:#1a1a1a;--card2:#222;--text:#f5f5f5;--muted:#777;--red:#d4213d;--green:#2d8b4e;--gold:#f2c94c;--black:#0d0d0d;--radius:14px;--shadow:0 4px 20px rgba(0,0,0,.5);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('/app-bg.png');background-size:cover;background-position:center;background-attachment:fixed;color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('/app-bg.png');background-size:cover;background-position:center;background-attachment:fixed;color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;font-size:16px;}
 .gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
 /* SPLASH */
 .splash-screen{position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:12vh;background:var(--bg);background-image:url('/splash-bg.png');background-size:95%;background-position:center 45%;background-repeat:no-repeat;overflow:hidden;animation:splashZoom 2s ease-out forwards;}
 .splash-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.7) 100%);}
-.splash-title{font-family:'Fredoka One',cursive;font-size:2.8rem;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.8),0 0 60px rgba(235,94,33,.4);position:relative;z-index:1;opacity:0;animation:titleReveal 1.2s ease .5s forwards;}
-.splash-sub{color:rgba(255,255,255,.9);font-weight:800;font-size:1.1rem;margin-top:10px;text-shadow:0 2px 15px rgba(0,0,0,.7);position:relative;z-index:1;opacity:0;animation:titleReveal 1s ease 1.2s forwards;}
+.splash-title{font-family:'Fredoka One',cursive;font-size:3.2rem;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.8),0 0 60px rgba(235,94,33,.4);position:relative;z-index:1;opacity:0;animation:titleReveal 1s ease .3s forwards;}
+.splash-sub{color:rgba(255,255,255,.9);font-weight:800;font-size:1.3rem;margin-top:10px;text-shadow:0 2px 15px rgba(0,0,0,.7);position:relative;z-index:1;opacity:0;animation:titleReveal .8s ease 1s forwards;}
 .splash-screen.fade-out{animation:splashFadeOut 1s ease forwards;}
 .splash-screen.fade-out .splash-title,.splash-screen.fade-out .splash-sub{animation:titleExit .6s ease forwards;}
 @keyframes splashZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
@@ -95,11 +95,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .quiz-prompt h2{font-family:'Fredoka One',cursive;font-size:1.05rem;color:#fff;}
 .quiz-prompt .qtype{font-size:.7rem;color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
 .quiz-opts{display:flex;flex-direction:column;gap:8px;}
-.qopt{padding:13px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.86rem;cursor:pointer;text-align:left;transition:all .15s;}
+.qopt{padding:14px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.95rem;cursor:pointer;text-align:left;transition:all .15s;}
 .qopt:hover{border-color:var(--gold);}
-.qopt.correct{border-color:var(--green);background:rgba(45,139,78,.15);color:var(--green);}
-.qopt.wrong{border-color:var(--red);background:rgba(212,33,61,.1);color:var(--red);}
-.qopt.disabled{pointer-events:none;opacity:.5;}
+.qopt.correct{border-color:var(--green);background:rgba(45,139,78,.25);color:#fff;font-weight:800;}
+.qopt.wrong{border-color:var(--red);background:rgba(212,33,61,.2);color:#fff;font-weight:800;}
+.qopt.disabled{pointer-events:none;opacity:.7;}
 .quiz-feedback{text-align:center;padding:10px;font-family:'Fredoka One',cursive;font-size:.9rem;}
 .quiz-next{display:block;margin:12px auto;padding:11px 28px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--red),#8b0000);color:#fff;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;}
 .bonus-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card);border:3px solid var(--gold);border-radius:var(--radius);padding:24px;text-align:center;z-index:200;animation:popIn .3s ease;}
@@ -169,6 +169,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 <p style="text-align:center;font-size:.82rem;color:var(--muted);font-weight:600;line-height:1.5;margin-bottom:20px;padding:0 10px;">Learn the people, places, and events that shaped Black American history. Practice at your pace, challenge yourself with quizzes, and track your progress on the Study Map.</p>
 <div class="home-actions">
+<div class="action-card" onclick="openStudyMap()">
+<span class="ac-icon">🗺️</span>
+<div><h3>Study Map</h3><p>Guided path · Unlock topics · Earn awards</p></div>
+<span class="info-btn" onclick="event.stopPropagation();showInfo('map')">ⓘ</span>
+</div>
 <div class="action-card" onclick="goScope('practice')">
 <span class="ac-icon">📖</span>
 <div><h3>Practice</h3><p>Flip through flashcards at your own pace</p></div>
@@ -188,11 +193,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 <span class="ac-icon">📋</span>
 <div><h3>Review</h3><p>Full breakdown — Who, What, When, Where, Why</p></div>
 <span class="info-btn" onclick="event.stopPropagation();showInfo('review')">ⓘ</span>
-</div>
-<div class="action-card" onclick="openStudyMap()">
-<span class="ac-icon">🗺️</span>
-<div><h3>Study Map</h3><p>Guided path · Unlock topics · Earn awards</p></div>
-<span class="info-btn" onclick="event.stopPropagation();showInfo('map')">ⓘ</span>
 </div>
 </div>
 <div class="home-footer">
@@ -520,13 +520,17 @@ function renderQuizQ(){
   const q=qList[qIdx];document.getElementById('hud-score').textContent=qScore+' pts';document.getElementById('hud-streak').textContent=qStreak>1?'🔥 '+qStreak+' streak':'';document.getElementById('hud-qnum').textContent=(qIdx+1)+'/'+qTotal;document.getElementById('hud-timer').textContent=isSpeed?qTimeLeft+'s':'';
   document.getElementById('q-type').textContent=q.type==='when'?'WHEN':q.type==='who'?'WHO':q.type==='where'?'WHERE':q.type==='why'?'WHY':q.type==='identify'?'IDENTIFY':'WHAT';
   document.getElementById('q-text').textContent=q.q;document.getElementById('q-feedback').classList.add('hidden');document.getElementById('q-next').classList.add('hidden');
-  // Generate options
-  let pool;
-  if(Array.isArray(selectedChapter)) pool=QUIZ_BANK.filter(qb=>selectedChapter.includes(qb.chapter));
-  else pool=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(qb=>qb.chapter===selectedChapter);
-  const sameType=pool.filter(qb=>qb.type===q.type&&qb.a!==q.a);
-  const wrongs=sameType.sort(()=>Math.random()-.5).slice(0,3).map(qb=>qb.a);
-  while(wrongs.length<3){const rnd=pool[Math.floor(Math.random()*pool.length)];if(rnd.a!==q.a&&!wrongs.includes(rnd.a))wrongs.push(rnd.a);}
+  // Generate options from same-type answer pool
+  const answerPool = (typeof ANSWER_POOLS!=='undefined' && q.pool) ? ANSWER_POOLS[q.pool] || [] : [];
+  let wrongs = answerPool.filter(a => a !== q.a).sort(() => Math.random()-.5).slice(0,3);
+  // Fallback if pool is too small
+  if(wrongs.length < 3){
+    let pool2;
+    if(Array.isArray(selectedChapter)) pool2=QUIZ_BANK.filter(qb=>selectedChapter.includes(qb.chapter));
+    else pool2=selectedChapter===0?QUIZ_BANK:QUIZ_BANK.filter(qb=>qb.chapter===selectedChapter);
+    const extras=pool2.filter(qb=>qb.type===q.type&&qb.a!==q.a&&!wrongs.includes(qb.a)).sort(()=>Math.random()-.5).slice(0,3-wrongs.length).map(qb=>qb.a);
+    wrongs=[...wrongs,...extras];
+  }
   const opts=[q.a,...wrongs.slice(0,3)].sort(()=>Math.random()-.5);
   const container=document.getElementById('q-opts');container.innerHTML='';
   opts.forEach(o=>{const b=document.createElement('button');b.className='qopt';b.textContent=o.length>120?o.slice(0,120)+'...':o;b.onclick=()=>answerQuiz(o,q.a);container.appendChild(b);});
@@ -679,14 +683,17 @@ function renderMapQ(){
   document.getElementById('ma-feedback').classList.add('hidden');
   document.getElementById('ma-next').classList.add('hidden');
   
-  // Options
-  const sameType = QUIZ_BANK.filter(qb => qb.type === q.type && qb.a !== q.a);
-  const wrongs = sameType.sort(() => Math.random()-.5).slice(0,3).map(qb => qb.a);
-  while(wrongs.length < 3){ const rnd = QUIZ_BANK[Math.floor(Math.random()*QUIZ_BANK.length)]; if(rnd.a !== q.a && !wrongs.includes(rnd.a)) wrongs.push(rnd.a); }
-  const opts = [q.a, ...wrongs.slice(0,3)].sort(() => Math.random()-.5);
+  // Options - use answer pools for same-type distractors
+  const ansPool = (typeof ANSWER_POOLS!=='undefined' && q.pool) ? ANSWER_POOLS[q.pool] || [] : [];
+  let maWrongs = ansPool.filter(a => a !== q.a).sort(() => Math.random()-.5).slice(0,3);
+  if(maWrongs.length < 3){
+    const extras = QUIZ_BANK.filter(qb=>qb.type===q.type&&qb.a!==q.a&&!maWrongs.includes(qb.a)).sort(()=>Math.random()-.5).slice(0,3-maWrongs.length).map(qb=>qb.a);
+    maWrongs=[...maWrongs,...extras];
+  }
+  const maOpts = [q.a,...maWrongs.slice(0,3)].sort(()=>Math.random()-.5);
   const container = document.getElementById('ma-opts');
   container.innerHTML = '';
-  opts.forEach(o => {
+  maOpts.forEach(o => {
     const btn = document.createElement('button');
     btn.className = 'qopt';
     btn.textContent = o.length > 120 ? o.slice(0,120)+'...' : o;
