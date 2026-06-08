@@ -178,6 +178,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 <span class="ac-icon">⚡</span>
 <div><h3>Speed Round</h3><p>30 seconds · How many can you get?</p></div>
 </div>
+<div class="action-card" onclick="goScope('review')">
+<span class="ac-icon">📋</span>
+<div><h3>Review</h3><p>Full breakdown — Who, What, When, Where, Why</p></div>
+</div>
 </div>
 <div class="home-footer">
 <button onclick="navView('v-lb')">🏆 Leaderboard</button>
@@ -273,6 +277,14 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 </div>
 
+<!-- REVIEW -->
+<div id="v-review" class="hidden">
+<div class="scope-page">
+<span class="back-link" onclick="navView('v-scope')">← Back</span>
+<div id="review-content"></div>
+</div>
+</div>
+
 <!-- STATS -->
 <div id="v-stats" class="hidden">
 <div class="lb-page">
@@ -327,7 +339,7 @@ function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('b
 function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
 
 // NAV
-function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
 
 // UNITS
 const UNITS = {
@@ -338,7 +350,7 @@ const UNITS = {
 
 // SCOPE
 function goScope(m){mode=m;isSpeed=(m==='speed');
-  document.getElementById('scope-type-title').textContent=m==='practice'?'How do you want to study?':'Choose your challenge scope';
+  document.getElementById('scope-type-title').textContent=m==='practice'?'How do you want to study?':m==='review'?'Review by...':'Choose your challenge scope';
   navView('v-scope-type');
 }
 
@@ -364,10 +376,10 @@ function goScopeDetail(type){
   navView('v-scope');
 }
 
-function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
+function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else if(mode==='review'){renderReview();navView('v-review');}else{initQuiz();navView('v-quiz');}}
 
 // PRACTICE
-function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else{initQuiz();navView('v-quiz');}}
+function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else if(mode==='review'){renderReview();navView('v-review');}else{initQuiz();navView('v-quiz');}}
 let shuffledPDeck=null;
 function getPDeck(){
   if(!shuffledPDeck){
@@ -382,6 +394,27 @@ function renderPCard(){const deck=getPDeck();if(!deck.length)return;const c=deck
 function flipPractice(){pFlipped=!pFlipped;document.getElementById('p-back').classList.toggle('hidden',!pFlipped);}
 function pNext(){pIdx++;renderPCard();}
 function pPrev(){const d=getPDeck();pIdx=(pIdx-1+d.length)%d.length;renderPCard();}
+
+// REVIEW
+function renderReview(){
+  let cards;
+  if(Array.isArray(selectedChapter)) cards=FLASHCARD_DATA.filter(c=>selectedChapter.includes(c.chapter));
+  else cards=selectedChapter===0?FLASHCARD_DATA:FLASHCARD_DATA.filter(c=>c.chapter===selectedChapter);
+  
+  let html='';
+  cards.forEach(c=>{
+    html+=`<div style="background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:16px;margin-bottom:12px;">
+      <h3 style="font-family:Fredoka One,cursive;font-size:1.05rem;color:var(--gold);margin-bottom:10px;">${c.title}</h3>
+      ${c.summary?`<p style="font-size:.85rem;font-weight:700;color:#ccc;margin-bottom:10px;font-style:italic;">${c.summary}</p>`:''}
+      ${c.who?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHO</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.who}</p></div>`:''}
+      ${c.what?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHAT</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.what}</p></div>`:''}
+      ${c.when?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHEN</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.when}</p></div>`:''}
+      ${c.where?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHERE</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.where}</p></div>`:''}
+      ${c.why?`<div><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHY</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.why}</p></div>`:''}
+    </div>`;
+  });
+  document.getElementById('review-content').innerHTML=html;
+}
 
 // QUIZ
 function initQuiz(){
