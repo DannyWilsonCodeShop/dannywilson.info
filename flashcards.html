@@ -233,10 +233,32 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 </div>
 
+<!-- PRACTICE FOCUS (dates, people, or all) -->
+<div id="v-focus" class="hidden">
+<div class="scope-page">
+<span class="back-link" onclick="navView('v-scope')">← Back</span>
+<h2 style="color:var(--gold);text-align:center;margin-bottom:14px;">What do you want to focus on?</h2>
+<div class="home-actions">
+<div class="action-card" onclick="setFocusAndStart('when')">
+<span class="ac-icon">📅</span>
+<div><h3>Dates & Timelines</h3><p>When did events happen?</p></div>
+</div>
+<div class="action-card" onclick="setFocusAndStart('who')">
+<span class="ac-icon">👤</span>
+<div><h3>People & Figures</h3><p>Who was involved? Who led what?</p></div>
+</div>
+<div class="action-card" onclick="setFocusAndStart('all')">
+<span class="ac-icon">📚</span>
+<div><h3>All Content</h3><p>Dates, people, places, events — everything</p></div>
+</div>
+</div>
+</div>
+</div>
+
 <!-- PRACTICE -->
 <div id="v-practice" class="hidden">
 <div class="practice-page">
-<span class="back-link" onclick="navView('v-scope')">← Back</span>
+<span class="back-link" onclick="navView('v-focus')">← Back</span>
 <div class="pcard" onclick="flipPractice()">
 <div class="pcard-front" id="p-front"><h2></h2><div class="hint">Tap to reveal</div></div>
 <div class="pcard-back hidden" id="p-back"></div>
@@ -427,7 +449,7 @@ function showInfo(mode){
   document.getElementById('v-info-modal').style.display = 'flex';
 }
 
-function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result','v-bonus'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-focus','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result','v-bonus'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
 
 // UNITS
 const UNITS = {
@@ -464,16 +486,24 @@ function goScopeDetail(type){
   navView('v-scope');
 }
 
-function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else if(mode==='review'){renderReview();navView('v-review');}else{initQuiz();navView('v-quiz');}}
+function startUnit(chapters){selectedChapter=chapters;if(mode==='practice'){navView('v-focus');}else if(mode==='review'){renderReview();navView('v-review');}else{initQuiz();navView('v-quiz');}}
 
 // PRACTICE
-function startMode(ch){selectedChapter=ch;if(mode==='practice'){pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');}else if(mode==='review'){renderReview();navView('v-review');}else{initQuiz();navView('v-quiz');}}
+let practiceFocus = 'all';
+function startMode(ch){selectedChapter=ch;if(mode==='practice'){navView('v-focus');}else if(mode==='review'){renderReview();navView('v-review');}else{initQuiz();navView('v-quiz');}}
+
+function setFocusAndStart(focus){
+  practiceFocus=focus;pIdx=0;pFlipped=false;shuffledPDeck=null;renderPCard();navView('v-practice');
+}
 let shuffledPDeck=null;
 function getPDeck(){
   if(!shuffledPDeck){
     let deck;
     if(Array.isArray(selectedChapter)) deck=PRACTICE_CARDS.filter(c=>selectedChapter.includes(c.chapter));
     else deck=selectedChapter===0?[...PRACTICE_CARDS]:PRACTICE_CARDS.filter(c=>c.chapter===selectedChapter);
+    // Apply focus filter
+    if(practiceFocus==='when') deck=deck.filter(c=>c.type==='when');
+    else if(practiceFocus==='who') deck=deck.filter(c=>c.type==='who'||c.type==='identify');
     shuffledPDeck=[...deck].sort(()=>Math.random()-.5);
   }
   return shuffledPDeck;
