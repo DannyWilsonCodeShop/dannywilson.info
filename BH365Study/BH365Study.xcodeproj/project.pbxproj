@@ -12,6 +12,20 @@
 		A1000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000003 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		A10A75FB2FD63D7200416DB4 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		A2000001 /* BH365StudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BH365StudyApp.swift; sourceTree = "<group>"; };
 		A2000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +84,7 @@
 				A3000003 /* Resources */,
 			);
 			buildRules = (
+				A10A75FB2FD63D7200416DB4 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);

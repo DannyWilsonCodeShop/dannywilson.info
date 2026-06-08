@@ -182,6 +182,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 <span class="ac-icon">📋</span>
 <div><h3>Review</h3><p>Full breakdown — Who, What, When, Where, Why</p></div>
 </div>
+<div class="action-card" onclick="openStudyMap()">
+<span class="ac-icon">🗺️</span>
+<div><h3>Study Map</h3><p>Guided path · Unlock topics · Earn awards</p></div>
+</div>
 </div>
 <div class="home-footer">
 <button onclick="navView('v-lb')">🏆 Leaderboard</button>
@@ -277,6 +281,46 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 </div>
 
+<!-- STUDY MAP -->
+<div id="v-map" class="hidden">
+<div class="scope-page">
+<span class="back-link" onclick="navView('v-home')">← Back</span>
+<h2 style="color:var(--gold);text-align:center;margin-bottom:4px;">🗺️ Study Map</h2>
+<p style="text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;margin-bottom:16px;" id="map-progress"></p>
+<div id="map-list"></div>
+</div>
+</div>
+
+<!-- MAP ASSESSMENT -->
+<div id="v-map-assess" class="hidden">
+<div class="quiz-page">
+<div class="quiz-hud">
+<span class="hud-score" id="ma-score">0 pts</span>
+<span class="hud-streak" id="ma-streak"></span>
+<span class="hud-timer"></span>
+<span class="hud-qnum" id="ma-qnum"></span>
+</div>
+<div class="quiz-prompt"><div class="qtype" id="ma-type"></div><h2 id="ma-text"></h2></div>
+<div class="quiz-opts" id="ma-opts"></div>
+<div class="quiz-feedback hidden" id="ma-feedback"></div>
+<button class="quiz-next hidden" id="ma-next" onclick="nextMapQ()">Next →</button>
+</div>
+</div>
+
+<!-- MAP RESULT -->
+<div id="v-map-result" class="hidden">
+<div class="results-page">
+<h2 id="mr-title"></h2>
+<div class="big-score" id="mr-score"></div>
+<p class="detail" id="mr-detail"></p>
+<p class="detail" id="mr-award" style="color:var(--gold);"></p>
+<div class="results-actions">
+<button class="again" id="mr-btn" onclick="openStudyMap()">Continue</button>
+<button class="home-btn" onclick="navView('v-home')">Home</button>
+</div>
+</div>
+</div>
+
 <!-- REVIEW -->
 <div id="v-review" class="hidden">
 <div class="scope-page">
@@ -295,6 +339,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 
 <script src="/flashcard-data.js"></script>
+<script src="/studymap-data.js"></script>
 <script>
 const CFG={clientId:'31p3snnqs2l00ln5if1fu3e1b2',api:'https://10rgcui6d6.execute-api.us-east-1.amazonaws.com',region:'us-east-1'};
 let user=null,token=null,mode='',selectedChapter=null,pIdx=0,pFlipped=false;
@@ -339,7 +384,7 @@ function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('b
 function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
 
 // NAV
-function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
 
 // UNITS
 const UNITS = {
@@ -493,6 +538,166 @@ async function loadLB(){
     if(!data||!data.length){el.innerHTML='<p style="color:var(--muted);text-align:center">No scores yet!</p>';return;}
     el.innerHTML=data.slice(0,20).map((e,i)=>{const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';return`<div class="lb-row"><span class="lb-rank">${medal||(i+1)}</span><span class="lb-name">${e.username}</span><span class="lb-pts">${e.totalCorrect} pts</span></div>`;}).join('');
   }catch(e){el.innerHTML='<p style="color:var(--muted);text-align:center">Could not load</p>';}
+}
+
+// ============ STUDY MAP ============
+const MAP_STORE = 'bh365_map';
+function getMapProgress(){ const r=localStorage.getItem(MAP_STORE); return r?JSON.parse(r):{completed:[],perfectCount:0,sessionStreak:0,awards:[]}; }
+function saveMapProgress(p){ localStorage.setItem(MAP_STORE, JSON.stringify(p)); }
+
+function openStudyMap(){
+  const prog = getMapProgress();
+  const completed = prog.completed || [];
+  const total = STUDY_MAP_TOPICS.length;
+  document.getElementById('map-progress').textContent = `${completed.length} / ${total} topics completed (${Math.round(completed.length/total*100)}%)`;
+  
+  let html = '';
+  let currentUnit = 0;
+  STUDY_MAP_TOPICS.forEach((topic, idx) => {
+    // Unit header
+    if(topic.unit !== currentUnit){
+      currentUnit = topic.unit;
+      html += `<div style="font-family:Fredoka One,cursive;color:var(--gold);font-size:.9rem;margin:16px 0 8px;padding-left:4px;">Unit ${currentUnit}</div>`;
+    }
+    
+    const done = completed.includes(topic.id);
+    const unlocked = idx === 0 || completed.includes(STUDY_MAP_TOPICS[idx-1].id);
+    const isCurrent = !done && unlocked;
+    
+    const borderColor = done ? 'var(--green)' : isCurrent ? 'var(--gold)' : '#333';
+    const opacity = (!done && !unlocked) ? '0.4' : '1';
+    const icon = done ? '✅' : isCurrent ? '▶️' : '🔒';
+    
+    html += `<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:6px;background:var(--card);border:2px solid ${borderColor};border-radius:12px;opacity:${opacity};cursor:${unlocked?'pointer':'default'};" ${unlocked&&!done?`onclick="startMapTopic(${idx})"`:''}>
+      <span style="font-size:1.2rem;">${icon}</span>
+      <div style="flex:1;">
+        <div style="font-weight:800;font-size:.88rem;">${topic.title}</div>
+        <div style="font-size:.7rem;color:var(--muted);">Ch ${topic.chapter} · ${topic.year}</div>
+      </div>
+      ${done?'<span style="font-size:.7rem;color:var(--green);font-weight:800;">PASSED</span>':''}
+    </div>`;
+  });
+  
+  document.getElementById('map-list').innerHTML = html;
+  navView('v-map');
+}
+
+let mapTopicIdx = 0;
+let maQuestions = [], maIdx = 0, maScore = 0, maCorrect = 0, maStreak = 0;
+
+function startMapTopic(idx){
+  mapTopicIdx = idx;
+  const topic = STUDY_MAP_TOPICS[idx];
+  const prog = getMapProgress();
+  
+  // Get questions for this topic + all previously completed topics
+  const relevantChapters = [topic.chapter];
+  prog.completed.forEach(id => {
+    const t = STUDY_MAP_TOPICS.find(t => t.id === id);
+    if(t && !relevantChapters.includes(t.chapter)) relevantChapters.push(t.chapter);
+  });
+  
+  // Current topic questions (must have some)
+  const topicQs = QUIZ_BANK.filter(q => q.chapter === topic.chapter);
+  // Previous topic questions
+  const prevQs = QUIZ_BANK.filter(q => relevantChapters.includes(q.chapter) && q.chapter !== topic.chapter);
+  
+  // Build assessment: 5 from current topic + up to 3 from previous
+  const currentPick = [...topicQs].sort(() => Math.random()-.5).slice(0, 5);
+  const prevPick = [...prevQs].sort(() => Math.random()-.5).slice(0, Math.min(3, Math.floor(idx/3)));
+  maQuestions = [...currentPick, ...prevPick].sort(() => Math.random()-.5);
+  
+  if(maQuestions.length < 3) maQuestions = [...topicQs].sort(() => Math.random()-.5).slice(0, 5);
+  
+  maIdx = 0; maScore = 0; maCorrect = 0; maStreak = 0;
+  renderMapQ();
+  navView('v-map-assess');
+}
+
+function renderMapQ(){
+  if(maIdx >= maQuestions.length){ finishMapAssess(); return; }
+  const q = maQuestions[maIdx];
+  document.getElementById('ma-score').textContent = maScore + ' pts';
+  document.getElementById('ma-streak').textContent = maStreak > 1 ? '🔥 '+maStreak : '';
+  document.getElementById('ma-qnum').textContent = (maIdx+1)+'/'+maQuestions.length;
+  document.getElementById('ma-type').textContent = q.type ? q.type.toUpperCase() : '';
+  document.getElementById('ma-text').textContent = q.q;
+  document.getElementById('ma-feedback').classList.add('hidden');
+  document.getElementById('ma-next').classList.add('hidden');
+  
+  // Options
+  const sameType = QUIZ_BANK.filter(qb => qb.type === q.type && qb.a !== q.a);
+  const wrongs = sameType.sort(() => Math.random()-.5).slice(0,3).map(qb => qb.a);
+  while(wrongs.length < 3){ const rnd = QUIZ_BANK[Math.floor(Math.random()*QUIZ_BANK.length)]; if(rnd.a !== q.a && !wrongs.includes(rnd.a)) wrongs.push(rnd.a); }
+  const opts = [q.a, ...wrongs.slice(0,3)].sort(() => Math.random()-.5);
+  const container = document.getElementById('ma-opts');
+  container.innerHTML = '';
+  opts.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'qopt';
+    btn.textContent = o.length > 120 ? o.slice(0,120)+'...' : o;
+    btn.onclick = () => answerMapQ(o, q.a);
+    container.appendChild(btn);
+  });
+}
+
+function answerMapQ(sel, correct){
+  document.querySelectorAll('#ma-opts .qopt').forEach(o => {
+    o.classList.add('disabled');
+    if(o.textContent === (correct.length>120?correct.slice(0,120)+'...':correct)) o.classList.add('correct');
+    if(o.textContent === (sel.length>120?sel.slice(0,120)+'...':sel) && sel!==correct) o.classList.add('wrong');
+  });
+  const fb = document.getElementById('ma-feedback');
+  if(sel === correct){ maCorrect++; maStreak++; let pts=10; if(maStreak>=3)pts+=5; maScore+=pts; fb.textContent=`+${pts} pts ✓`; fb.style.color='var(--green)'; }
+  else{ maStreak=0; fb.textContent='✗ Incorrect'; fb.style.color='var(--red)'; }
+  fb.classList.remove('hidden');
+  document.getElementById('ma-next').classList.remove('hidden');
+}
+
+function nextMapQ(){ maIdx++; renderMapQ(); }
+
+function finishMapAssess(){
+  const topic = STUDY_MAP_TOPICS[mapTopicIdx];
+  const pct = Math.round((maCorrect/maQuestions.length)*100);
+  const passed = pct >= 80;
+  
+  document.getElementById('mr-title').textContent = passed ? '🎉 Topic Passed!' : '😤 Not Quite...';
+  document.getElementById('mr-score').textContent = pct + '%';
+  document.getElementById('mr-detail').textContent = `${maCorrect}/${maQuestions.length} correct · ${topic.title}`;
+  document.getElementById('mr-btn').textContent = passed ? 'Continue' : 'Try Again';
+  document.getElementById('mr-btn').onclick = passed ? openStudyMap : () => startMapTopic(mapTopicIdx);
+  
+  let awardText = '';
+  if(passed){
+    const prog = getMapProgress();
+    if(!prog.completed.includes(topic.id)) prog.completed.push(topic.id);
+    prog.sessionStreak = (prog.sessionStreak||0) + 1;
+    if(pct === 100) prog.perfectCount = (prog.perfectCount||0) + 1;
+    
+    // Check awards
+    MAP_AWARDS.forEach(award => {
+      if(prog.awards.includes(award.id)) return;
+      let earned = false;
+      if(award.trigger === 'topics_completed' && prog.completed.length >= award.value) earned = true;
+      if(award.trigger === 'unit_complete'){
+        const unitTopics = STUDY_MAP_TOPICS.filter(t => t.unit === award.value);
+        if(unitTopics.every(t => prog.completed.includes(t.id))) earned = true;
+      }
+      if(award.trigger === 'perfect' && prog.perfectCount >= award.value) earned = true;
+      if(award.trigger === 'session_streak' && prog.sessionStreak >= award.value) earned = true;
+      if(earned){ prog.awards.push(award.id); awardText += award.name + ' '; }
+    });
+    
+    saveMapProgress(prog);
+    // Sync to leaderboard
+    const s = getStats();
+    s.totalCorrect += maCorrect; s.totalQuestions += maQuestions.length;
+    saveStats(s);
+    fetch(CFG.api+'/leaderboard',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({username:user,totalCorrect:s.totalCorrect,totalQuestions:s.totalQuestions,quizzesTaken:s.quizzes||0,bestStreak:s.bestStreak||0,awards:[...s.awards||[],...prog.awards]})}).catch(()=>{});
+  }
+  
+  document.getElementById('mr-award').textContent = awardText ? '🏆 New Award: ' + awardText : '';
+  navView('v-map-result');
 }
 </script>
 </body>
