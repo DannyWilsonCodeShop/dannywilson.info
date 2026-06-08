@@ -423,7 +423,7 @@ async function doSignup(){
   if(!u||!p){document.getElementById('auth-err').textContent='Choose username and password';return;}
   if(p.length<6){document.getElementById('auth-err').textContent='Password needs 6+ characters';return;}
   const r=await cognitoAuth('SignUp',{ClientId:CFG.clientId,Username:u,Password:p});
-  if(r.UserSub){document.getElementById('a-user').value=u;document.getElementById('a-pass').value=p;toggleAuth();await doLogin();}
+  if(r.UserSub){fetch(CFG.api+'/leaderboard',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,totalCorrect:0,totalQuestions:0,quizzesTaken:0,bestStreak:0,awards:[]})}).catch(()=>{});document.getElementById('a-user').value=u;document.getElementById('a-pass').value=p;toggleAuth();await doLogin();}
   else document.getElementById('auth-err').textContent=r.message||'Signup failed — try a different username';
 }
 async function cognitoAuth(action,body){
@@ -613,7 +613,8 @@ async function loadLB(){
   const el=document.getElementById('lb-list');el.innerHTML='<p style="color:var(--muted);text-align:center">Loading...</p>';
   try{const r=await fetch(CFG.api+'/leaderboard');const data=await r.json();
     if(!data||!data.length){el.innerHTML='<p style="color:var(--muted);text-align:center">No scores yet!</p>';return;}
-    el.innerHTML=data.slice(0,20).map((e,i)=>{const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';return`<div class="lb-row"><span class="lb-rank">${medal||(i+1)}</span><span class="lb-name">${e.username}</span><span class="lb-pts">${e.totalCorrect} pts</span></div>`;}).join('');
+    const displayNames={'Martin':'Shane + Austin'};
+    el.innerHTML=data.slice(0,20).map((e,i)=>{const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':'';const name=displayNames[e.username]||e.username;return`<div class="lb-row"><span class="lb-rank">${medal||(i+1)}</span><span class="lb-name">${name}</span><span class="lb-pts">${e.totalCorrect} pts</span></div>`;}).join('');
   }catch(e){el.innerHTML='<p style="color:var(--muted);text-align:center">Could not load</p>';}
 }
 
