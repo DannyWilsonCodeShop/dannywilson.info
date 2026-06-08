@@ -54,6 +54,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .action-card .ac-icon{font-size:2rem;}
 .action-card h3{font-family:'Fredoka One',cursive;font-size:1.05rem;}
 .action-card p{font-size:.75rem;color:var(--muted);font-weight:700;margin-top:2px;}
+.info-btn{font-size:.75rem;color:#555;cursor:pointer;padding:2px 6px;border-radius:50%;transition:color .2s;opacity:.6;}
+.info-btn:hover{color:var(--gold);opacity:1;}
 .home-footer{display:flex;justify-content:center;gap:16px;margin-top:24px;}
 .home-footer button{background:var(--card);border:2px solid #333;border-radius:10px;padding:10px 16px;color:var(--text);font-weight:800;font-size:.8rem;cursor:pointer;}
 .home-footer button:hover{border-color:var(--green);}
@@ -165,26 +167,32 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 <p>Black History 365 Days a Year</p>
 <div class="user-greeting" id="greet-user"></div>
 </div>
+<p style="text-align:center;font-size:.82rem;color:var(--muted);font-weight:600;line-height:1.5;margin-bottom:20px;padding:0 10px;">Learn the people, places, and events that shaped Black American history. Practice at your pace, challenge yourself with quizzes, and track your progress on the Study Map.</p>
 <div class="home-actions">
 <div class="action-card" onclick="goScope('practice')">
 <span class="ac-icon">📖</span>
 <div><h3>Practice</h3><p>Flip through flashcards at your own pace</p></div>
+<span class="info-btn" onclick="event.stopPropagation();showInfo('practice')">ⓘ</span>
 </div>
 <div class="action-card" onclick="goScope('quiz')">
 <span class="ac-icon">🎯</span>
 <div><h3>Challenge Mode</h3><p>Timed rounds · Streak bonuses · Earn points</p></div>
+<span class="info-btn" onclick="event.stopPropagation();showInfo('quiz')">ⓘ</span>
 </div>
 <div class="action-card" onclick="goScope('speed')">
 <span class="ac-icon">⚡</span>
 <div><h3>Speed Round</h3><p>30 seconds · How many can you get?</p></div>
+<span class="info-btn" onclick="event.stopPropagation();showInfo('speed')">ⓘ</span>
 </div>
 <div class="action-card" onclick="goScope('review')">
 <span class="ac-icon">📋</span>
 <div><h3>Review</h3><p>Full breakdown — Who, What, When, Where, Why</p></div>
+<span class="info-btn" onclick="event.stopPropagation();showInfo('review')">ⓘ</span>
 </div>
 <div class="action-card" onclick="openStudyMap()">
 <span class="ac-icon">🗺️</span>
 <div><h3>Study Map</h3><p>Guided path · Unlock topics · Earn awards</p></div>
+<span class="info-btn" onclick="event.stopPropagation();showInfo('map')">ⓘ</span>
 </div>
 </div>
 <div class="home-footer">
@@ -348,6 +356,15 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 </div>
 
+<!-- INFO MODAL -->
+<div id="v-info-modal" class="hidden" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;">
+<div style="background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:24px;max-width:340px;width:100%;max-height:80vh;overflow-y:auto;">
+<h3 id="info-title" style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:12px;"></h3>
+<div id="info-body" style="font-size:.88rem;line-height:1.6;font-weight:600;color:#ccc;"></div>
+<button onclick="document.getElementById('v-info-modal').classList.add('hidden')" style="display:block;margin:16px auto 0;padding:10px 28px;border:none;border-radius:20px;background:var(--green);color:#fff;font-family:Fredoka One,cursive;font-size:.9rem;cursor:pointer;">Got it 👍</button>
+</div>
+</div>
+
 <script src="/flashcard-data.js"></script>
 <script src="/studymap-data.js"></script>
 <script>
@@ -394,6 +411,22 @@ function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('b
 function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
 
 // NAV
+function showInfo(mode){
+  const info = {
+    practice: {title:'📖 Practice Mode', body:'<p>Practice mode shows you one question at a time as a flashcard.</p><p><strong>How to use:</strong></p><ul style="padding-left:16px;margin:8px 0;"><li>Choose a chapter, unit, or the full guide</li><li>Read the question on the front</li><li>Tap the card to reveal the answer</li><li>Use ← Prev and Next → to move between cards</li><li>Cards are shuffled randomly each session</li></ul><p>No scoring, no pressure — just learn at your own pace!</p>'},
+    quiz: {title:'🎯 Challenge Mode', body:'<p>Challenge Mode tests your knowledge with 15 multiple-choice questions.</p><p><strong>Scoring:</strong></p><ul style="padding-left:16px;margin:8px 0;"><li>+10 points per correct answer</li><li>+5 bonus at 3-answer streak</li><li>+10 bonus at 5-answer streak</li><li>Wrong answers break your streak</li></ul><p>Your score syncs to the leaderboard so you can compete with others!</p>'},
+    speed: {title:'⚡ Speed Round', body:'<p>You have <strong>30 seconds</strong> on the clock. Answer as many questions as you can before time runs out!</p><p><strong>Scoring:</strong></p><ul style="padding-left:16px;margin:8px 0;"><li>+10 points per correct answer</li><li>+5 speed bonus per correct</li><li>2x bonus on all correct answers at the end</li><li>Streak bonuses still apply</li></ul><p>Fast fingers + fast brain = big points!</p>'},
+    review: {title:'📋 Review Mode', body:'<p>Review shows you the full breakdown of every topic in one scrollable list.</p><p>Each topic displays:</p><ul style="padding-left:16px;margin:8px 0;"><li><strong>WHO</strong> — people involved</li><li><strong>WHAT</strong> — what happened</li><li><strong>WHEN</strong> — dates and timeframe</li><li><strong>WHERE</strong> — locations</li><li><strong>WHY</strong> — context and causes</li></ul><p>Great for reading through before a quiz or just refreshing your memory.</p>'},
+    map: {title:'🗺️ Study Map', body:'<p>The Study Map is a guided learning path through all 55 topics in chronological order.</p><p><strong>How it works:</strong></p><ul style="padding-left:16px;margin:8px 0;"><li>Topics are locked until you pass the previous one</li><li>Each topic has a short assessment (80% to pass)</li><li>Assessments include current + previous topics</li><li>Every 5 topics unlocks a <strong>🎁 Bonus Round</strong> mini-game</li><li>Earn awards at milestones (5, 10, 20 topics, unit completion)</li></ul><p><strong>Awards:</strong> 🌱 First Step, 🔥 On a Roll, 🏛️ Unit Master, 👑 BH365 Scholar, and more!</p><p>Your progress shows on the leaderboard for everyone to see.</p>'},
+  };
+  const i = info[mode];
+  if(!i) return;
+  document.getElementById('info-title').textContent = i.title;
+  document.getElementById('info-body').innerHTML = i.body;
+  document.getElementById('v-info-modal').classList.remove('hidden');
+  document.getElementById('v-info-modal').style.display = 'flex';
+}
+
 function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result','v-bonus'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
 
 // UNITS
