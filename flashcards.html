@@ -321,6 +321,16 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 </div>
 
+<!-- BONUS ROUND -->
+<div id="v-bonus" class="hidden">
+<div class="scope-page" style="text-align:center;">
+<h2 style="color:var(--gold);margin-bottom:6px;">🎁 Bonus Round!</h2>
+<p style="color:var(--muted);font-size:.85rem;font-weight:700;margin-bottom:20px;" id="bonus-desc"></p>
+<div id="bonus-area"></div>
+<button class="quiz-next hidden" id="bonus-done" onclick="finishBonus()" style="margin-top:16px;">Collect Points →</button>
+</div>
+</div>
+
 <!-- REVIEW -->
 <div id="v-review" class="hidden">
 <div class="scope-page">
@@ -384,7 +394,7 @@ function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('b
 function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');}
 
 // NAV
-function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result','v-bonus'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
 
 // UNITS
 const UNITS = {
@@ -564,6 +574,17 @@ function openStudyMap(){
     const unlocked = idx === 0 || completed.includes(STUDY_MAP_TOPICS[idx-1].id);
     const isCurrent = !done && unlocked;
     
+    // Bonus round marker every 5 topics
+    if(idx > 0 && idx % 5 === 0){
+      const bonusUnlocked = completed.length >= idx;
+      const bonusPlayed = completed.length > idx;
+      html += `<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;margin-bottom:6px;background:rgba(242,201,76,.08);border:2px dashed var(--gold);border-radius:12px;opacity:${bonusUnlocked?'1':'0.4'};">
+        <span style="font-size:1.2rem;">🎁</span>
+        <div style="flex:1;"><div style="font-weight:800;font-size:.85rem;color:var(--gold);">Bonus Round!</div><div style="font-size:.7rem;color:var(--muted);">Complete ${idx} topics to unlock</div></div>
+        ${bonusPlayed?'<span style="font-size:.7rem;color:var(--green);font-weight:800;">PLAYED</span>':''}
+      </div>`;
+    }
+    
     const borderColor = done ? 'var(--green)' : isCurrent ? 'var(--gold)' : '#333';
     const opacity = (!done && !unlocked) ? '0.4' : '1';
     const icon = done ? '✅' : isCurrent ? '▶️' : '🔒';
@@ -694,10 +715,183 @@ function finishMapAssess(){
     s.totalCorrect += maCorrect; s.totalQuestions += maQuestions.length;
     saveStats(s);
     fetch(CFG.api+'/leaderboard',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({username:user,totalCorrect:s.totalCorrect,totalQuestions:s.totalQuestions,quizzesTaken:s.quizzes||0,bestStreak:s.bestStreak||0,awards:[...s.awards||[],...prog.awards]})}).catch(()=>{});
+    
+    // Check if bonus round unlocked (every 5 topics)
+    if(prog.completed.length % 5 === 0 && prog.completed.length > 0){
+      pendingBonus = true;
+    }
   }
   
   document.getElementById('mr-award').textContent = awardText ? '🏆 New Award: ' + awardText : '';
+  if(passed && pendingBonus){
+    document.getElementById('mr-btn').textContent = '🎁 Bonus Round!';
+    document.getElementById('mr-btn').onclick = startBonusRound;
+  }
   navView('v-map-result');
+}
+
+// ============ BONUS ROUNDS ============
+let pendingBonus = false;
+let bonusPoints = 0;
+
+function startBonusRound(){
+  pendingBonus = false;
+  bonusPoints = 0;
+  const games = [bonusSpinWheel, bonusMemoryMatch, bonusWordScramble, bonusTimelineSort];
+  const game = games[Math.floor(Math.random() * games.length)];
+  game();
+  navView('v-bonus');
+}
+
+function finishBonus(){
+  const s = getStats();
+  s.totalCorrect += Math.floor(bonusPoints/10);
+  saveStats(s);
+  openStudyMap();
+}
+
+// SPIN THE WHEEL
+function bonusSpinWheel(){
+  document.getElementById('bonus-desc').textContent = 'Spin the wheel for bonus points!';
+  const prizes = [{label:'10 pts',val:10},{label:'25 pts',val:25},{label:'50 pts',val:50},{label:'100 pts!',val:100},{label:'5 pts',val:5},{label:'75 pts',val:75},{label:'15 pts',val:15},{label:'JACKPOT 200!',val:200}];
+  let html = `<div style="position:relative;width:240px;height:240px;margin:0 auto;">
+    <div id="wheel" style="width:240px;height:240px;border-radius:50%;border:4px solid var(--gold);background:conic-gradient(var(--red) 0deg 45deg,var(--green) 45deg 90deg,var(--gold) 90deg 135deg,#333 135deg 180deg,var(--red) 180deg 225deg,var(--green) 225deg 270deg,var(--gold) 270deg 315deg,#333 315deg 360deg);transition:transform 3s cubic-bezier(.2,.8,.3,1);display:flex;align-items:center;justify-content:center;">
+      <div style="width:20px;height:20px;background:#fff;border-radius:50;z-index:2;"></div>
+    </div>
+    <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:1.5rem;">▼</div>
+  </div>
+  <button style="margin-top:20px;padding:12px 32px;border:none;border-radius:20px;background:var(--gold);color:#000;font-family:Fredoka One,cursive;font-size:1rem;cursor:pointer;" onclick="spinWheel()">SPIN!</button>
+  <div id="spin-result" style="margin-top:14px;font-family:Fredoka One,cursive;font-size:1.3rem;color:var(--gold);min-height:30px;"></div>`;
+  document.getElementById('bonus-area').innerHTML = html;
+  document.getElementById('bonus-done').classList.add('hidden');
+  window._wheelPrizes = prizes;
+}
+
+function spinWheel(){
+  const prizes = window._wheelPrizes;
+  const idx = Math.floor(Math.random() * prizes.length);
+  const deg = 1440 + (idx * 45) + Math.random()*40;
+  document.getElementById('wheel').style.transform = 'rotate('+deg+'deg)';
+  setTimeout(()=>{
+    bonusPoints = prizes[idx].val;
+    document.getElementById('spin-result').textContent = '🎉 ' + prizes[idx].label;
+    document.getElementById('bonus-done').classList.remove('hidden');
+  }, 3200);
+}
+
+// MEMORY MATCH
+function bonusMemoryMatch(){
+  document.getElementById('bonus-desc').textContent = 'Match the person to their event! (Tap two cards)';
+  const pairs = FLASHCARD_DATA.slice(0,4).map(c => ({person: c.who?c.who.split(';')[0].split('(')[0].trim():'Unknown', event: c.title}));
+  let cards = [];
+  pairs.forEach(p => { cards.push({text:p.person,id:p.person,type:'person'}); cards.push({text:p.event,id:p.person,type:'event'}); });
+  cards = cards.sort(() => Math.random()-.5);
+  
+  let html = '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:320px;margin:0 auto;">';
+  cards.forEach((c,i) => {
+    html += `<div class="qopt" id="mc${i}" style="min-height:60px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.75rem;" onclick="matchCard(${i},'${c.id}','${c.type}')">${c.text}</div>`;
+  });
+  html += '</div><div id="match-result" style="margin-top:12px;font-family:Fredoka One,cursive;color:var(--gold);min-height:24px;"></div>';
+  document.getElementById('bonus-area').innerHTML = html;
+  document.getElementById('bonus-done').classList.add('hidden');
+  window._matchState = {first:null,matches:0,total:pairs.length};
+}
+
+function matchCard(idx, id, type){
+  const state = window._matchState;
+  const el = document.getElementById('mc'+idx);
+  if(el.classList.contains('correct') || el.classList.contains('disabled')) return;
+  el.style.borderColor = 'var(--gold)';
+  
+  if(!state.first){ state.first = {idx,id,type}; return; }
+  if(state.first.idx === idx){ state.first=null; el.style.borderColor='#333'; return; }
+  
+  if(state.first.id === id && state.first.type !== type){
+    document.getElementById('mc'+state.first.idx).classList.add('correct');
+    el.classList.add('correct');
+    state.matches++;
+    bonusPoints += 25;
+    if(state.matches === state.total){
+      document.getElementById('match-result').textContent = '🎉 All matched! +'+bonusPoints+' pts';
+      document.getElementById('bonus-done').classList.remove('hidden');
+    }
+  } else {
+    el.style.borderColor = 'var(--red)';
+    document.getElementById('mc'+state.first.idx).style.borderColor = 'var(--red)';
+    const prevIdx = state.first.idx;
+    setTimeout(()=>{ el.style.borderColor='#333'; document.getElementById('mc'+prevIdx).style.borderColor='#333'; },600);
+  }
+  state.first = null;
+}
+
+// WORD SCRAMBLE
+function bonusWordScramble(){
+  document.getElementById('bonus-desc').textContent = 'Unscramble this historical figure!';
+  const people = FLASHCARD_DATA.map(c=>c.who?c.who.split(';')[0].split('(')[0].trim():'').filter(p=>p.length>3&&p.length<25);
+  const answer = people[Math.floor(Math.random()*people.length)];
+  const scrambled = answer.split('').sort(()=>Math.random()-.5).join('');
+  
+  let html = `<div style="font-family:Fredoka One,cursive;font-size:1.8rem;color:var(--red);letter-spacing:3px;margin:20px 0;">${scrambled.toUpperCase()}</div>
+    <input type="text" id="scramble-input" placeholder="Type your answer..." style="width:100%;max-width:280px;padding:12px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-size:1rem;font-weight:700;text-align:center;">
+    <button style="display:block;margin:12px auto;padding:10px 28px;border:none;border-radius:20px;background:var(--green);color:#fff;font-family:Fredoka One,cursive;cursor:pointer;" onclick="checkScramble()">Check</button>
+    <div id="scramble-result" style="margin-top:10px;font-family:Fredoka One,cursive;color:var(--gold);min-height:24px;"></div>`;
+  document.getElementById('bonus-area').innerHTML = html;
+  document.getElementById('bonus-done').classList.add('hidden');
+  window._scrambleAnswer = answer;
+}
+
+function checkScramble(){
+  const guess = document.getElementById('scramble-input').value.trim();
+  const answer = window._scrambleAnswer;
+  if(guess.toLowerCase() === answer.toLowerCase()){
+    bonusPoints = 50;
+    document.getElementById('scramble-result').textContent = '🎉 Correct! +50 pts';
+    document.getElementById('bonus-done').classList.remove('hidden');
+  } else {
+    document.getElementById('scramble-result').innerHTML = '❌ Not quite! The answer was: <strong>'+answer+'</strong>';
+    bonusPoints = 10;
+    document.getElementById('bonus-done').classList.remove('hidden');
+  }
+}
+
+// TIMELINE SORT
+function bonusTimelineSort(){
+  document.getElementById('bonus-desc').textContent = 'Put these events in chronological order! (Tap from earliest to latest)';
+  const events = [...STUDY_MAP_TOPICS].filter(t=>t.year&&!t.year.includes('present')).sort(()=>Math.random()-.5).slice(0,4).sort((a,b)=>{
+    const ya=parseInt(a.year);const yb=parseInt(b.year);return ya-yb;
+  });
+  const shuffled = [...events].sort(()=>Math.random()-.5);
+  
+  let html = '<div id="tl-options" style="display:flex;flex-direction:column;gap:8px;max-width:320px;margin:0 auto;">';
+  shuffled.forEach((e,i) => {
+    html += `<div class="qopt" id="tl${i}" onclick="pickTimeline(${i})" data-year="${parseInt(e.year)}" data-title="${e.title}">${e.title} (${e.year})</div>`;
+  });
+  html += '</div><div id="tl-order" style="margin-top:12px;font-size:.8rem;color:var(--muted);font-weight:700;">Your order: <span id="tl-picks"></span></div><div id="tl-result" style="margin-top:8px;font-family:Fredoka One,cursive;color:var(--gold);min-height:24px;"></div>';
+  document.getElementById('bonus-area').innerHTML = html;
+  document.getElementById('bonus-done').classList.add('hidden');
+  window._tlCorrectOrder = events.map(e=>parseInt(e.year));
+  window._tlPicks = [];
+}
+
+function pickTimeline(idx){
+  const el = document.getElementById('tl'+idx);
+  if(el.classList.contains('disabled')) return;
+  el.classList.add('disabled');
+  el.style.opacity = '.5';
+  window._tlPicks.push(parseInt(el.dataset.year));
+  document.getElementById('tl-picks').textContent = window._tlPicks.map((y,i)=>(i+1)+'. '+y).join(' → ');
+  
+  if(window._tlPicks.length === window._tlCorrectOrder.length){
+    const correct = JSON.stringify(window._tlPicks) === JSON.stringify(window._tlCorrectOrder);
+    if(correct){
+      bonusPoints = 75;
+      document.getElementById('tl-result').textContent = '🎉 Perfect order! +75 pts';
+    } else {
+      bonusPoints = 15;
+      document.getElementById('tl-result').textContent = '😅 Not quite — +15 pts for trying!';
+    }
+    document.getElementById('bonus-done').classList.remove('hidden');
+  }
 }
 </script>
 </body>
