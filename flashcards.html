@@ -705,24 +705,24 @@ let maQuestions = [], maIdx = 0, maScore = 0, maCorrect = 0, maStreak = 0;
 function startMapTopic(idx){
   mapTopicIdx = idx;
   const topic = STUDY_MAP_TOPICS[idx];
-  const prog = getMapProgress();
   
-  // Get questions for this topic + all previously completed topics
-  const relevantChapters = [topic.chapter];
-  prog.completed.forEach(id => {
-    const t = STUDY_MAP_TOPICS.find(t => t.id === id);
-    if(t && !relevantChapters.includes(t.chapter)) relevantChapters.push(t.chapter);
-  });
-  
-  // Current topic questions (must have some)
+  // Only quiz on current topic's chapter — no cumulative questions during individual topics
   const topicQs = QUIZ_BANK.filter(q => q.chapter === topic.chapter);
-  // Previous topic questions
-  const prevQs = QUIZ_BANK.filter(q => relevantChapters.includes(q.chapter) && q.chapter !== topic.chapter);
   
-  // Build assessment: 5 from current topic + up to 3 from previous
-  const currentPick = [...topicQs].sort(() => Math.random()-.5).slice(0, 5);
-  const prevPick = [...prevQs].sort(() => Math.random()-.5).slice(0, Math.min(3, Math.floor(idx/3)));
-  maQuestions = [...currentPick, ...prevPick].sort(() => Math.random()-.5);
+  // Check if this is the last topic in a chapter (cumulative review)
+  const nextTopic = STUDY_MAP_TOPICS[idx + 1];
+  const isChapterEnd = !nextTopic || nextTopic.chapter !== topic.chapter;
+  
+  if(isChapterEnd && idx > 2){
+    // Cumulative review: pull from all chapters covered so far
+    const prog = getMapProgress();
+    const coveredChapters = [...new Set(STUDY_MAP_TOPICS.slice(0, idx+1).map(t => t.chapter))];
+    const allQs = QUIZ_BANK.filter(q => coveredChapters.includes(q.chapter));
+    maQuestions = [...allQs].sort(() => Math.random()-.5).slice(0, Math.min(10, allQs.length));
+  } else {
+    // Normal: just this chapter's questions
+    maQuestions = [...topicQs].sort(() => Math.random()-.5).slice(0, Math.min(5, topicQs.length));
+  }
   
   if(maQuestions.length < 3) maQuestions = [...topicQs].sort(() => Math.random()-.5).slice(0, 5);
   

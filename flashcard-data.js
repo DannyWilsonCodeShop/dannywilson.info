@@ -655,7 +655,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"6+ million Black Americans fled Jim Crow oppression in the South (1915\u20131970), relocating to northern and western cities for jobs, safety, and civil rights.\"",
+    "q": "What event: \"6+ million Black Americans fled Jim Crow oppression in the South (1915\u20131970), relocating to northern and western cities \"",
     "a": "The Great Migration",
     "chapter": 11,
     "type": "identify"
@@ -727,7 +727,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Between 1910\u20131930, Black populations surged dramatically in northern cities \u2014 Detroit by over 600%, Chicago 150%, New York 66% \u2014 reshaping urban America.\"",
+    "q": "What event: \"Between 1910\u20131930, Black populations surged dramatically in northern cities \u2014 Detroit by over 600%, Chicago 150%, New Yo\"",
     "a": "Black Population Growth in Northern Cities",
     "chapter": 11,
     "type": "identify"
@@ -745,16 +745,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist\"?",
+    "q": "Who: Created and marketed hair care products for Black women; founded the Poro?",
     "a": "Annie Turnbo Malone",
     "chapter": 11,
     "type": "who"
-  },
-  {
-    "q": "What event is Annie Turnbo Malone most associated with?",
-    "a": "Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist",
-    "chapter": 11,
-    "type": "identify"
   },
   {
     "q": "Why did \"Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist\" occur?",
@@ -769,7 +763,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Annie Turnbo Malone built the Poro Company in St. Louis (late 1890s), becoming a Black female millionaire and major philanthropist \u2014 and launched Sarah Breedlove (Madam C.J. Walker) as her sales agent before Walker created her own line.\"",
+    "q": "What event: \"Annie Turnbo Malone built the Poro Company in St. Louis (late 1890s), becoming a Black female millionaire and major phil\"",
     "a": "Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist",
     "chapter": 11,
     "type": "identify"
@@ -805,7 +799,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Excluded from white businesses, Black migrants built a parallel urban economy in the 1910s\u201330s \u2014 founding banks, beauty shops, funeral homes, and professional associations.\"",
+    "q": "What event: \"Excluded from white businesses, Black migrants built a parallel urban economy in the 1910s\u201330s \u2014 founding banks, beauty \"",
     "a": "Black Entrepreneurship in Northern Cities",
     "chapter": 11,
     "type": "identify"
@@ -823,16 +817,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Woodrow Wilson \u2014 28th President\"?",
+    "q": "Who: Wilson won the 1912 presidential election with significant Black support after?",
     "a": "Woodrow Wilson",
     "chapter": 12,
     "type": "who"
-  },
-  {
-    "q": "What event is Woodrow Wilson most associated with?",
-    "a": "Woodrow Wilson \u2014 28th President",
-    "chapter": 12,
-    "type": "identify"
   },
   {
     "q": "Why did \"Woodrow Wilson \u2014 28th President\" occur?",
@@ -847,7 +835,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Wilson won the 1912 presidency with Black voter support after promising social justice \u2014 then systematically betrayed those promises once in office.\"",
+    "q": "What event: \"Wilson won the 1912 presidency with Black voter support after promising social justice \u2014 then systematically betrayed th\"",
     "a": "Woodrow Wilson \u2014 28th President",
     "chapter": 12,
     "type": "identify"
@@ -889,7 +877,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Within months of taking office in 1913, Wilson re-segregated the Post Office and Treasury, required photos on applications to screen out Black applicants, and reversed decades of post-Reconstruction federal integration.\"",
+    "q": "What event: \"Within months of taking office in 1913, Wilson re-segregated the Post Office and Treasury, required photos on applicatio\"",
     "a": "Wilson Re-segregates Federal Government",
     "chapter": 12,
     "type": "identify"
@@ -907,16 +895,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"W.E.B. Du Bois Condemns Wilson in the CRISIS\"?",
+    "q": "Who: Du Bois published an open letter in the CRISIS magazine sharply criticizing?",
     "a": "W.E.B. Du Bois",
     "chapter": 12,
     "type": "who"
-  },
-  {
-    "q": "What event is W.E.B. Du Bois most associated with?",
-    "a": "W.E.B. Du Bois Condemns Wilson in the CRISIS",
-    "chapter": 12,
-    "type": "identify"
   },
   {
     "q": "Why did \"W.E.B. Du Bois Condemns Wilson in the CRISIS\" occur?",
@@ -931,7 +913,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Du Bois published a scathing open letter in the CRISIS (1913) condemning Wilson's federal segregation as a direct betrayal of the Black voters who helped elect him.\"",
+    "q": "What event: \"Du Bois published a scathing open letter in the CRISIS (1913) condemning Wilson's federal segregation as a direct betray\"",
     "a": "W.E.B. Du Bois Condemns Wilson in the CRISIS",
     "chapter": 12,
     "type": "identify"
@@ -973,7 +955,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Both Johnson (Reconstruction era) and Wilson (Progressive era) promised support for Black equality but governed in ways that entrenched racial oppression \u2014 a recurring pattern in American presidential history.\"",
+    "q": "What event: \"Both Johnson (Reconstruction era) and Wilson (Progressive era) promised support for Black equality but governed in ways \"",
     "a": "Andrew Johnson vs. Woodrow Wilson \u2014 Broken Presidential Promises",
     "chapter": 12,
     "type": "identify"
@@ -1003,7 +985,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The Great Migration was driven by Southern racial terror, economic exploitation, and disfranchisement (push) paired with Northern industrial wages, schools, and relative freedom (pull).\"",
+    "q": "What event: \"The Great Migration was driven by Southern racial terror, economic exploitation, and disfranchisement (push) paired with\"",
     "a": "Push-Pull Factors of the Great Migration",
     "chapter": 13,
     "type": "identify"
@@ -1039,7 +1021,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Washington's 1895 Atlanta Compromise advocated vocational training and political accommodation; Du Bois countered with demands for immediate civil rights \u2014 this foundational debate shaped Black politics for generations.\"",
+    "q": "What event: \"Washington's 1895 Atlanta Compromise advocated vocational training and political accommodation; Du Bois countered with d\"",
     "a": "Du Bois vs. Booker T. Washington \u2014 The Great Debate",
     "chapter": 13,
     "type": "identify"
@@ -1057,16 +1039,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Marcus Garvey and the UNIA\"?",
+    "q": "Who: Founded UNIA; launched 'Back to Africa' movement; promoted Black nationalism,?",
     "a": "Marcus Garvey",
     "chapter": 13,
     "type": "who"
-  },
-  {
-    "q": "What event is Marcus Garvey most associated with?",
-    "a": "Marcus Garvey and the UNIA",
-    "chapter": 13,
-    "type": "identify"
   },
   {
     "q": "Why did \"Marcus Garvey and the UNIA\" occur?",
@@ -1081,7 +1057,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Marcus Garvey's UNIA (1914) built the largest Black mass movement in history, promoting Pan-African nationalism, the Black Star Line, and a 'Back to Africa' vision as the path to Black liberation.\"",
+    "q": "What event: \"Marcus Garvey's UNIA (1914) built the largest Black mass movement in history, promoting Pan-African nationalism, the Bla\"",
     "a": "Marcus Garvey and the UNIA",
     "chapter": 13,
     "type": "identify"
@@ -1117,7 +1093,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"White mobs massacred 100\u2013237 Black sharecroppers in Elaine, AR (Sept. 1919) after they organized a union \u2014 one of the deadliest acts of racial terror in U.S. history.\"",
+    "q": "What event: \"White mobs massacred 100\u2013237 Black sharecroppers in Elaine, AR (Sept. 1919) after they organized a union \u2014 one of the de\"",
     "a": "Elaine, Arkansas Massacre",
     "chapter": 13,
     "type": "identify"
@@ -1159,7 +1135,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Victor Hugo Green's annual Green Book (1936\u20131966) was an essential survival guide listing businesses and lodging safe for Black travelers navigating a violently segregated America.\"",
+    "q": "What event: \"Victor Hugo Green's annual Green Book (1936\u20131966) was an essential survival guide listing businesses and lodging safe fo\"",
     "a": "The Green Book",
     "chapter": 13,
     "type": "identify"
@@ -1189,7 +1165,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The Great Migration concentrated Black genius in Harlem (1920s\u201330s), igniting an explosion of literature, jazz, visual art, and political thought that redefined Black identity and permanently shaped American culture.\"",
+    "q": "What event: \"The Great Migration concentrated Black genius in Harlem (1920s\u201330s), igniting an explosion of literature, jazz, visual a\"",
     "a": "The Harlem Renaissance",
     "chapter": 14,
     "type": "identify"
@@ -1207,16 +1183,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Langston Hughes \u2014 Poet of the People\"?",
+    "q": "Who: Prolific poet, playwright, novelist, and essayist who celebrated Black everyday?",
     "a": "Langston Hughes",
     "chapter": 14,
     "type": "who"
-  },
-  {
-    "q": "What event is Langston Hughes most associated with?",
-    "a": "Langston Hughes \u2014 Poet of the People",
-    "chapter": 14,
-    "type": "identify"
   },
   {
     "q": "Why did \"Langston Hughes \u2014 Poet of the People\" occur?",
@@ -1231,7 +1201,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Langston Hughes (1920s\u20131967) revolutionized American poetry by embedding jazz rhythms and Black vernacular into verse celebrating Black life and demanding dignity \u2014 becoming the defining literary voice of the Harlem Renaissance.\"",
+    "q": "What event: \"Langston Hughes (1920s\u20131967) revolutionized American poetry by embedding jazz rhythms and Black vernacular into verse ce\"",
     "a": "Langston Hughes \u2014 Poet of the People",
     "chapter": 14,
     "type": "identify"
@@ -1267,7 +1237,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"After emancipation (1865\u20131905), Black Americans built 30,000+ independent churches with 3.3M+ members \u2014 the largest, most stable institutional network in Black America, surpassing HBCUs, the Urban League, and the NAACP.\"",
+    "q": "What event: \"After emancipation (1865\u20131905), Black Americans built 30,000+ independent churches with 3.3M+ members \u2014 the largest, mos\"",
     "a": "Growth of Independent Black Churches Post-Civil War",
     "chapter": 15,
     "type": "identify"
@@ -1309,7 +1279,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The Black church (1950s\u201360s) was the organizational backbone of the Civil Rights Movement \u2014 providing meeting spaces, funding, communication, and the moral authority of the clergy that no other institution could match.\"",
+    "q": "What event: \"The Black church (1950s\u201360s) was the organizational backbone of the Civil Rights Movement \u2014 providing meeting spaces, fu\"",
     "a": "The Black Church as Cornerstone of Civil Rights",
     "chapter": 15,
     "type": "identify"
@@ -1339,7 +1309,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Though barred from most pulpits, Black women were the organizational and moral engine of Black churches \u2014 leading auxiliaries, shaping policy, and wielding substantial influence over clergy through their rhetorical and spiritual authority.\"",
+    "q": "What event: \"Though barred from most pulpits, Black women were the organizational and moral engine of Black churches \u2014 leading auxili\"",
     "a": "Black Women's Leadership in the Church",
     "chapter": 15,
     "type": "identify"
@@ -1381,7 +1351,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Plessy v. Ferguson (1896) enshrined 'separate but equal' as constitutional law, giving legal sanction to Jim Crow segregation for nearly six decades until overturned by Brown v. Board (1954).\"",
+    "q": "What event: \"Plessy v. Ferguson (1896) enshrined 'separate but equal' as constitutional law, giving legal sanction to Jim Crow segreg\"",
     "a": "Plessy v. Ferguson \u2014 'Separate But Equal'",
     "chapter": 16,
     "type": "identify"
@@ -1423,7 +1393,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Truman's Executive Order 9981 (July 26, 1948) desegregated the U.S. military, the largest institutional desegregation in American history up to that point \u2014 a direct response to Black WWII veterans' demands.\"",
+    "q": "What event: \"Truman's Executive Order 9981 (July 26, 1948) desegregated the U.S. military, the largest institutional desegregation in\"",
     "a": "Executive Order 9981 \u2014 Military Desegregation",
     "chapter": 16,
     "type": "identify"
@@ -1465,7 +1435,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Brown v. Board (May 17, 1954) unanimously overturned Plessy v. Ferguson, ruling school segregation unconstitutional \u2014 the single most important legal victory of the Civil Rights Movement, though resistance to implementation was fierce.\"",
+    "q": "What event: \"Brown v. Board (May 17, 1954) unanimously overturned Plessy v. Ferguson, ruling school segregation unconstitutional \u2014 th\"",
     "a": "Brown v. Board of Education",
     "chapter": 16,
     "type": "identify"
@@ -1483,16 +1453,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Rosa Parks and the Montgomery Bus Boycott\"?",
+    "q": "Who: Parks refused to give up her bus seat to a white man; her arrest triggered a?",
     "a": "Rosa Parks",
     "chapter": 16,
     "type": "who"
-  },
-  {
-    "q": "What event is Rosa Parks most associated with?",
-    "a": "Rosa Parks and the Montgomery Bus Boycott",
-    "chapter": 16,
-    "type": "identify"
   },
   {
     "q": "Why did \"Rosa Parks and the Montgomery Bus Boycott\" occur?",
@@ -1507,7 +1471,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Rosa Parks' arrest (Dec. 1, 1955) triggered a 381-day Montgomery Bus Boycott that ended bus segregation, launched Dr. King nationally, and proved that sustained nonviolent economic pressure could defeat Jim Crow.\"",
+    "q": "What event: \"Rosa Parks' arrest (Dec. 1, 1955) triggered a 381-day Montgomery Bus Boycott that ended bus segregation, launched Dr. Ki\"",
     "a": "Rosa Parks and the Montgomery Bus Boycott",
     "chapter": 16,
     "type": "identify"
@@ -1525,16 +1489,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"James Meredith Integrates the University of Mississippi\"?",
+    "q": "Who: Meredith enrolled as the first Black student at Ole Miss; his arrival triggered?",
     "a": "James Meredith",
     "chapter": 16,
     "type": "who"
-  },
-  {
-    "q": "What event is James Meredith most associated with?",
-    "a": "James Meredith Integrates the University of Mississippi",
-    "chapter": 16,
-    "type": "identify"
   },
   {
     "q": "Why did \"James Meredith Integrates the University of Mississippi\" occur?",
@@ -1549,7 +1507,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"James Meredith's enrollment at Ole Miss (Sept. 30, 1962) required 31,000 federal troops, triggered deadly riots, and became the defining showdown between federal authority and Southern massive resistance to desegregation.\"",
+    "q": "What event: \"James Meredith's enrollment at Ole Miss (Sept. 30, 1962) required 31,000 federal troops, triggered deadly riots, and bec\"",
     "a": "James Meredith Integrates the University of Mississippi",
     "chapter": 16,
     "type": "identify"
@@ -1591,7 +1549,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The March on Washington (Aug. 28, 1963) drew 250,000 people to the Lincoln Memorial, where King's 'I Have a Dream' speech became the defining oration of the Civil Rights Movement and accelerated passage of the Civil Rights Act.\"",
+    "q": "What event: \"The March on Washington (Aug. 28, 1963) drew 250,000 people to the Lincoln Memorial, where King's 'I Have a Dream' speec\"",
     "a": "March on Washington for Jobs and Freedom",
     "chapter": 16,
     "type": "identify"
@@ -1633,7 +1591,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The 15th Amendment (ratified 1870) guaranteed Black men the right to vote \u2014 then was systematically nullified for nearly 100 years by Southern disenfranchisement tactics until the Voting Rights Act of 1965.\"",
+    "q": "What event: \"The 15th Amendment (ratified 1870) guaranteed Black men the right to vote \u2014 then was systematically nullified for nearly\"",
     "a": "15th Amendment \u2014 Right to Vote",
     "chapter": 16,
     "type": "identify"
@@ -1675,7 +1633,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"John Howard Griffin's Black Like Me (1961) documented his experience traveling the Deep South as a Black man, confronting white Americans with the lived reality of racial oppression they had ignored or denied.\"",
+    "q": "What event: \"John Howard Griffin's Black Like Me (1961) documented his experience traveling the Deep South as a Black man, confrontin\"",
     "a": "John Howard Griffin's Black Like Me Experiment",
     "chapter": 16,
     "type": "identify"
@@ -1711,7 +1669,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"In May 1963, hundreds of Birmingham children marched for civil rights; Bull Connor's police attacked them with fire hoses and dogs. The images shocked the world, broke the Birmingham standoff, and accelerated federal civil rights legislation.\"",
+    "q": "What event: \"In May 1963, hundreds of Birmingham children marched for civil rights; Bull Connor's police attacked them with fire hose\"",
     "a": "The Birmingham Children's Crusade",
     "chapter": 17,
     "type": "identify"
@@ -1741,7 +1699,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"KKK bombers killed four Black girls at Birmingham's 16th Street Baptist Church on Sept. 15, 1963. The murders galvanized national and international outrage and hardened congressional resolve to pass the Civil Rights Act.\"",
+    "q": "What event: \"KKK bombers killed four Black girls at Birmingham's 16th Street Baptist Church on Sept. 15, 1963. The murders galvanized\"",
     "a": "16th Street Baptist Church Bombing",
     "chapter": 17,
     "type": "identify"
@@ -1783,7 +1741,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The SCLC (1957, Atlanta) coordinated nonviolent civil rights campaigns through the Black church network, under King's leadership, executing the Birmingham Campaign, Selma marches, and March on Washington.\"",
+    "q": "What event: \"The SCLC (1957, Atlanta) coordinated nonviolent civil rights campaigns through the Black church network, under King's le\"",
     "a": "Southern Christian Leadership Conference (SCLC)",
     "chapter": 18,
     "type": "identify"
@@ -1825,7 +1783,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"SNCC (1960) was the student wing of the Civil Rights Movement, leading sit-ins, Freedom Rides, voter registration, and Freedom Summer \u2014 and later under Stokely Carmichael, introducing the 'Black Power' slogan.\"",
+    "q": "What event: \"SNCC (1960) was the student wing of the Civil Rights Movement, leading sit-ins, Freedom Rides, voter registration, and F\"",
     "a": "Student Nonviolent Coordinating Committee (SNCC)",
     "chapter": 18,
     "type": "identify"
@@ -1897,7 +1855,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Freedom Riders (1961) rode interstate buses through the South to enforce desegregation rulings, enduring fire-bombings and mob beatings in Alabama. Their courage forced the Kennedy administration to desegregate interstate transportation facilities.\"",
+    "q": "What event: \"Freedom Riders (1961) rode interstate buses through the South to enforce desegregation rulings, enduring fire-bombings a\"",
     "a": "The Freedom Riders",
     "chapter": 18,
     "type": "identify"
@@ -1951,16 +1909,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Assassination of Dr. Martin Luther King Jr.\"?",
+    "q": "Who: King was shot by a sniper on the balcony of the Lorraine Motel; died at 7:05?",
     "a": "Dr. Martin Luther King Jr.",
     "chapter": 18,
     "type": "who"
-  },
-  {
-    "q": "What event is Dr. Martin Luther King Jr. most associated with?",
-    "a": "Assassination of Dr. Martin Luther King Jr.",
-    "chapter": 18,
-    "type": "identify"
   },
   {
     "q": "Why did \"Assassination of Dr. Martin Luther King Jr.\" occur?",
@@ -1975,7 +1927,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Dr. King was assassinated at the Lorraine Motel in Memphis on April 4, 1968, while supporting striking Black sanitation workers. Riots erupted in 110+ cities; Congress passed the Fair Housing Act within a week.\"",
+    "q": "What event: \"Dr. King was assassinated at the Lorraine Motel in Memphis on April 4, 1968, while supporting striking Black sanitation \"",
     "a": "Assassination of Dr. Martin Luther King Jr.",
     "chapter": 18,
     "type": "identify"
@@ -2005,7 +1957,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Fannie Lou Hamer (1962) registered to vote in Mississippi, was beaten and evicted, then electrified the nation with her 1964 DNC testimony \u2014 'I'm sick and tired of being sick and tired' \u2014 demanding Mississippi's Black voters be seated.\"",
+    "q": "What event: \"Fannie Lou Hamer (1962) registered to vote in Mississippi, was beaten and evicted, then electrified the nation with her \"",
     "a": "Fannie Lou Hamer \u2014 Courage Under Terror",
     "chapter": 19,
     "type": "identify"
@@ -2047,7 +1999,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"NAACP leader Medgar Evers was assassinated in his Jackson driveway on June 12, 1963. His killer wasn't convicted until 1994. His widow Myrlie Evers-Williams continued his work and later chaired the NAACP (1995\u20131998).\"",
+    "q": "What event: \"NAACP leader Medgar Evers was assassinated in his Jackson driveway on June 12, 1963. His killer wasn't convicted until 1\"",
     "a": "Assassination of Medgar Evers and Myrlie Evers-Williams",
     "chapter": 19,
     "type": "identify"
@@ -2089,7 +2041,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"State eugenics programs (1930s\u201370s) disproportionately targeted poor Black women for forced sterilization \u2014 a state-sanctioned form of reproductive terror rooted in white supremacist pseudoscience that persisted into the 1970s.\"",
+    "q": "What event: \"State eugenics programs (1930s\u201370s) disproportionately targeted poor Black women for forced sterilization \u2014 a state-sanc\"",
     "a": "Eugenics and Forced Sterilization of Black Women",
     "chapter": 19,
     "type": "identify"
@@ -2149,16 +2101,10 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The Texas State Capitol (1882\u20131888) was built largely by approximately 500 convict laborers \u2014 predominantly Black men \u2014 who quarried and cut its granite under the state's convict lease system.\"",
+    "q": "What event: \"The Texas State Capitol (1882\u20131888) was built largely by approximately 500 convict laborers \u2014 predominantly Black men \u2014 \"",
     "a": "Texas State Capitol Constructed with Convict Labor",
     "chapter": 20,
     "type": "identify"
-  },
-  {
-    "q": "When did \"The Compromise of 1877 \u2014 End of Reconstruction\" take place?",
-    "a": "1877",
-    "chapter": 20,
-    "type": "when"
   },
   {
     "q": "Where did \"The Compromise of 1877 \u2014 End of Reconstruction\" happen?",
@@ -2191,7 +2137,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The Compromise of 1877 ended Reconstruction by withdrawing federal troops from the South in exchange for Hayes's presidency \u2014 directly handing Black Southerners back to unchecked white supremacist rule and enabling the rise of Jim Crow.\"",
+    "q": "What event: \"The Compromise of 1877 ended Reconstruction by withdrawing federal troops from the South in exchange for Hayes's preside\"",
     "a": "The Compromise of 1877 \u2014 End of Reconstruction",
     "chapter": 20,
     "type": "identify"
@@ -2233,7 +2179,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"HBCUs (oldest: 1837; major expansion after 1865) were founded to provide Black Americans access to higher education after white institutions barred them \u2014 producing the majority of Black professionals through the mid-20th century.\"",
+    "q": "What event: \"HBCUs (oldest: 1837; major expansion after 1865) were founded to provide Black Americans access to higher education afte\"",
     "a": "Establishment of HBCUs",
     "chapter": 21,
     "type": "identify"
@@ -2275,7 +2221,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"On December 19, 2019, President Trump signed bipartisan legislation providing HBCUs with $250M+ annually in permanent mandatory funding \u2014 the first such guarantee in federal history.\"",
+    "q": "What event: \"On December 19, 2019, President Trump signed bipartisan legislation providing HBCUs with $250M+ annually in permanent ma\"",
     "a": "2019 HBCU Funding Legislation",
     "chapter": 21,
     "type": "identify"
@@ -2317,7 +2263,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"BH365 emphasizes that financial literacy \u2014 especially homeownership, avoiding consumer debt, and resisting targeted advertising \u2014 is essential for Black Americans to close the racial wealth gap.\"",
+    "q": "What event: \"BH365 emphasizes that financial literacy \u2014 especially homeownership, avoiding consumer debt, and resisting targeted adve\"",
     "a": "Financial Literacy \u2014 Wealth Building Principles",
     "chapter": 21,
     "type": "identify"
@@ -2335,16 +2281,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)\"?",
+    "q": "Who: Copyrighted the Poro brand by 1902; trained thousands of Black women as sales?",
     "a": "Annie Turnbo Malone",
     "chapter": 22,
     "type": "who"
-  },
-  {
-    "q": "What event is Annie Turnbo Malone most associated with?",
-    "a": "Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)",
-    "chapter": 22,
-    "type": "identify"
   },
   {
     "q": "Why did \"Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)\" occur?",
@@ -2359,7 +2299,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Malone's Poro Company (copyrighted 1902) trained thousands of Black women agents, funded Black institutions nationally, and predated Madam C.J. Walker's empire by four years \u2014 with Walker having worked as Malone's sales agent.\"",
+    "q": "What event: \"Malone's Poro Company (copyrighted 1902) trained thousands of Black women agents, funded Black institutions nationally, \"",
     "a": "Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)",
     "chapter": 22,
     "type": "identify"
@@ -2401,7 +2341,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Madam C.J. Walker (born 1867 to formerly enslaved parents) built a $600K+ hair care empire (equivalent to millions today), leading a national salesforce of 40,000+ Black women agents and becoming America's first Black female self-made millionaire.\"",
+    "q": "What event: \"Madam C.J. Walker (born 1867 to formerly enslaved parents) built a $600K+ hair care empire (equivalent to millions today\"",
     "a": "Madam C.J. Walker \u2014 First Female Self-Made Millionaire",
     "chapter": 22,
     "type": "identify"
@@ -2419,16 +2359,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Reginald Lewis \u2014 Wall Street Pioneer\"?",
+    "q": "Who: Grew up in Baltimore; decided to pursue law at age 7; attended Virginia State?",
     "a": "Reginald Lewis",
     "chapter": 22,
     "type": "who"
-  },
-  {
-    "q": "What event is Reginald Lewis most associated with?",
-    "a": "Reginald Lewis \u2014 Wall Street Pioneer",
-    "chapter": 22,
-    "type": "identify"
   },
   {
     "q": "Why did \"Reginald Lewis \u2014 Wall Street Pioneer\" occur?",
@@ -2443,7 +2377,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Reginald Lewis opened Wall Street's first Black law firm (1970) and executed a record $985M leveraged buyout of Beatrice International (1987), becoming the wealthiest Black man in America before his death in 1993.\"",
+    "q": "What event: \"Reginald Lewis opened Wall Street's first Black law firm (1970) and executed a record $985M leveraged buyout of Beatrice\"",
     "a": "Reginald Lewis \u2014 Wall Street Pioneer",
     "chapter": 22,
     "type": "identify"
@@ -2461,16 +2395,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Cathy Hughes \u2014 Urban One / Radio One\"?",
+    "q": "Who: Founded Radio One in 1980 starting with a single Washington D.C. station; grew?",
     "a": "Cathy Hughes",
     "chapter": 22,
     "type": "who"
-  },
-  {
-    "q": "What event is Cathy Hughes most associated with?",
-    "a": "Cathy Hughes \u2014 Urban One / Radio One",
-    "chapter": 22,
-    "type": "identify"
   },
   {
     "q": "Why did \"Cathy Hughes \u2014 Urban One / Radio One\" occur?",
@@ -2485,7 +2413,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Cathy Hughes built Radio One (1980, D.C.) into Urban One \u2014 the largest Black-owned media company in the U.S. and the first Black-woman-chaired publicly traded company \u2014 serving Black communities with culturally relevant media.\"",
+    "q": "What event: \"Cathy Hughes built Radio One (1980, D.C.) into Urban One \u2014 the largest Black-owned media company in the U.S. and the fir\"",
     "a": "Cathy Hughes \u2014 Urban One / Radio One",
     "chapter": 22,
     "type": "identify"
@@ -2503,16 +2431,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving\"?",
+    "q": "Who: Moved to Connecticut from Jim Crow Alabama; lives by four laws his mother?",
     "a": "Curtis Robinson",
     "chapter": 22,
     "type": "who"
-  },
-  {
-    "q": "What event is Curtis Robinson most associated with?",
-    "a": "Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving",
-    "chapter": 22,
-    "type": "identify"
   },
   {
     "q": "Why did \"Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving\" occur?",
@@ -2527,7 +2449,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Curtis Robinson's mother gave him four guiding principles \u2014 Self-Sufficiency, First, Sacrifice, and Giving \u2014 that provided a framework for economic survival and advancement after escaping Jim Crow Alabama.\"",
+    "q": "What event: \"Curtis Robinson's mother gave him four guiding principles \u2014 Self-Sufficiency, First, Sacrifice, and Giving \u2014 that provid\"",
     "a": "Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving",
     "chapter": 22,
     "type": "identify"
@@ -2545,16 +2467,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor\"?",
+    "q": "Who: Founded Daytona Literary and Industrial Training School (1904) \u2014 now?",
     "a": "Mary McLeod Bethune",
     "chapter": 23,
     "type": "who"
-  },
-  {
-    "q": "What event is Mary McLeod Bethune most associated with?",
-    "a": "Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor",
-    "chapter": 23,
-    "type": "identify"
   },
   {
     "q": "Why did \"Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor\" occur?",
@@ -2569,16 +2485,10 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Mary McLeod Bethune (1904\u20131955) founded what became Bethune-Cookman University, co-founded the NCNW, and served as FDR's Director of Negro Affairs \u2014 the most politically powerful Black woman in American history up to that point.\"",
+    "q": "What event: \"Mary McLeod Bethune (1904\u20131955) founded what became Bethune-Cookman University, co-founded the NCNW, and served as FDR's\"",
     "a": "Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor",
     "chapter": 23,
     "type": "identify"
-  },
-  {
-    "q": "When did \"MLK Jr. Predicts a Black President \u2014 1967\" take place?",
-    "a": "1967",
-    "chapter": 23,
-    "type": "when"
   },
   {
     "q": "Where did \"MLK Jr. Predicts a Black President \u2014 1967\" happen?",
@@ -2611,7 +2521,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"In 1967, MLK Jr. publicly predicted a Black U.S. president 'in the not so distant future' \u2014 a prediction fulfilled 41 years later with Barack Obama's 2008 election.\"",
+    "q": "What event: \"In 1967, MLK Jr. publicly predicted a Black U.S. president 'in the not so distant future' \u2014 a prediction fulfilled 41 ye\"",
     "a": "MLK Jr. Predicts a Black President \u2014 1967",
     "chapter": 23,
     "type": "identify"
@@ -2629,16 +2539,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Election of Barack Obama \u2014 44th President\"?",
+    "q": "Who: Obama won the 2008 presidential election, becoming the first African American?",
     "a": "Barack Obama",
     "chapter": 23,
     "type": "who"
-  },
-  {
-    "q": "What event is Barack Obama most associated with?",
-    "a": "Election of Barack Obama \u2014 44th President",
-    "chapter": 23,
-    "type": "identify"
   },
   {
     "q": "Why did \"Election of Barack Obama \u2014 44th President\" occur?",
@@ -2653,7 +2557,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Barack Obama was elected the 44th President (Nov. 4, 2008) \u2014 the first African American to hold the office. He served two terms, won the Nobel Peace Prize (2009), and was Gallup's most admired American for 12 consecutive years.\"",
+    "q": "What event: \"Barack Obama was elected the 44th President (Nov. 4, 2008) \u2014 the first African American to hold the office. He served tw\"",
     "a": "Election of Barack Obama \u2014 44th President",
     "chapter": 23,
     "type": "identify"
@@ -2671,16 +2575,10 @@ const PRACTICE_CARDS = [
     "type": "where"
   },
   {
-    "q": "Who was a key figure in \"Berea College \u2014 Education Without Racial Exclusion\"?",
+    "q": "Who: Founded in 1855 in a pro-slavery region of Kentucky; admitted Black and white?",
     "a": "Berea College",
     "chapter": 23,
     "type": "who"
-  },
-  {
-    "q": "What event is Berea College most associated with?",
-    "a": "Berea College \u2014 Education Without Racial Exclusion",
-    "chapter": 23,
-    "type": "identify"
   },
   {
     "q": "Why did \"Berea College \u2014 Education Without Racial Exclusion\" occur?",
@@ -2695,7 +2593,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"Berea College (founded 1855, Kentucky) was a rare institution that admitted Black and white students from the start \u2014 a beacon of interracial education in a pro-slavery border state, referenced in BH365 as a model of possibility.\"",
+    "q": "What event: \"Berea College (founded 1855, Kentucky) was a rare institution that admitted Black and white students from the start \u2014 a \"",
     "a": "Berea College \u2014 Education Without Racial Exclusion",
     "chapter": 23,
     "type": "identify"
@@ -2737,7 +2635,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"The N-word originated in 18th-century colonial America (from earlier Latin/Portuguese roots) as a deliberate dehumanization tool: colonizers used it to strip kidnapped Africans of identity and justify chattel slavery. Its use remains a form of racial oppression.\"",
+    "q": "What event: \"The N-word originated in 18th-century colonial America (from earlier Latin/Portuguese roots) as a deliberate dehumanizat\"",
     "a": "Origins of the N-Word as a Tool of Racial Dehumanization",
     "chapter": 24,
     "type": "identify"
@@ -2779,7 +2677,7 @@ const PRACTICE_CARDS = [
     "type": "what"
   },
   {
-    "q": "What event does this describe: \"White medical institutions systematically barred Black physicians and scientists for centuries, using pseudoscientific claims of racial inferiority to justify exclusion \u2014 barriers whose effects on Black health and representation persist today.\"",
+    "q": "What event: \"White medical institutions systematically barred Black physicians and scientists for centuries, using pseudoscientific c\"",
     "a": "Prevailing Beliefs Against Black Physicians and Scientists",
     "chapter": 24,
     "type": "identify"
@@ -2809,7 +2707,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "6+ million Black Americans fled Jim Crow oppression in the South (1915\u20131970), relocating to northern and western cities for jobs, safety, and civil rights.",
+    "q": "6+ million Black Americans fled Jim Crow oppression in the South (1915\u20131970), relocating to northern and western cities ",
     "a": "The Great Migration",
     "type": "identify",
     "chapter": 11,
@@ -2865,7 +2763,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Between 1910\u20131930, Black populations surged dramatically in northern cities \u2014 Detroit by over 600%, Chicago 150%, New York 66% \u2014 reshaping urban America.",
+    "q": "Between 1910\u20131930, Black populations surged dramatically in northern cities \u2014 Detroit by over 600%, Chicago 150%, New Yo",
     "a": "Black Population Growth in Northern Cities",
     "type": "identify",
     "chapter": 11,
@@ -2886,21 +2784,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist\"?",
+    "q": "Who: Created and marketed hair care products for Black women; founded the Poro?",
     "a": "Annie Turnbo Malone",
     "type": "who",
     "chapter": 11,
     "pool": "who"
   },
   {
-    "q": "What event is Annie Turnbo Malone most associated with?",
-    "a": "Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist",
-    "type": "identify",
-    "chapter": 11,
-    "pool": "title"
-  },
-  {
-    "q": "Annie Turnbo Malone built the Poro Company in St. Louis (late 1890s), becoming a Black female millionaire and major philanthropist \u2014 and launched Sarah Breedlove (Madam C.J. Walker) as her sales agent before Walker created her own line.",
+    "q": "Annie Turnbo Malone built the Poro Company in St. Louis (late 1890s), becoming a Black female millionaire and major phil",
     "a": "Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist",
     "type": "identify",
     "chapter": 11,
@@ -2928,7 +2819,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Excluded from white businesses, Black migrants built a parallel urban economy in the 1910s\u201330s \u2014 founding banks, beauty shops, funeral homes, and professional associations.",
+    "q": "Excluded from white businesses, Black migrants built a parallel urban economy in the 1910s\u201330s \u2014 founding banks, beauty ",
     "a": "Black Entrepreneurship in Northern Cities",
     "type": "identify",
     "chapter": 11,
@@ -2949,21 +2840,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Woodrow Wilson \u2014 28th President\"?",
+    "q": "Who: Wilson won the 1912 presidential election with significant Black support after?",
     "a": "Woodrow Wilson",
     "type": "who",
     "chapter": 12,
     "pool": "who"
   },
   {
-    "q": "What event is Woodrow Wilson most associated with?",
-    "a": "Woodrow Wilson \u2014 28th President",
-    "type": "identify",
-    "chapter": 12,
-    "pool": "title"
-  },
-  {
-    "q": "Wilson won the 1912 presidency with Black voter support after promising social justice \u2014 then systematically betrayed those promises once in office.",
+    "q": "Wilson won the 1912 presidency with Black voter support after promising social justice \u2014 then systematically betrayed th",
     "a": "Woodrow Wilson \u2014 28th President",
     "type": "identify",
     "chapter": 12,
@@ -2998,7 +2882,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Within months of taking office in 1913, Wilson re-segregated the Post Office and Treasury, required photos on applications to screen out Black applicants, and reversed decades of post-Reconstruction federal integration.",
+    "q": "Within months of taking office in 1913, Wilson re-segregated the Post Office and Treasury, required photos on applicatio",
     "a": "Wilson Re-segregates Federal Government",
     "type": "identify",
     "chapter": 12,
@@ -3019,21 +2903,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"W.E.B. Du Bois Condemns Wilson in the CRISIS\"?",
+    "q": "Who: Du Bois published an open letter in the CRISIS magazine sharply criticizing?",
     "a": "W.E.B. Du Bois",
     "type": "who",
     "chapter": 12,
     "pool": "who"
   },
   {
-    "q": "What event is W.E.B. Du Bois most associated with?",
-    "a": "W.E.B. Du Bois Condemns Wilson in the CRISIS",
-    "type": "identify",
-    "chapter": 12,
-    "pool": "title"
-  },
-  {
-    "q": "Du Bois published a scathing open letter in the CRISIS (1913) condemning Wilson's federal segregation as a direct betrayal of the Black voters who helped elect him.",
+    "q": "Du Bois published a scathing open letter in the CRISIS (1913) condemning Wilson's federal segregation as a direct betray",
     "a": "W.E.B. Du Bois Condemns Wilson in the CRISIS",
     "type": "identify",
     "chapter": 12,
@@ -3068,7 +2945,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Both Johnson (Reconstruction era) and Wilson (Progressive era) promised support for Black equality but governed in ways that entrenched racial oppression \u2014 a recurring pattern in American presidential history.",
+    "q": "Both Johnson (Reconstruction era) and Wilson (Progressive era) promised support for Black equality but governed in ways ",
     "a": "Andrew Johnson vs. Woodrow Wilson \u2014 Broken Presidential Promises",
     "type": "identify",
     "chapter": 12,
@@ -3089,7 +2966,7 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "The Great Migration was driven by Southern racial terror, economic exploitation, and disfranchisement (push) paired with Northern industrial wages, schools, and relative freedom (pull).",
+    "q": "The Great Migration was driven by Southern racial terror, economic exploitation, and disfranchisement (push) paired with",
     "a": "Push-Pull Factors of the Great Migration",
     "type": "identify",
     "chapter": 13,
@@ -3117,7 +2994,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Washington's 1895 Atlanta Compromise advocated vocational training and political accommodation; Du Bois countered with demands for immediate civil rights \u2014 this foundational debate shaped Black politics for generations.",
+    "q": "Washington's 1895 Atlanta Compromise advocated vocational training and political accommodation; Du Bois countered with d",
     "a": "Du Bois vs. Booker T. Washington \u2014 The Great Debate",
     "type": "identify",
     "chapter": 13,
@@ -3138,21 +3015,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Marcus Garvey and the UNIA\"?",
+    "q": "Who: Founded UNIA; launched 'Back to Africa' movement; promoted Black nationalism,?",
     "a": "Marcus Garvey",
     "type": "who",
     "chapter": 13,
     "pool": "who"
   },
   {
-    "q": "What event is Marcus Garvey most associated with?",
-    "a": "Marcus Garvey and the UNIA",
-    "type": "identify",
-    "chapter": 13,
-    "pool": "title"
-  },
-  {
-    "q": "Marcus Garvey's UNIA (1914) built the largest Black mass movement in history, promoting Pan-African nationalism, the Black Star Line, and a 'Back to Africa' vision as the path to Black liberation.",
+    "q": "Marcus Garvey's UNIA (1914) built the largest Black mass movement in history, promoting Pan-African nationalism, the Bla",
     "a": "Marcus Garvey and the UNIA",
     "type": "identify",
     "chapter": 13,
@@ -3180,7 +3050,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "White mobs massacred 100\u2013237 Black sharecroppers in Elaine, AR (Sept. 1919) after they organized a union \u2014 one of the deadliest acts of racial terror in U.S. history.",
+    "q": "White mobs massacred 100\u2013237 Black sharecroppers in Elaine, AR (Sept. 1919) after they organized a union \u2014 one of the de",
     "a": "Elaine, Arkansas Massacre",
     "type": "identify",
     "chapter": 13,
@@ -3215,7 +3085,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Victor Hugo Green's annual Green Book (1936\u20131966) was an essential survival guide listing businesses and lodging safe for Black travelers navigating a violently segregated America.",
+    "q": "Victor Hugo Green's annual Green Book (1936\u20131966) was an essential survival guide listing businesses and lodging safe fo",
     "a": "The Green Book",
     "type": "identify",
     "chapter": 13,
@@ -3236,7 +3106,7 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "The Great Migration concentrated Black genius in Harlem (1920s\u201330s), igniting an explosion of literature, jazz, visual art, and political thought that redefined Black identity and permanently shaped American culture.",
+    "q": "The Great Migration concentrated Black genius in Harlem (1920s\u201330s), igniting an explosion of literature, jazz, visual a",
     "a": "The Harlem Renaissance",
     "type": "identify",
     "chapter": 14,
@@ -3257,21 +3127,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Langston Hughes \u2014 Poet of the People\"?",
+    "q": "Who: Prolific poet, playwright, novelist, and essayist who celebrated Black everyday?",
     "a": "Langston Hughes",
     "type": "who",
     "chapter": 14,
     "pool": "who"
   },
   {
-    "q": "What event is Langston Hughes most associated with?",
-    "a": "Langston Hughes \u2014 Poet of the People",
-    "type": "identify",
-    "chapter": 14,
-    "pool": "title"
-  },
-  {
-    "q": "Langston Hughes (1920s\u20131967) revolutionized American poetry by embedding jazz rhythms and Black vernacular into verse celebrating Black life and demanding dignity \u2014 becoming the defining literary voice of the Harlem Renaissance.",
+    "q": "Langston Hughes (1920s\u20131967) revolutionized American poetry by embedding jazz rhythms and Black vernacular into verse ce",
     "a": "Langston Hughes \u2014 Poet of the People",
     "type": "identify",
     "chapter": 14,
@@ -3299,7 +3162,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "After emancipation (1865\u20131905), Black Americans built 30,000+ independent churches with 3.3M+ members \u2014 the largest, most stable institutional network in Black America, surpassing HBCUs, the Urban League, and the NAACP.",
+    "q": "After emancipation (1865\u20131905), Black Americans built 30,000+ independent churches with 3.3M+ members \u2014 the largest, mos",
     "a": "Growth of Independent Black Churches Post-Civil War",
     "type": "identify",
     "chapter": 15,
@@ -3334,7 +3197,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "The Black church (1950s\u201360s) was the organizational backbone of the Civil Rights Movement \u2014 providing meeting spaces, funding, communication, and the moral authority of the clergy that no other institution could match.",
+    "q": "The Black church (1950s\u201360s) was the organizational backbone of the Civil Rights Movement \u2014 providing meeting spaces, fu",
     "a": "The Black Church as Cornerstone of Civil Rights",
     "type": "identify",
     "chapter": 15,
@@ -3355,7 +3218,7 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Though barred from most pulpits, Black women were the organizational and moral engine of Black churches \u2014 leading auxiliaries, shaping policy, and wielding substantial influence over clergy through their rhetorical and spiritual authority.",
+    "q": "Though barred from most pulpits, Black women were the organizational and moral engine of Black churches \u2014 leading auxili",
     "a": "Black Women's Leadership in the Church",
     "type": "identify",
     "chapter": 15,
@@ -3390,7 +3253,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Plessy v. Ferguson (1896) enshrined 'separate but equal' as constitutional law, giving legal sanction to Jim Crow segregation for nearly six decades until overturned by Brown v. Board (1954).",
+    "q": "Plessy v. Ferguson (1896) enshrined 'separate but equal' as constitutional law, giving legal sanction to Jim Crow segreg",
     "a": "Plessy v. Ferguson \u2014 'Separate But Equal'",
     "type": "identify",
     "chapter": 16,
@@ -3425,7 +3288,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Truman's Executive Order 9981 (July 26, 1948) desegregated the U.S. military, the largest institutional desegregation in American history up to that point \u2014 a direct response to Black WWII veterans' demands.",
+    "q": "Truman's Executive Order 9981 (July 26, 1948) desegregated the U.S. military, the largest institutional desegregation in",
     "a": "Executive Order 9981 \u2014 Military Desegregation",
     "type": "identify",
     "chapter": 16,
@@ -3460,7 +3323,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Brown v. Board (May 17, 1954) unanimously overturned Plessy v. Ferguson, ruling school segregation unconstitutional \u2014 the single most important legal victory of the Civil Rights Movement, though resistance to implementation was fierce.",
+    "q": "Brown v. Board (May 17, 1954) unanimously overturned Plessy v. Ferguson, ruling school segregation unconstitutional \u2014 th",
     "a": "Brown v. Board of Education",
     "type": "identify",
     "chapter": 16,
@@ -3481,21 +3344,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Rosa Parks and the Montgomery Bus Boycott\"?",
+    "q": "Who: Parks refused to give up her bus seat to a white man; her arrest triggered a?",
     "a": "Rosa Parks",
     "type": "who",
     "chapter": 16,
     "pool": "who"
   },
   {
-    "q": "What event is Rosa Parks most associated with?",
-    "a": "Rosa Parks and the Montgomery Bus Boycott",
-    "type": "identify",
-    "chapter": 16,
-    "pool": "title"
-  },
-  {
-    "q": "Rosa Parks' arrest (Dec. 1, 1955) triggered a 381-day Montgomery Bus Boycott that ended bus segregation, launched Dr. King nationally, and proved that sustained nonviolent economic pressure could defeat Jim Crow.",
+    "q": "Rosa Parks' arrest (Dec. 1, 1955) triggered a 381-day Montgomery Bus Boycott that ended bus segregation, launched Dr. Ki",
     "a": "Rosa Parks and the Montgomery Bus Boycott",
     "type": "identify",
     "chapter": 16,
@@ -3516,21 +3372,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"James Meredith Integrates the University of Mississippi\"?",
+    "q": "Who: Meredith enrolled as the first Black student at Ole Miss; his arrival triggered?",
     "a": "James Meredith",
     "type": "who",
     "chapter": 16,
     "pool": "who"
   },
   {
-    "q": "What event is James Meredith most associated with?",
-    "a": "James Meredith Integrates the University of Mississippi",
-    "type": "identify",
-    "chapter": 16,
-    "pool": "title"
-  },
-  {
-    "q": "James Meredith's enrollment at Ole Miss (Sept. 30, 1962) required 31,000 federal troops, triggered deadly riots, and became the defining showdown between federal authority and Southern massive resistance to desegregation.",
+    "q": "James Meredith's enrollment at Ole Miss (Sept. 30, 1962) required 31,000 federal troops, triggered deadly riots, and bec",
     "a": "James Meredith Integrates the University of Mississippi",
     "type": "identify",
     "chapter": 16,
@@ -3565,7 +3414,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "The March on Washington (Aug. 28, 1963) drew 250,000 people to the Lincoln Memorial, where King's 'I Have a Dream' speech became the defining oration of the Civil Rights Movement and accelerated passage of the Civil Rights Act.",
+    "q": "The March on Washington (Aug. 28, 1963) drew 250,000 people to the Lincoln Memorial, where King's 'I Have a Dream' speec",
     "a": "March on Washington for Jobs and Freedom",
     "type": "identify",
     "chapter": 16,
@@ -3600,7 +3449,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "The 15th Amendment (ratified 1870) guaranteed Black men the right to vote \u2014 then was systematically nullified for nearly 100 years by Southern disenfranchisement tactics until the Voting Rights Act of 1965.",
+    "q": "The 15th Amendment (ratified 1870) guaranteed Black men the right to vote \u2014 then was systematically nullified for nearly",
     "a": "15th Amendment \u2014 Right to Vote",
     "type": "identify",
     "chapter": 16,
@@ -3635,7 +3484,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "John Howard Griffin's Black Like Me (1961) documented his experience traveling the Deep South as a Black man, confronting white Americans with the lived reality of racial oppression they had ignored or denied.",
+    "q": "John Howard Griffin's Black Like Me (1961) documented his experience traveling the Deep South as a Black man, confrontin",
     "a": "John Howard Griffin's Black Like Me Experiment",
     "type": "identify",
     "chapter": 16,
@@ -3663,7 +3512,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "In May 1963, hundreds of Birmingham children marched for civil rights; Bull Connor's police attacked them with fire hoses and dogs. The images shocked the world, broke the Birmingham standoff, and accelerated federal civil rights legislation.",
+    "q": "In May 1963, hundreds of Birmingham children marched for civil rights; Bull Connor's police attacked them with fire hose",
     "a": "The Birmingham Children's Crusade",
     "type": "identify",
     "chapter": 17,
@@ -3684,7 +3533,7 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "KKK bombers killed four Black girls at Birmingham's 16th Street Baptist Church on Sept. 15, 1963. The murders galvanized national and international outrage and hardened congressional resolve to pass the Civil Rights Act.",
+    "q": "KKK bombers killed four Black girls at Birmingham's 16th Street Baptist Church on Sept. 15, 1963. The murders galvanized",
     "a": "16th Street Baptist Church Bombing",
     "type": "identify",
     "chapter": 17,
@@ -3719,7 +3568,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "The SCLC (1957, Atlanta) coordinated nonviolent civil rights campaigns through the Black church network, under King's leadership, executing the Birmingham Campaign, Selma marches, and March on Washington.",
+    "q": "The SCLC (1957, Atlanta) coordinated nonviolent civil rights campaigns through the Black church network, under King's le",
     "a": "Southern Christian Leadership Conference (SCLC)",
     "type": "identify",
     "chapter": 18,
@@ -3754,7 +3603,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "SNCC (1960) was the student wing of the Civil Rights Movement, leading sit-ins, Freedom Rides, voter registration, and Freedom Summer \u2014 and later under Stokely Carmichael, introducing the 'Black Power' slogan.",
+    "q": "SNCC (1960) was the student wing of the Civil Rights Movement, leading sit-ins, Freedom Rides, voter registration, and F",
     "a": "Student Nonviolent Coordinating Committee (SNCC)",
     "type": "identify",
     "chapter": 18,
@@ -3810,7 +3659,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Freedom Riders (1961) rode interstate buses through the South to enforce desegregation rulings, enduring fire-bombings and mob beatings in Alabama. Their courage forced the Kennedy administration to desegregate interstate transportation facilities.",
+    "q": "Freedom Riders (1961) rode interstate buses through the South to enforce desegregation rulings, enduring fire-bombings a",
     "a": "The Freedom Riders",
     "type": "identify",
     "chapter": 18,
@@ -3859,21 +3708,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Assassination of Dr. Martin Luther King Jr.\"?",
+    "q": "Who: King was shot by a sniper on the balcony of the Lorraine Motel; died at 7:05?",
     "a": "Dr. Martin Luther King Jr.",
     "type": "who",
     "chapter": 18,
     "pool": "who"
   },
   {
-    "q": "What event is Dr. Martin Luther King Jr. most associated with?",
-    "a": "Assassination of Dr. Martin Luther King Jr.",
-    "type": "identify",
-    "chapter": 18,
-    "pool": "title"
-  },
-  {
-    "q": "Dr. King was assassinated at the Lorraine Motel in Memphis on April 4, 1968, while supporting striking Black sanitation workers. Riots erupted in 110+ cities; Congress passed the Fair Housing Act within a week.",
+    "q": "Dr. King was assassinated at the Lorraine Motel in Memphis on April 4, 1968, while supporting striking Black sanitation ",
     "a": "Assassination of Dr. Martin Luther King Jr.",
     "type": "identify",
     "chapter": 18,
@@ -3894,7 +3736,7 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Fannie Lou Hamer (1962) registered to vote in Mississippi, was beaten and evicted, then electrified the nation with her 1964 DNC testimony \u2014 'I'm sick and tired of being sick and tired' \u2014 demanding Mississippi's Black voters be seated.",
+    "q": "Fannie Lou Hamer (1962) registered to vote in Mississippi, was beaten and evicted, then electrified the nation with her ",
     "a": "Fannie Lou Hamer \u2014 Courage Under Terror",
     "type": "identify",
     "chapter": 19,
@@ -3929,7 +3771,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "NAACP leader Medgar Evers was assassinated in his Jackson driveway on June 12, 1963. His killer wasn't convicted until 1994. His widow Myrlie Evers-Williams continued his work and later chaired the NAACP (1995\u20131998).",
+    "q": "NAACP leader Medgar Evers was assassinated in his Jackson driveway on June 12, 1963. His killer wasn't convicted until 1",
     "a": "Assassination of Medgar Evers and Myrlie Evers-Williams",
     "type": "identify",
     "chapter": 19,
@@ -3964,7 +3806,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "State eugenics programs (1930s\u201370s) disproportionately targeted poor Black women for forced sterilization \u2014 a state-sanctioned form of reproductive terror rooted in white supremacist pseudoscience that persisted into the 1970s.",
+    "q": "State eugenics programs (1930s\u201370s) disproportionately targeted poor Black women for forced sterilization \u2014 a state-sanc",
     "a": "Eugenics and Forced Sterilization of Black Women",
     "type": "identify",
     "chapter": 19,
@@ -4006,18 +3848,11 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "The Texas State Capitol (1882\u20131888) was built largely by approximately 500 convict laborers \u2014 predominantly Black men \u2014 who quarried and cut its granite under the state's convict lease system.",
+    "q": "The Texas State Capitol (1882\u20131888) was built largely by approximately 500 convict laborers \u2014 predominantly Black men \u2014 ",
     "a": "Texas State Capitol Constructed with Convict Labor",
     "type": "identify",
     "chapter": 20,
     "pool": "title"
-  },
-  {
-    "q": "When did \"The Compromise of 1877 \u2014 End of Reconstruction\" take place?",
-    "a": "1877",
-    "type": "when",
-    "chapter": 20,
-    "pool": "when"
   },
   {
     "q": "Where did \"The Compromise of 1877 \u2014 End of Reconstruction\" happen?",
@@ -4041,7 +3876,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "The Compromise of 1877 ended Reconstruction by withdrawing federal troops from the South in exchange for Hayes's presidency \u2014 directly handing Black Southerners back to unchecked white supremacist rule and enabling the rise of Jim Crow.",
+    "q": "The Compromise of 1877 ended Reconstruction by withdrawing federal troops from the South in exchange for Hayes's preside",
     "a": "The Compromise of 1877 \u2014 End of Reconstruction",
     "type": "identify",
     "chapter": 20,
@@ -4076,7 +3911,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "HBCUs (oldest: 1837; major expansion after 1865) were founded to provide Black Americans access to higher education after white institutions barred them \u2014 producing the majority of Black professionals through the mid-20th century.",
+    "q": "HBCUs (oldest: 1837; major expansion after 1865) were founded to provide Black Americans access to higher education afte",
     "a": "Establishment of HBCUs",
     "type": "identify",
     "chapter": 21,
@@ -4111,7 +3946,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "On December 19, 2019, President Trump signed bipartisan legislation providing HBCUs with $250M+ annually in permanent mandatory funding \u2014 the first such guarantee in federal history.",
+    "q": "On December 19, 2019, President Trump signed bipartisan legislation providing HBCUs with $250M+ annually in permanent ma",
     "a": "2019 HBCU Funding Legislation",
     "type": "identify",
     "chapter": 21,
@@ -4146,7 +3981,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "BH365 emphasizes that financial literacy \u2014 especially homeownership, avoiding consumer debt, and resisting targeted advertising \u2014 is essential for Black Americans to close the racial wealth gap.",
+    "q": "BH365 emphasizes that financial literacy \u2014 especially homeownership, avoiding consumer debt, and resisting targeted adve",
     "a": "Financial Literacy \u2014 Wealth Building Principles",
     "type": "identify",
     "chapter": 21,
@@ -4167,21 +4002,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)\"?",
+    "q": "Who: Copyrighted the Poro brand by 1902; trained thousands of Black women as sales?",
     "a": "Annie Turnbo Malone",
     "type": "who",
     "chapter": 22,
     "pool": "who"
   },
   {
-    "q": "What event is Annie Turnbo Malone most associated with?",
-    "a": "Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)",
-    "type": "identify",
-    "chapter": 22,
-    "pool": "title"
-  },
-  {
-    "q": "Malone's Poro Company (copyrighted 1902) trained thousands of Black women agents, funded Black institutions nationally, and predated Madam C.J. Walker's empire by four years \u2014 with Walker having worked as Malone's sales agent.",
+    "q": "Malone's Poro Company (copyrighted 1902) trained thousands of Black women agents, funded Black institutions nationally, ",
     "a": "Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)",
     "type": "identify",
     "chapter": 22,
@@ -4216,7 +4044,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "Madam C.J. Walker (born 1867 to formerly enslaved parents) built a $600K+ hair care empire (equivalent to millions today), leading a national salesforce of 40,000+ Black women agents and becoming America's first Black female self-made millionaire.",
+    "q": "Madam C.J. Walker (born 1867 to formerly enslaved parents) built a $600K+ hair care empire (equivalent to millions today",
     "a": "Madam C.J. Walker \u2014 First Female Self-Made Millionaire",
     "type": "identify",
     "chapter": 22,
@@ -4237,21 +4065,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Reginald Lewis \u2014 Wall Street Pioneer\"?",
+    "q": "Who: Grew up in Baltimore; decided to pursue law at age 7; attended Virginia State?",
     "a": "Reginald Lewis",
     "type": "who",
     "chapter": 22,
     "pool": "who"
   },
   {
-    "q": "What event is Reginald Lewis most associated with?",
-    "a": "Reginald Lewis \u2014 Wall Street Pioneer",
-    "type": "identify",
-    "chapter": 22,
-    "pool": "title"
-  },
-  {
-    "q": "Reginald Lewis opened Wall Street's first Black law firm (1970) and executed a record $985M leveraged buyout of Beatrice International (1987), becoming the wealthiest Black man in America before his death in 1993.",
+    "q": "Reginald Lewis opened Wall Street's first Black law firm (1970) and executed a record $985M leveraged buyout of Beatrice",
     "a": "Reginald Lewis \u2014 Wall Street Pioneer",
     "type": "identify",
     "chapter": 22,
@@ -4272,21 +4093,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Cathy Hughes \u2014 Urban One / Radio One\"?",
+    "q": "Who: Founded Radio One in 1980 starting with a single Washington D.C. station; grew?",
     "a": "Cathy Hughes",
     "type": "who",
     "chapter": 22,
     "pool": "who"
   },
   {
-    "q": "What event is Cathy Hughes most associated with?",
-    "a": "Cathy Hughes \u2014 Urban One / Radio One",
-    "type": "identify",
-    "chapter": 22,
-    "pool": "title"
-  },
-  {
-    "q": "Cathy Hughes built Radio One (1980, D.C.) into Urban One \u2014 the largest Black-owned media company in the U.S. and the first Black-woman-chaired publicly traded company \u2014 serving Black communities with culturally relevant media.",
+    "q": "Cathy Hughes built Radio One (1980, D.C.) into Urban One \u2014 the largest Black-owned media company in the U.S. and the fir",
     "a": "Cathy Hughes \u2014 Urban One / Radio One",
     "type": "identify",
     "chapter": 22,
@@ -4307,21 +4121,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving\"?",
+    "q": "Who: Moved to Connecticut from Jim Crow Alabama; lives by four laws his mother?",
     "a": "Curtis Robinson",
     "type": "who",
     "chapter": 22,
     "pool": "who"
   },
   {
-    "q": "What event is Curtis Robinson most associated with?",
-    "a": "Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving",
-    "type": "identify",
-    "chapter": 22,
-    "pool": "title"
-  },
-  {
-    "q": "Curtis Robinson's mother gave him four guiding principles \u2014 Self-Sufficiency, First, Sacrifice, and Giving \u2014 that provided a framework for economic survival and advancement after escaping Jim Crow Alabama.",
+    "q": "Curtis Robinson's mother gave him four guiding principles \u2014 Self-Sufficiency, First, Sacrifice, and Giving \u2014 that provid",
     "a": "Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving",
     "type": "identify",
     "chapter": 22,
@@ -4342,32 +4149,18 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor\"?",
+    "q": "Who: Founded Daytona Literary and Industrial Training School (1904) \u2014 now?",
     "a": "Mary McLeod Bethune",
     "type": "who",
     "chapter": 23,
     "pool": "who"
   },
   {
-    "q": "What event is Mary McLeod Bethune most associated with?",
+    "q": "Mary McLeod Bethune (1904\u20131955) founded what became Bethune-Cookman University, co-founded the NCNW, and served as FDR's",
     "a": "Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor",
     "type": "identify",
     "chapter": 23,
     "pool": "title"
-  },
-  {
-    "q": "Mary McLeod Bethune (1904\u20131955) founded what became Bethune-Cookman University, co-founded the NCNW, and served as FDR's Director of Negro Affairs \u2014 the most politically powerful Black woman in American history up to that point.",
-    "a": "Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor",
-    "type": "identify",
-    "chapter": 23,
-    "pool": "title"
-  },
-  {
-    "q": "When did \"MLK Jr. Predicts a Black President \u2014 1967\" take place?",
-    "a": "1967",
-    "type": "when",
-    "chapter": 23,
-    "pool": "when"
   },
   {
     "q": "Where did \"MLK Jr. Predicts a Black President \u2014 1967\" happen?",
@@ -4391,7 +4184,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "In 1967, MLK Jr. publicly predicted a Black U.S. president 'in the not so distant future' \u2014 a prediction fulfilled 41 years later with Barack Obama's 2008 election.",
+    "q": "In 1967, MLK Jr. publicly predicted a Black U.S. president 'in the not so distant future' \u2014 a prediction fulfilled 41 ye",
     "a": "MLK Jr. Predicts a Black President \u2014 1967",
     "type": "identify",
     "chapter": 23,
@@ -4412,21 +4205,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Election of Barack Obama \u2014 44th President\"?",
+    "q": "Who: Obama won the 2008 presidential election, becoming the first African American?",
     "a": "Barack Obama",
     "type": "who",
     "chapter": 23,
     "pool": "who"
   },
   {
-    "q": "What event is Barack Obama most associated with?",
-    "a": "Election of Barack Obama \u2014 44th President",
-    "type": "identify",
-    "chapter": 23,
-    "pool": "title"
-  },
-  {
-    "q": "Barack Obama was elected the 44th President (Nov. 4, 2008) \u2014 the first African American to hold the office. He served two terms, won the Nobel Peace Prize (2009), and was Gallup's most admired American for 12 consecutive years.",
+    "q": "Barack Obama was elected the 44th President (Nov. 4, 2008) \u2014 the first African American to hold the office. He served tw",
     "a": "Election of Barack Obama \u2014 44th President",
     "type": "identify",
     "chapter": 23,
@@ -4447,21 +4233,14 @@ const QUIZ_BANK = [
     "pool": "where"
   },
   {
-    "q": "Who was a key figure in \"Berea College \u2014 Education Without Racial Exclusion\"?",
+    "q": "Who: Founded in 1855 in a pro-slavery region of Kentucky; admitted Black and white?",
     "a": "Berea College",
     "type": "who",
     "chapter": 23,
     "pool": "who"
   },
   {
-    "q": "What event is Berea College most associated with?",
-    "a": "Berea College \u2014 Education Without Racial Exclusion",
-    "type": "identify",
-    "chapter": 23,
-    "pool": "title"
-  },
-  {
-    "q": "Berea College (founded 1855, Kentucky) was a rare institution that admitted Black and white students from the start \u2014 a beacon of interracial education in a pro-slavery border state, referenced in BH365 as a model of possibility.",
+    "q": "Berea College (founded 1855, Kentucky) was a rare institution that admitted Black and white students from the start \u2014 a ",
     "a": "Berea College \u2014 Education Without Racial Exclusion",
     "type": "identify",
     "chapter": 23,
@@ -4496,7 +4275,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "The N-word originated in 18th-century colonial America (from earlier Latin/Portuguese roots) as a deliberate dehumanization tool: colonizers used it to strip kidnapped Africans of identity and justify chattel slavery. Its use remains a form of racial oppression.",
+    "q": "The N-word originated in 18th-century colonial America (from earlier Latin/Portuguese roots) as a deliberate dehumanizat",
     "a": "Origins of the N-Word as a Tool of Racial Dehumanization",
     "type": "identify",
     "chapter": 24,
@@ -4531,7 +4310,7 @@ const QUIZ_BANK = [
     "pool": "title"
   },
   {
-    "q": "White medical institutions systematically barred Black physicians and scientists for centuries, using pseudoscientific claims of racial inferiority to justify exclusion \u2014 barriers whose effects on Black health and representation persist today.",
+    "q": "White medical institutions systematically barred Black physicians and scientists for centuries, using pseudoscientific c",
     "a": "Prevailing Beliefs Against Black Physicians and Scientists",
     "type": "identify",
     "chapter": 24,
@@ -4541,205 +4320,205 @@ const QUIZ_BANK = [
 
 const ANSWER_POOLS = {
   "when": [
-    "1910s\u20131930s",
-    "May 18, 1896",
-    "18th century (documented colonial American usage)",
-    "1959 (experiment)",
-    "1910\u20131930",
-    "September 15, 1963",
-    "1980 (Radio One founded)",
-    "Johnson: 1865\u20131869",
-    "1913",
-    "1915\u20131970 (first wave: 1915\u20131940",
-    "September 30, 1962",
-    "1865\u20131905",
-    "State eugenics laws from 1907 (Indiana, first)",
-    "Elected: November 4, 2008",
-    "Contemporary",
-    "1912 election",
-    "1950s\u20131960s (peak Civil Rights era",
-    "August 28, 1963",
-    "Founded October 1966",
-    "Passed February 26, 1869",
-    "Published annually 1936\u20131966",
-    "May \u2013 December 1961",
-    "Parks arrested: December 1, 1955",
-    "Founded 1855",
-    "Signed December 19, 2019",
-    "Late 1890s \u2013 1930s",
-    "17th century through mid-20th century (formally",
-    "June 12, 1963 (assassination)",
-    "April 4, 1968",
-    "Cheyney University of Pennsylvania (oldest HBCU): 1837",
-    "1915\u20131940 (peak first wave)",
-    "Law firm opened 1970",
-    "1967",
-    "Active 1962\u20131977",
-    "Late 19th century through 20th century",
-    "1882\u20131888",
-    "May 2\u201310, 1963",
-    "Founded January 10\u201311, 1957",
-    "UNIA founded 1914 in Jamaica",
-    "July 26, 1948",
-    "1920s\u20131930s",
-    "Summer 1964",
-    "Hair care business launched approximately 1905",
-    "Active 1920s\u20131967",
-    "1877\u20131965",
-    "Founded school: 1904",
-    "Founded April 1960",
-    "1877",
     "May 17, 1954",
-    "1902 (Poro brand copyrighted)"
+    "1912 election",
+    "Late 19th century through 20th century",
+    "1915\u20131940 (peak first wave)",
+    "Cheyney University of Pennsylvania (oldest HBCU): 1837",
+    "Founded 1855",
+    "1877\u20131965",
+    "Passed February 26, 1869",
+    "Founded October 1966",
+    "Founded January 10\u201311, 1957",
+    "18th century (documented colonial American usage)",
+    "1877",
+    "1915\u20131970 (first wave: 1915\u20131940",
+    "September 15, 1963",
+    "17th century through mid-20th century (formally",
+    "April 4, 1968",
+    "Founded April 1960",
+    "September 30, 1962",
+    "1967",
+    "Elected: November 4, 2008",
+    "Published annually 1936\u20131966",
+    "Parks arrested: December 1, 1955",
+    "Summer 1964",
+    "1902 (Poro brand copyrighted)",
+    "1980 (Radio One founded)",
+    "Founded school: 1904",
+    "1910\u20131930",
+    "Active 1920s\u20131967",
+    "July 26, 1948",
+    "May \u2013 December 1961",
+    "May 18, 1896",
+    "1865\u20131905",
+    "Contemporary",
+    "1882\u20131888",
+    "Late 1890s \u2013 1930s",
+    "Johnson: 1865\u20131869",
+    "Active 1962\u20131977",
+    "1950s\u20131960s (peak Civil Rights era",
+    "Law firm opened 1970",
+    "1959 (experiment)",
+    "Signed December 19, 2019",
+    "May 2\u201310, 1963",
+    "State eugenics laws from 1907 (Indiana, first)",
+    "1910s\u20131930s",
+    "Hair care business launched approximately 1905",
+    "1920s\u20131930s",
+    "June 12, 1963 (assassination)",
+    "UNIA founded 1914 in Jamaica",
+    "1913",
+    "August 28, 1963"
   ],
   "where": [
-    "Elaine, Phillips County, Arkansas",
-    "United States",
-    "National Mall and Lincoln Memorial, Washington, D.C.",
-    "Atlanta, Georgia (headquarters)",
-    "16th Street Baptist Church, Birmingham, Alabama",
-    "New York City, Chicago, and Detroit primarily",
-    "The CRISIS magazine, nationally distributed",
-    "Washington, D.C.",
-    "Press conference",
-    "Predominantly in the South",
-    "Baltimore (origin) \u2192 Wall Street, New York City",
-    "Sunflower County, Mississippi",
-    "University of Mississippi, Oxford, Mississippi",
-    "Started in Denver, Colorado",
-    "Berea, Kentucky",
-    "Washington, D.C. (origin)",
-    "Oakland, California",
-    "Throughout the South and North",
-    "Deep South \u2014 Louisiana, Mississippi, Alabama, Georgia",
-    "Washington, D.C. \u2014 federal agencies nationwide",
-    "United States medical and scientific institutions",
-    "Mississippi \u2014 particularly the Delta region",
-    "Harlem, New York City",
-    "Black churches nationwide",
-    "Harlem, New York City (epicenter)",
-    "U.S. Supreme Court",
-    "United States military, worldwide",
-    "Southern states predominantly",
-    "Granite quarried at Marble Falls, Texas",
-    "South (push) \u2192 Midwest, Northeast, West Coast (pull)",
-    "U.S. Supreme Court, Washington, D.C.",
-    "Alabama (origin) \u2192 Connecticut",
-    "Throughout the South",
-    "St. Louis, Missouri",
-    "Montgomery, Alabama",
-    "Shaw University, Raleigh, North Carolina (founding)",
     "Federal government, United States",
-    "Jackson, Mississippi",
+    "Berea, Kentucky",
     "Daytona Beach, Florida",
+    "Harlem, New York City (epicenter)",
+    "Mississippi \u2014 particularly the Delta region",
+    "Black churches nationwide",
+    "Throughout the South",
+    "Atlanta, Georgia (headquarters)",
+    "Washington, D.C.",
+    "Baltimore (origin) \u2192 Wall Street, New York City",
+    "Predominantly in the South",
+    "Colonial America \u2192 United States",
+    "United States",
+    "Alabama (origin) \u2192 Connecticut",
+    "United States military, worldwide",
+    "National Mall and Lincoln Memorial, Washington, D.C.",
+    "Jackson, Mississippi",
+    "Shaw University, Raleigh, North Carolina (founding)",
+    "Granite quarried at Marble Falls, Texas",
+    "United States medical and scientific institutions",
+    "Press conference",
+    "Harlem, New York City",
+    "Started in Denver, Colorado",
+    "U.S. Supreme Court, Washington, D.C.",
+    "16th Street Baptist Church, Birmingham, Alabama",
     "Jamaica (origin) \u2192 Harlem, New York \u2192 international reach",
+    "University of Mississippi, Oxford, Mississippi",
+    "Oakland, California",
+    "The CRISIS magazine, nationally distributed",
+    "Washington, D.C. \u2014 federal agencies nationwide",
     "Lorraine Motel, Memphis, Tennessee",
-    "National Black intellectual and political sphere",
+    "Washington, D.C. (origin)",
+    "Sunflower County, Mississippi",
     "Published in Harlem, New York",
-    "Colonial America \u2192 United States"
+    "Southern states predominantly",
+    "Throughout the South and North",
+    "U.S. Supreme Court",
+    "Elaine, Phillips County, Arkansas",
+    "South (push) \u2192 Midwest, Northeast, West Coast (pull)",
+    "National Black intellectual and political sphere",
+    "New York City, Chicago, and Detroit primarily",
+    "Montgomery, Alabama",
+    "St. Louis, Missouri",
+    "Deep South \u2014 Louisiana, Mississippi, Alabama, Georgia"
   ],
   "who": [
-    "250,000+ participants",
-    "W.E.B. Du Bois",
-    "Presidents Andrew Johnson",
-    "President Harry S. Truman",
-    "Southern state legislatures and local governments",
-    "Medgar Evers, NAACP Mississippi field secretary",
-    "Cathy Hughes",
-    "Primarily Black men",
-    "Victor Hugo Green",
-    "Barack Obama",
-    "Over 6 million Black Americans",
-    "Berea College",
-    "Langston Hughes",
-    "Annie Turnbo Malone",
-    "U.S. Congress",
-    "Poor Black women",
-    "Reginald Lewis",
-    "Black sharecroppers",
-    "Black congregations",
-    "Black Americans broadly",
-    "SNCC and COFO",
-    "Black clergy",
-    "John Howard Griffin, white journalist",
-    "Black migrants from the South",
-    "Huey P. Newton and Bobby Seale",
-    "Freedmen's Bureau",
-    "Sarah Breedlove / Madam C.J. Walker",
-    "Student sit-in activists",
-    "CORE and SNCC volunteers \u2014 Black and white",
-    "Black physicians, surgeons, and scientists",
-    "Rosa Parks",
-    "Dr. Martin Luther King Jr.",
-    "President Woodrow Wilson",
-    "Mary McLeod Bethune",
-    "Curtis Robinson",
-    "Marcus Garvey",
-    "White European colonizers and enslavers",
-    "Woodrow Wilson",
-    "Republican leaders",
-    "Oliver Brown et al.",
-    "President Donald Trump",
-    "James Meredith",
     "Black migrants and established Black residents",
+    "Annie Turnbo Malone",
+    "Sarah Breedlove / Madam C.J. Walker",
+    "President Donald Trump",
+    "250,000+ participants",
+    "Dr. Martin Luther King Jr.",
+    "Black sharecroppers",
+    "Curtis Robinson",
+    "Black physicians, surgeons, and scientists",
+    "Barack Obama",
+    "Rosa Parks",
+    "John Howard Griffin, white journalist",
+    "Langston Hughes",
+    "CORE and SNCC volunteers \u2014 Black and white",
+    "Woodrow Wilson",
+    "Berea College",
+    "Victor Hugo Green",
+    "President Woodrow Wilson",
+    "Reginald Lewis",
+    "Black migrants from the South",
+    "Student sit-in activists",
+    "President Harry S. Truman",
+    "SNCC and COFO",
+    "Freedmen's Bureau",
+    "Black congregations",
+    "White European colonizers and enslavers",
+    "Poor Black women",
+    "Huey P. Newton and Bobby Seale",
+    "Over 6 million Black Americans",
+    "Black clergy",
+    "James Meredith",
+    "Oliver Brown et al.",
+    "Medgar Evers, NAACP Mississippi field secretary",
+    "Black Americans broadly",
+    "Southern state legislatures and local governments",
+    "Primarily Black men",
+    "Republican leaders",
+    "Cathy Hughes",
+    "Mary McLeod Bethune",
+    "Marcus Garvey",
+    "U.S. Congress",
+    "W.E.B. Du Bois",
     "Hundreds of Black children",
-    "Homer Plessy"
+    "Homer Plessy",
+    "Presidents Andrew Johnson"
   ],
   "title": [
-    "Southern Christian Leadership Conference (SCLC)",
-    "The Black Church as Cornerstone of Civil Rights",
-    "Fannie Lou Hamer \u2014 Courage Under Terror",
-    "The Great Migration",
-    "Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)",
-    "Black Entrepreneurship in Northern Cities",
-    "16th Street Baptist Church Bombing",
+    "Andrew Johnson vs. Woodrow Wilson \u2014 Broken Presidential Promises",
     "Marcus Garvey and the UNIA",
-    "Rosa Parks and the Montgomery Bus Boycott",
-    "Brown v. Board of Education",
-    "The Harlem Renaissance",
-    "Black Women's Leadership in the Church",
-    "Reginald Lewis \u2014 Wall Street Pioneer",
-    "Wilson Re-segregates Federal Government",
-    "Financial Literacy \u2014 Wealth Building Principles",
-    "Cathy Hughes \u2014 Urban One / Radio One",
+    "The Black Church as Cornerstone of Civil Rights",
+    "Woodrow Wilson \u2014 28th President",
+    "John Howard Griffin's Black Like Me Experiment",
+    "Freedom Summer",
     "Jim Crow Laws",
-    "March on Washington for Jobs and Freedom",
-    "Establishment of HBCUs",
-    "W.E.B. Du Bois Condemns Wilson in the CRISIS",
+    "The Harlem Renaissance",
+    "The Compromise of 1877 \u2014 End of Reconstruction",
     "Executive Order 9981 \u2014 Military Desegregation",
     "15th Amendment \u2014 Right to Vote",
-    "Black Population Growth in Northern Cities",
-    "The Birmingham Children's Crusade",
-    "The Black Panther Party",
-    "Du Bois vs. Booker T. Washington \u2014 The Great Debate",
-    "Student Nonviolent Coordinating Committee (SNCC)",
-    "Freedom Summer",
-    "James Meredith Integrates the University of Mississippi",
-    "The Green Book",
-    "Plessy v. Ferguson \u2014 'Separate But Equal'",
-    "The Compromise of 1877 \u2014 End of Reconstruction",
-    "Andrew Johnson vs. Woodrow Wilson \u2014 Broken Presidential Promises",
-    "Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor",
-    "Woodrow Wilson \u2014 28th President",
-    "2019 HBCU Funding Legislation",
-    "MLK Jr. Predicts a Black President \u2014 1967",
-    "Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist",
-    "Election of Barack Obama \u2014 44th President",
-    "Origins of the N-Word as a Tool of Racial Dehumanization",
-    "Prevailing Beliefs Against Black Physicians and Scientists",
-    "Eugenics and Forced Sterilization of Black Women",
-    "John Howard Griffin's Black Like Me Experiment",
-    "Push-Pull Factors of the Great Migration",
-    "Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving",
-    "Growth of Independent Black Churches Post-Civil War",
+    "Financial Literacy \u2014 Wealth Building Principles",
     "Madam C.J. Walker \u2014 First Female Self-Made Millionaire",
-    "The Convict Lease System",
-    "Langston Hughes \u2014 Poet of the People",
-    "Texas State Capitol Constructed with Convict Labor",
+    "Prevailing Beliefs Against Black Physicians and Scientists",
+    "The Green Book",
+    "Brown v. Board of Education",
+    "Annie Turnbo Malone \u2014 Hair Care Pioneer and Philanthropist",
+    "16th Street Baptist Church Bombing",
+    "Growth of Independent Black Churches Post-Civil War",
+    "Du Bois vs. Booker T. Washington \u2014 The Great Debate",
+    "Black Population Growth in Northern Cities",
     "Assassination of Medgar Evers and Myrlie Evers-Williams",
-    "Berea College \u2014 Education Without Racial Exclusion",
-    "Assassination of Dr. Martin Luther King Jr.",
+    "W.E.B. Du Bois Condemns Wilson in the CRISIS",
     "The Freedom Riders",
-    "Elaine, Arkansas Massacre"
+    "Push-Pull Factors of the Great Migration",
+    "Elaine, Arkansas Massacre",
+    "Black Women's Leadership in the Church",
+    "Langston Hughes \u2014 Poet of the People",
+    "March on Washington for Jobs and Freedom",
+    "The Birmingham Children's Crusade",
+    "Southern Christian Leadership Conference (SCLC)",
+    "2019 HBCU Funding Legislation",
+    "Annie Turnbo Malone \u2014 Poro Company (Revisited in Unit 7)",
+    "Cathy Hughes \u2014 Urban One / Radio One",
+    "Student Nonviolent Coordinating Committee (SNCC)",
+    "Reginald Lewis \u2014 Wall Street Pioneer",
+    "Eugenics and Forced Sterilization of Black Women",
+    "Curtis Robinson \u2014 Law of Self-Sufficiency, First, Sacrifice, and Giving",
+    "James Meredith Integrates the University of Mississippi",
+    "Black Entrepreneurship in Northern Cities",
+    "The Black Panther Party",
+    "Origins of the N-Word as a Tool of Racial Dehumanization",
+    "Berea College \u2014 Education Without Racial Exclusion",
+    "Fannie Lou Hamer \u2014 Courage Under Terror",
+    "The Great Migration",
+    "MLK Jr. Predicts a Black President \u2014 1967",
+    "Rosa Parks and the Montgomery Bus Boycott",
+    "Assassination of Dr. Martin Luther King Jr.",
+    "The Convict Lease System",
+    "Wilson Re-segregates Federal Government",
+    "Mary McLeod Bethune \u2014 Educator, Activist, Presidential Advisor",
+    "Texas State Capitol Constructed with Convict Labor",
+    "Establishment of HBCUs",
+    "Election of Barack Obama \u2014 44th President",
+    "Plessy v. Ferguson \u2014 'Separate But Equal'"
   ]
 };
