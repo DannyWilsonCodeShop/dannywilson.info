@@ -182,8 +182,8 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 
 <!-- Parent-only bottom bar -->
 <div id="parent-bar" class="parent-bar hidden">
-<button class="add-pt-btn" onclick="openPointModal('add')">+ Point</button>
-<button class="remove-pt-btn" onclick="openPointModal('remove')">− Point</button>
+<button class="add-pt-btn" onclick="openPointModal('add')">+ Flag</button>
+<button class="remove-pt-btn" onclick="openPointModal('remove')">− Flag</button>
 <button style="background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;padding:10px 20px;border:none;border-radius:24px;font-family:Nunito,sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;" onclick="openSwapModal()">🔄 Swap</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
@@ -193,7 +193,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <!-- POINT MODAL -->
 <div id="point-modal" class="modal-overlay hidden">
 <div class="modal" id="pm-modal-inner">
-<h3 id="pm-title">Add a Point</h3>
+<h3 id="pm-title">Add a Flag</h3>
 <label>Who?</label>
 <select id="pm-person">
 <option value="Shane">🧒🏾 Shane</option>
@@ -206,7 +206,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 </div>
 <div class="modal-btns">
 <button class="cancel" onclick="closePointModal()">Cancel</button>
-<button class="confirm" id="pm-confirm" onclick="confirmPoint()">Add Point</button>
+<button class="confirm" id="pm-confirm" onclick="confirmPoint()">Add Flag</button>
 </div>
 </div>
 </div>
@@ -230,15 +230,15 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <!-- RULES MODAL -->
 <div id="rules-modal" class="modal-overlay hidden">
 <div class="modal">
-<h3>📖 Points System</h3>
+<h3>📖 Flags System</h3>
 <div class="rules-content">
 <p>Each day you are expected to do your chore and clean your room.</p>
 <ul>
 <li>When you forget, you get a <strong>point</strong>.</li>
-<li>When you reach <strong>3 points</strong>, you lose your phone/device.</li>
+<li>When you reach <strong>3 flags</strong>, you lose your phone/device.</li>
 <li>To get your device back, you must do <strong>extra chores</strong> to get back to <strong>zero</strong>.</li>
-<li>3 points = 3 EXTRA chores before your device comes back.</li>
-<li>If more days go by without doing chores, more points pile up — more extra chores to work off!</li>
+<li>3 flags = 3 EXTRA chores before your device comes back.</li>
+<li>If more days go by without doing chores, more flags pile up — more extra chores to work off!</li>
 </ul>
 <p class="bottom-line">Do your chores every day and you keep your device. Simple! ✅</p>
 </div>
@@ -616,8 +616,8 @@ let pendingAction = null;
 
 function openPointModal(action){
   pendingAction = action;
-  document.getElementById('pm-title').textContent = action==='add' ? '⚠️ Add a Point' : '✅ Remove a Point';
-  document.getElementById('pm-confirm').textContent = action==='add' ? 'Add Point' : 'Remove Point';
+  document.getElementById('pm-title').textContent = action==='add' ? '⚠️ Add a Flag' : '✅ Remove a Flag';
+  document.getElementById('pm-confirm').textContent = action==='add' ? 'Add Flag' : 'Remove Flag';
   document.getElementById('pm-confirm').className = 'confirm' + (action==='remove'?' green':'');
   // Only show "for which day" when adding
   document.getElementById('pm-day-section').classList.toggle('hidden', action==='remove');
