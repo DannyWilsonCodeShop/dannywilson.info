@@ -392,6 +392,8 @@ function getDailyChores(date){
   // Deep cleans: Danny and Courtnee get DIFFERENT tasks (offset by 3)
   if(ch['Danny'].length<MAX_CHORES) ch['Danny'].push({ico:'🧽',nm:DEEP_CLEANS[((dw)%7)],badge:'deep',bl:'Deep Clean'});
   if(ch['Courtnee'].length<MAX_CHORES) ch['Courtnee'].push({ico:'🧽',nm:DEEP_CLEANS[((dw+3)%7)],badge:'deep',bl:'Deep Clean'});
+  // If anyone still has only 1 chore, add Physical Training
+  ALL5.forEach(p=>{if(ch[p].length<MAX_CHORES) ch[p].push({ico:'🏋🏾',nm:'Physical Training',badge:'daily',bl:'Daily'});});
   return ch;
 }
 

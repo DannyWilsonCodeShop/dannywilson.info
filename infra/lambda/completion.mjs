@@ -119,6 +119,21 @@ export const handler = async (event) => {
           await sendSms(phone, `📋 ${person} has completed "${chore}". (${date})`);
         }
       }
+
+      // Check if both chores are now done (look for 2 completions for this person today)
+      const allToday = await ddb.send(new ScanCommand({ TableName: TABLE }));
+      const personToday = (allToday.Items || []).filter(item => 
+        item.person?.S === person && item.personDate?.S?.includes(date)
+      );
+      if (personToday.length >= 2) {
+        // Broadcast "Done and Done!"
+        for (const member of ALL5) {
+          const phone = PHONES[member];
+          if (phone) {
+            await sendSms(phone, `🎉🎉 ${person} is Done and Done! Both chores complete! 💪🏾🏠`);
+          }
+        }
+      }
     } else {
       // Parent completed a chore
       const parentPhone = PHONES[person];
