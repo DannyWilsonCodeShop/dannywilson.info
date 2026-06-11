@@ -1,0 +1,9 @@
+com.dannywilsoncodeshop.bh365study.app-pngs-0 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/build/generated/res/pngs/release
+com.dannywilsoncodeshop.bh365study.app-resValues-1 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/build/generated/res/resValues/release
+com.dannywilsoncodeshop.bh365study.app-updated_navigation_xml-2 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/build/generated/updated_navigation_xml/release
+com.dannywilsoncodeshop.bh365study.app-packageReleaseResources-3 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/build/intermediates/incremental/release/packageReleaseResources/merged.dir
+com.dannywilsoncodeshop.bh365study.app-packageReleaseResources-4 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
+com.dannywilsoncodeshop.bh365study.app-release-5 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/build/intermediates/merged_res/release/mergeReleaseResources
+com.dannywilsoncodeshop.bh365study.app-main-6 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/res
+com.dannywilsoncodeshop.bh365study.app-release-7 /Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/release/res
+gradleHome-0 /Users/dannywilson/.gradle

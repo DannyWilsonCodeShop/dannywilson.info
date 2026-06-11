@@ -1,0 +1,126 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.dannywilsoncodeshop.bh365study"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="26"
+8-->INJECTED
+9        android:targetSdkVersion="34" />
+9-->INJECTED
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:6:5-67
+11-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:6:22-64
+12
+13    <permission
+13-->[androidx.core:core:1.12.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/eab77b4231dbf10923d42548ccb97a3f/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+14        android:name="com.dannywilsoncodeshop.bh365study.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+14-->[androidx.core:core:1.12.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/eab77b4231dbf10923d42548ccb97a3f/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+15        android:protectionLevel="signature" />
+15-->[androidx.core:core:1.12.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/eab77b4231dbf10923d42548ccb97a3f/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+16
+17    <uses-permission android:name="com.dannywilsoncodeshop.bh365study.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+17-->[androidx.core:core:1.12.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/eab77b4231dbf10923d42548ccb97a3f/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+17-->[androidx.core:core:1.12.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/eab77b4231dbf10923d42548ccb97a3f/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+18
+19    <application
+19-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:11:5-30:19
+20        android:allowBackup="true"
+20-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:12:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.12.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/eab77b4231dbf10923d42548ccb97a3f/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+22        android:extractNativeLibs="false"
+22-->INJECTED
+23        android:icon="@mipmap/ic_launcher"
+23-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:13:9-43
+24        android:label="@string/app_name"
+24-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:14:9-41
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:15:9-54
+26        android:supportsRtl="true"
+26-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:16:9-35
+27        android:theme="@style/Theme.BH365Study"
+27-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:17:9-48
+28        android:usesCleartextTraffic="false" >
+28-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:18:9-45
+29        <activity
+29-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:20:9-29:20
+30            android:name="com.dannywilsoncodeshop.bh365study.MainActivity"
+30-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:21:13-41
+31            android:configChanges="orientation|screenSize|keyboardHidden"
+31-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:24:13-74
+32            android:exported="true"
+32-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:22:13-36
+33            android:screenOrientation="portrait" >
+33-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:23:13-49
+34            <intent-filter>
+34-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:25:13-28:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:26:17-69
+35-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:26:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:27:17-77
+37-->/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app/src/main/AndroidManifest.xml:27:27-74
+38            </intent-filter>
+39        </activity>
+40
+41        <provider
+41-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+42            android:name="androidx.startup.InitializationProvider"
+42-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
+43            android:authorities="com.dannywilsoncodeshop.bh365study.androidx-startup"
+43-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
+44            android:exported="false" >
+44-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
+45            <meta-data
+45-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+46                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+46-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+47                android:value="androidx.startup" />
+47-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+48        </provider>
+49
+50        <receiver
+50-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+51            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+51-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+52            android:directBootAware="false"
+52-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+53            android:enabled="true"
+53-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+54            android:exported="true"
+54-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+55            android:permission="android.permission.DUMP" >
+55-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+56            <intent-filter>
+56-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+57                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+57-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+57-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+58            </intent-filter>
+59            <intent-filter>
+59-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+60                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+60-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+60-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+61            </intent-filter>
+62            <intent-filter>
+62-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+63                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+63-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+63-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+64            </intent-filter>
+65            <intent-filter>
+65-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+66                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+66-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+66-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dannywilson/.gradle/caches/9.4.1/transforms/1906527ac51933d793d99a6b9b95dcc1/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+67            </intent-filter>
+68        </receiver>
+69    </application>
+70
+71</manifest>

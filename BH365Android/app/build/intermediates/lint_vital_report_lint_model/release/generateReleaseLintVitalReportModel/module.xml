@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/dannywilson/DevOps/digital-resume-modern-dark/BH365Android/app"
+    name=":app"
+    type="APP"
+    maven="BH365Study:app:unspecified"
+    agpVersion="9.2.1"
+    buildFolder="build"
+    bootClassPath="/Users/dannywilson/Library/Android/sdk/platforms/android-34/android.jar:/Users/dannywilson/Library/Android/sdk/build-tools/36.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34"
+    highlightGradualR8Api="false">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

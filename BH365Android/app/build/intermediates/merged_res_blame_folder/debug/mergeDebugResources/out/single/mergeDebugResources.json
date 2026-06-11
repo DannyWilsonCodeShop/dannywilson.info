@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.dannywilsoncodeshop.bh365study.app-debug-21:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.dannywilsoncodeshop.bh365study.app-main-23:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.dannywilsoncodeshop.bh365study.app-debug-21:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.dannywilsoncodeshop.bh365study.app-main-23:/mipmap-xxxhdpi/ic_launcher_round.png"
+    }
+]
