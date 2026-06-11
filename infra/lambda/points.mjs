@@ -89,12 +89,27 @@ export const handler = async (event) => {
     if (phone) {
       let msg;
       if (action === 'add') {
-        msg = `Hey ${person}, you've been given a point for ${day || 'today'}. You now have ${pts} point${pts !== 1 ? 's' : ''}. Remember: at 3 points you lose your device until you do extra chores to get back to 0! 📱❌`;
+        const addMessages = [
+          `Hey ${person}, you received a point for ${day || 'today'}. I know you've been busy — any help you can give helps us all out. You now have ${pts} point${pts !== 1 ? 's' : ''}.`,
+          `Hey ${person}, a point was added for ${day || 'today'}. I'm not upset — I just want you to keep track of how we experience you as a team member who carries their own weight. You're at ${pts} now.`,
+          `${person}, you got a point for ${day || 'today'}. We all forget sometimes. What matters is what you do next. You're at ${pts} point${pts !== 1 ? 's' : ''}.`,
+          `Hey ${person}, point added for ${day || 'today'}. You're capable of so much — I just need you to show up for the team. Currently at ${pts}.`,
+        ];
+        msg = addMessages[Math.floor(Math.random() * addMessages.length)];
         if (pts >= 3) {
-          msg += `\n\n⚠️ You're at ${pts} points! Your device is gone until you complete ${pts} extra chore${pts !== 1 ? 's' : ''} to get back to zero.`;
+          msg += `\n\n⚠️ You're at ${pts} points now. Device is paused until you work it back down to zero. You can do this.`;
         }
       } else {
-        msg = `Nice job ${person}! 🎉 A point has been removed. You're now at ${pts} point${pts !== 1 ? 's' : ''}.${pts === 0 ? ' You\'re back to zero — device unlocked! 📱✅' : ''}`;
+        const removeMessages = [
+          `${person}! A point has been removed. You're down to ${pts}. I see you putting in the effort and I appreciate it. 💛`,
+          `Point removed, ${person}! You're at ${pts} now. Thank you for stepping up — that's what growth looks like. ✊🏾`,
+          `Hey ${person}, you earned that point back. Down to ${pts}. Keep going — you're proving what I already know about you. 🙌🏾`,
+          `${person}, one less point. You're at ${pts}. I'm proud of you for making it right. 💪🏾`,
+        ];
+        msg = removeMessages[Math.floor(Math.random() * removeMessages.length)];
+        if (pts === 0) {
+          msg += `\n\n🎉 You're back to zero! Device unlocked. Thank you for following through.`;
+        }
       }
 
       try {

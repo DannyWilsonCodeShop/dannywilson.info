@@ -17,6 +17,23 @@ const PHONES = {
 const ALL5 = ['Shane', 'Austin', 'Olivia', 'Danny', 'Courtnee'];
 const KIDS = ['Shane', 'Austin', 'Olivia'];
 
+const KID_THANKS = [
+  "Thank you for helping the family! 🙏🏾",
+  "We are grateful for the time you gave to this. Thank you! 💛",
+  "I'm proud of you! Thank you! ✊🏾",
+  "You showed up for the family today. That means a lot. 💪🏾",
+  "This is what teamwork looks like. Thank you! 🏠",
+  "You're building great habits. Keep it up! 🌟",
+  "The family appreciates you. Thank you for doing your part! 🤎",
+  "That's one less thing we all have to worry about. Thank you! 🙌🏾",
+];
+
+const PARENT_THANKS = [
+  "Nice one! Leading by example. 👍🏾",
+  "Done and done. Thank you for keeping things moving. 🏠",
+  "Teamwork makes the dream work. ✅",
+];
+
 async function sendSms(phone, msg) {
   try {
     await sns.send(new PublishCommand({
@@ -29,6 +46,10 @@ async function sendSms(phone, msg) {
   } catch (err) {
     console.error('SMS error:', err.message);
   }
+}
+
+function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 export const handler = async (event) => {
@@ -61,7 +82,6 @@ export const handler = async (event) => {
     const personDate = `${person}#${chore}#${date}`;
 
     if (undo) {
-      // Remove the completion record
       await ddb.send(new DeleteItemCommand({
         TableName: TABLE,
         Key: { personDate: { S: personDate } }
@@ -82,16 +102,28 @@ export const handler = async (event) => {
       }
     }));
 
-    // Send notifications to EVERYONE when a kid completes a chore
+    // Send notifications
     if (KIDS.includes(person)) {
+      // Text the kid with a heartfelt thank you
+      const kidPhone = PHONES[person];
+      if (kidPhone) {
+        const thanks = randomFrom(KID_THANKS);
+        await sendSms(kidPhone, `✅ ${person}, you completed "${chore}". ${thanks}`);
+      }
+
+      // Text everyone else that the kid completed it
       for (const member of ALL5) {
+        if (member === person) continue;
         const phone = PHONES[member];
-        if (!phone) continue;
-        if (member === person) {
-          await sendSms(phone, `✅ You marked "${chore}" complete and ready for review! Nice work, ${person}! 💪`);
-        } else {
-          await sendSms(phone, `📋 ${person} has marked "${chore}" complete and ready for review. (${date})`);
+        if (phone) {
+          await sendSms(phone, `📋 ${person} has completed "${chore}". (${date})`);
         }
+      }
+    } else {
+      // Parent completed a chore
+      const parentPhone = PHONES[person];
+      if (parentPhone) {
+        await sendSms(parentPhone, `✅ "${chore}" done. ${randomFrom(PARENT_THANKS)}`);
       }
     }
 
