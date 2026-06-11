@@ -182,8 +182,10 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 
 <!-- Parent-only bottom bar -->
 <div id="parent-bar" class="parent-bar hidden">
-<button class="add-pt-btn" onclick="openPointModal('add')">+ Add Point</button>
-<button class="remove-pt-btn" onclick="openPointModal('remove')">− Remove Point</button>
+<button class="add-pt-btn" onclick="openPointModal('add')">+ Point</button>
+<button class="remove-pt-btn" onclick="openPointModal('remove')">− Point</button>
+<button style="background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;padding:10px 20px;border:none;border-radius:24px;font-family:Nunito,sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;" onclick="openSwapModal()">🔄 Swap</button>
+<button class="info-btn" onclick="openRulesModal()">?</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
 </div>
 </div>
@@ -205,6 +207,22 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <div class="modal-btns">
 <button class="cancel" onclick="closePointModal()">Cancel</button>
 <button class="confirm" id="pm-confirm" onclick="confirmPoint()">Add Point</button>
+</div>
+</div>
+</div>
+
+<!-- SWAP MODAL -->
+<div id="swap-modal" class="modal-overlay hidden">
+<div class="modal" style="max-width:380px;">
+<h3>🔄 Swap Chores</h3>
+<p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">Reassign chores for today only. Pick two people to swap.</p>
+<label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Person 1</label>
+<select id="swap-p1" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;"></select>
+<label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Person 2</label>
+<select id="swap-p2" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;"></select>
+<div class="modal-btns">
+<button class="cancel" onclick="closeSwapModal()">Cancel</button>
+<button class="confirm" style="background:#4d96ff;" onclick="doSwap()">Swap Their Chores</button>
 </div>
 </div>
 </div>
@@ -413,6 +431,7 @@ function getDisplayOrder(){
 
 // ============ COMPLETIONS ============
 let completions = {};
+let dailySwaps = null; // override from server
 
 async function loadCompletions(){
   const dateStr = formatDateKey(cur);
@@ -421,6 +440,9 @@ async function loadCompletions(){
   if(data && Array.isArray(data)){
     data.forEach(c => { completions[c.person + '#' + c.chore] = true; });
   }
+  // Load swaps for this day
+  const swapData = await apiGet('/swaps?date=' + dateStr);
+  dailySwaps = (swapData && Object.keys(swapData).length > 0) ? swapData : null;
   renderToday();
 }
 
@@ -478,7 +500,23 @@ function renderToday(){
   if(!currentUser) return;
   try {
     document.getElementById('date-display').textContent = fmtDate(cur);
-    const ch = getDailyChores(cur);
+    let ch = getDailyChores(cur);
+    
+    // Apply daily swaps if any exist for this day
+    if(dailySwaps){
+      ALL5.forEach(p => {
+        if(dailySwaps[p]){
+          ch[p] = dailySwaps[p].map(nm => {
+            // Reconstruct chore objects from names
+            const icons = {'Wash Dishes':'🍽️','Sweep & Mop':'🧹','Living Rm & Counters':'🛋️','Feed Chaka':'🐶','Cook Dinner':'🍳','Wash Clothes':'👕','Wash Towels/Linens':'🏠','Physical Training':'🏋🏾'};
+            const badges = {'Wash Dishes':'hard','Sweep & Mop':'medium','Living Rm & Counters':'easy','Feed Chaka':'daily','Cook Dinner':'daily','Wash Clothes':'laundry','Wash Towels/Linens':'laundry','Physical Training':'daily'};
+            const isDeep = nm.includes('Clean') || nm.includes('Vacuum') || nm.includes('Sweep Porch') || nm.includes('Yard') || nm.includes('Baseboards') || nm.includes('Windows');
+            return {ico: icons[nm]||(isDeep?'🧽':'📋'), nm: nm, badge: badges[nm]||(isDeep?'deep':'daily'), bl: isDeep?'Deep Clean':(badges[nm]||'daily').charAt(0).toUpperCase()+(badges[nm]||'daily').slice(1)};
+          });
+        }
+      });
+    }
+    
     const grid = document.getElementById('grid');
     grid.innerHTML = '';
     const order = getDisplayOrder();
@@ -605,6 +643,48 @@ async function confirmPoint(){
 // ============ RULES MODAL ============
 function openRulesModal(){ document.getElementById('rules-modal').classList.remove('hidden'); }
 function closeRulesModal(){ document.getElementById('rules-modal').classList.add('hidden'); }
+
+// ============ SWAP MODAL ============
+function openSwapModal(){
+  const ch = getDailyChores(cur);
+  const sel1 = document.getElementById('swap-p1');
+  const sel2 = document.getElementById('swap-p2');
+  sel1.innerHTML = '';
+  sel2.innerHTML = '';
+  ALL5.forEach(p => {
+    const chores = (dailySwaps && dailySwaps[p]) ? dailySwaps[p] : ch[p].map(c=>c.nm);
+    const label = p + ' (' + chores.join(', ') + ')';
+    sel1.innerHTML += `<option value="${p}">${label}</option>`;
+    sel2.innerHTML += `<option value="${p}">${label}</option>`;
+  });
+  sel2.selectedIndex = 1;
+  document.getElementById('swap-modal').classList.remove('hidden');
+}
+function closeSwapModal(){ document.getElementById('swap-modal').classList.add('hidden'); }
+
+async function doSwap(){
+  const p1 = document.getElementById('swap-p1').value;
+  const p2 = document.getElementById('swap-p2').value;
+  if(p1 === p2){ closeSwapModal(); return; }
+  
+  const ch = getDailyChores(cur);
+  // Get current assignments (respect existing swaps)
+  let current = {};
+  ALL5.forEach(p => {
+    current[p] = (dailySwaps && dailySwaps[p]) ? dailySwaps[p] : ch[p].map(c => c.nm);
+  });
+  
+  // Swap the two people's chores
+  const temp = current[p1];
+  current[p1] = current[p2];
+  current[p2] = temp;
+  
+  // Save to server
+  dailySwaps = current;
+  closeSwapModal();
+  renderToday();
+  await apiPost('/swaps', { date: formatDateKey(cur), swaps: current });
+}
 </script>
 </body>
 </html>
