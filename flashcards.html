@@ -198,6 +198,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 <div class="home-footer">
 <button onclick="navView('v-lb')">🏆 Leaderboard</button>
 <button onclick="navView('v-stats')">📊 My Stats</button>
+<button id="admin-btn" class="hidden" onclick="navView('v-admin')">👁️ Admin</button>
 </div>
 </div>
 </div>
@@ -378,6 +379,15 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 </div>
 </div>
 
+<!-- ADMIN VIEW (Danny only) -->
+<div id="v-admin" class="hidden">
+<div class="lb-page">
+<span class="back-link" onclick="navView('v-home')">← Back</span>
+<h2 style="color:var(--gold);text-align:center;margin-bottom:14px;">👁️ Admin — Study Time</h2>
+<div id="admin-content"></div>
+</div>
+</div>
+
 <!-- INFO MODAL -->
 <div id="v-info-modal" class="hidden" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;">
 <div style="background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:24px;max-width:340px;width:100%;max-height:80vh;overflow-y:auto;">
@@ -429,8 +439,11 @@ async function doSignup(){
 async function cognitoAuth(action,body){
   try{const r=await fetch(`https://cognito-idp.${CFG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':`AWSCognitoIdentityProviderService.${action}`},body:JSON.stringify(body)});return await r.json();}catch(e){return{};}
 }
-function doLogout(){localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');user=null;token=null;navView('v-auth');}
-function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');loadProgressFromServer();}
+function doLogout(){syncTimeToServer();localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');user=null;token=null;navView('v-auth');}
+function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');loadProgressFromServer();startTimeTracking();
+  // Show admin button for Danny only
+  const adminBtn=document.getElementById('admin-btn');if(adminBtn)adminBtn.classList.toggle('hidden',user.toLowerCase()!=='danny');
+}
 
 // NAV
 function showInfo(mode){
@@ -449,7 +462,7 @@ function showInfo(mode){
   document.getElementById('v-info-modal').style.display = 'flex';
 }
 
-function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-focus','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result','v-bonus'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();}
+function navView(id){['v-auth','v-home','v-scope-type','v-scope','v-focus','v-practice','v-quiz','v-results','v-lb','v-stats','v-review','v-map','v-map-assess','v-map-result','v-bonus','v-admin'].forEach(v=>document.getElementById(v).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');if(id==='v-lb')loadLB();if(id==='v-stats')renderStats();if(id==='v-admin')renderAdmin();}
 
 // UNITS
 const UNITS = {
@@ -992,6 +1005,15 @@ function pickTimeline(idx){
     document.getElementById('bonus-done').classList.remove('hidden');
   }
 }
+
+// ============ TIME TRACKING ============
+let sessionStart=null;
+function startTimeTracking(){sessionStart=Date.now();setInterval(()=>{if(sessionStart)syncTimeToServer();},60000);document.addEventListener('visibilitychange',()=>{if(document.hidden&&sessionStart)syncTimeToServer();else if(!document.hidden)sessionStart=Date.now();});}
+function getSessionSeconds(){return sessionStart?Math.floor((Date.now()-sessionStart)/1000):0;}
+async function syncTimeToServer(){if(!user||!token||!sessionStart)return;const s=getSessionSeconds();if(s<5)return;const st=getStats();const mp=getMapProgress();try{await fetch(CFG.api+'/leaderboard',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({username:user,totalCorrect:st.totalCorrect||0,totalQuestions:st.totalQs||0,quizzesTaken:st.quizzes||0,bestStreak:st.bestStreak||0,awards:[...(st.awards||[]),...(mp.awards||[])],mapProgress:mp,stats:st,addTime:s})});sessionStart=Date.now();}catch(e){}}
+
+// ============ ADMIN VIEW ============
+async function renderAdmin(){const el=document.getElementById('admin-content');el.innerHTML='<p style="color:var(--muted);text-align:center">Loading...</p>';try{const r=await fetch(CFG.api+'/leaderboard');const data=await r.json();if(!data||!data.length){el.innerHTML='<p style="color:var(--muted)">No data</p>';return;}let html='';data.forEach(e=>{const mins=Math.floor((e.studyTime||0)/60);const hrs=Math.floor(mins/60);const rm=mins%60;const t=hrs>0?hrs+'h '+rm+'m':mins+'m';const la=e.lastActive?new Date(e.lastActive).toLocaleDateString():'—';html+=`<div class="lb-row" style="flex-direction:column;align-items:stretch;padding:12px;"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong>${e.username}</strong><span style="color:var(--gold);">⏱ ${t}</span></div><div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);"><span>Correct: ${e.totalCorrect||0}</span><span>Quizzes: ${e.quizzesTaken||0}</span><span>Map: ${e.mapCompleted||0}/55</span><span>Last: ${la}</span></div></div>`;});el.innerHTML=html;}catch(e){el.innerHTML='<p style="color:var(--muted)">Error loading</p>';}}
 </script>
 </body>
 </html>

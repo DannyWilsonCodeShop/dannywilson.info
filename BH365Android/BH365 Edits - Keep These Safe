@@ -1,0 +1,13 @@
+Here's your SHA-256 certificate fingerprint:
+
+71:9F:63:13:B2:82:CD:6A:57:6F:02:EA:4C:2D:84:AF:1F:B1:C7:EF:AB:1A:CA:34:82:D9:2B:96:86:F9:48:2D
+Paste that into Google Play Console to finish registering your package.
+
+Important — keep these safe:
+
+Keystore file: 
+bh365-release.keystore
+Store password: bh365store
+Key alias: bh365key
+Key password: bh365store
+You'll need these every time you sign a release build. If you lose the keystore, you can never update the app on Google Play.

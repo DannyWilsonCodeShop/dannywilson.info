@@ -40,6 +40,7 @@ export const handler = async (event) => {
       bestStreak: parseInt(item.bestStreak?.N || '0'),
       awards: JSON.parse(item.awards?.S || '[]'),
       mapCompleted: JSON.parse(item.mapProgress?.S || '{"completed":[]}').completed?.length || 0,
+      studyTime: parseInt(item.studyTime?.N || '0'),
       lastActive: item.lastActive?.S || '',
     }));
     entries.sort((a, b) => b.totalCorrect - a.totalCorrect);
@@ -48,9 +49,16 @@ export const handler = async (event) => {
 
   if (method === 'POST') {
     const body = JSON.parse(event.body || '{}');
-    const { username, totalCorrect, totalQuestions, quizzesTaken, bestStreak, awards, mapProgress, stats } = body;
+    const { username, totalCorrect, totalQuestions, quizzesTaken, bestStreak, awards, mapProgress, stats, addTime } = body;
 
     if (!username) return response(400, { error: 'username required' });
+
+    // Get existing item to accumulate time
+    let existingTime = 0;
+    if (addTime) {
+      const existing = await ddb.send(new GetItemCommand({ TableName: TABLE, Key: { username: { S: username } } }));
+      existingTime = parseInt(existing.Item?.studyTime?.N || '0');
+    }
 
     const item = {
       username: { S: username },
@@ -60,6 +68,7 @@ export const handler = async (event) => {
       bestStreak: { N: String(bestStreak || 0) },
       awards: { S: JSON.stringify(awards || []) },
       lastActive: { S: new Date().toISOString() },
+      studyTime: { N: String(existingTime + (addTime || 0)) },
     };
 
     // Save map progress if provided

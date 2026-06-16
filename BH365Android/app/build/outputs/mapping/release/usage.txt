@@ -9329,11 +9329,8 @@ kotlin.collections.AbstractMutableList
 kotlin.collections.ArrayDeque$Companion
 kotlin.collections.ArrayDeque:
     public static final kotlin.collections.ArrayDeque$Companion Companion
-    public static void addFirst()
     public final int decremented(int)
     public static int getSize()
-    public static java.lang.Object removeFirst()
-    public static java.lang.Object removeLast()
 kotlin.collections.ArraysKt
 kotlin.collections.ArraysKt___ArraysJvmKt:
     public static final void fill(java.lang.Object[],int,int)

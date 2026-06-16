@@ -6,9 +6,9 @@
     maven="BH365Study:app:unspecified"
     agpVersion="9.2.1"
     buildFolder="build"
-    bootClassPath="/Users/dannywilson/Library/Android/sdk/platforms/android-34/android.jar:/Users/dannywilson/Library/Android/sdk/build-tools/36.0.0/core-lambda-stubs.jar"
+    bootClassPath="/Users/dannywilson/Library/Android/sdk/platforms/android-35/android.jar:/Users/dannywilson/Library/Android/sdk/build-tools/36.0.0/core-lambda-stubs.jar"
     javaSourceLevel="17"
-    compileTarget="android-34"
+    compileTarget="android-35"
     highlightGradualR8Api="false">
   <lintOptions
       abortOnError="true"

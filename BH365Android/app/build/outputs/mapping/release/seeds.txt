@@ -1,391 +1,391 @@
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface
-org.chromium.support_lib_boundary.WebResourceRequestBoundaryInterface
-androidx.activity.ComponentActivity$4
-org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface
-androidx.lifecycle.ReflectiveGenericLifecycleObserver
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior
-androidx.lifecycle.ReportFragment$LifecycleCallbacks
-androidx.core.app.RemoteActionCompat
-androidx.lifecycle.DefaultLifecycleObserverAdapter
-androidx.lifecycle.SavedStateHandlesVM
-org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface
-androidx.lifecycle.SavedStateHandleController
-androidx.lifecycle.CompositeGeneratedAdaptersObserver
-org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface
-androidx.versionedparcelable.ParcelImpl
-org.chromium.support_lib_boundary.ProfileBoundaryInterface
-org.chromium.support_lib_boundary.FeatureFlagHolderBoundaryInterface
-com.dannywilsoncodeshop.bh365study.MainActivity
-androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable
 org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$ForceDarkBehavior
-androidx.startup.InitializationProvider
-org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface$WebMessagePayloadType
-androidx.lifecycle.LiveData$LifecycleBoundObserver
-androidx.profileinstaller.ProfileInstallerInitializer
-androidx.core.app.CoreComponentFactory
-org.chromium.support_lib_boundary.WebViewRendererClientBoundaryInterface
-org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface
-androidx.activity.ComponentActivity$2
-org.chromium.support_lib_boundary.VisualStateCallbackBoundaryInterface
-androidx.lifecycle.SavedStateHandleAttacher
-org.chromium.support_lib_boundary.IsomorphicObjectBoundaryInterface
-org.chromium.support_lib_boundary.WebMessageBoundaryInterface
-org.chromium.support_lib_boundary.WebResourceErrorBoundaryInterface
-androidx.activity.ComponentActivity$6
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface
-androidx.annotation.Keep
-org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface
-org.chromium.support_lib_boundary.TracingControllerBoundaryInterface
-org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface
-org.chromium.support_lib_boundary.ScriptHandlerBoundaryInterface
-android.support.v4.graphics.drawable.IconCompatParcelizer
-org.chromium.support_lib_boundary.WebViewCookieManagerBoundaryInterface
-androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1
-androidx.activity.ComponentActivity$3
-org.chromium.support_lib_boundary.JsReplyProxyBoundaryInterface
-org.chromium.support_lib_boundary.WebAuthnCallbackBoundaryInterface
-androidx.lifecycle.LegacySavedStateHandleController$OnRecreation
-org.chromium.support_lib_boundary.WebMessageCallbackBoundaryInterface
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface
-androidx.lifecycle.LegacySavedStateHandleController$tryToAddRecreator$1
+androidx.lifecycle.SavedStateHandleController
 androidx.activity.ImmLeaksCleaner
-android.support.v4.app.RemoteActionCompatParcelizer
-org.chromium.support_lib_boundary.ProcessGlobalConfigConstants
-androidx.activity.result.ActivityResultRegistry$1
-androidx.lifecycle.LifecycleCoroutineScopeImpl
-androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$observer$1
-androidx.lifecycle.ReportFragment
-androidx.lifecycle.SingleGeneratedAdapterObserver
-androidx.profileinstaller.ProfileInstallReceiver
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface
-org.chromium.support_lib_boundary.WebViewRendererBoundaryInterface
+org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface
+org.chromium.support_lib_boundary.WebMessageCallbackBoundaryInterface
 androidx.core.app.RemoteActionCompatParcelizer
-org.chromium.support_lib_boundary.StaticsBoundaryInterface
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface
-org.chromium.support_lib_boundary.ServiceWorkerClientBoundaryInterface
-androidx.savedstate.Recreator
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface
+android.support.v4.app.RemoteActionCompatParcelizer
+org.chromium.support_lib_boundary.JsReplyProxyBoundaryInterface
 androidx.core.graphics.drawable.IconCompatParcelizer
+org.chromium.support_lib_boundary.WebViewCookieManagerBoundaryInterface
+androidx.activity.ComponentActivity$6
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior
+org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface
+org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface
+android.support.v4.graphics.drawable.IconCompatParcelizer
+androidx.activity.ComponentActivity$2
 org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport
-org.chromium.support_lib_boundary.ProcessGlobalConfigConstants$ProcessGlobalConfigMapKey
+org.chromium.support_lib_boundary.ProcessGlobalConfigConstants
 androidx.versionedparcelable.CustomVersionedParcelable
+androidx.lifecycle.LiveData$LifecycleBoundObserver
+androidx.lifecycle.ReflectiveGenericLifecycleObserver
+androidx.activity.ComponentActivity$4
+org.chromium.support_lib_boundary.WebAuthnCallbackBoundaryInterface
+androidx.lifecycle.SavedStateHandlesVM
+androidx.lifecycle.SingleGeneratedAdapterObserver
+org.chromium.support_lib_boundary.ServiceWorkerClientBoundaryInterface
+org.chromium.support_lib_boundary.TracingControllerBoundaryInterface
+androidx.versionedparcelable.ParcelImpl
+org.chromium.support_lib_boundary.WebViewRendererClientBoundaryInterface
+androidx.profileinstaller.ProfileInstallerInitializer
 org.chromium.support_lib_boundary.WebViewClientBoundaryInterface
 androidx.core.graphics.drawable.IconCompat
+androidx.savedstate.Recreator
+org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface
+androidx.lifecycle.WithLifecycleStateKt$suspendWithStateAtLeastUnchecked$2$observer$1
+org.chromium.support_lib_boundary.VisualStateCallbackBoundaryInterface
+androidx.lifecycle.SavedStateHandleAttacher
+com.dannywilsoncodeshop.bh365study.MainActivity
+androidx.startup.InitializationProvider
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface
+org.chromium.support_lib_boundary.WebViewRendererBoundaryInterface
+org.chromium.support_lib_boundary.StaticsBoundaryInterface
+androidx.activity.ComponentActivity$3
+androidx.core.app.RemoteActionCompat
+org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface$WebMessagePayloadType
+androidx.lifecycle.ReportFragment$LifecycleCallbacks
+org.chromium.support_lib_boundary.ProfileBoundaryInterface
+androidx.lifecycle.CompositeGeneratedAdaptersObserver
+androidx.core.app.CoreComponentFactory
+androidx.lifecycle.LifecycleCoroutineScopeImpl
+androidx.lifecycle.RepeatOnLifecycleKt$repeatOnLifecycle$3$1$1$1
+androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface
+androidx.lifecycle.DefaultLifecycleObserverAdapter
+org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface
+org.chromium.support_lib_boundary.ScriptHandlerBoundaryInterface
+org.chromium.support_lib_boundary.ProcessGlobalConfigConstants$ProcessGlobalConfigMapKey
+androidx.annotation.Keep
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface
+androidx.lifecycle.ReportFragment
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface
+org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface
+org.chromium.support_lib_boundary.WebResourceRequestBoundaryInterface
+androidx.activity.result.ActivityResultRegistry$1
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface
+org.chromium.support_lib_boundary.WebMessageBoundaryInterface
+androidx.lifecycle.LegacySavedStateHandleController$tryToAddRecreator$1
 org.chromium.support_lib_boundary.WebMessageListenerBoundaryInterface
-kotlinx.coroutines.internal.AtomicOp: java.lang.Object _consensus
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int WEB_SOURCE_AND_WEB_TRIGGER
-kotlinx.coroutines.internal.LimitedDispatcher: int runningWorkers
-androidx.concurrent.futures.AbstractResolvableFuture: java.lang.Object value
-kotlinx.coroutines.scheduling.CoroutineScheduler$Worker: int workerCtl
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event$Companion Companion
-kotlinx.coroutines.CompletedExceptionally: int _handled
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_CREATE
-androidx.versionedparcelable.ParcelImpl: android.os.Parcelable$Creator CREATOR
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int DISABLED
-kotlinx.coroutines.EventLoopImplBase: java.lang.Object _queue
-androidx.concurrent.futures.AbstractResolvableFuture: androidx.concurrent.futures.AbstractResolvableFuture$Listener listeners
-kotlinx.coroutines.scheduling.CoroutineScheduler: int _isTerminated
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport: int APP
-kotlinx.coroutines.EventLoopImplBase: int _isCompleted
-org.chromium.support_lib_boundary.ProcessGlobalConfigConstants: java.lang.String DATA_DIRECTORY_SUFFIX
-org.chromium.support_lib_boundary.ProcessGlobalConfigConstants: java.lang.String DATA_DIRECTORY_BASE_PATH
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$ForceDarkBehavior: int FORCE_DARK_ONLY
-androidx.concurrent.futures.AbstractResolvableFuture: androidx.concurrent.futures.AbstractResolvableFuture$Waiter waiters
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_PAUSE
-kotlinx.coroutines.internal.DispatchedContinuation: java.lang.Object _reusableCancellableContinuation
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] $VALUES
-kotlinx.coroutines.scheduling.CoroutineScheduler: long parkedWorkersStack
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_ANY
-kotlinx.coroutines.internal.LockFreeLinkedListNode: java.lang.Object _prev
-kotlinx.coroutines.JobSupport: java.lang.Object _state
-kotlinx.coroutines.internal.ThreadSafeHeap: int _size
-kotlinx.coroutines.InvokeOnCancelling: int _invoked
-kotlinx.coroutines.internal.LockFreeTaskQueueCore: java.lang.Object _next
-kotlinx.coroutines.android.HandlerContext: kotlinx.coroutines.android.HandlerContext _immediate
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int APP_SOURCE_AND_WEB_TRIGGER
+org.chromium.support_lib_boundary.WebResourceErrorBoundaryInterface
+org.chromium.support_lib_boundary.IsomorphicObjectBoundaryInterface
+org.chromium.support_lib_boundary.FeatureFlagHolderBoundaryInterface
+androidx.lifecycle.LegacySavedStateHandleController$OnRecreation
+androidx.profileinstaller.ProfileInstallReceiver
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker: java.lang.Object nextParkedWorker
+org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface$WebMessagePayloadType: int TYPE_STRING
+org.chromium.support_lib_boundary.ProcessGlobalConfigConstants: java.lang.String CACHE_DIRECTORY_BASE_PATH
 kotlinx.coroutines.internal.LockFreeLinkedListNode: java.lang.Object _removedRef
-androidx.concurrent.futures.AbstractResolvableFuture$Waiter: java.lang.Thread thread
-kotlinx.coroutines.scheduling.WorkQueue: int consumerIndex
-kotlinx.coroutines.JobSupport$Finishing: int _isCompleting
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START
+kotlinx.coroutines.EventLoopImplBase: int _isCompleted
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_CREATE
+kotlinx.coroutines.EventLoopImplBase: java.lang.Object _queue
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int APP_SOURCE_AND_WEB_TRIGGER
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP
+kotlinx.coroutines.CompletedExceptionally: int _handled
+kotlinx.coroutines.EventLoopImplBase: java.lang.Object _delayed
+kotlinx.coroutines.scheduling.CoroutineScheduler: long parkedWorkersStack
+kotlinx.coroutines.android.HandlerDispatcherKt: android.view.Choreographer choreographer
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport: int NONE
 kotlinx.coroutines.scheduling.WorkQueue: int producerIndex
-kotlinx.coroutines.JobSupport$Finishing: java.lang.Object _exceptionsHolder
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_RESUME
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport: int BROWSER
+kotlinx.coroutines.DefaultExecutor: int debugStatus
 kotlinx.coroutines.internal.LockFreeLinkedListNode: java.lang.Object _next
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker: int workerCtl
+kotlinx.coroutines.internal.LimitedDispatcher: int runningWorkers
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_ANY
+androidx.versionedparcelable.ParcelImpl: android.os.Parcelable$Creator CREATOR
+kotlinx.coroutines.internal.DispatchedContinuation: java.lang.Object _reusableCancellableContinuation
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int APP_SOURCE_AND_APP_TRIGGER
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion Companion
+androidx.concurrent.futures.AbstractResolvableFuture$Waiter: java.lang.Thread thread
+kotlinx.coroutines.android.HandlerContext: kotlinx.coroutines.android.HandlerContext _immediate
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$ForceDarkBehavior: int PREFER_MEDIA_QUERY_OVER_FORCE_DARK
 kotlinx.coroutines.internal.ResizableAtomicArray: java.util.concurrent.atomic.AtomicReferenceArray array
 kotlinx.coroutines.internal.LockFreeTaskQueue: java.lang.Object _cur
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport: int NONE
-org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface$WebMessagePayloadType: int TYPE_ARRAY_BUFFER
-kotlinx.coroutines.EventLoopImplBase: java.lang.Object _delayed
-kotlinx.coroutines.scheduling.CoroutineScheduler$Worker: java.lang.Object nextParkedWorker
-kotlinx.coroutines.DefaultExecutor: int debugStatus
-kotlinx.coroutines.android.HandlerDispatcherKt: android.view.Choreographer choreographer
-kotlinx.coroutines.internal.LockFreeTaskQueueCore: long _state
-kotlinx.coroutines.scheduling.CoroutineScheduler: long controlState
+androidx.concurrent.futures.AbstractResolvableFuture: androidx.concurrent.futures.AbstractResolvableFuture$Waiter waiters
+kotlinx.coroutines.android.AndroidExceptionPreHandler: java.lang.Object _preHandler
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY
+androidx.concurrent.futures.AbstractResolvableFuture: java.lang.Object value
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event$Companion Companion
 kotlinx.coroutines.scheduling.WorkQueue: int blockingTasksInBuffer
-org.chromium.support_lib_boundary.ProcessGlobalConfigConstants: java.lang.String CACHE_DIRECTORY_BASE_PATH
-kotlinx.coroutines.JobSupport: java.lang.Object _parentHandle
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int APP_SOURCE_AND_APP_TRIGGER
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$ForceDarkBehavior: int PREFER_MEDIA_QUERY_OVER_FORCE_DARK
+org.chromium.support_lib_boundary.ProcessGlobalConfigConstants: java.lang.String DATA_DIRECTORY_BASE_PATH
+kotlinx.coroutines.scheduling.CoroutineScheduler: long controlState
+kotlinx.coroutines.JobSupport$Finishing: java.lang.Object _rootCause
+kotlinx.coroutines.internal.LockFreeTaskQueueCore: java.lang.Object _next
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_START
 kotlinx.coroutines.DefaultExecutor: java.lang.Thread _thread
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: androidx.lifecycle.ReportFragment$LifecycleCallbacks$Companion Companion
+kotlinx.coroutines.internal.LockFreeTaskQueueCore: long _state
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_RESUME
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] $VALUES
+kotlinx.coroutines.internal.LockFreeLinkedListNode: java.lang.Object _prev
+kotlinx.coroutines.JobSupport$Finishing: java.lang.Object _exceptionsHolder
+kotlinx.coroutines.InvokeOnCancelling: int _invoked
+kotlinx.coroutines.JobSupport: java.lang.Object _parentHandle
+org.chromium.support_lib_boundary.ProcessGlobalConfigConstants: java.lang.String DATA_DIRECTORY_SUFFIX
+kotlinx.coroutines.internal.ThreadSafeHeap: int _size
+androidx.concurrent.futures.AbstractResolvableFuture: androidx.concurrent.futures.AbstractResolvableFuture$Listener listeners
+androidx.concurrent.futures.AbstractResolvableFuture$Waiter: androidx.concurrent.futures.AbstractResolvableFuture$Waiter next
+kotlinx.coroutines.scheduling.WorkQueue: java.lang.Object lastScheduledTask
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int WEB_SOURCE_AND_WEB_TRIGGER
 androidx.activity.result.ActivityResult: android.os.Parcelable$Creator CREATOR
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_PAUSE
+kotlinx.coroutines.JobSupport: java.lang.Object _state
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$AttributionBehavior: int DISABLED
 org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$ForceDarkBehavior: int MEDIA_QUERY_ONLY
 kotlinx.coroutines.scheduling.CoroutineScheduler$Worker: int indexInArray
-org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface$WebMessagePayloadType: int TYPE_STRING
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_DESTROY
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport: int BROWSER
-kotlinx.coroutines.scheduling.WorkQueue: java.lang.Object lastScheduledTask
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event ON_STOP
-androidx.concurrent.futures.AbstractResolvableFuture$Waiter: androidx.concurrent.futures.AbstractResolvableFuture$Waiter next
-kotlinx.coroutines.android.AndroidExceptionPreHandler: java.lang.Object _preHandler
-kotlinx.coroutines.JobSupport$Finishing: java.lang.Object _rootCause
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertSafeBrowsingResponse(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void setWebViewRendererClient(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface: void showInterstitial(boolean)
-androidx.core.view.ViewCompat$Api16Impl: int getMinimumHeight(android.view.View)
-androidx.core.view.ViewCompat$Api28Impl: java.lang.CharSequence getAccessibilityPaneTitle(android.view.View)
-androidx.core.view.ViewCompat$Api16Impl: void setImportantForAccessibility(android.view.View,int)
-org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface: void clearProxyOverride(java.lang.Runnable,java.util.concurrent.Executor)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: java.util.Set getRequestedWithHeaderOriginAllowList()
-androidx.core.graphics.drawable.IconCompat$Api28Impl: int getType(java.lang.Object)
-org.chromium.support_lib_boundary.WebAuthnCallbackBoundaryInterface: void onResult(int,android.content.Intent)
-androidx.core.view.ViewCompat$Api28Impl: void setAutofillId(android.view.View,android.view.autofill.AutofillId)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getOffscreenPreRaster()
-androidx.core.graphics.drawable.IconCompat$Api23Impl: android.graphics.drawable.Icon toIcon(androidx.core.graphics.drawable.IconCompat,android.content.Context)
-androidx.core.view.ViewCompat$Api19Impl: boolean isLaidOut(android.view.View)
-org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onReceivedError(android.webkit.WebView,android.webkit.WebResourceRequest,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler createWebView(android.webkit.WebView)
-androidx.core.view.WindowCompat$Api30Impl: void setDecorFitsSystemWindows(android.view.Window,boolean)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getStatics()
-androidx.core.view.ViewCompat$Api16Impl: boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.os.ParcelFileDescriptor openFile(android.content.ContentProvider,android.net.Uri)
-androidx.activity.Api34Impl: android.window.BackEvent createOnBackEvent(float,float,float,int)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostCreated(android.app.Activity,android.os.Bundle)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getServiceWorkerController()
-androidx.core.view.ViewCompat$Api16Impl: void postOnAnimationDelayed(android.view.View,java.lang.Runnable,long)
-androidx.core.view.ViewCompat$Api16Impl: void requestFitSystemWindows(android.view.View)
-androidx.lifecycle.SavedStateHandlesVM: SavedStateHandlesVM()
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler addDocumentStartJavaScript(java.lang.String,java.lang.String[])
-org.chromium.support_lib_boundary.StaticsBoundaryInterface: void setSafeBrowsingWhitelist(java.util.List,android.webkit.ValueCallback)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: java.util.Map getUserAgentMetadataMap()
-androidx.lifecycle.ReportFragment: ReportFragment()
-androidx.core.graphics.drawable.IconCompat$Api28Impl: android.net.Uri getUri(java.lang.Object)
-androidx.core.view.ViewCompat$Api16Impl: boolean getFitsSystemWindows(android.view.View)
-androidx.core.view.ViewCompat$Api28Impl: boolean isScreenReaderFocusable(android.view.View)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setWebAuthnSupport(int)
-androidx.core.app.CoreComponentFactory: CoreComponentFactory()
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertWebMessagePort(java.lang.Object)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void registerIn(android.app.Activity)
-org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: boolean deleteProfile(java.lang.String)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: void setClearCachedDataIntervalMs(int)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityStopped(android.app.Activity)
-androidx.core.graphics.drawable.IconCompat: IconCompat()
-org.chromium.support_lib_boundary.WebMessageBoundaryInterface: java.lang.reflect.InvocationHandler[] getPorts()
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertServiceWorkerSettings(java.lang.Object)
-org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void setWebMessageCallback(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertWebResourceError(java.lang.Object)
-org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface: java.lang.reflect.InvocationHandler getServiceWorkerWebSettings()
-androidx.core.view.WindowCompat$Api16Impl: void setDecorFitsSystemWindows(android.view.Window,boolean)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void addWebMessageListener(java.lang.String,java.lang.String[],java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebMessageCallbackBoundaryInterface: void onMessage(java.lang.reflect.InvocationHandler,java.lang.reflect.InvocationHandler)
-androidx.core.view.ViewCompat$Api19Impl: boolean isLayoutDirectionResolved(android.view.View)
-android.support.v4.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
-android.support.v4.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
-androidx.core.view.ViewCompat$Api19Impl: void notifySubtreeAccessibilityStateChanged(android.view.ViewParent,android.view.View,android.view.View,int)
-org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: java.util.List getAllProfileNames()
-org.chromium.support_lib_boundary.WebMessageListenerBoundaryInterface: void onPostMessage(android.webkit.WebView,java.lang.reflect.InvocationHandler,android.net.Uri,boolean,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setAlgorithmicDarkeningAllowed(boolean)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getAttributionBehavior()
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPreStopped(android.app.Activity)
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: boolean getAllowContentAccess()
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler getProfile()
-org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onSafeBrowsingHit(android.webkit.WebView,android.webkit.WebResourceRequest,int,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean isAlgorithmicDarkeningAllowed()
-androidx.core.graphics.drawable.IconCompat$Api23Impl: android.net.Uri getUri(java.lang.Object)
-android.support.v4.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
-org.chromium.support_lib_boundary.WebResourceErrorBoundaryInterface: int getErrorCode()
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getForceDark()
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler getWebViewRendererClient()
-androidx.core.view.ViewCompat$Api28Impl: void removeOnUnhandledKeyEventListener(android.view.View,androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
-org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface: void setProxyOverride(java.lang.String[][],java.lang.String[],java.lang.Runnable,java.util.concurrent.Executor)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler[] createWebMessageChannel()
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivitySaveInstanceState(android.app.Activity,android.os.Bundle)
-androidx.core.app.RemoteActionCompat: RemoteActionCompat()
-org.chromium.support_lib_boundary.StaticsBoundaryInterface: void initSafeBrowsing(android.content.Context,android.webkit.ValueCallback)
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setCacheMode(int)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void postMessageToMainFrame(java.lang.reflect.InvocationHandler,android.net.Uri)
-androidx.core.view.ViewCompat$Api28Impl: void setAccessibilityPaneTitle(android.view.View,java.lang.CharSequence)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.os.Bundle call(java.lang.String,java.lang.String,android.os.Bundle)
-androidx.core.view.ViewCompat$Api16Impl: boolean hasOverlappingRendering(android.view.View)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPaused(android.app.Activity)
-org.chromium.support_lib_boundary.WebViewRendererClientBoundaryInterface: void onRendererResponsive(android.webkit.WebView,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getProfileStore()
-kotlinx.coroutines.android.AndroidDispatcherFactory: AndroidDispatcherFactory()
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getProxyController()
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setBlockNetworkLoads(boolean)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getWillSuppressErrorPage()
-org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void close()
-androidx.core.view.ViewCompat$Api16Impl: int getImportantForAccessibility(android.view.View)
-org.chromium.support_lib_boundary.FeatureFlagHolderBoundaryInterface: java.lang.String[] getSupportedFeatures()
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler getWebViewRenderer()
-org.chromium.support_lib_boundary.StaticsBoundaryInterface: void setSafeBrowsingAllowlist(java.util.Set,android.webkit.ValueCallback)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setOffscreenPreRaster(boolean)
-org.chromium.support_lib_boundary.WebResourceErrorBoundaryInterface: java.lang.CharSequence getDescription()
-org.chromium.support_lib_boundary.WebResourceRequestBoundaryInterface: boolean isRedirect()
-androidx.core.view.ViewCompat$Api16Impl: int getWindowSystemUiVisibility(android.view.View)
-androidx.profileinstaller.FileSectionType: androidx.profileinstaller.FileSectionType valueOf(java.lang.String)
-androidx.activity.Api34Impl: float touchX(android.window.BackEvent)
-android.support.v4.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
-org.chromium.support_lib_boundary.WebMessageBoundaryInterface: java.lang.String getData()
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getEnterpriseAuthenticationAppLinkPolicyEnabled()
-androidx.activity.OnBackPressedDispatcher$Api33Impl: void registerOnBackInvokedCallback(java.lang.Object,int,java.lang.Object)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void insertVisualStateCallback(long,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.VisualStateCallbackBoundaryInterface: void onComplete(long)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setForceDark(int)
-androidx.activity.Api34Impl: float progress(android.window.BackEvent)
-androidx.core.view.ViewCompat$Api28Impl: boolean isAccessibilityHeading(android.view.View)
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertServiceWorkerSettings(java.lang.reflect.InvocationHandler)
-androidx.activity.Api34Impl: float touchY(android.window.BackEvent)
-org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: boolean shouldOverrideUrlLoading(android.webkit.WebView,android.webkit.WebResourceRequest)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getDisabledActionModeMenuItems()
-androidx.versionedparcelable.CustomVersionedParcelable: CustomVersionedParcelable()
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: boolean getAllowFileAccess()
-com.dannywilsoncodeshop.bh365study.MainActivity: MainActivity()
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setRequestedWithHeaderOriginAllowList(java.util.Set)
-androidx.core.view.ViewCompat$Api16Impl: android.view.ViewParent getParentForAccessibility(android.view.View)
-androidx.lifecycle.LegacySavedStateHandleController$OnRecreation: LegacySavedStateHandleController$OnRecreation()
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setAllowFileAccess(boolean)
-androidx.activity.ComponentActivity$Api33Impl: android.window.OnBackInvokedDispatcher getOnBackInvokedDispatcher(android.app.Activity)
-androidx.core.view.ViewCompat$Api19Impl: int getAccessibilityLiveRegion(android.view.View)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getTracingController()
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.String[] getSupportedFeatures()
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertWebResourceRequest(android.webkit.WebResourceRequest)
-androidx.activity.OnBackPressedDispatcher$Api33Impl: void unregisterOnBackInvokedCallback(java.lang.Object,java.lang.Object)
-org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface: void setServiceWorkerClient(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getWebkitToCompatConverter()
-android.support.v4.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$WebAuthnSupport: int APP
+kotlinx.coroutines.scheduling.CoroutineScheduler: int _isTerminated
+kotlinx.coroutines.JobSupport$Finishing: int _isCompleting
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface$ForceDarkBehavior: int FORCE_DARK_ONLY
+kotlinx.coroutines.internal.AtomicOp: java.lang.Object _consensus
+kotlinx.coroutines.scheduling.WorkQueue: int consumerIndex
+org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface$WebMessagePayloadType: int TYPE_ARRAY_BUFFER
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setAllowContentAccess(boolean)
 androidx.core.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
-androidx.core.view.ViewCompat$Api19Impl: void setAccessibilityLiveRegion(android.view.View,int)
-androidx.core.graphics.drawable.IconCompat$Api26Impl: android.graphics.drawable.Drawable createAdaptiveIconDrawable(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)
-androidx.core.view.ViewCompat$Api16Impl: void postOnAnimation(android.view.View,java.lang.Runnable)
-org.chromium.support_lib_boundary.ProfileBoundaryInterface: java.lang.String getName()
-androidx.profileinstaller.ProfileVerifier$Api33Impl: android.content.pm.PackageInfo getPackageInfo(android.content.pm.PackageManager,android.content.Context)
-androidx.core.view.ViewCompat$Api19Impl: boolean isAttachedToWindow(android.view.View)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostResumed(android.app.Activity)
-androidx.core.graphics.drawable.IconCompat$Api26Impl: android.graphics.drawable.Icon createWithAdaptiveBitmap(android.graphics.Bitmap)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setAttributionBehavior(int)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityCreated(android.app.Activity,android.os.Bundle)
-org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onReceivedHttpError(android.webkit.WebView,android.webkit.WebResourceRequest,android.webkit.WebResourceResponse)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.net.Uri cache(byte[],java.lang.String,java.lang.String)
-org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: java.lang.reflect.InvocationHandler getProfile(java.lang.String)
-androidx.activity.OnBackPressedDispatcher$Api33Impl: android.window.OnBackInvokedCallback createOnBackInvokedCallback(kotlin.jvm.functions.Function0)
-kotlin.coroutines.intrinsics.CoroutineSingletons: kotlin.coroutines.intrinsics.CoroutineSingletons valueOf(java.lang.String)
-androidx.core.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setEnterpriseAuthenticationAppLinkPolicyEnabled(boolean)
-androidx.core.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
-kotlinx.coroutines.android.AndroidExceptionPreHandler: AndroidExceptionPreHandler()
-androidx.core.view.ViewCompat$Api16Impl: void setHasTransientState(android.view.View,boolean)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: ReportFragment$LifecycleCallbacks()
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostStarted(android.app.Activity)
-org.chromium.support_lib_boundary.WebMessageBoundaryInterface: java.lang.reflect.InvocationHandler getMessagePayload()
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getWebAuthnSupport()
-androidx.core.view.ViewCompat$Api16Impl: android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider(android.view.View)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: android.webkit.WebViewClient getWebViewClient()
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPreDestroyed(android.app.Activity)
-androidx.profileinstaller.ProfileInstallerInitializer$Choreographer16Impl: void postFrameCallback(java.lang.Runnable)
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertWebMessagePort(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: android.webkit.WebChromeClient getWebChromeClient()
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityDestroyed(android.app.Activity)
-org.chromium.support_lib_boundary.WebViewCookieManagerBoundaryInterface: java.util.List getCookieInfo(java.lang.String)
-org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void setWebMessageCallback(java.lang.reflect.InvocationHandler,android.os.Handler)
-androidx.activity.ComponentActivity: void setContentView(android.view.View)
-androidx.core.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event valueOf(java.lang.String)
+org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface: java.lang.reflect.InvocationHandler getServiceWorkerWebSettings()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityStarted(android.app.Activity)
 org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.CookieManager getCookieManager()
-androidx.core.view.ViewCompat$Api16Impl: void removeOnGlobalLayoutListener(android.view.ViewTreeObserver,android.view.ViewTreeObserver$OnGlobalLayoutListener)
-org.chromium.support_lib_boundary.JsReplyProxyBoundaryInterface: void postMessage(java.lang.String)
-androidx.core.graphics.drawable.IconCompat$Api30Impl: android.graphics.drawable.Icon createWithAdaptiveBitmapContentUri(android.net.Uri)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setUserAgentMetadataFromMap(java.util.Map)
-org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.WebStorage getWebStorage()
-org.chromium.support_lib_boundary.IsomorphicObjectBoundaryInterface: java.lang.Object getOrCreatePeer(java.util.concurrent.Callable)
-androidx.core.view.ViewCompat$Api28Impl: void setAccessibilityHeading(android.view.View,boolean)
-org.chromium.support_lib_boundary.ServiceWorkerClientBoundaryInterface: android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebResourceRequest)
+androidx.profileinstaller.FileSectionType: androidx.profileinstaller.FileSectionType valueOf(java.lang.String)
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean isAlgorithmicDarkeningAllowed()
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertWebResourceRequest(android.webkit.WebResourceRequest)
+androidx.core.view.ViewCompat$Api16Impl: void postOnAnimationDelayed(android.view.View,java.lang.Runnable,long)
+kotlin.coroutines.intrinsics.CoroutineSingletons: kotlin.coroutines.intrinsics.CoroutineSingletons valueOf(java.lang.String)
+org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface: void setProxyOverride(java.lang.String[][],java.lang.String[],java.lang.Runnable,java.util.concurrent.Executor)
+androidx.core.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setWillSuppressErrorPage(boolean)
+androidx.core.view.ViewCompat$Api16Impl: int getWindowSystemUiVisibility(android.view.View)
+org.chromium.support_lib_boundary.StaticsBoundaryInterface: android.net.Uri getSafeBrowsingPrivacyPolicyUrl()
+androidx.lifecycle.SavedStateHandlesVM: SavedStateHandlesVM()
+androidx.core.view.ViewCompat$Api16Impl: void postOnAnimation(android.view.View,java.lang.Runnable)
+androidx.core.view.ViewCompat$Api19Impl: boolean isLaidOut(android.view.View)
+org.chromium.support_lib_boundary.WebViewRendererClientBoundaryInterface: void onRendererUnresponsive(android.webkit.WebView,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setForceDarkBehavior(int)
 org.chromium.support_lib_boundary.StaticsBoundaryInterface: boolean isMultiProcessEnabled()
-org.chromium.support_lib_boundary.TracingControllerBoundaryInterface: boolean isTracing()
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setAllowFileAccess(boolean)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityCreated(android.app.Activity,android.os.Bundle)
+androidx.profileinstaller.FileSectionType: androidx.profileinstaller.FileSectionType[] values()
+androidx.activity.OnBackPressedDispatcher$Api34Impl: android.window.OnBackInvokedCallback createOnBackAnimationCallback(kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function0,kotlin.jvm.functions.Function0)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPreStopped(android.app.Activity)
+androidx.core.view.ViewCompat$Api16Impl: int getMinimumHeight(android.view.View)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: android.webkit.WebChromeClient getWebChromeClient()
+androidx.core.graphics.drawable.IconCompat$Api26Impl: android.graphics.drawable.Drawable createAdaptiveIconDrawable(android.graphics.drawable.Drawable,android.graphics.drawable.Drawable)
+androidx.activity.Api34Impl: float touchY(android.window.BackEvent)
+kotlinx.coroutines.CoroutineStart: kotlinx.coroutines.CoroutineStart valueOf(java.lang.String)
+androidx.core.view.ViewCompat$Api28Impl: java.lang.CharSequence getAccessibilityPaneTitle(android.view.View)
+org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.GeolocationPermissions getGeoLocationPermissions()
+androidx.profileinstaller.ProfileVerifier$Api33Impl: android.content.pm.PackageInfo getPackageInfo(android.content.pm.PackageManager,android.content.Context)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertServiceWorkerSettings(java.lang.Object)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertWebResourceError(java.lang.reflect.InvocationHandler)
+android.support.v4.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
+androidx.profileinstaller.ProfileInstallerInitializer$Choreographer16Impl: void postFrameCallback(java.lang.Runnable)
+androidx.core.view.ViewCompat$Api16Impl: void removeOnGlobalLayoutListener(android.view.ViewTreeObserver,android.view.ViewTreeObserver$OnGlobalLayoutListener)
+org.chromium.support_lib_boundary.IsomorphicObjectBoundaryInterface: java.lang.Object getOrCreatePeer(java.util.concurrent.Callable)
+org.chromium.support_lib_boundary.StaticsBoundaryInterface: void setSafeBrowsingWhitelist(java.util.List,android.webkit.ValueCallback)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setOffscreenPreRaster(boolean)
+androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State valueOf(java.lang.String)
+androidx.core.view.ViewCompat$Api28Impl: void addOnUnhandledKeyEventListener(android.view.View,androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
+org.chromium.support_lib_boundary.WebMessageListenerBoundaryInterface: void onPostMessage(android.webkit.WebView,java.lang.reflect.InvocationHandler,android.net.Uri,boolean,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertWebMessagePort(java.lang.reflect.InvocationHandler)
+androidx.activity.ComponentActivity$Api33Impl: android.window.OnBackInvokedDispatcher getOnBackInvokedDispatcher(android.app.Activity)
+org.chromium.support_lib_boundary.StaticsBoundaryInterface: void initSafeBrowsing(android.content.Context,android.webkit.ValueCallback)
+org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onSafeBrowsingHit(android.webkit.WebView,android.webkit.WebResourceRequest,int,java.lang.reflect.InvocationHandler)
+androidx.core.view.ViewCompat$Api19Impl: boolean isLayoutDirectionResolved(android.view.View)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getDisabledActionModeMenuItems()
+androidx.core.view.ViewCompat$Api16Impl: int getImportantForAccessibility(android.view.View)
+androidx.core.view.ViewCompat$Api28Impl: java.lang.Object requireViewById(android.view.View,int)
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.os.ParcelFileDescriptor openFile(android.content.ContentProvider,android.net.Uri)
+androidx.core.view.ViewCompat$Api28Impl: void setAccessibilityHeading(android.view.View,boolean)
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: boolean getAllowFileAccess()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setDisabledActionModeMenuItems(int)
+org.chromium.support_lib_boundary.TracingControllerBoundaryInterface: void start(int,java.util.Collection,int)
 org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertCookieManager(java.lang.Object)
+androidx.core.graphics.drawable.IconCompat$Api28Impl: java.lang.String getResPackage(java.lang.Object)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getStatics()
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void insertVisualStateCallback(long,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.WebResourceRequestBoundaryInterface: boolean isRedirect()
+androidx.core.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
+androidx.core.view.ViewCompat$Api19Impl: boolean isAttachedToWindow(android.view.View)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setUserAgentMetadataFromMap(java.util.Map)
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: void onDragEnd(boolean)
+android.support.v4.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setEnterpriseAuthenticationAppLinkPolicyEnabled(boolean)
+org.chromium.support_lib_boundary.StaticsBoundaryInterface: void setSafeBrowsingAllowlist(java.util.Set,android.webkit.ValueCallback)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setAlgorithmicDarkeningAllowed(boolean)
+androidx.core.view.ViewCompat$Api28Impl: boolean isAccessibilityHeading(android.view.View)
+org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface: byte[] getAsArrayBuffer()
+org.chromium.support_lib_boundary.WebViewRendererClientBoundaryInterface: void onRendererResponsive(android.webkit.WebView,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.WebMessageBoundaryInterface: java.lang.String getData()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setRequestedWithHeaderOriginAllowList(java.util.Set)
+androidx.activity.Api34Impl: int swipeEdge(android.window.BackEvent)
+androidx.activity.OnBackPressedDispatcher$Api33Impl: void registerOnBackInvokedCallback(java.lang.Object,int,java.lang.Object)
+org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void setWebMessageCallback(java.lang.reflect.InvocationHandler)
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] values()
+androidx.core.view.ViewCompat$Api16Impl: void postInvalidateOnAnimation(android.view.View,int,int,int,int)
+org.chromium.support_lib_boundary.JsReplyProxyBoundaryInterface: void postMessageWithPayload(java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface: void clearProxyOverride(java.lang.Runnable,java.util.concurrent.Executor)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPrePaused(android.app.Activity)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getWebkitToCompatConverter()
+androidx.core.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: void setClearCachedDataIntervalMs(int)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler getProfile()
+org.chromium.support_lib_boundary.WebMessageBoundaryInterface: java.lang.reflect.InvocationHandler getMessagePayload()
+kotlinx.coroutines.CoroutineStart: kotlinx.coroutines.CoroutineStart[] values()
+org.chromium.support_lib_boundary.WebResourceErrorBoundaryInterface: int getErrorCode()
+androidx.core.view.ViewCompat$Api16Impl: boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler addDocumentStartJavaScript(java.lang.String,java.lang.String[])
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void setWebViewRendererClient(java.lang.reflect.InvocationHandler)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityDestroyed(android.app.Activity)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getAttributionBehavior()
+androidx.profileinstaller.ProfileInstallReceiver: ProfileInstallReceiver()
+org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void postMessage(java.lang.reflect.InvocationHandler)
+android.support.v4.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+org.chromium.support_lib_boundary.TracingControllerBoundaryInterface: boolean stop(java.io.OutputStream,java.util.concurrent.Executor)
+androidx.startup.InitializationProvider: InitializationProvider()
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.net.Uri cache(byte[],java.lang.String,java.lang.String)
+org.chromium.support_lib_boundary.WebViewRendererBoundaryInterface: boolean terminate()
+org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: boolean onWebAuthnIntent(android.webkit.WebView,android.app.PendingIntent,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setRequestedWithHeaderOriginAllowList(java.util.Set)
+org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface: void backToSafety(boolean)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPaused(android.app.Activity)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getForceDarkBehavior()
+androidx.activity.ComponentActivity: void setContentView(android.view.View)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertSafeBrowsingResponse(java.lang.reflect.InvocationHandler)
+androidx.core.graphics.drawable.IconCompat$Api26Impl: android.graphics.drawable.Icon createWithAdaptiveBitmap(android.graphics.Bitmap)
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: boolean getAllowContentAccess()
+org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: boolean deleteProfile(java.lang.String)
+kotlin.coroutines.intrinsics.CoroutineSingletons: kotlin.coroutines.intrinsics.CoroutineSingletons[] values()
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: java.lang.String getType(android.net.Uri)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertSafeBrowsingResponse(java.lang.Object)
+org.chromium.support_lib_boundary.WebAuthnCallbackBoundaryInterface: void onResult(int,android.content.Intent)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getDropDataProvider()
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler createWebView(android.webkit.WebView)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setWebAuthnSupport(int)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getTracingController()
+androidx.core.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+org.chromium.support_lib_boundary.ScriptHandlerBoundaryInterface: void remove()
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler getWebViewRendererClient()
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertWebMessagePort(java.lang.Object)
+androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event valueOf(java.lang.String)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPreDestroyed(android.app.Activity)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void postMessageToMainFrame(java.lang.reflect.InvocationHandler,android.net.Uri)
+androidx.core.graphics.drawable.IconCompat$Api30Impl: android.graphics.drawable.Icon createWithAdaptiveBitmapContentUri(android.net.Uri)
+org.chromium.support_lib_boundary.WebResourceErrorBoundaryInterface: java.lang.CharSequence getDescription()
+org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: java.lang.reflect.InvocationHandler getProfile(java.lang.String)
+org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface: void setProxyOverride(java.lang.String[][],java.lang.String[],java.lang.Runnable,java.util.concurrent.Executor,boolean)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void removeWebMessageListener(java.lang.String)
+androidx.core.view.ViewCompat$Api16Impl: android.view.ViewParent getParentForAccessibility(android.view.View)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getProxyController()
+androidx.core.view.ViewCompat$Api16Impl: void setBackground(android.view.View,android.graphics.drawable.Drawable)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostStarted(android.app.Activity)
+androidx.activity.Api34Impl: android.window.BackEvent createOnBackEvent(float,float,float,int)
+org.chromium.support_lib_boundary.VisualStateCallbackBoundaryInterface: void onComplete(long)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setAttributionBehavior(int)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.String[] getSupportedFeatures()
+org.chromium.support_lib_boundary.StaticsBoundaryInterface: java.lang.String getVariationsHeader()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityResumed(android.app.Activity)
+androidx.core.view.ViewCompat$Api16Impl: boolean getFitsSystemWindows(android.view.View)
+androidx.core.view.ViewCompat$Api16Impl: boolean hasOverlappingRendering(android.view.View)
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: java.util.Set getRequestedWithHeaderOriginAllowList()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: java.util.Map getUserAgentMetadataMap()
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: int getCacheMode()
+androidx.core.view.ViewCompat$Api16Impl: void requestFitSystemWindows(android.view.View)
+androidx.activity.Api34Impl: float touchX(android.window.BackEvent)
+androidx.core.view.ViewCompat$Api19Impl: void setAccessibilityLiveRegion(android.view.View,int)
+org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void close()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void registerIn(android.app.Activity)
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setBlockNetworkLoads(boolean)
+org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface: void showInterstitial(boolean)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void addWebMessageListener(java.lang.String,java.lang.String[],java.lang.reflect.InvocationHandler)
+android.support.v4.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
+androidx.core.graphics.drawable.IconCompat$Api23Impl: android.net.Uri getUri(java.lang.Object)
+androidx.core.graphics.drawable.IconCompat$Api28Impl: android.net.Uri getUri(java.lang.Object)
+androidx.core.view.ViewCompat$Api19Impl: void setContentChangeTypes(android.view.accessibility.AccessibilityEvent,int)
+org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.WebStorage getWebStorage()
+androidx.core.app.CoreComponentFactory: CoreComponentFactory()
+androidx.core.view.ViewCompat$Api28Impl: void removeOnUnhandledKeyEventListener(android.view.View,androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertServiceWorkerSettings(java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface: void proceed(boolean)
+org.chromium.support_lib_boundary.JsReplyProxyBoundaryInterface: void postMessage(java.lang.String)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertWebResourceError(java.lang.Object)
+androidx.core.graphics.drawable.IconCompat$Api28Impl: int getResId(java.lang.Object)
+androidx.lifecycle.LegacySavedStateHandleController$OnRecreation: LegacySavedStateHandleController$OnRecreation()
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler getWebViewRenderer()
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: android.os.Bundle call(java.lang.String,java.lang.String,android.os.Bundle)
+org.chromium.support_lib_boundary.WebMessageBoundaryInterface: java.lang.reflect.InvocationHandler[] getPorts()
+org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void setWebMessageCallback(java.lang.reflect.InvocationHandler,android.os.Handler)
+androidx.core.view.ViewCompat$Api16Impl: boolean hasTransientState(android.view.View)
+androidx.core.graphics.drawable.IconCompat$Api23Impl: android.graphics.drawable.Drawable loadDrawable(android.graphics.drawable.Icon,android.content.Context)
+androidx.core.view.ViewCompat$Api28Impl: boolean isScreenReaderFocusable(android.view.View)
+org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: java.lang.reflect.InvocationHandler getOrCreateProfile(java.lang.String)
+org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.ServiceWorkerController getServiceWorkerController()
+kotlinx.coroutines.android.AndroidDispatcherFactory: AndroidDispatcherFactory()
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: java.lang.reflect.InvocationHandler[] createWebMessageChannel()
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: android.webkit.WebViewClient getWebViewClient()
+org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: boolean shouldOverrideUrlLoading(android.webkit.WebView,android.webkit.WebResourceRequest)
+org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: java.lang.String[] getStreamTypes(android.net.Uri,java.lang.String)
+androidx.profileinstaller.ProfileInstallerInitializer: ProfileInstallerInitializer()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostCreated(android.app.Activity,android.os.Bundle)
+org.chromium.support_lib_boundary.ServiceWorkerClientBoundaryInterface: android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebResourceRequest)
+org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void setProfile(java.lang.String)
+androidx.activity.OnBackPressedDispatcher$Api33Impl: void unregisterOnBackInvokedCallback(java.lang.Object,java.lang.Object)
+org.chromium.support_lib_boundary.FeatureFlagHolderBoundaryInterface: java.lang.String[] getSupportedFeatures()
+androidx.lifecycle.ReportFragment: ReportFragment()
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityStopped(android.app.Activity)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: ReportFragment$LifecycleCallbacks()
+android.support.v4.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState: kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState valueOf(java.lang.String)
+com.dannywilsoncodeshop.bh365study.MainActivity: MainActivity()
+androidx.core.graphics.drawable.IconCompat$Api23Impl: android.graphics.drawable.Icon toIcon(androidx.core.graphics.drawable.IconCompat,android.content.Context)
+androidx.core.view.ViewCompat$Api16Impl: android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider(android.view.View)
+org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: java.util.List getAllProfileNames()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setForceDark(int)
+androidx.core.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
+android.support.v4.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
+org.chromium.support_lib_boundary.WebMessageCallbackBoundaryInterface: void onMessage(java.lang.reflect.InvocationHandler,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setCacheMode(int)
+org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertSettings(android.webkit.WebSettings)
+androidx.core.view.ViewCompat$Api28Impl: void setAccessibilityPaneTitle(android.view.View,java.lang.CharSequence)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPostResumed(android.app.Activity)
+androidx.core.graphics.drawable.IconCompat: IconCompat()
+androidx.core.view.ViewCompat$Api16Impl: int getMinimumWidth(android.view.View)
+org.chromium.support_lib_boundary.ServiceWorkerControllerBoundaryInterface: void setServiceWorkerClient(java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onPageCommitVisible(android.webkit.WebView,java.lang.String)
+androidx.versionedparcelable.CustomVersionedParcelable: CustomVersionedParcelable()
+androidx.core.view.WindowCompat$Api30Impl: void setDecorFitsSystemWindows(android.view.Window,boolean)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setSafeBrowsingEnabled(boolean)
+androidx.core.view.ViewCompat$Api16Impl: void postInvalidateOnAnimation(android.view.View)
 org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getSafeBrowsingEnabled()
 org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: boolean onCreate()
-androidx.core.view.ViewCompat$Api28Impl: void addOnUnhandledKeyEventListener(android.view.View,androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat)
-androidx.core.view.ViewCompat$Api28Impl: java.lang.Object requireViewById(android.view.View,int)
-androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State[] values()
-org.chromium.support_lib_boundary.TracingControllerBoundaryInterface: void start(int,java.util.Collection,int)
-org.chromium.support_lib_boundary.JsReplyProxyBoundaryInterface: void postMessageWithPayload(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebViewRendererClientBoundaryInterface: void onRendererUnresponsive(android.webkit.WebView,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void setProfile(java.lang.String)
-androidx.core.view.ViewCompat$Api16Impl: void postInvalidateOnAnimation(android.view.View,int,int,int,int)
-org.chromium.support_lib_boundary.StaticsBoundaryInterface: android.net.Uri getSafeBrowsingPrivacyPolicyUrl()
-org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface: void backToSafety(boolean)
-org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface: byte[] getAsArrayBuffer()
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setForceDarkBehavior(int)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getForceDarkBehavior()
-org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onPageCommitVisible(android.webkit.WebView,java.lang.String)
-kotlinx.coroutines.CoroutineStart: kotlinx.coroutines.CoroutineStart valueOf(java.lang.String)
-androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State valueOf(java.lang.String)
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertSafeBrowsingResponse(java.lang.Object)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setWillSuppressErrorPage(boolean)
-org.chromium.support_lib_boundary.StaticsBoundaryInterface: java.lang.String getVariationsHeader()
-org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: boolean onWebAuthnIntent(android.webkit.WebView,android.app.PendingIntent,java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.SafeBrowsingResponseBoundaryInterface: void proceed(boolean)
-androidx.profileinstaller.ProfileInstallReceiver: ProfileInstallReceiver()
-androidx.startup.InitializationProvider: InitializationProvider()
-androidx.activity.Api34Impl: int swipeEdge(android.window.BackEvent)
-androidx.core.graphics.drawable.IconCompat$Api23Impl: android.graphics.drawable.Drawable loadDrawable(android.graphics.drawable.Icon,android.content.Context)
-kotlinx.coroutines.CoroutineStart: kotlinx.coroutines.CoroutineStart[] values()
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: java.lang.String getType(android.net.Uri)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityPrePaused(android.app.Activity)
-kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState: kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState valueOf(java.lang.String)
-org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface: void removeWebMessageListener(java.lang.String)
-androidx.core.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
 org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface: int getType()
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.Object convertWebResourceError(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.WebMessagePortBoundaryInterface: void postMessage(java.lang.reflect.InvocationHandler)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: java.lang.String[] getStreamTypes(android.net.Uri,java.lang.String)
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityResumed(android.app.Activity)
-androidx.profileinstaller.FileSectionType: androidx.profileinstaller.FileSectionType[] values()
-androidx.lifecycle.Lifecycle$Event: androidx.lifecycle.Lifecycle$Event[] values()
-org.chromium.support_lib_boundary.TracingControllerBoundaryInterface: boolean stop(java.io.OutputStream,java.util.concurrent.Executor)
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: java.util.Set getRequestedWithHeaderOriginAllowList()
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: boolean getBlockNetworkLoads()
 org.chromium.support_lib_boundary.WebMessagePayloadBoundaryInterface: java.lang.String getAsString()
-androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivityStarted(android.app.Activity)
-androidx.core.view.ViewCompat$Api28Impl: void setScreenReaderFocusable(android.view.View,boolean)
-org.chromium.support_lib_boundary.DropDataContentProviderBoundaryInterface: void onDragEnd(boolean)
-androidx.core.view.ViewCompat$Api16Impl: boolean hasTransientState(android.view.View)
-org.chromium.support_lib_boundary.WebViewRendererBoundaryInterface: boolean terminate()
-org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.ServiceWorkerController getServiceWorkerController()
-androidx.core.view.ViewCompat$Api16Impl: void setBackground(android.view.View,android.graphics.drawable.Drawable)
-androidx.core.view.ViewCompat$Api16Impl: int getMinimumWidth(android.view.View)
-org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getDropDataProvider()
-androidx.core.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
-org.chromium.support_lib_boundary.WebkitToCompatConverterBoundaryInterface: java.lang.reflect.InvocationHandler convertSettings(android.webkit.WebSettings)
-org.chromium.support_lib_boundary.ProfileStoreBoundaryInterface: java.lang.reflect.InvocationHandler getOrCreateProfile(java.lang.String)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setDisabledActionModeMenuItems(int)
-org.chromium.support_lib_boundary.ScriptHandlerBoundaryInterface: void remove()
-androidx.profileinstaller.ProfileInstallerInitializer: ProfileInstallerInitializer()
-androidx.core.graphics.drawable.IconCompat$Api28Impl: java.lang.String getResPackage(java.lang.Object)
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setAllowContentAccess(boolean)
-android.support.v4.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
-org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: void setSafeBrowsingEnabled(boolean)
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: void setRequestedWithHeaderOriginAllowList(java.util.Set)
-androidx.core.view.ViewCompat$Api16Impl: void postInvalidateOnAnimation(android.view.View)
-org.chromium.support_lib_boundary.ProxyControllerBoundaryInterface: void setProxyOverride(java.lang.String[][],java.lang.String[],java.lang.Runnable,java.util.concurrent.Executor,boolean)
-androidx.activity.OnBackPressedDispatcher$Api34Impl: android.window.OnBackInvokedCallback createOnBackAnimationCallback(kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function0,kotlin.jvm.functions.Function0)
+org.chromium.support_lib_boundary.ProfileBoundaryInterface: java.lang.String getName()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getForceDark()
+org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onReceivedHttpError(android.webkit.WebView,android.webkit.WebResourceRequest,android.webkit.WebResourceResponse)
+androidx.core.view.WindowCompat$Api16Impl: void setDecorFitsSystemWindows(android.view.Window,boolean)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: java.util.Set getRequestedWithHeaderOriginAllowList()
+org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: boolean getBlockNetworkLoads()
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: int getWebAuthnSupport()
+androidx.core.view.ViewCompat$Api16Impl: void setHasTransientState(android.view.View,boolean)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getEnterpriseAuthenticationAppLinkPolicyEnabled()
+org.chromium.support_lib_boundary.WebViewClientBoundaryInterface: void onReceivedError(android.webkit.WebView,android.webkit.WebResourceRequest,java.lang.reflect.InvocationHandler)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getOffscreenPreRaster()
+androidx.activity.OnBackPressedDispatcher$Api33Impl: android.window.OnBackInvokedCallback createOnBackInvokedCallback(kotlin.jvm.functions.Function0)
+kotlinx.coroutines.android.AndroidExceptionPreHandler: AndroidExceptionPreHandler()
 androidx.profileinstaller.ProfileInstallerInitializer$Handler28Impl: android.os.Handler createAsync(android.os.Looper)
-kotlin.coroutines.intrinsics.CoroutineSingletons: kotlin.coroutines.intrinsics.CoroutineSingletons[] values()
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getProfileStore()
+org.chromium.support_lib_boundary.TracingControllerBoundaryInterface: boolean isTracing()
+org.chromium.support_lib_boundary.WebViewCookieManagerBoundaryInterface: java.util.List getCookieInfo(java.lang.String)
+androidx.core.view.ViewCompat$Api19Impl: int getAccessibilityLiveRegion(android.view.View)
+androidx.core.app.RemoteActionCompat: RemoteActionCompat()
+androidx.activity.Api34Impl: float progress(android.window.BackEvent)
+org.chromium.support_lib_boundary.WebViewProviderFactoryBoundaryInterface: java.lang.reflect.InvocationHandler getServiceWorkerController()
+androidx.core.graphics.drawable.IconCompat$Api28Impl: int getType(java.lang.Object)
+androidx.lifecycle.ReportFragment$LifecycleCallbacks: void onActivitySaveInstanceState(android.app.Activity,android.os.Bundle)
+org.chromium.support_lib_boundary.WebSettingsBoundaryInterface: boolean getWillSuppressErrorPage()
+androidx.lifecycle.Lifecycle$State: androidx.lifecycle.Lifecycle$State[] values()
+androidx.core.view.ViewCompat$Api28Impl: void setScreenReaderFocusable(android.view.View,boolean)
+androidx.core.view.ViewCompat$Api19Impl: void notifySubtreeAccessibilityStateChanged(android.view.ViewParent,android.view.View,android.view.View,int)
+androidx.core.view.ViewCompat$Api28Impl: void setAutofillId(android.view.View,android.view.autofill.AutofillId)
+androidx.core.view.ViewCompat$Api16Impl: void setImportantForAccessibility(android.view.View,int)
 kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState: kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState[] values()
-androidx.core.view.ViewCompat$Api19Impl: void setContentChangeTypes(android.view.accessibility.AccessibilityEvent,int)
-org.chromium.support_lib_boundary.ProfileBoundaryInterface: android.webkit.GeolocationPermissions getGeoLocationPermissions()
-org.chromium.support_lib_boundary.ServiceWorkerWebSettingsBoundaryInterface: int getCacheMode()
-androidx.core.graphics.drawable.IconCompat$Api28Impl: int getResId(java.lang.Object)
