@@ -412,8 +412,14 @@ let qList=[],qIdx=0,qScore=0,qStreak=0,qBestStreak=0,qCorrect=0,qTotal=0,qTimer=
     setTimeout(()=>{
       splash.style.display='none';
       // Check if already logged in
-      const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u');
-      if(t&&u){token=t;user=u;showHome();}
+      const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u'),rt=localStorage.getItem('bh365r');
+      if(u&&rt){
+        // Try to refresh the token silently
+        const ref=await cognitoAuth('InitiateAuth',{AuthFlow:'REFRESH_TOKEN_AUTH',ClientId:CFG.clientId,AuthParameters:{REFRESH_TOKEN:rt}});
+        if(ref.AuthenticationResult){token=ref.AuthenticationResult.IdToken;localStorage.setItem('bh365t',token);user=u;showHome();}
+        else if(t&&u){token=t;user=u;showHome();} // fallback to stored token
+        else{document.getElementById('v-auth').classList.remove('hidden');}
+      } else if(t&&u){token=t;user=u;showHome();}
       else{document.getElementById('v-auth').classList.remove('hidden');}
     },800);
   },2200);
@@ -425,7 +431,7 @@ async function doLogin(){
   const u=document.getElementById('a-user').value.trim(),p=document.getElementById('a-pass').value;
   if(!u||!p){document.getElementById('auth-err').textContent='Enter username and password';return;}
   const r=await cognitoAuth('InitiateAuth',{AuthFlow:'USER_PASSWORD_AUTH',ClientId:CFG.clientId,AuthParameters:{USERNAME:u,PASSWORD:p}});
-  if(r.AuthenticationResult){token=r.AuthenticationResult.IdToken;user=u;localStorage.setItem('bh365t',token);localStorage.setItem('bh365u',u);showHome();}
+  if(r.AuthenticationResult){token=r.AuthenticationResult.IdToken;user=u;localStorage.setItem('bh365t',token);localStorage.setItem('bh365u',u);localStorage.setItem('bh365r',r.AuthenticationResult.RefreshToken||'');showHome();}
   else document.getElementById('auth-err').textContent='Wrong username or password';
 }
 async function doSignup(){
@@ -439,7 +445,7 @@ async function doSignup(){
 async function cognitoAuth(action,body){
   try{const r=await fetch(`https://cognito-idp.${CFG.region}.amazonaws.com/`,{method:'POST',headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':`AWSCognitoIdentityProviderService.${action}`},body:JSON.stringify(body)});return await r.json();}catch(e){return{};}
 }
-function doLogout(){syncTimeToServer();localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');user=null;token=null;navView('v-auth');}
+function doLogout(){syncTimeToServer();localStorage.removeItem('bh365t');localStorage.removeItem('bh365u');localStorage.removeItem('bh365r');user=null;token=null;navView('v-auth');}
 function showHome(){document.getElementById('greet-user').textContent=`Welcome back, ${user} ✊🏾`;navView('v-home');loadProgressFromServer();startTimeTracking();
   // Show admin button for Danny only
   const adminBtn=document.getElementById('admin-btn');if(adminBtn)adminBtn.classList.toggle('hidden',user.toLowerCase()!=='danny');

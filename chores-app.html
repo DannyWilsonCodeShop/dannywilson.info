@@ -332,12 +332,31 @@ function showApp(){
 }
 
 // Restore session on load
-(function(){
+(async function(){
   const token = localStorage.getItem('choreToken');
   const user = localStorage.getItem('choreUser');
+  const refresh = localStorage.getItem('choreRefresh');
+  if(user && refresh){
+    // Try to refresh token silently
+    try{
+      const res = await fetch(`https://cognito-idp.us-east-1.amazonaws.com/`,{
+        method:'POST',
+        headers:{'Content-Type':'application/x-amz-json-1.1','X-Amz-Target':'AWSCognitoIdentityProviderService.InitiateAuth'},
+        body:JSON.stringify({AuthFlow:'REFRESH_TOKEN_AUTH',ClientId:'31p3snnqs2l00ln5if1fu3e1b2',AuthParameters:{REFRESH_TOKEN:refresh}})
+      });
+      const data = await res.json();
+      if(data.AuthenticationResult){
+        idToken = data.AuthenticationResult.IdToken;
+        localStorage.setItem('choreToken', idToken);
+        currentUser = ALL5.find(n => n.toLowerCase() === user.toLowerCase()) || user;
+        showApp();
+        return;
+      }
+    }catch(e){}
+  }
+  // Fallback to stored token
   if(token && user){
     idToken = token;
-    // Normalize username to match ALL5 casing
     currentUser = ALL5.find(n => n.toLowerCase() === user.toLowerCase()) || user;
     localStorage.setItem('choreUser', currentUser);
     showApp();
