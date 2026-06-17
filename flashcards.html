@@ -409,7 +409,7 @@ let qList=[],qIdx=0,qScore=0,qStreak=0,qBestStreak=0,qCorrect=0,qTotal=0,qTimer=
   const splash = document.getElementById('v-splash');
   setTimeout(()=>{
     splash.classList.add('fade-out');
-    setTimeout(()=>{
+    setTimeout(async ()=>{
       splash.style.display='none';
       // Check if already logged in
       const t=localStorage.getItem('bh365t'),u=localStorage.getItem('bh365u'),rt=localStorage.getItem('bh365r');
@@ -417,7 +417,7 @@ let qList=[],qIdx=0,qScore=0,qStreak=0,qBestStreak=0,qCorrect=0,qTotal=0,qTimer=
         // Try to refresh the token silently
         const ref=await cognitoAuth('InitiateAuth',{AuthFlow:'REFRESH_TOKEN_AUTH',ClientId:CFG.clientId,AuthParameters:{REFRESH_TOKEN:rt}});
         if(ref.AuthenticationResult){token=ref.AuthenticationResult.IdToken;localStorage.setItem('bh365t',token);user=u;showHome();}
-        else if(t&&u){token=t;user=u;showHome();} // fallback to stored token
+        else if(t&&u){token=t;user=u;showHome();}
         else{document.getElementById('v-auth').classList.remove('hidden');}
       } else if(t&&u){token=t;user=u;showHome();}
       else{document.getElementById('v-auth').classList.remove('hidden');}
