@@ -690,6 +690,7 @@ function openSwapModal(){
   ALL5.forEach(p => {
     toSelect.innerHTML += `<option value="${p}">${p}</option>`;
   });
+  toSelect.innerHTML += `<option value="__REMOVE__">🗑️ Remove Chore</option>`;
   
   document.getElementById('swap-modal').classList.remove('hidden');
 }
@@ -701,10 +702,9 @@ async function doMove(){
   if(!choreVal || !moveTo){ closeSwapModal(); return; }
   
   const [fromPerson, choreName] = choreVal.split('|||');
-  if(fromPerson === moveTo){ closeSwapModal(); return; } // same person, nothing to do
+  if(fromPerson === moveTo){ closeSwapModal(); return; }
   
   const ch = getDailyChores(cur);
-  // Get current assignments
   let current = {};
   ALL5.forEach(p => {
     current[p] = (dailySwaps && dailySwaps[p]) ? [...dailySwaps[p]] : ch[p].map(c => c.nm);
@@ -714,10 +714,11 @@ async function doMove(){
   const idx = current[fromPerson].indexOf(choreName);
   if(idx > -1) current[fromPerson].splice(idx, 1);
   
-  // Add chore to destination person
-  current[moveTo].push(choreName);
+  // Add to destination (unless removing)
+  if(moveTo !== '__REMOVE__'){
+    current[moveTo].push(choreName);
+  }
   
-  // Save
   dailySwaps = current;
   closeSwapModal();
   renderToday();
