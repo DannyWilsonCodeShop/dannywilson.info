@@ -76,9 +76,9 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 .done-btn{width:26px;height:26px;border-radius:50%;border:2px solid #ccc;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s;flex-shrink:0;}
 .done-btn:hover{border-color:#27ae60;background:#d4edda;}
 .done-btn.checked{background:#27ae60;border-color:#27ae60;color:#fff;}
-.cs{background:linear-gradient(135deg,#ff6b6b,#ee5a24)}.ca{background:linear-gradient(135deg,#ffd93d,#f0932b)}
+.cs{background:linear-gradient(135deg,#c77dff,#9b59b6)}.ca{background:linear-gradient(135deg,#ffd93d,#f0932b)}
 .co{background:linear-gradient(135deg,#6bcb77,#20bf6b)}.cd{background:linear-gradient(135deg,#4d96ff,#0652DD)}
-.cc{background:linear-gradient(135deg,#c77dff,#9b59b6)}
+.cc{background:linear-gradient(135deg,#ff6b6b,#ee5a24)}
 
 /* CALENDAR */
 .cal-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 10px;}
@@ -497,13 +497,11 @@ async function loadPoints(){
 function getPointDots(person){
   const pts = pointsData[person]?.points || 0;
   let html = '';
-  if(pts <= 3){
-    for(let i=0;i<3;i++){
-      html += `<div class="point-dot ${i<pts?'filled':''}"></div>`;
-    }
-  } else {
-    html += `<div class="point-dot filled"></div><div class="point-dot filled"></div><div class="point-dot overflow">${pts}</div>`;
+  for(let i=0;i<3;i++){
+    if(i < pts) html += '<span style="font-size:1.1rem;">🚩</span>';
+    else html += '<span style="font-size:1.1rem;opacity:.25;">🏳️</span>';
   }
+  if(pts > 3) html = '<span style="font-size:1.1rem;">🚩🚩🚩</span><span style="font-size:.7rem;color:#fff;font-weight:800;margin-left:2px;">+'+( pts-3)+'</span>';
   return html;
 }
 
@@ -653,10 +651,19 @@ async function confirmPoint(){
   const person = document.getElementById('pm-person').value;
   const day = pendingAction === 'add' ? (document.getElementById('pm-day').value.trim() || 'today') : '';
   if(!pendingAction) return;
+  const action = pendingAction;
   closePointModal();
-  await apiPost('/points', { person, action: pendingAction, day, requestedBy: currentUser });
-  await loadPoints();
-  renderToday();
+  const result = await apiPost('/points', { person, action, day, requestedBy: currentUser });
+  if(result && result.success){
+    // Update local data immediately
+    if(!pointsData[person]) pointsData[person] = {points:0};
+    pointsData[person].points = result.points;
+    renderToday();
+  } else {
+    // Fallback: reload from server
+    await loadPoints();
+    renderToday();
+  }
 }
 
 // ============ RULES MODAL ============
