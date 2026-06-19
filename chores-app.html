@@ -184,7 +184,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <div id="parent-bar" class="parent-bar hidden">
 <button class="add-pt-btn" onclick="openPointModal('add')">+ Flag</button>
 <button class="remove-pt-btn" onclick="openPointModal('remove')">− Flag</button>
-<button style="background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;padding:10px 20px;border:none;border-radius:24px;font-family:Nunito,sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;" onclick="openSwapModal()">🔄 Swap</button>
+<button style="background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;padding:10px 20px;border:none;border-radius:24px;font-family:Nunito,sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;" onclick="openSwapModal()">↗️ Move</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
 </div>
@@ -211,18 +211,18 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 </div>
 </div>
 
-<!-- SWAP MODAL -->
+<!-- MOVE CHORE MODAL -->
 <div id="swap-modal" class="modal-overlay hidden">
 <div class="modal" style="max-width:380px;">
-<h3>🔄 Swap Chores</h3>
-<p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">Reassign chores for today only. Pick two people to swap.</p>
-<label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Person 1</label>
-<select id="swap-p1" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;"></select>
-<label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Person 2</label>
-<select id="swap-p2" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;"></select>
+<h3>↗️ Move a Chore</h3>
+<p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">Move one chore from one person to another for today only.</p>
+<label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Which chore?</label>
+<select id="move-chore" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;"></select>
+<label style="font-weight:700;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Move to who?</label>
+<select id="move-to" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;"></select>
 <div class="modal-btns">
 <button class="cancel" onclick="closeSwapModal()">Cancel</button>
-<button class="confirm" style="background:#4d96ff;" onclick="doSwap()">Swap Their Chores</button>
+<button class="confirm" style="background:#4d96ff;" onclick="doMove()">Move Chore</button>
 </div>
 </div>
 </div>
@@ -670,42 +670,60 @@ async function confirmPoint(){
 function openRulesModal(){ document.getElementById('rules-modal').classList.remove('hidden'); }
 function closeRulesModal(){ document.getElementById('rules-modal').classList.add('hidden'); }
 
-// ============ SWAP MODAL ============
+// ============ MOVE CHORE MODAL ============
 function openSwapModal(){
   const ch = getDailyChores(cur);
-  const sel1 = document.getElementById('swap-p1');
-  const sel2 = document.getElementById('swap-p2');
-  sel1.innerHTML = '';
-  sel2.innerHTML = '';
-  ALL5.forEach(p => {
-    const chores = (dailySwaps && dailySwaps[p]) ? dailySwaps[p] : ch[p].map(c=>c.nm);
-    const label = p + ' (' + chores.join(', ') + ')';
-    sel1.innerHTML += `<option value="${p}">${label}</option>`;
-    sel2.innerHTML += `<option value="${p}">${label}</option>`;
-  });
-  sel2.selectedIndex = 1;
-  document.getElementById('swap-modal').classList.remove('hidden');
-}
-function closeSwapModal(){ document.getElementById('swap-modal').classList.add('hidden'); }
-
-async function doSwap(){
-  const p1 = document.getElementById('swap-p1').value;
-  const p2 = document.getElementById('swap-p2').value;
-  if(p1 === p2){ closeSwapModal(); return; }
+  // Build list of all chores across all people
+  const choreSelect = document.getElementById('move-chore');
+  const toSelect = document.getElementById('move-to');
+  choreSelect.innerHTML = '';
+  toSelect.innerHTML = '';
   
-  const ch = getDailyChores(cur);
   // Get current assignments (respect existing swaps)
   let current = {};
   ALL5.forEach(p => {
     current[p] = (dailySwaps && dailySwaps[p]) ? dailySwaps[p] : ch[p].map(c => c.nm);
   });
   
-  // Swap the two people's chores
-  const temp = current[p1];
-  current[p1] = current[p2];
-  current[p2] = temp;
+  // Populate chore dropdown: show "Person — Chore"
+  ALL5.forEach(p => {
+    current[p].forEach(chore => {
+      choreSelect.innerHTML += `<option value="${p}|||${chore}">${p} — ${chore}</option>`;
+    });
+  });
   
-  // Save to server
+  // Populate "move to" dropdown
+  ALL5.forEach(p => {
+    toSelect.innerHTML += `<option value="${p}">${p}</option>`;
+  });
+  
+  document.getElementById('swap-modal').classList.remove('hidden');
+}
+function closeSwapModal(){ document.getElementById('swap-modal').classList.add('hidden'); }
+
+async function doMove(){
+  const choreVal = document.getElementById('move-chore').value;
+  const moveTo = document.getElementById('move-to').value;
+  if(!choreVal || !moveTo){ closeSwapModal(); return; }
+  
+  const [fromPerson, choreName] = choreVal.split('|||');
+  if(fromPerson === moveTo){ closeSwapModal(); return; } // same person, nothing to do
+  
+  const ch = getDailyChores(cur);
+  // Get current assignments
+  let current = {};
+  ALL5.forEach(p => {
+    current[p] = (dailySwaps && dailySwaps[p]) ? [...dailySwaps[p]] : ch[p].map(c => c.nm);
+  });
+  
+  // Remove chore from source person
+  const idx = current[fromPerson].indexOf(choreName);
+  if(idx > -1) current[fromPerson].splice(idx, 1);
+  
+  // Add chore to destination person
+  current[moveTo].push(choreName);
+  
+  // Save
   dailySwaps = current;
   closeSwapModal();
   renderToday();
