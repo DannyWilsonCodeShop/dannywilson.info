@@ -186,6 +186,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <button class="remove-pt-btn" onclick="openPointModal('remove')">− Flag</button>
 <button style="background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;padding:10px 20px;border:none;border-radius:24px;font-family:Nunito,sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;" onclick="openSwapModal()">↗️ Move</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
+<button class="info-btn" onclick="openChoreWizard()">+</button>
 </div>
 </div>
 
@@ -223,6 +224,15 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <button class="cancel" onclick="closeSwapModal()">Cancel</button>
 <button class="confirm" style="background:#4d96ff;" onclick="doMove()">Move Chore</button>
 </div>
+</div>
+</div>
+
+<!-- CHORE WIZARD MODAL -->
+<div id="chore-wizard" class="modal-overlay hidden">
+<div class="modal" style="max-width:380px;max-height:85vh;overflow-y:auto;">
+<h3 id="wiz-title">+ Add a Chore</h3>
+<div id="wiz-step"></div>
+<div class="modal-btns" id="wiz-btns"></div>
 </div>
 </div>
 
@@ -327,6 +337,7 @@ function showApp(){
   renderToday();
   loadPoints();
   loadCompletions();
+  loadCustomChores();
 }
 
 // Restore session on load
@@ -427,6 +438,31 @@ function getDailyChores(date){
   // Deep cleans: Danny and Courtnee get DIFFERENT tasks (offset by 3)
   if(ch['Danny'].length<MAX_CHORES) ch['Danny'].push({ico:'🧽',nm:DEEP_CLEANS[((dw)%7)],badge:'deep',bl:'Deep Clean'});
   if(ch['Courtnee'].length<MAX_CHORES) ch['Courtnee'].push({ico:'🧽',nm:DEEP_CLEANS[((dw+3)%7)],badge:'deep',bl:'Deep Clean'});
+  // Custom chores (loaded from server)
+  const todayCustom = getCustomChoresForToday(date);
+  const di2 = getDayIndex(date);
+  todayCustom.forEach(cc => {
+    let assignees = [];
+    if(cc.assignTo === 'kids') assignees = [...KIDS];
+    else if(cc.assignTo === 'parents') assignees = [...PARENTS];
+    else if(cc.assignTo === 'all') assignees = [...ALL5];
+    else assignees = [cc.assignTo]; // specific person
+    
+    if(cc.rotation === 'rotate' && assignees.length > 1){
+      // Rotate among the group based on day index
+      const person = assignees[di2 % assignees.length];
+      if(ch[person].length < (cc.maxPerDay || 3)){
+        ch[person].push({ico:cc.icon,nm:cc.name,badge:cc.difficulty,bl:cc.difficulty.charAt(0).toUpperCase()+cc.difficulty.slice(1)});
+      }
+    } else {
+      // Fixed: assign to all in the group (or the one person)
+      assignees.forEach(person => {
+        if(ch[person] && ch[person].length < (cc.maxPerDay || 3)){
+          ch[person].push({ico:cc.icon,nm:cc.name,badge:cc.difficulty,bl:cc.difficulty.charAt(0).toUpperCase()+cc.difficulty.slice(1)});
+        }
+      });
+    }
+  });
   // If anyone still has only 1 chore, add Physical Training
   ALL5.forEach(p=>{if(ch[p].length<MAX_CHORES) ch[p].push({ico:'🏋🏾',nm:'Physical Training',badge:'daily',bl:'Daily'});});
   return ch;
@@ -658,6 +694,136 @@ async function confirmPoint(){
     await loadPoints();
     renderToday();
   }
+}
+
+// ============ CUSTOM CHORES ============
+let customChores = [];
+
+async function loadCustomChores(){
+  const data = await apiGet('/custom-chores');
+  if(data && Array.isArray(data)) customChores = data;
+}
+
+function getCustomChoresForToday(date){
+  const dow = date.getDay(); // 0=Sun
+  return customChores.filter(c => c.days.includes(dow));
+}
+
+// ============ CHORE WIZARD ============
+let wizData = {};
+let wizStep = 0;
+
+function openChoreWizard(){
+  wizData = {name:'',icon:'📋',assignTo:'kids',rotation:'rotate',days:[1,2,3,4,5],difficulty:'medium',maxPerDay:3};
+  wizStep = 0;
+  renderWizStep();
+  document.getElementById('chore-wizard').classList.remove('hidden');
+}
+
+function closeChoreWizard(){ document.getElementById('chore-wizard').classList.add('hidden'); }
+
+function renderWizStep(){
+  const step = document.getElementById('wiz-step');
+  const btns = document.getElementById('wiz-btns');
+  const title = document.getElementById('wiz-title');
+  
+  if(wizStep === 0){
+    title.textContent = '+ New Chore (1/5)';
+    step.innerHTML = `<label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:4px;">Chore Name</label>
+      <input type="text" id="wiz-name" value="${wizData.name}" placeholder="e.g. Take out trash" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;">
+      <label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:4px;">Icon (emoji)</label>
+      <input type="text" id="wiz-icon" value="${wizData.icon}" placeholder="📋" style="width:60px;padding:10px;border:2px solid #eee;border-radius:10px;font-size:1.2rem;text-align:center;">`;
+    btns.innerHTML = `<button class="cancel" onclick="closeChoreWizard()">Cancel</button><button class="confirm" onclick="wizNext()">Next →</button>`;
+  }
+  else if(wizStep === 1){
+    title.textContent = 'Who does it? (2/5)';
+    step.innerHTML = `<label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:8px;">Assign to:</label>
+      <select id="wiz-assign" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:10px;">
+        <option value="kids" ${wizData.assignTo==='kids'?'selected':''}>Kids only (Shane, Austin, Olivia)</option>
+        <option value="parents" ${wizData.assignTo==='parents'?'selected':''}>Parents only (Danny, Courtnee)</option>
+        <option value="all" ${wizData.assignTo==='all'?'selected':''}>Everyone</option>
+        <option value="Shane" ${wizData.assignTo==='Shane'?'selected':''}>Shane only</option>
+        <option value="Austin" ${wizData.assignTo==='Austin'?'selected':''}>Austin only</option>
+        <option value="Olivia" ${wizData.assignTo==='Olivia'?'selected':''}>Olivia only</option>
+        <option value="Danny" ${wizData.assignTo==='Danny'?'selected':''}>Danny only</option>
+        <option value="Courtnee" ${wizData.assignTo==='Courtnee'?'selected':''}>Courtnee only</option>
+      </select>
+      <label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:8px;">Rotation:</label>
+      <select id="wiz-rotation" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;">
+        <option value="rotate" ${wizData.rotation==='rotate'?'selected':''}>Rotate among group</option>
+        <option value="fixed" ${wizData.rotation==='fixed'?'selected':''}>Fixed (same person every time)</option>
+      </select>`;
+    btns.innerHTML = `<button class="cancel" onclick="wizStep=0;renderWizStep()">← Back</button><button class="confirm" onclick="wizNext()">Next →</button>`;
+  }
+  else if(wizStep === 2){
+    title.textContent = 'Which days? (3/5)';
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    let daysHtml = '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">';
+    dayNames.forEach((d,i) => {
+      const checked = wizData.days.includes(i);
+      daysHtml += `<label style="display:flex;align-items:center;gap:4px;font-weight:700;font-size:.85rem;padding:6px 10px;border:2px solid ${checked?'#4d96ff':'#eee'};border-radius:8px;cursor:pointer;">
+        <input type="checkbox" value="${i}" ${checked?'checked':''} onchange="toggleWizDay(${i})" style="width:16px;height:16px;"> ${d}</label>`;
+    });
+    daysHtml += '</div>';
+    step.innerHTML = `<label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:8px;">Select days this chore happens:</label>${daysHtml}`;
+    btns.innerHTML = `<button class="cancel" onclick="wizStep=1;renderWizStep()">← Back</button><button class="confirm" onclick="wizNext()">Next →</button>`;
+  }
+  else if(wizStep === 3){
+    title.textContent = 'Difficulty & Limits (4/5)';
+    step.innerHTML = `<label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:8px;">Difficulty level:</label>
+      <select id="wiz-diff" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;margin-bottom:12px;">
+        <option value="easy" ${wizData.difficulty==='easy'?'selected':''}>Easy</option>
+        <option value="medium" ${wizData.difficulty==='medium'?'selected':''}>Medium</option>
+        <option value="hard" ${wizData.difficulty==='hard'?'selected':''}>Hard</option>
+      </select>
+      <label style="font-weight:700;font-size:.85rem;color:var(--muted);display:block;margin-bottom:8px;">Max chores per person per day:</label>
+      <input type="number" id="wiz-max" value="${wizData.maxPerDay}" min="1" max="5" style="width:80px;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:700;text-align:center;">`;
+    btns.innerHTML = `<button class="cancel" onclick="wizStep=2;renderWizStep()">← Back</button><button class="confirm" onclick="wizNext()">Next →</button>`;
+  }
+  else if(wizStep === 4){
+    title.textContent = 'Confirm (5/5)';
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const daysStr = wizData.days.map(d => dayNames[d]).join(', ');
+    step.innerHTML = `<div style="background:#f8f8f8;border-radius:10px;padding:14px;font-size:.9rem;">
+      <p><strong>${wizData.icon} ${wizData.name}</strong></p>
+      <p style="margin-top:6px;">Assigned to: <strong>${wizData.assignTo}</strong></p>
+      <p>Rotation: <strong>${wizData.rotation}</strong></p>
+      <p>Days: <strong>${daysStr}</strong></p>
+      <p>Difficulty: <strong>${wizData.difficulty}</strong></p>
+      <p>Max chores/day: <strong>${wizData.maxPerDay}</strong></p>
+    </div>`;
+    btns.innerHTML = `<button class="cancel" onclick="wizStep=3;renderWizStep()">← Back</button><button class="confirm" onclick="saveCustomChore()">Save Chore ✓</button>`;
+  }
+}
+
+function wizNext(){
+  if(wizStep === 0){
+    wizData.name = document.getElementById('wiz-name').value.trim();
+    wizData.icon = document.getElementById('wiz-icon').value.trim() || '📋';
+    if(!wizData.name){ alert('Enter a chore name'); return; }
+  } else if(wizStep === 1){
+    wizData.assignTo = document.getElementById('wiz-assign').value;
+    wizData.rotation = document.getElementById('wiz-rotation').value;
+  } else if(wizStep === 3){
+    wizData.difficulty = document.getElementById('wiz-diff').value;
+    wizData.maxPerDay = parseInt(document.getElementById('wiz-max').value) || 3;
+  }
+  wizStep++;
+  renderWizStep();
+}
+
+function toggleWizDay(d){
+  const idx = wizData.days.indexOf(d);
+  if(idx > -1) wizData.days.splice(idx, 1);
+  else wizData.days.push(d);
+  wizData.days.sort();
+}
+
+async function saveCustomChore(){
+  closeChoreWizard();
+  await apiPost('/custom-chores', wizData);
+  await loadCustomChores();
+  renderToday();
 }
 
 // ============ RULES MODAL ============
