@@ -12,11 +12,11 @@
 <link rel="apple-touch-icon" href="/bh365-icon.png">
 <link rel="icon" type="image/png" href="/bh365-icon.png">
 <title>BH365 Study</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d0d0d;--card:#1a1a1a;--card2:#222;--text:#f5f5f5;--muted:#777;--red:#d4213d;--green:#2d8b4e;--gold:#f2c94c;--black:#0d0d0d;--radius:14px;--shadow:0 4px 20px rgba(0,0,0,.5);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('/app-bg.png');background-size:cover;background-position:center;background-attachment:fixed;color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;font-size:16px;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('/app-bg.png');background-size:cover;background-position:center;background-attachment:fixed;color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;font-size:16px;overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;}
 .gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
 /* SPLASH */
@@ -43,7 +43,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .auth-error{color:var(--red);font-size:.8rem;font-weight:700;margin-top:8px;min-height:18px;}
 
 /* HOME */
-.home{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 20px;}
+.home{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 20px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .greeting{text-align:center;margin-bottom:24px;}
 .greeting h1{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .greeting p{color:var(--muted);font-weight:700;font-size:.9rem;margin-top:4px;}
@@ -62,7 +62,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .logout-btn{position:absolute;top:calc(env(safe-area-inset-top,16px) + 10px);right:14px;background:none;border:none;color:var(--muted);font-size:.75rem;font-weight:700;cursor:pointer;}
 
 /* SCOPE SELECT */
-.scope-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
+.scope-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .scope-page h2{font-family:'Fredoka One',cursive;font-size:1.2rem;text-align:center;margin-bottom:14px;color:var(--gold);}
 .scope-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
 .scope-btn:hover{border-color:var(--red);}
@@ -71,7 +71,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .back-link{display:block;text-align:left;color:var(--gold);font-weight:800;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
 
 /* PRACTICE CARD */
-.practice-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
+.practice-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .pcard{background:var(--card);border:2px solid #333;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:border-color .2s;}
 .pcard:hover{border-color:var(--gold);}
 .pcard-front{padding:28px 20px;text-align:center;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
@@ -85,7 +85,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .card-nav .counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.82rem;min-width:60px;text-align:center;}
 
 /* QUIZ */
-.quiz-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;}
+.quiz-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .quiz-hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding:10px 14px;background:var(--card);border-radius:10px;border:2px solid #333;}
 .hud-score{font-family:'Fredoka One',cursive;color:var(--gold);font-size:1rem;}
 .hud-streak{font-size:.8rem;font-weight:800;color:var(--red);}
@@ -118,7 +118,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);background-image:url('
 .results-actions .home-btn{background:#333;color:#fff;}
 
 /* LEADERBOARD */
-.lb-page{max-width:480px;margin:0 auto;padding:16px;}
+.lb-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 40px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .lb-page h2{font-family:'Fredoka One',cursive;color:var(--gold);text-align:center;margin-bottom:14px;}
 .lb-row{display:flex;align-items:center;padding:10px 14px;background:var(--card);border-radius:10px;margin-bottom:6px;border:2px solid #333;}
 .lb-rank{font-family:'Fredoka One',cursive;width:30px;color:var(--muted);font-size:.9rem;}
