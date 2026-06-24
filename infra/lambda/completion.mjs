@@ -1,14 +1,15 @@
 import { DynamoDBClient, PutItemCommand, DeleteItemCommand, ScanCommand } from '@aws-sdk/client-dynamodb';
-import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
+import { PinpointSMSVoiceV2Client, SendTextMessageCommand } from '@aws-sdk/client-pinpoint-sms-voice-v2';
 
 const ddb = new DynamoDBClient({ region: 'us-east-1' });
-const sns = new SNSClient({ region: 'us-east-1' });
+const sms = new PinpointSMSVoiceV2Client({ region: 'us-east-1' });
+const ORIGINATION_NUMBER = '+18552432682';
 
 const TABLE = process.env.COMPLETION_TABLE || 'FamilyChoresCompletion';
 
 const PHONES = {
-  Shane: process.env.SHANE_PHONE || '+16789842089',
-  Austin: process.env.AUSTIN_PHONE || '+14044932795',
+  Shane: process.env.SHANE_PHONE || '+14044932795',
+  Austin: process.env.AUSTIN_PHONE || '+16789842089',
   Olivia: process.env.OLIVIA_PHONE || '+14708333224',
   Danny: process.env.DANNY_PHONE || '+14048037330',
   Courtnee: process.env.COURTNEE_PHONE || '+14048037877',
@@ -36,12 +37,11 @@ const PARENT_THANKS = [
 
 async function sendSms(phone, msg) {
   try {
-    await sns.send(new PublishCommand({
-      PhoneNumber: phone,
-      Message: msg,
-      MessageAttributes: {
-        'AWS.SNS.SMS.SMSType': { DataType: 'String', StringValue: 'Transactional' }
-      }
+    await sms.send(new SendTextMessageCommand({
+      DestinationPhoneNumber: phone,
+      OriginationIdentity: ORIGINATION_NUMBER,
+      MessageBody: msg,
+      MessageType: 'TRANSACTIONAL'
     }));
   } catch (err) {
     console.error('SMS error:', err.message);

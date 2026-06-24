@@ -1,6 +1,7 @@
-import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
+import { PinpointSMSVoiceV2Client, SendTextMessageCommand } from '@aws-sdk/client-pinpoint-sms-voice-v2';
 
-const sns = new SNSClient({ region: 'us-east-1' });
+const sms = new PinpointSMSVoiceV2Client({ region: 'us-east-1' });
+const ORIGINATION_NUMBER = '+18552432682';
 
 const PHONES = {
   Shane: process.env.SHANE_PHONE,
@@ -96,12 +97,11 @@ export const handler = async () => {
     const msg = `${greeting}\n\nHey ${person}! Here are your chores for today:\n\n${choreList.map((c,i) => `${i+1}. ${c}`).join('\n')}\n\nYou got this! 🙌`;
 
     try {
-      await sns.send(new PublishCommand({
-        PhoneNumber: phone,
-        Message: msg,
-        MessageAttributes: {
-          'AWS.SNS.SMS.SMSType': { DataType: 'String', StringValue: 'Transactional' }
-        }
+      await sms.send(new SendTextMessageCommand({
+        DestinationPhoneNumber: phone,
+        OriginationIdentity: ORIGINATION_NUMBER,
+        MessageBody: msg,
+        MessageType: 'TRANSACTIONAL'
       }));
       results.push({ person, status: 'sent' });
     } catch (err) {
