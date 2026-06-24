@@ -12,18 +12,18 @@
 <link rel="apple-touch-icon" href="/bh365-icon.png">
 <link rel="icon" type="image/png" href="/bh365-icon.png">
 <title>BH365 Study</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d0d0d;--card:#1a1a1a;--card2:#222;--text:#f5f5f5;--muted:#aaa;--red:#d4213d;--green:#2d8b4e;--gold:#f2c94c;--black:#0d0d0d;--radius:14px;--shadow:0 4px 20px rgba(0,0,0,.5);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('/app-bg.png');background-size:cover;background-position:center;background-attachment:fixed;color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;font-size:18px;overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;}
+body{font-family:'Outfit',sans-serif;font-weight:400;background:var(--bg);background-image:url('/app-bg.png');background-size:cover;background-position:center;background-attachment:fixed;color:var(--text);min-height:100vh;padding-bottom:40px;-webkit-tap-highlight-color:transparent;font-size:18px;overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;}
 .gradient-bar{height:4px;background:linear-gradient(90deg,var(--red),var(--black),var(--green));}
 
 /* SPLASH */
 .splash-screen{position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:12vh;background:var(--bg);background-image:url('/splash-bg.png');background-size:95%;background-position:center 45%;background-repeat:no-repeat;overflow:hidden;animation:splashZoom 2s ease-out forwards;}
 .splash-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.7) 100%);}
-.splash-title{font-family:'Fredoka One',cursive;font-size:3.2rem;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.8),0 0 60px rgba(235,94,33,.4);position:relative;z-index:1;opacity:0;animation:titleReveal 1s ease .3s forwards;}
-.splash-sub{color:rgba(255,255,255,.9);font-weight:800;font-size:1.3rem;margin-top:10px;text-shadow:0 2px 15px rgba(0,0,0,.7);position:relative;z-index:1;opacity:0;animation:titleReveal .8s ease 1s forwards;}
+.splash-title{font-family:'Outfit',sans-serif;font-weight:400;font-size:3.2rem;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.8),0 0 60px rgba(235,94,33,.4);position:relative;z-index:1;opacity:0;animation:titleReveal 1s ease .3s forwards;}
+.splash-sub{color:rgba(255,255,255,.9);font-weight:400;font-size:1.3rem;margin-top:10px;text-shadow:0 2px 15px rgba(0,0,0,.7);position:relative;z-index:1;opacity:0;animation:titleReveal .8s ease 1s forwards;}
 .splash-screen.fade-out{animation:splashFadeOut 1s ease forwards;}
 .splash-screen.fade-out .splash-title,.splash-screen.fade-out .splash-sub{animation:titleExit .6s ease forwards;}
 @keyframes splashZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
@@ -34,96 +34,96 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('
 /* AUTH */
 .auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(env(safe-area-inset-top,44px) + 20px) 20px 20px;background:var(--bg);background-image:url('/login-bg.png');background-size:120%;background-position:center top;}
 .auth-box{background:rgba(26,26,26,.92);border:2px solid #333;border-radius:var(--radius);padding:32px 24px;width:100%;max-width:320px;text-align:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
-.auth-box h2{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
-.auth-box .sub{color:var(--muted);font-weight:700;font-size:.85rem;margin-bottom:20px;}
-.auth-box input{width:100%;padding:12px 14px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:10px;}
+.auth-box h2{font-family:'Outfit',sans-serif;font-weight:400;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
+.auth-box .sub{color:var(--muted);font-weight:400;font-size:.85rem;margin-bottom:20px;}
+.auth-box input{width:100%;padding:12px 14px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:400;margin-bottom:10px;}
 .auth-box input:focus{outline:none;border-color:var(--gold);}
-.btn-primary{width:100%;padding:13px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--green),#1a5e30);color:#fff;font-family:'Fredoka One',cursive;font-size:1.05rem;cursor:pointer;}
-.btn-link{background:none;border:none;color:var(--gold);font-weight:700;font-size:.82rem;cursor:pointer;margin-top:12px;}
-.auth-error{color:var(--red);font-size:.8rem;font-weight:700;margin-top:8px;min-height:18px;}
+.btn-primary{width:100%;padding:13px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--green),#1a5e30);color:#fff;font-family:'Outfit',sans-serif;font-weight:400;font-size:1.05rem;cursor:pointer;}
+.btn-link{background:none;border:none;color:var(--gold);font-weight:400;font-size:.82rem;cursor:pointer;margin-top:12px;}
+.auth-error{color:var(--red);font-size:.8rem;font-weight:400;margin-top:8px;min-height:18px;}
 
 /* HOME */
 .home{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 20px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .greeting{text-align:center;margin-bottom:24px;}
-.greeting h1{font-family:'Fredoka One',cursive;font-size:1.6rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.greeting p{color:var(--muted);font-weight:700;font-size:.9rem;margin-top:4px;}
-.greeting .user-greeting{color:var(--gold);font-weight:800;font-size:1rem;margin-top:8px;}
+.greeting h1{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.8rem;background:linear-gradient(135deg,var(--red),var(--gold),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.greeting p{color:var(--muted);font-weight:400;font-size:.9rem;margin-top:4px;}
+.greeting .user-greeting{color:var(--gold);font-weight:400;font-size:1rem;margin-top:8px;}
 .home-actions{display:flex;flex-direction:column;gap:12px;}
 .action-card{display:flex;align-items:center;gap:14px;padding:18px 16px;border:2px solid #333;border-radius:var(--radius);background:var(--card);cursor:pointer;transition:all .2s;}
 .action-card:hover{border-color:var(--gold);transform:translateY(-2px);}
 .action-card .ac-icon{font-size:2rem;}
-.action-card h3{font-family:'Fredoka One',cursive;font-size:1.05rem;}
-.action-card p{font-size:.75rem;color:var(--muted);font-weight:700;margin-top:2px;}
+.action-card h3{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.15rem;}
+.action-card p{font-size:.85rem;color:var(--muted);font-weight:300;margin-top:2px;}
 .info-btn{font-size:.75rem;color:#555;cursor:pointer;padding:2px 6px;border-radius:50%;transition:color .2s;opacity:.6;}
 .info-btn:hover{color:var(--gold);opacity:1;}
 .home-footer{display:flex;justify-content:center;gap:16px;margin-top:24px;}
-.home-footer button{background:var(--card);border:2px solid #333;border-radius:10px;padding:10px 16px;color:var(--text);font-weight:800;font-size:.8rem;cursor:pointer;}
+.home-footer button{background:var(--card);border:2px solid #333;border-radius:10px;padding:10px 16px;color:var(--text);font-weight:400;font-size:.8rem;cursor:pointer;}
 .home-footer button:hover{border-color:var(--green);}
-.logout-btn{position:absolute;top:calc(env(safe-area-inset-top,16px) + 10px);right:14px;background:none;border:none;color:var(--muted);font-size:.75rem;font-weight:700;cursor:pointer;}
+.logout-btn{position:absolute;top:calc(env(safe-area-inset-top,16px) + 10px);right:14px;background:none;border:none;color:var(--muted);font-size:.75rem;font-weight:400;cursor:pointer;}
 
 /* SCOPE SELECT */
 .scope-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
-.scope-page h2{font-family:'Fredoka One',cursive;font-size:1.2rem;text-align:center;margin-bottom:14px;color:var(--gold);}
-.scope-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.88rem;cursor:pointer;text-align:left;transition:all .2s;}
+.scope-page h2{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.3rem;text-align:center;margin-bottom:14px;color:var(--gold);}
+.scope-btn{display:block;width:100%;padding:14px 16px;margin-bottom:8px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:400;font-size:1rem;cursor:pointer;text-align:left;transition:all .2s;}
 .scope-btn:hover{border-color:var(--red);}
-.scope-btn .ch-num{font-family:'Fredoka One',cursive;color:var(--red);margin-right:8px;}
+.scope-btn .ch-num{font-family:'Outfit',sans-serif;font-weight:600;color:var(--red);margin-right:8px;}
 .scope-btn .ch-count{float:right;color:var(--muted);font-size:.72rem;margin-top:2px;}
-.back-link{display:block;text-align:left;color:var(--gold);font-weight:800;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
+.back-link{display:block;text-align:left;color:var(--gold);font-weight:400;font-size:.85rem;cursor:pointer;margin-bottom:14px;}
 
 /* PRACTICE CARD */
 .practice-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .pcard{background:var(--card);border:2px solid #333;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:border-color .2s;}
 .pcard:hover{border-color:var(--gold);}
 .pcard-front{padding:28px 20px;text-align:center;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.pcard-front h2{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--gold);}
+.pcard-front h2{font-family:'Outfit',sans-serif;font-weight:400;font-size:1.2rem;color:var(--gold);}
 .pcard-front .hint{color:var(--muted);font-size:.75rem;margin-top:10px;}
 .pcard-back{padding:18px 20px;border-top:2px solid var(--red);max-height:55vh;overflow-y:auto;}
-.pcard-back .blabel{font-family:'Fredoka One',cursive;font-size:.6rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-top:10px;}
-.pcard-back .btext{font-size:.84rem;line-height:1.5;font-weight:600;color:#ccc;margin-top:2px;}
+.pcard-back .blabel{font-family:'Outfit',sans-serif;font-weight:400;font-size:.6rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-top:10px;}
+.pcard-back .btext{font-size:.84rem;line-height:1.5;font-weight:400;color:#ccc;margin-top:2px;}
 .card-nav{display:flex;justify-content:center;gap:10px;padding:14px;align-items:center;}
-.card-nav button{padding:9px 18px;border:none;border-radius:20px;background:#333;color:#fff;font-weight:800;font-size:.82rem;cursor:pointer;}
-.card-nav .counter{font-family:'Fredoka One',cursive;color:var(--muted);font-size:.82rem;min-width:60px;text-align:center;}
+.card-nav button{padding:9px 18px;border:none;border-radius:20px;background:#333;color:#fff;font-weight:400;font-size:.82rem;cursor:pointer;}
+.card-nav .counter{font-family:'Outfit',sans-serif;font-weight:400;color:var(--muted);font-size:.82rem;min-width:60px;text-align:center;}
 
 /* QUIZ */
 .quiz-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 16px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
 .quiz-hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding:10px 14px;background:var(--card);border-radius:10px;border:2px solid #333;}
-.hud-score{font-family:'Fredoka One',cursive;color:var(--gold);font-size:1rem;}
-.hud-streak{font-size:.8rem;font-weight:800;color:var(--red);}
-.hud-timer{font-family:'Fredoka One',cursive;color:var(--green);font-size:1rem;}
-.hud-qnum{font-size:.75rem;color:var(--muted);font-weight:800;}
+.hud-score{font-family:'Outfit',sans-serif;font-weight:400;color:var(--gold);font-size:1rem;}
+.hud-streak{font-size:.8rem;font-weight:400;color:var(--red);}
+.hud-timer{font-family:'Outfit',sans-serif;font-weight:400;color:var(--green);font-size:1rem;}
+.hud-qnum{font-size:.75rem;color:var(--muted);font-weight:400;}
 .quiz-prompt{background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:14px;}
-.quiz-prompt h2{font-family:'Fredoka One',cursive;font-size:1.05rem;color:#fff;}
-.quiz-prompt .qtype{font-size:.7rem;color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.quiz-prompt h2{font-family:'Outfit',sans-serif;font-weight:400;font-size:1.05rem;color:#fff;}
+.quiz-prompt .qtype{font-size:.7rem;color:var(--red);font-weight:400;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
 .quiz-opts{display:flex;flex-direction:column;gap:8px;}
-.qopt{padding:14px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:700;font-size:.95rem;cursor:pointer;text-align:left;transition:all .15s;}
+.qopt{padding:14px 16px;border:2px solid #333;border-radius:12px;background:var(--card);color:var(--text);font-weight:400;font-size:1rem;cursor:pointer;text-align:left;transition:all .15s;}
 .qopt:hover{border-color:var(--gold);}
-.qopt.correct{border-color:var(--green);background:rgba(45,139,78,.25);color:#fff;font-weight:800;}
-.qopt.wrong{border-color:var(--red);background:rgba(212,33,61,.2);color:#fff;font-weight:800;}
+.qopt.correct{border-color:var(--green);background:rgba(45,139,78,.25);color:#fff;font-weight:400;}
+.qopt.wrong{border-color:var(--red);background:rgba(212,33,61,.2);color:#fff;font-weight:400;}
 .qopt.disabled{pointer-events:none;opacity:.7;}
-.quiz-feedback{text-align:center;padding:10px;font-family:'Fredoka One',cursive;font-size:.9rem;}
-.quiz-next{display:block;margin:12px auto;padding:11px 28px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--red),#8b0000);color:#fff;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;}
+.quiz-feedback{text-align:center;padding:10px;font-family:'Outfit',sans-serif;font-weight:400;font-size:.9rem;}
+.quiz-next{display:block;margin:12px auto;padding:11px 28px;border:none;border-radius:20px;background:linear-gradient(135deg,var(--red),#8b0000);color:#fff;font-family:'Outfit',sans-serif;font-weight:400;font-size:.9rem;cursor:pointer;}
 .bonus-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card);border:3px solid var(--gold);border-radius:var(--radius);padding:24px;text-align:center;z-index:200;animation:popIn .3s ease;}
 @keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.8)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-.bonus-popup h2{font-family:'Fredoka One',cursive;color:var(--gold);font-size:1.3rem;}
-.bonus-popup p{color:var(--muted);font-weight:700;margin-top:6px;}
+.bonus-popup h2{font-family:'Outfit',sans-serif;font-weight:400;color:var(--gold);font-size:1.3rem;}
+.bonus-popup p{color:var(--muted);font-weight:400;margin-top:6px;}
 
 /* RESULTS */
 .results-page{max-width:480px;margin:0 auto;padding:16px;text-align:center;}
-.results-page h2{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--gold);margin-bottom:8px;}
-.results-page .big-score{font-family:'Fredoka One',cursive;font-size:3rem;color:var(--green);}
-.results-page .detail{color:var(--muted);font-weight:700;margin:4px 0;}
+.results-page h2{font-family:'Outfit',sans-serif;font-weight:400;font-size:1.4rem;color:var(--gold);margin-bottom:8px;}
+.results-page .big-score{font-family:'Outfit',sans-serif;font-weight:400;font-size:3rem;color:var(--green);}
+.results-page .detail{color:var(--muted);font-weight:400;margin:4px 0;}
 .results-actions{display:flex;gap:10px;justify-content:center;margin-top:20px;}
-.results-actions button{padding:12px 24px;border:none;border-radius:20px;font-family:'Fredoka One',cursive;font-size:.9rem;cursor:pointer;}
+.results-actions button{padding:12px 24px;border:none;border-radius:20px;font-family:'Outfit',sans-serif;font-weight:400;font-size:.9rem;cursor:pointer;}
 .results-actions .again{background:var(--red);color:#fff;}
 .results-actions .home-btn{background:#333;color:#fff;}
 
 /* LEADERBOARD */
 .lb-page{max-width:480px;margin:0 auto;padding:calc(env(safe-area-inset-top,44px) + 10px) 16px 40px;overflow-y:auto;height:100vh;-webkit-overflow-scrolling:touch;}
-.lb-page h2{font-family:'Fredoka One',cursive;color:var(--gold);text-align:center;margin-bottom:14px;}
+.lb-page h2{font-family:'Outfit',sans-serif;font-weight:400;color:var(--gold);text-align:center;margin-bottom:14px;}
 .lb-row{display:flex;align-items:center;padding:10px 14px;background:var(--card);border-radius:10px;margin-bottom:6px;border:2px solid #333;}
-.lb-rank{font-family:'Fredoka One',cursive;width:30px;color:var(--muted);font-size:.9rem;}
-.lb-name{flex:1;font-weight:800;font-size:.9rem;}
-.lb-pts{font-family:'Fredoka One',cursive;color:var(--green);font-size:.9rem;}
+.lb-rank{font-family:'Outfit',sans-serif;font-weight:400;width:30px;color:var(--muted);font-size:.9rem;}
+.lb-name{flex:1;font-weight:400;font-size:.9rem;}
+.lb-pts{font-family:'Outfit',sans-serif;font-weight:400;color:var(--green);font-size:.9rem;}
 
 .hidden{display:none!important;}
 </style>
@@ -167,7 +167,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('
 <p>Black History 365 Days a Year</p>
 <div class="user-greeting" id="greet-user"></div>
 </div>
-<p style="text-align:center;font-size:.82rem;color:var(--muted);font-weight:600;line-height:1.5;margin-bottom:20px;padding:0 10px;">Learn the people, places, and events that shaped Black American history. Practice at your pace, challenge yourself with quizzes, and track your progress on the Study Map.</p>
+<p style="text-align:center;font-size:.82rem;color:var(--muted);font-weight:400;line-height:1.5;margin-bottom:20px;padding:0 10px;">Learn the people, places, and events that shaped Black American history. Practice at your pace, challenge yourself with quizzes, and track your progress on the Study Map.</p>
 <div class="home-actions">
 <div class="action-card" onclick="openStudyMap()">
 <span class="ac-icon">🗺️</span>
@@ -317,7 +317,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('
 <div class="scope-page">
 <span class="back-link" onclick="navView('v-home')">← Back</span>
 <h2 style="color:var(--gold);text-align:center;margin-bottom:4px;">🗺️ Study Map</h2>
-<p style="text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;margin-bottom:16px;" id="map-progress"></p>
+<p style="text-align:center;color:var(--muted);font-size:.8rem;font-weight:400;margin-bottom:16px;" id="map-progress"></p>
 <div id="map-list"></div>
 </div>
 </div>
@@ -356,7 +356,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('
 <div id="v-bonus" class="hidden">
 <div class="scope-page" style="text-align:center;">
 <h2 style="color:var(--gold);margin-bottom:6px;">🎁 Bonus Round!</h2>
-<p style="color:var(--muted);font-size:.85rem;font-weight:700;margin-bottom:20px;" id="bonus-desc"></p>
+<p style="color:var(--muted);font-size:.85rem;font-weight:400;margin-bottom:20px;" id="bonus-desc"></p>
 <div id="bonus-area"></div>
 <button class="quiz-next hidden" id="bonus-done" onclick="finishBonus()" style="margin-top:16px;">Collect Points →</button>
 </div>
@@ -392,7 +392,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);background-image:url('
 <div id="v-info-modal" class="hidden" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;">
 <div style="background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:24px;max-width:340px;width:100%;max-height:80vh;overflow-y:auto;">
 <h3 id="info-title" style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:12px;"></h3>
-<div id="info-body" style="font-size:.88rem;line-height:1.6;font-weight:600;color:#ccc;"></div>
+<div id="info-body" style="font-size:.88rem;line-height:1.6;font-weight:400;color:#ccc;"></div>
 <button onclick="document.getElementById('v-info-modal').classList.add('hidden')" style="display:block;margin:16px auto 0;padding:10px 28px;border:none;border-radius:20px;background:var(--green);color:#fff;font-family:Fredoka One,cursive;font-size:.9rem;cursor:pointer;">Got it 👍</button>
 </div>
 </div>
@@ -542,12 +542,12 @@ function renderReview(){
   cards.forEach(c=>{
     html+=`<div style="background:var(--card);border:2px solid #333;border-radius:var(--radius);padding:16px;margin-bottom:12px;">
       <h3 style="font-family:Fredoka One,cursive;font-size:1.05rem;color:var(--gold);margin-bottom:10px;">${c.title}</h3>
-      ${c.summary?`<p style="font-size:.85rem;font-weight:700;color:#ccc;margin-bottom:10px;font-style:italic;">${c.summary}</p>`:''}
-      ${c.who?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHO</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.who}</p></div>`:''}
-      ${c.what?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHAT</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.what}</p></div>`:''}
-      ${c.when?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHEN</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.when}</p></div>`:''}
-      ${c.where?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHERE</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.where}</p></div>`:''}
-      ${c.why?`<div><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHY</span><p style="font-size:.84rem;color:#ccc;font-weight:600;">${c.why}</p></div>`:''}
+      ${c.summary?`<p style="font-size:.85rem;font-weight:400;color:#ccc;margin-bottom:10px;font-style:italic;">${c.summary}</p>`:''}
+      ${c.who?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHO</span><p style="font-size:.84rem;color:#ccc;font-weight:400;">${c.who}</p></div>`:''}
+      ${c.what?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHAT</span><p style="font-size:.84rem;color:#ccc;font-weight:400;">${c.what}</p></div>`:''}
+      ${c.when?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHEN</span><p style="font-size:.84rem;color:#ccc;font-weight:400;">${c.when}</p></div>`:''}
+      ${c.where?`<div style="margin-bottom:8px;"><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHERE</span><p style="font-size:.84rem;color:#ccc;font-weight:400;">${c.where}</p></div>`:''}
+      ${c.why?`<div><span style="font-family:Fredoka One,cursive;font-size:.65rem;color:var(--red);text-transform:uppercase;letter-spacing:1px;">WHY</span><p style="font-size:.84rem;color:#ccc;font-weight:400;">${c.why}</p></div>`:''}
     </div>`;
   });
   document.getElementById('review-content').innerHTML=html;
@@ -623,7 +623,7 @@ function renderStats(){
     </div>
     <div class="lb-row" style="flex-direction:column;align-items:flex-start;padding:14px;">
       <span style="font-family:Fredoka One,cursive;color:var(--gold);margin-bottom:6px;">Awards</span>
-      ${s.awards.length?s.awards.map(a=>`<span style="display:inline-block;background:rgba(242,201,76,.1);border:2px solid var(--gold);border-radius:8px;padding:4px 10px;margin:3px;font-size:.8rem;font-weight:800;color:var(--gold)">${a}</span>`).join(''):'<span style="color:var(--muted)">Keep playing to earn awards!</span>'}
+      ${s.awards.length?s.awards.map(a=>`<span style="display:inline-block;background:rgba(242,201,76,.1);border:2px solid var(--gold);border-radius:8px;padding:4px 10px;margin:3px;font-size:.8rem;font-weight:400;color:var(--gold)">${a}</span>`).join(''):'<span style="color:var(--muted)">Keep playing to earn awards!</span>'}
     </div>`;
 }
 
@@ -695,8 +695,8 @@ function openStudyMap(){
       const bonusPlayed = completed.length > idx;
       html += `<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;margin-bottom:6px;background:rgba(242,201,76,.08);border:2px dashed var(--gold);border-radius:12px;opacity:${bonusUnlocked?'1':'0.4'};">
         <span style="font-size:1.2rem;">🎁</span>
-        <div style="flex:1;"><div style="font-weight:800;font-size:.85rem;color:var(--gold);">Bonus Round!</div><div style="font-size:.7rem;color:var(--muted);">Complete ${idx} topics to unlock</div></div>
-        ${bonusPlayed?'<span style="font-size:.7rem;color:var(--green);font-weight:800;">PLAYED</span>':''}
+        <div style="flex:1;"><div style="font-weight:400;font-size:.85rem;color:var(--gold);">Bonus Round!</div><div style="font-size:.7rem;color:var(--muted);">Complete ${idx} topics to unlock</div></div>
+        ${bonusPlayed?'<span style="font-size:.7rem;color:var(--green);font-weight:400;">PLAYED</span>':''}
       </div>`;
     }
     
@@ -707,10 +707,10 @@ function openStudyMap(){
     html += `<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;margin-bottom:6px;background:var(--card);border:2px solid ${borderColor};border-radius:12px;opacity:${opacity};cursor:${unlocked?'pointer':'default'};" ${unlocked&&!done?`onclick="startMapTopic(${idx})"`:''}>
       <span style="font-size:1.2rem;">${icon}</span>
       <div style="flex:1;">
-        <div style="font-weight:800;font-size:.88rem;">${topic.title}</div>
+        <div style="font-weight:400;font-size:.88rem;">${topic.title}</div>
         <div style="font-size:.7rem;color:var(--muted);">Ch ${topic.chapter} · ${topic.year}</div>
       </div>
-      ${done?'<span style="font-size:.7rem;color:var(--green);font-weight:800;">PASSED</span>':''}
+      ${done?'<span style="font-size:.7rem;color:var(--green);font-weight:400;">PASSED</span>':''}
     </div>`;
   });
   
@@ -950,7 +950,7 @@ function bonusWordScramble(){
   const scrambled = answer.split('').sort(()=>Math.random()-.5).join('');
   
   let html = `<div style="font-family:Fredoka One,cursive;font-size:1.8rem;color:var(--red);letter-spacing:3px;margin:20px 0;">${scrambled.toUpperCase()}</div>
-    <input type="text" id="scramble-input" placeholder="Type your answer..." style="width:100%;max-width:280px;padding:12px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-size:1rem;font-weight:700;text-align:center;">
+    <input type="text" id="scramble-input" placeholder="Type your answer..." style="width:100%;max-width:280px;padding:12px;border:2px solid #333;border-radius:10px;background:var(--bg);color:#fff;font-size:1rem;font-weight:400;text-align:center;">
     <button style="display:block;margin:12px auto;padding:10px 28px;border:none;border-radius:20px;background:var(--green);color:#fff;font-family:Fredoka One,cursive;cursor:pointer;" onclick="checkScramble()">Check</button>
     <div id="scramble-result" style="margin-top:10px;font-family:Fredoka One,cursive;color:var(--gold);min-height:24px;"></div>`;
   document.getElementById('bonus-area').innerHTML = html;
@@ -984,7 +984,7 @@ function bonusTimelineSort(){
   shuffled.forEach((e,i) => {
     html += `<div class="qopt" id="tl${i}" onclick="pickTimeline(${i})" data-year="${parseInt(e.year)}" data-title="${e.title}">${e.title} (${e.year})</div>`;
   });
-  html += '</div><div id="tl-order" style="margin-top:12px;font-size:.8rem;color:var(--muted);font-weight:700;">Your order: <span id="tl-picks"></span></div><div id="tl-result" style="margin-top:8px;font-family:Fredoka One,cursive;color:var(--gold);min-height:24px;"></div>';
+  html += '</div><div id="tl-order" style="margin-top:12px;font-size:.8rem;color:var(--muted);font-weight:400;">Your order: <span id="tl-picks"></span></div><div id="tl-result" style="margin-top:8px;font-family:Fredoka One,cursive;color:var(--gold);min-height:24px;"></div>';
   document.getElementById('bonus-area').innerHTML = html;
   document.getElementById('bonus-done').classList.add('hidden');
   window._tlCorrectOrder = events.map(e=>parseInt(e.year));
