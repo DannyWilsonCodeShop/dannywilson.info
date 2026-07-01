@@ -249,6 +249,17 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 </div>
 </div>
 
+<!-- UPDATE NOTES MODAL -->
+<div id="update-notes-modal" class="modal-overlay hidden">
+<div class="modal" style="max-width:360px;max-height:80vh;overflow-y:auto;">
+<h3>🆕 What's New</h3>
+<div id="update-notes-content"></div>
+<div class="modal-btns" style="margin-top:14px;">
+<button class="confirm" onclick="dismissUpdateNotes()" style="flex:1">Got it! 👍</button>
+</div>
+</div>
+</div>
+
 <!-- EXEMPTION REVIEW MODAL (parents) -->
 <div id="exempt-review" class="modal-overlay hidden">
 <div class="modal" style="max-width:380px;max-height:80vh;overflow-y:auto;">
@@ -372,6 +383,8 @@ function showApp(){
   loadPoints();
   loadCompletions();
   loadCustomChores();
+  // Show update notes if new version
+  checkUpdateNotes();
 }
 
 // Restore session on load
@@ -728,6 +741,36 @@ async function confirmPoint(){
     await loadPoints();
     renderToday();
   }
+}
+
+// ============ UPDATE NOTES ============
+const APP_VERSION = '2.0';
+const UPDATE_NOTES = `
+<p style="font-size:.9rem;line-height:1.6;margin-bottom:10px;">Here's what's new in the chores app:</p>
+<ul style="padding-left:16px;font-size:.88rem;line-height:1.7;">
+<li>🚩 <strong>Flags system</strong> — stay under 3 to keep your device</li>
+<li>🛏️ <strong>Clean Room & Make Bed</strong> — added as a daily chore for kids</li>
+<li>⏰ <strong>Auto-flag at 9pm</strong> — if chores aren't marked done by 9pm, a flag is automatically added</li>
+<li>🙋 <strong>Request Exemption</strong> — kids can ask for a pass with a reason (parents approve/deny)</li>
+<li>↗️ <strong>Move & Swap</strong> — parents can move chores between people or swap future days</li>
+<li>➕ <strong>Add Custom Chores</strong> — parents can create new permanent chores</li>
+<li>🗑️ <strong>Remove Chore</strong> — parents can remove a chore for the day</li>
+<li>📱 <strong>SMS Notifications</strong> — daily reminders at 10am, completion alerts, flag updates</li>
+<li>🏋🏾 <strong>Physical Training</strong> — fills in when you only have one chore</li>
+</ul>
+<p style="font-size:.85rem;color:var(--muted);margin-top:10px;">Remember: do your chores + clean your room every day and you'll never lose your device! ✅</p>
+`;
+
+function checkUpdateNotes(){
+  const seen = localStorage.getItem('choreAppVersion');
+  if(seen !== APP_VERSION){
+    document.getElementById('update-notes-content').innerHTML = UPDATE_NOTES;
+    document.getElementById('update-notes-modal').classList.remove('hidden');
+  }
+}
+function dismissUpdateNotes(){
+  localStorage.setItem('choreAppVersion', APP_VERSION);
+  document.getElementById('update-notes-modal').classList.add('hidden');
 }
 
 // ============ EXEMPTIONS ============
