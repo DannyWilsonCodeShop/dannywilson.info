@@ -166,6 +166,9 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 </div>
 <button class="today-btn" onclick="goToday()">⬤ Today</button>
 <div class="grid" id="grid"></div>
+<div id="kid-exempt-btn" class="hidden" style="text-align:center;padding:12px;">
+<button onclick="openExemptModal()" style="padding:10px 20px;border:2px solid #ffd93d;border-radius:20px;background:transparent;color:#ffd93d;font-weight:600;font-size:.85rem;cursor:pointer;">🙋 Request Exemption</button>
+</div>
 </div>
 
 <!-- CALENDAR VIEW -->
@@ -187,6 +190,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <button style="background:linear-gradient(135deg,#4d96ff,#0652DD);color:#fff;padding:10px 20px;border:none;border-radius:24px;font-family:Nunito,sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;" onclick="openSwapModal()">↗️ Move</button>
 <button class="info-btn" onclick="openRulesModal()">?</button>
 <button class="info-btn" onclick="openChoreWizard()">+</button>
+<button class="info-btn" onclick="openExemptReview()">📋</button>
 </div>
 </div>
 
@@ -228,6 +232,30 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <div class="modal-btns">
 <button class="cancel" onclick="closeSwapModal()">Cancel</button>
 <button class="confirm" style="background:#4d96ff;" onclick="doMove()">Move Chore</button>
+</div>
+</div>
+</div>
+
+<!-- EXEMPTION MODAL (kids) -->
+<div id="exempt-modal" class="modal-overlay hidden">
+<div class="modal" style="max-width:360px;">
+<h3>🙋 Request Exemption</h3>
+<p style="font-size:.85rem;color:var(--muted);margin-bottom:12px;">Tell us why you can't complete your chores today. Parents will review.</p>
+<textarea id="exempt-reason" placeholder="e.g. I have a big test tomorrow and need to study..." style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-family:inherit;font-size:.9rem;min-height:80px;resize:none;"></textarea>
+<div class="modal-btns" style="margin-top:12px;">
+<button class="cancel" onclick="closeExemptModal()">Cancel</button>
+<button class="confirm" onclick="submitExemption()">Send Request</button>
+</div>
+</div>
+</div>
+
+<!-- EXEMPTION REVIEW MODAL (parents) -->
+<div id="exempt-review" class="modal-overlay hidden">
+<div class="modal" style="max-width:380px;max-height:80vh;overflow-y:auto;">
+<h3>📋 Exemption Requests</h3>
+<div id="exempt-list"></div>
+<div class="modal-btns" style="margin-top:12px;">
+<button class="cancel" onclick="closeExemptReview()" style="flex:1">Close</button>
 </div>
 </div>
 </div>
@@ -338,6 +366,7 @@ function showApp(){
   document.getElementById('app').classList.remove('hidden');
   document.getElementById('current-user-display').textContent = currentUser;
   document.getElementById('parent-bar').classList.toggle('hidden', !PARENTS.includes(currentUser));
+  document.getElementById('kid-exempt-btn').classList.toggle('hidden', !KIDS.includes(currentUser));
   // Render immediately with whatever we have, then refresh from API
   renderToday();
   loadPoints();
@@ -699,6 +728,45 @@ async function confirmPoint(){
     await loadPoints();
     renderToday();
   }
+}
+
+// ============ EXEMPTIONS ============
+function openExemptModal(){
+  document.getElementById('exempt-reason').value = '';
+  document.getElementById('exempt-modal').classList.remove('hidden');
+}
+function closeExemptModal(){ document.getElementById('exempt-modal').classList.add('hidden'); }
+
+async function submitExemption(){
+  const reason = document.getElementById('exempt-reason').value.trim();
+  if(!reason){ alert('Please enter a reason'); return; }
+  closeExemptModal();
+  await apiPost('/exemptions', { person: currentUser, date: formatDateKey(cur), reason });
+}
+
+async function openExemptReview(){
+  const el = document.getElementById('exempt-list');
+  el.innerHTML = '<p style="color:var(--muted);font-size:.85rem;">Loading...</p>';
+  document.getElementById('exempt-review').classList.remove('hidden');
+  const data = await apiGet('/exemptions?date=' + formatDateKey(cur));
+  if(!data || !data.length){ el.innerHTML = '<p style="color:var(--muted);font-size:.85rem;">No exemption requests today.</p>'; return; }
+  el.innerHTML = data.map(r => `
+    <div style="background:#f8f8f8;border-radius:10px;padding:12px;margin-bottom:8px;">
+      <div style="font-weight:600;font-size:.9rem;">${r.person} <span style="color:var(--muted);font-size:.75rem;">(${r.date})</span></div>
+      <p style="font-size:.85rem;margin:6px 0;">"${r.reason}"</p>
+      <div style="font-size:.75rem;color:${r.status==='approved'?'green':r.status==='denied'?'red':'orange'};font-weight:600;">${r.status.toUpperCase()}</div>
+      ${r.status==='pending'?`<div style="display:flex;gap:6px;margin-top:8px;">
+        <button onclick="reviewExemption('${r.requestId}','approve')" style="flex:1;padding:8px;border:none;border-radius:8px;background:#2d8b4e;color:#fff;font-weight:600;cursor:pointer;">Approve</button>
+        <button onclick="reviewExemption('${r.requestId}','deny')" style="flex:1;padding:8px;border:none;border-radius:8px;background:#d4213d;color:#fff;font-weight:600;cursor:pointer;">Deny</button>
+      </div>`:''}
+    </div>
+  `).join('');
+}
+function closeExemptReview(){ document.getElementById('exempt-review').classList.add('hidden'); }
+
+async function reviewExemption(requestId, action){
+  await apiPost('/exemptions', { action, requestId, reviewedBy: currentUser });
+  openExemptReview(); // refresh the list
 }
 
 // ============ CUSTOM CHORES ============
