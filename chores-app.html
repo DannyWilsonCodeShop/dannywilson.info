@@ -1026,8 +1026,9 @@ async function doMove(){
   
   // If swap type: find next future occurrence
   if(moveType === 'swap' && moveTo !== '__REMOVE__'){
+    const today = new Date(); today.setHours(0,0,0,0);
     for(let d = 1; d <= 14; d++){
-      const futureDate = new Date(cur);
+      const futureDate = new Date(today);
       futureDate.setDate(futureDate.getDate() + d);
       const futureCh = getDailyChores(futureDate);
       const futureChores = futureCh[moveTo].map(c => c.nm);
