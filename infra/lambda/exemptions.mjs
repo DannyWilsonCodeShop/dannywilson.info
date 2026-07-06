@@ -53,10 +53,13 @@ export const handler = async (event) => {
 
     // Approve, deny, or notify
     if (action === 'notify') {
-      // Broadcast notification to all family members
+      // Broadcast notification to all family members (with delay to avoid rate limit)
       const msg = reason || 'Chore update';
       for (const member of Object.keys(PHONES)) {
-        if (PHONES[member]) await sendSms(PHONES[member], msg);
+        if (PHONES[member]) {
+          await sendSms(PHONES[member], msg);
+          await new Promise(r => setTimeout(r, 1100)); // 1.1s delay between sends
+        }
       }
       return response(200, { success: true, notified: true });
     }

@@ -117,6 +117,7 @@ export const handler = async (event) => {
         const phone = PHONES[member];
         if (phone) {
           await sendSms(phone, `📋 ${person} has completed "${chore}". (${date})`);
+          await new Promise(r => setTimeout(r, 1100));
         }
       }
 
