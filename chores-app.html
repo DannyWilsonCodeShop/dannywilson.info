@@ -1016,14 +1016,13 @@ async function doMove(){
   const reasonText = moveReason ? ' Reason: "' + moveReason + '"' : '';
   let notifyMsg = '';
   if(moveTo === '__REMOVE__'){
-    notifyMsg = currentUser + ' removed "' + choreName + '" from ' + fromPerson + ' for today.' + reasonText;
+    notifyMsg = '🗑️ ' + currentUser + ' removed "' + choreName + '" from ' + fromPerson + ' for today.' + reasonText;
   } else if(moveType === 'swap'){
-    notifyMsg = currentUser + ' swapped "' + choreName + '": ' + fromPerson + ' → ' + moveTo + ' (' + moveTo + ' owes ' + fromPerson + ' next time).' + reasonText;
+    notifyMsg = '🔄 ' + moveTo + ' will do "' + choreName + '" today, and ' + fromPerson + ' will do it on the next scheduled day.' + reasonText;
   } else {
-    notifyMsg = currentUser + ' moved "' + choreName + '": ' + fromPerson + ' → ' + moveTo + ' for today.' + reasonText;
+    notifyMsg = '↗️ ' + currentUser + ' moved "' + choreName + '": ' + fromPerson + ' → ' + moveTo + ' for today.' + reasonText;
   }
-  // Notify via a special exemption-style post (reuse endpoint for SMS)
-  await apiPost('/exemptions', { person: '__notify__', date: formatDateKey(cur), reason: notifyMsg, action: 'notify' });
+  await apiPost('/exemptions', { person: 'broadcast', date: formatDateKey(cur), reason: notifyMsg, action: 'notify' });
   
   // If swap type: find next future occurrence
   if(moveType === 'swap' && moveTo !== '__REMOVE__'){
@@ -1041,7 +1040,7 @@ async function doMove(){
         await apiPost('/swaps', { date: formatDateKey(futureDate), swaps: futureOverride });
         // Notify about the future swap date
         const futureDateStr = DNAMES[futureDate.getDay()] + ', ' + MONTHS[futureDate.getMonth()] + ' ' + futureDate.getDate();
-        await apiPost('/exemptions', { person: '__notify__', date: formatDateKey(cur), reason: '🔄 Swap scheduled: ' + fromPerson + ' will do "' + choreName + '" for ' + moveTo + ' on ' + futureDateStr + '.' + reasonText, action: 'notify' });
+        await apiPost('/exemptions', { person: 'broadcast', date: formatDateKey(cur), reason: '🔄 Swap: ' + moveTo + ' is doing "' + choreName + '" today, and ' + fromPerson + ' will do it on ' + futureDateStr + '.' + reasonText, action: 'notify' });
         break;
       }
     }
