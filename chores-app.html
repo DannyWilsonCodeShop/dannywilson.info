@@ -168,6 +168,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <div class="grid" id="grid"></div>
 <div id="kid-exempt-btn" class="hidden" style="text-align:center;padding:12px;">
 <button onclick="openExemptModal()" style="padding:10px 20px;border:2px solid #ffd93d;border-radius:20px;background:transparent;color:#ffd93d;font-weight:600;font-size:.85rem;cursor:pointer;">🙋 Request Exemption</button>
+<button onclick="openRulesModal()" style="padding:10px 16px;border:2px solid #ccc;border-radius:20px;background:transparent;color:#ccc;font-weight:600;font-size:.85rem;cursor:pointer;margin-left:8px;">? Rules</button>
 </div>
 </div>
 
@@ -229,6 +230,8 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 <option value="move">Move (one-time, today only)</option>
 <option value="swap">Swap (they owe you next time)</option>
 </select>
+<label style="font-weight:600;font-size:.85rem;display:block;margin-bottom:4px;color:var(--muted);">Reason (optional):</label>
+<input type="text" id="move-reason" placeholder="e.g. Shane is at practice" style="width:100%;padding:10px;border:2px solid #eee;border-radius:10px;font-weight:400;margin-bottom:10px;">
 <div class="modal-btns">
 <button class="cancel" onclick="closeSwapModal()">Cancel</button>
 <button class="confirm" style="background:#4d96ff;" onclick="doMove()">Move Chore</button>
@@ -601,11 +604,14 @@ function renderToday(){
       ALL5.forEach(p => {
         if(dailySwaps[p]){
           ch[p] = dailySwaps[p].map(nm => {
-            // Reconstruct chore objects from names
-            const icons = {'Wash Dishes':'🍽️','Sweep & Mop':'🧹','Living Rm & Counters':'🛋️','Feed Chaka':'🐶','Cook Dinner':'🍳','Wash Clothes':'👕','Wash Towels/Linens':'🏠','Physical Training':'🏋🏾'};
-            const badges = {'Wash Dishes':'hard','Sweep & Mop':'medium','Living Rm & Counters':'easy','Feed Chaka':'daily','Cook Dinner':'daily','Wash Clothes':'laundry','Wash Towels/Linens':'laundry','Physical Training':'daily'};
-            const isDeep = nm.includes('Clean') || nm.includes('Vacuum') || nm.includes('Sweep Porch') || nm.includes('Yard') || nm.includes('Baseboards') || nm.includes('Windows');
-            return {ico: icons[nm]||(isDeep?'🧽':'📋'), nm: nm, badge: badges[nm]||(isDeep?'deep':'daily'), bl: isDeep?'Deep Clean':(badges[nm]||'daily').charAt(0).toUpperCase()+(badges[nm]||'daily').slice(1)};
+            // Check if this is a swapped chore (prefixed with 🔄)
+            const isSwapped = nm.startsWith('🔄 ');
+            const cleanName = isSwapped ? nm.slice(3) : nm;
+            const icons = {'Wash Dishes':'🍽️','Sweep & Mop':'🧹','Living Rm & Counters':'🛋️','Feed Chaka':'🐶','Cook Dinner':'🍳','Wash Clothes':'👕','Wash Towels/Linens':'🏠','Physical Training':'🏋🏾','Clean Room & Make Bed':'🛏️'};
+            const badges = {'Wash Dishes':'hard','Sweep & Mop':'medium','Living Rm & Counters':'easy','Feed Chaka':'daily','Cook Dinner':'daily','Wash Clothes':'laundry','Wash Towels/Linens':'laundry','Physical Training':'daily','Clean Room & Make Bed':'easy'};
+            const isDeep = cleanName.includes('Clean') && !cleanName.includes('Room') || cleanName.includes('Vacuum') || cleanName.includes('Sweep Porch') || cleanName.includes('Yard') || cleanName.includes('Baseboards') || cleanName.includes('Windows');
+            const displayName = isSwapped ? '🔄 ' + cleanName : cleanName;
+            return {ico: icons[cleanName]||(isDeep?'🧽':'📋'), nm: displayName, badge: isSwapped?'laundry':(badges[cleanName]||(isDeep?'deep':'daily')), bl: isSwapped?'Swap':(isDeep?'Deep Clean':(badges[cleanName]||'daily').charAt(0).toUpperCase()+(badges[cleanName]||'daily').slice(1))};
           });
         }
       });
@@ -982,6 +988,7 @@ async function doMove(){
   const choreVal = document.getElementById('move-chore').value;
   const moveTo = document.getElementById('move-to').value;
   const moveType = document.getElementById('move-type').value;
+  const moveReason = document.getElementById('move-reason').value.trim();
   if(!choreVal || !moveTo){ closeSwapModal(); return; }
   
   const [fromPerson, choreName] = choreVal.split('|||');
@@ -993,37 +1000,48 @@ async function doMove(){
     current[p] = (dailySwaps && dailySwaps[p]) ? [...dailySwaps[p]] : ch[p].map(c => c.nm);
   });
   
-  // Remove chore from source person
   const idx = current[fromPerson].indexOf(choreName);
   if(idx > -1) current[fromPerson].splice(idx, 1);
   
-  // Add to destination (unless removing)
   if(moveTo !== '__REMOVE__'){
     current[moveTo].push(choreName);
   }
   
-  // Save today's override
   dailySwaps = current;
   closeSwapModal();
   renderToday();
   await apiPost('/swaps', { date: formatDateKey(cur), swaps: current });
   
-  // If swap type: find next future occurrence and create a return override
+  // Send SMS notification about the change
+  const reasonText = moveReason ? ' Reason: "' + moveReason + '"' : '';
+  let notifyMsg = '';
+  if(moveTo === '__REMOVE__'){
+    notifyMsg = currentUser + ' removed "' + choreName + '" from ' + fromPerson + ' for today.' + reasonText;
+  } else if(moveType === 'swap'){
+    notifyMsg = currentUser + ' swapped "' + choreName + '": ' + fromPerson + ' → ' + moveTo + ' (' + moveTo + ' owes ' + fromPerson + ' next time).' + reasonText;
+  } else {
+    notifyMsg = currentUser + ' moved "' + choreName + '": ' + fromPerson + ' → ' + moveTo + ' for today.' + reasonText;
+  }
+  // Notify via a special exemption-style post (reuse endpoint for SMS)
+  await apiPost('/exemptions', { person: '__notify__', date: formatDateKey(cur), reason: notifyMsg, action: 'notify' });
+  
+  // If swap type: find next future occurrence
   if(moveType === 'swap' && moveTo !== '__REMOVE__'){
-    // Look ahead up to 14 days for when moveTo person has this chore
     for(let d = 1; d <= 14; d++){
       const futureDate = new Date(cur);
       futureDate.setDate(futureDate.getDate() + d);
       const futureCh = getDailyChores(futureDate);
       const futureChores = futureCh[moveTo].map(c => c.nm);
       if(futureChores.includes(choreName)){
-        // Found it — override that day: give the chore to fromPerson instead
         let futureOverride = {};
         ALL5.forEach(p => { futureOverride[p] = futureCh[p].map(c => c.nm); });
         const fIdx = futureOverride[moveTo].indexOf(choreName);
         if(fIdx > -1) futureOverride[moveTo].splice(fIdx, 1);
-        futureOverride[fromPerson].push(choreName);
+        futureOverride[fromPerson].push('🔄 ' + choreName);
         await apiPost('/swaps', { date: formatDateKey(futureDate), swaps: futureOverride });
+        // Notify about the future swap date
+        const futureDateStr = DNAMES[futureDate.getDay()] + ', ' + MONTHS[futureDate.getMonth()] + ' ' + futureDate.getDate();
+        await apiPost('/exemptions', { person: '__notify__', date: formatDateKey(cur), reason: '🔄 Swap scheduled: ' + fromPerson + ' will do "' + choreName + '" for ' + moveTo + ' on ' + futureDateStr + '.' + reasonText, action: 'notify' });
         break;
       }
     }

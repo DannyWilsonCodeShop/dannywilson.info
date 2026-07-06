@@ -51,7 +51,16 @@ export const handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
     const { person, date, reason, action, requestId, reviewedBy } = body;
 
-    // Approve or deny
+    // Approve, deny, or notify
+    if (action === 'notify') {
+      // Broadcast notification to all family members
+      const msg = '📢 ' + (reason || 'Chore update');
+      for (const member of Object.keys(PHONES)) {
+        await sendSms(PHONES[member], msg);
+      }
+      return response(200, { success: true, notified: true });
+    }
+
     if (action === 'approve' || action === 'deny') {
       if (!requestId) return response(400, { error: 'requestId required' });
       await ddb.send(new UpdateItemCommand({
