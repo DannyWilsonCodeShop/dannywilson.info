@@ -131,7 +131,7 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;}
 <body>
 
 <!-- LOGIN -->
-<div id="login-screen" class="login-screen">
+<div id="login-screen" class="login-screen hidden">
 <div class="login-box">
 <h2>🏠 Family Chores</h2>
 <p class="login-sub">Who's checking in today?</p>
@@ -395,6 +395,13 @@ function showApp(){
   const token = localStorage.getItem('choreToken');
   const user = localStorage.getItem('choreUser');
   const refresh = localStorage.getItem('choreRefresh');
+  
+  // No stored user at all — show login immediately
+  if(!user){
+    document.getElementById('login-screen').classList.remove('hidden');
+    return;
+  }
+  
   if(user && refresh){
     // Try to refresh token silently
     try{
@@ -419,10 +426,13 @@ function showApp(){
     currentUser = ALL5.find(n => n.toLowerCase() === user.toLowerCase()) || user;
     localStorage.setItem('choreUser', currentUser);
     showApp();
+    return;
   }
+  // Nothing worked — show login
+  document.getElementById('login-screen').classList.remove('hidden');
 })();
 
-// Auto-refresh every 30 seconds so all users see changes
+// Auto-refresh every 60 seconds so all users see changes
 setInterval(() => {
   if(currentUser && !document.getElementById('app').classList.contains('hidden')){
     loadCompletions();
