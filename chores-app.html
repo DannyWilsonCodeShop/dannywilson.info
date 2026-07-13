@@ -17,7 +17,7 @@
 <title>Wilson Family Chores</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff9f0;--card:#fff;--text:#2d2d2d;--muted:#999;--radius:18px;--shadow:0 4px 24px rgba(0,0,0,.08);}
+:root{--bg:#ffffff;--card:#fff;--text:#2d2d2d;--muted:#888;--blue:#0177b8;--green:#179d2e;--gold:#f5af23;--red:#dd1715;--radius:18px;--shadow:0 4px 24px rgba(0,0,0,.08);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:100px;}
 
@@ -27,17 +27,17 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .login-box h2{font-family:'Fredoka One',cursive;font-size:1.8rem;margin-bottom:6px;color:var(--text);}
 .login-box .login-sub{font-size:.9rem;color:var(--muted);font-weight:700;margin-bottom:20px;}
 .login-box input{width:100%;padding:13px 16px;border:2px solid #eee;border-radius:12px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;margin-bottom:12px;transition:border-color .2s;}
-.login-box input:focus{outline:none;border-color:#ff6b6b;}
-.login-box button{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#ff6b6b,#ffd93d);color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;cursor:pointer;transition:transform .15s;}
+.login-box input:focus{outline:none;border-color:var(--blue);}
+.login-box button{width:100%;padding:14px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-family:'Fredoka One',cursive;font-size:1.1rem;cursor:pointer;transition:transform .15s;}
 .login-box button:hover{transform:translateY(-2px);}
 .login-error{color:#d63031;font-size:.85rem;font-weight:700;margin-top:10px;min-height:20px;}
 
 /* HEADER */
-header{background:linear-gradient(135deg,#ff6b6b,#ffd93d);padding:calc(env(safe-area-inset-top, 20px) + 16px) 20px 18px;text-align:center;position:relative;overflow:hidden;}
-header::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.12);border-radius:50%;}
-header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-shadow:2px 3px 0 rgba(0,0,0,.12);}
+header{background:var(--blue);padding:calc(env(safe-area-inset-top, 20px) + 16px) 20px 18px;text-align:center;position:relative;overflow:hidden;}
+header::before{content:none;}
+header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;}
 .user-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#fff;border-bottom:1px solid #eee;font-size:.85rem;}
-.user-bar .user-name{font-weight:800;color:#ff6b6b;}
+.user-bar .user-name{font-weight:800;color:var(--blue);}
 .user-bar button{background:none;border:none;color:var(--muted);cursor:pointer;font-weight:700;font-size:.8rem;text-decoration:underline;}
 
 /* TABS */
@@ -48,9 +48,9 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 /* DATE NAV */
 .date-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 6px;}
 .date-nav button{background:#fff;border:2px solid #eee;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
-.date-nav button:hover{background:#ffd93d;border-color:#ffd93d;}
+.date-nav button:hover{background:var(--gold);border-color:var(--gold);}
 #date-display{font-family:'Fredoka One',cursive;font-size:1.15rem;min-width:220px;text-align:center;}
-.today-btn{display:block;margin:6px auto 14px;background:#4d96ff;color:#fff;border:none;border-radius:24px;padding:7px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 3px 10px rgba(77,150,255,.3);transition:transform .15s;}
+.today-btn{display:block;margin:6px auto 14px;background:var(--blue);color:#fff;border:none;border-radius:24px;padding:7px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:none;transition:transform .15s;}
 .today-btn:hover{transform:translateY(-2px);}
 
 /* CARDS */
@@ -74,11 +74,11 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 .hard{background:#ffe0e0;color:#d63031}.medium{background:#fff3cd;color:#e67e22}.easy{background:#d4edda;color:#27ae60}
 .laundry{background:#e0e7ff;color:#4d96ff}.daily{background:#f3e0ff;color:#9b59b6}.deep{background:#e8f5e9;color:#2e7d32}
 .done-btn{width:26px;height:26px;border-radius:50%;border:2px solid #ccc;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s;flex-shrink:0;}
-.done-btn:hover{border-color:#27ae60;background:#d4edda;}
-.done-btn.checked{background:#27ae60;border-color:#27ae60;color:#fff;}
-.cs{background:linear-gradient(135deg,#c77dff,#9b59b6)}.ca{background:linear-gradient(135deg,#ffd93d,#f0932b)}
-.co{background:linear-gradient(135deg,#6bcb77,#20bf6b)}.cd{background:linear-gradient(135deg,#4d96ff,#0652DD)}
-.cc{background:linear-gradient(135deg,#ff6b6b,#ee5a24)}
+.done-btn:hover{border-color:var(--green);background:#d4edda;}
+.done-btn.checked{background:var(--green);border-color:var(--green);color:#fff;}
+.cs{background:var(--blue)}.ca{background:var(--gold)}
+.co{background:var(--green)}.cd{background:var(--blue)}
+.cc{background:var(--red)}
 
 /* CALENDAR */
 .cal-nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px 10px;}
@@ -100,8 +100,8 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;text-sha
 /* PARENT BOTTOM BAR */
 .parent-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #eee;padding:12px 16px;display:flex;gap:10px;justify-content:center;z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
 .parent-bar button{padding:10px 24px;border:none;border-radius:24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .15s;}
-.parent-bar .add-pt-btn{background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;}
-.parent-bar .remove-pt-btn{background:linear-gradient(135deg,#6bcb77,#20bf6b);color:#fff;}
+.parent-bar .add-pt-btn{background:var(--red);color:#fff;}
+.parent-bar .remove-pt-btn{background:var(--green);color:#fff;}
 .parent-bar .info-btn{background:#f0f0f0;color:var(--muted);width:40px;height:40px;border-radius:50%;padding:0;font-size:1.1rem;display:flex;align-items:center;justify-content:center;}
 
 /* MODAL */
