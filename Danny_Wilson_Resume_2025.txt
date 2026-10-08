@@ -5,7 +5,8 @@ PROFESSIONAL EXPERIENCE
 
 Atlanta Public Schools, Drew Charter School, Cristo Rey Atlanta Jesuit High School                    Atlanta, GA
 Professional Educator & EdTech Developer                                                           2009-2014, 2023-Present
-● Developed ClassCast.com, an AI-enhanced EdTech learning platform designed for modern video assignments and peer-to-peer learning connections, currently serving 100+ users in educational environments
+● Developed ClassCast.com, an AI-enhanced EdTech learning platform designed for modern video assignments and peer-to-peer learning connections, currently serving 250+ users in educational environments
+● Teaching an AI Coding Fundamentals and Cloud App Development course at Cristo Rey Atlanta Jesuit High School, introducing students to AI-assisted development, cloud architecture, and modern application design
 ● Built full-stack web application using TypeScript, Next.js, React, PostgreSQL, and Prisma ORM with secure JWT-based authentication, encrypted data storage, and FERPA-compliant educational data protection
 ● Created teacher update board system with real-time classroom event broadcasting and image tagging capabilities, implementing role-based access control systems for parents and educators
 ● Increased team performance by 21.4% through innovative teaching methodologies and technology integration while developing comprehensive curriculum and assessment strategies for mathematics and computer science
@@ -30,7 +31,7 @@ Systems Analysis / Computer Operator                                            
 PROJECTS
 
 ClassCast - AI-Enhanced Learning Platform (Live Production)                                         2023-Present
-● Lead development of full-stack EdTech application serving 100+ users with TypeScript, Next.js, React, PostgreSQL, and Prisma ORM technology stack
+● Lead development of full-stack EdTech application serving 250+ users with TypeScript, Next.js, React, PostgreSQL, and Prisma ORM technology stack
 ● Implemented AI-powered learning analytics, video assignment management, real-time classroom broadcasting, and peer collaboration tools with FERPA-compliant data protection
 ● Utilized AI-assisted development methodologies for accelerated delivery and comprehensive API testing with Postman for educational workflow validation
 

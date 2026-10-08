@@ -9,7 +9,7 @@
 
 ## PROFESSIONAL SUMMARY
 
-Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, specializing in cloud architecture, serverless applications, and EdTech solutions. Proven track record of building and deploying production applications serving 100+ users. Expert in TypeScript, Next.js, React, AWS services, and AI-assisted development methodologies. Military veteran with Secret Security Clearance and extensive experience in network operations, system administration, and team leadership.
+Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, specializing in cloud architecture, serverless applications, and EdTech solutions. Proven track record of building and deploying production applications serving 250+ users. Expert in TypeScript, Next.js, React, AWS services, and AI-assisted development methodologies. Military veteran with Secret Security Clearance and extensive experience in network operations, system administration, and team leadership.
 
 ---
 
@@ -61,7 +61,8 @@ Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, s
 **Atlanta Public Schools | Drew Charter School | Cristo Rey Atlanta Jesuit High School**  
 *2009-2014, 2023-Present*
 
-- **Developed ClassCast.com**, an AI-enhanced EdTech learning platform designed for modern video assignments and peer-to-peer learning connections, currently serving 100+ users in educational environments
+- **Developed ClassCast.com**, an AI-enhanced EdTech learning platform designed for modern video assignments and peer-to-peer learning connections, currently serving 250+ users in educational environments
+- **Teaching an AI Coding Fundamentals and Cloud App Development course** at Cristo Rey Atlanta Jesuit High School, introducing students to AI-assisted development, cloud architecture, and modern application design
 - Built full-stack web application using TypeScript, Next.js, React, PostgreSQL, and Prisma ORM
 - Implemented secure JWT-based authentication, encrypted data storage, and FERPA-compliant educational data protection
 - Created teacher update board system with real-time classroom event broadcasting and image tagging capabilities
@@ -126,7 +127,7 @@ Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, s
 ## FEATURED PROJECTS & APPLICATIONS
 
 ### ClassCast - AI-Enhanced Learning Platform
-**Live Production Application** | *class-cast.com* | **100+ Active Users**
+**Live Production Application** | *class-cast.com* | **250+ Active Users**
 - **Technology Stack:** TypeScript, Next.js, React, PostgreSQL, Prisma ORM, JWT Authentication
 - **Purpose:** AI-enhanced EdTech platform for modern video assignments and peer-to-peer learning
 - **Key Features:** Video assignment management, AI-powered learning analytics, real-time classroom broadcasting, role-based access control
@@ -172,7 +173,7 @@ Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, s
 
 ## KEY ACHIEVEMENTS
 
-- **Built and deployed production applications** serving 130+ users across educational and music domains
+- **Built and deployed production applications** serving 280+ users across educational and music domains
 - **Increased team performance by 21.4%** through innovative methodologies and technology integration
 - **Managed $1.5M+ in military equipment** during wartime operations with zero loss incidents
 - **Led 5+ soldier promotions** through effective mentorship and professional development
