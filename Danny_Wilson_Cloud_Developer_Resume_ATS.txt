@@ -9,7 +9,7 @@ Portfolio: dannywilson.info
 
 PROFESSIONAL SUMMARY
 
-Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, specializing in cloud architecture, serverless applications, and EdTech solutions. Proven track record of building and deploying production applications serving 250+ users. Expert in TypeScript, Next.js, React, AWS services, and AI-assisted development methodologies. Military veteran with Secret Security Clearance and extensive experience in network operations, system administration, and team leadership.
+Experienced Full Stack Developer and AWS Cloud Developer with 15+ years in IT, specializing in cloud architecture, serverless applications, and EdTech solutions. Founder of an independent app development business delivering production AWS applications for private clients. Proven track record of building and deploying production applications serving 250+ users. Expert in TypeScript, Next.js, React, AWS services, and AI-assisted development methodologies. Military veteran with Secret Security Clearance and extensive experience in network operations, system administration, and team leadership.
 
 TECHNICAL SKILLS
 
@@ -55,6 +55,15 @@ Computer Vision: Amazon Rekognition, OpenCV
 Machine Learning: TensorFlow, PyTorch, Scikit-learn
 
 PROFESSIONAL EXPERIENCE
+
+Founder & Freelance App Developer
+Atlanta Creative Exchange LLC
+2024-Present
+
+- Founded and operate an independent app development business, delivering production applications for private clients and generating five figures in revenue
+- Design and ship full-stack, cloud-native applications on AWS (Lambda, API Gateway, DynamoDB, Cognito, Amplify, S3, CloudFront)
+- Lead projects end to end: client requirements, architecture, development, deployment, and ongoing support
+- Client names and project details withheld under non-disclosure agreements (NDA)
 
 Professional Educator & EdTech Developer
 Atlanta Public Schools | Drew Charter School | Cristo Rey Atlanta Jesuit High School
@@ -176,6 +185,7 @@ Additional Recognition:
 
 KEY ACHIEVEMENTS
 
+- Founded Atlanta Creative Exchange LLC, an app development business generating five figures in revenue delivering production AWS applications for private clients
 - Built and deployed production applications serving 280+ users across educational and music domains
 - Increased team performance by 21.4% through innovative methodologies and technology integration
 - Managed $1.5M+ in military equipment during wartime operations with zero loss incidents

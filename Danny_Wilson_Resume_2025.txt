@@ -3,6 +3,12 @@ Atlanta, GA 30317 ● (404) 803-7330 ● wilson.danny@me.com
 
 PROFESSIONAL EXPERIENCE
 
+Atlanta Creative Exchange LLC                                                                       Atlanta, GA
+Founder & Freelance App Developer                                                                  2024-Present
+● Founded and operate an independent app development business, delivering production applications for private clients and generating five figures in revenue
+● Design and ship full-stack, cloud-native applications on AWS (Lambda, API Gateway, DynamoDB, Cognito, Amplify, S3, CloudFront) and lead projects end to end from client requirements through deployment and ongoing support
+● Client names and project details withheld under non-disclosure agreements (NDA)
+
 Atlanta Public Schools, Drew Charter School, Cristo Rey Atlanta Jesuit High School                    Atlanta, GA
 Professional Educator & EdTech Developer                                                           2009-2014, 2023-Present
 ● Developed ClassCast.com, an AI-enhanced EdTech learning platform designed for modern video assignments and peer-to-peer learning connections, currently serving 250+ users in educational environments
