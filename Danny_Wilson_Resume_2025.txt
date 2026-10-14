@@ -3,9 +3,9 @@ Atlanta, GA 30317 ● (404) 803-7330 ● wilson.danny@me.com
 
 PROFESSIONAL EXPERIENCE
 
-Atlanta Creative Exchange LLC                                                                       Atlanta, GA
+Atlanta Creative Exchange LC                                                                        Atlanta, GA
 Founder & Freelance App Developer                                                                  2024-Present
-● Founded and operate an independent app development business, delivering production applications for private clients and generating five figures in revenue
+● Founded and operate an independent app development business, delivering production, cloud-native applications for private clients
 ● Design and ship full-stack, cloud-native applications on AWS (Lambda, API Gateway, DynamoDB, Cognito, Amplify, S3, CloudFront) and lead projects end to end from client requirements through deployment and ongoing support
 ● Client names and project details withheld under non-disclosure agreements (NDA)
 

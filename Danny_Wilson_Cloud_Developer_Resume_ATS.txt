@@ -57,10 +57,10 @@ Machine Learning: TensorFlow, PyTorch, Scikit-learn
 PROFESSIONAL EXPERIENCE
 
 Founder & Freelance App Developer
-Atlanta Creative Exchange LLC
+Atlanta Creative Exchange LC
 2024-Present
 
-- Founded and operate an independent app development business, delivering production applications for private clients and generating five figures in revenue
+- Founded and operate an independent app development business, delivering production, cloud-native applications for private clients
 - Design and ship full-stack, cloud-native applications on AWS (Lambda, API Gateway, DynamoDB, Cognito, Amplify, S3, CloudFront)
 - Lead projects end to end: client requirements, architecture, development, deployment, and ongoing support
 - Client names and project details withheld under non-disclosure agreements (NDA)
@@ -185,7 +185,7 @@ Additional Recognition:
 
 KEY ACHIEVEMENTS
 
-- Founded Atlanta Creative Exchange LLC, an app development business generating five figures in revenue delivering production AWS applications for private clients
+- Founded Atlanta Creative Exchange LC, an app development business delivering production, cloud-native AWS applications for private clients
 - Built and deployed production applications serving 280+ users across educational and music domains
 - Increased team performance by 21.4% through innovative methodologies and technology integration
 - Managed $1.5M+ in military equipment during wartime operations with zero loss incidents

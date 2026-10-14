@@ -32,7 +32,7 @@ AWS cloud developer and startup founder who builds production, cloud-native appl
 
 ## PROFESSIONAL EXPERIENCE
 
-### Founder & Solutions Architect / App Developer — Atlanta Creative Exchange LLC
+### Founder & Solutions Architect / App Developer — Atlanta Creative Exchange LC
 *Atlanta, GA · 2024 – Present*
 
 - Founded and operate an independent app development business delivering production, cloud-native applications on AWS for private clients.
