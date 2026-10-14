@@ -51,3 +51,15 @@ pids
 # Temporary folders
 tmp/
 temp/
+
+# Local tooling (ffmpeg binary, Whisper venv/PyTorch, transcription artifacts)
+.tools/
+
+# Video files (source recordings and processed output — too large for git)
+*.mp4
+*.mov
+*.m4a
+*.wav
+
+# Build/sample images not part of the portfolio
+house chores*.png
