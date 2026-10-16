@@ -85,13 +85,13 @@ function wrapHtml(bodyHtml, title) {
 <meta charset="utf-8"/>
 <title>${escapeHtml(title)}</title>
 <style>
-  @page { size: Letter; margin: 0.5in 0.6in; }
+  @page { size: Letter; margin: 0.45in 0.6in; }
   * { box-sizing: border-box; }
   body {
     font-family: "Helvetica Neue", Arial, "Segoe UI", sans-serif;
     color: #1a1a1a;
-    font-size: 10pt;
-    line-height: 1.32;
+    font-size: 9.7pt;
+    line-height: 1.28;
     margin: 0;
   }
   h1 {
