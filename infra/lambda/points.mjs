@@ -58,14 +58,15 @@ export const handler = async (event) => {
       Key: { person: { S: person } }
     }));
 
-    let pts = parseInt(current.Item?.points?.N || '0');
+    // Single on/off flag: 1 = flagged, 0 = clear. No counting.
+    let pts = parseInt(current.Item?.points?.N || '0') > 0 ? 1 : 0;
     let history = JSON.parse(current.Item?.history?.S || '[]');
 
     if (action === 'add') {
-      pts += 1;
+      pts = 1;
       history.push({ type: 'add', day: day || 'unspecified', date: new Date().toISOString(), by: requestedBy });
     } else if (action === 'remove') {
-      pts = Math.max(0, pts - 1);
+      pts = 0;
       history.push({ type: 'remove', day: day || 'unspecified', date: new Date().toISOString(), by: requestedBy });
     } else {
       return response(400, { error: 'action must be "add" or "remove"' });
@@ -91,26 +92,20 @@ export const handler = async (event) => {
       let msg;
       if (action === 'add') {
         const addMessages = [
-          `Hey ${person}, you received a flag for ${day || 'today'}. I know you've been busy — any help you can give helps us all out. You now have ${pts} flag${pts !== 1 ? 's' : ''}.`,
-          `Hey ${person}, a flag was added for ${day || 'today'}. I'm not upset — I just want you to keep track of how we experience you as a team member who carries their own weight. You're at ${pts} now.`,
-          `${person}, you got a flag for ${day || 'today'}. We all forget sometimes. What matters is what you do next. You're at ${pts} flag${pts !== 1 ? 's' : ''}.`,
-          `Hey ${person}, point added for ${day || 'today'}. You're capable of so much — I just need you to show up for the team. Currently at ${pts}.`,
+          `Hey ${person}, you've been flagged for ${day || 'today'}. 🚩 Your device is paused until it's cleared. Get your chores done and let's clear it.`,
+          `Hey ${person}, a flag was added for ${day || 'today'}. 🚩 I'm not upset — just do your part and we'll clear it. Device is paused until then.`,
+          `${person}, you're flagged for ${day || 'today'}. 🚩 We all forget sometimes. Knock out your chores and your device comes back on.`,
+          `Hey ${person}, flagged for ${day || 'today'}. 🚩 You're capable of so much — show up for the team and we'll clear this. Device is paused for now.`,
         ];
         msg = addMessages[Math.floor(Math.random() * addMessages.length)];
-        if (pts >= 3) {
-          msg += `\n\n⚠️ You're at ${pts} flags now. Device is paused until you work it back down to zero. You can do this.`;
-        }
       } else {
         const removeMessages = [
-          `${person}! A flag has been removed. You're down to ${pts}. I see you putting in the effort and I appreciate it. 💛`,
-          `Point removed, ${person}! You're at ${pts} now. Thank you for stepping up — that's what growth looks like. ✊🏾`,
-          `Hey ${person}, you earned that flag back. Down to ${pts}. Keep going — you're proving what I already know about you. 🙌🏾`,
-          `${person}, one less flag. You're at ${pts}. I'm proud of you for making it right. 💪🏾`,
+          `${person}! Your flag is cleared. ✅ Device is back on. I see you putting in the effort and I appreciate it. 💛`,
+          `Flag cleared, ${person}! ✅ Device unlocked. Thank you for stepping up — that's what growth looks like. ✊🏾`,
+          `Hey ${person}, you cleared your flag. ✅ Device back on. Keep going — you're proving what I already know about you. 🙌🏾`,
+          `${person}, flag cleared. ✅ Device unlocked. I'm proud of you for making it right. 💪🏾`,
         ];
         msg = removeMessages[Math.floor(Math.random() * removeMessages.length)];
-        if (pts === 0) {
-          msg += `\n\n🎉 You're back to zero! Device unlocked. Thank you for following through.`;
-        }
       }
 
       try {

@@ -291,11 +291,10 @@ header h1{font-family:'Fredoka One',cursive;font-size:1.8rem;color:#fff;}
 <p>Each day you are expected to do your chores and clean your room.</p>
 <ul>
 <li>When you forget, you get a <strong>🚩 flag</strong>.</li>
-<li>You must stay <strong>under 3 flags</strong> to keep your device.</li>
-<li>At 3+ flags, your device is paused until you get back below 3.</li>
-<li>Each extra chore you complete removes one flag.</li>
+<li>While you have a flag, your <strong>device is paused</strong>.</li>
+<li>Do your chores to <strong>clear the flag</strong> and get your device back.</li>
 </ul>
-<p class="bottom-line">Do your chores every day and you'll never lose your device. Simple! ✅</p>
+<p class="bottom-line">Do your chores every day and you'll never get flagged. Simple! ✅</p>
 </div>
 <div class="modal-btns">
 <button class="cancel" onclick="closeRulesModal()" style="flex:1">Got it 👍</button>
@@ -589,14 +588,10 @@ async function loadPoints(){
 }
 
 function getPointDots(person){
-  const pts = pointsData[person]?.points || 0;
-  let html = '';
-  for(let i=0;i<3;i++){
-    if(i < pts) html += '<span style="font-size:1.1rem;">🚩</span>';
-    else html += '<span style="font-size:1.1rem;opacity:.25;">🏳️</span>';
-  }
-  if(pts > 3) html = '<span style="font-size:1.1rem;">🚩🚩🚩</span><span style="font-size:.7rem;color:#fff;font-weight:800;margin-left:2px;">+'+( pts-3)+'</span>';
-  return html;
+  // Single on/off flag — flagged if points >= 1
+  const flagged = (pointsData[person]?.points || 0) > 0;
+  if(flagged) return '<span style="font-size:1.2rem;">🚩</span>';
+  return '<span style="font-size:1.2rem;opacity:.25;">🏳️</span>';
 }
 
 // ============ RENDER TODAY ============
@@ -764,7 +759,7 @@ const APP_VERSION = '2.0';
 const UPDATE_NOTES = `
 <p style="font-size:.9rem;line-height:1.6;margin-bottom:10px;">Here's what's new in the chores app:</p>
 <ul style="padding-left:16px;font-size:.88rem;line-height:1.7;">
-<li>🚩 <strong>Flags system</strong> — stay under 3 to keep your device</li>
+<li>🚩 <strong>Flag system</strong> — one flag, on or off. Clear it by doing your chores to keep your device</li>
 <li>🛏️ <strong>Clean Room & Make Bed</strong> — added as a daily chore for kids</li>
 <li>⏰ <strong>Auto-flag at 9pm</strong> — if chores aren't marked done by 9pm, a flag is automatically added</li>
 <li>🙋 <strong>Request Exemption</strong> — kids can ask for a pass with a reason (parents approve/deny)</li>
