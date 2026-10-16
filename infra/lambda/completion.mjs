@@ -111,28 +111,15 @@ export const handler = async (event) => {
         await sendSms(kidPhone, `✅ ${person}, you completed "${chore}". ${thanks}`);
       }
 
-      // Text everyone else that the kid completed it
-      for (const member of ALL5) {
-        if (member === person) continue;
-        const phone = PHONES[member];
-        if (phone) {
-          await sendSms(phone, `📋 ${person} has completed "${chore}". (${date})`);
-          await new Promise(r => setTimeout(r, 1100));
-        }
-      }
-
       // Check if both chores are now done (look for 2 completions for this person today)
       const allToday = await ddb.send(new ScanCommand({ TableName: TABLE }));
       const personToday = (allToday.Items || []).filter(item => 
         item.person?.S === person && item.personDate?.S?.includes(date)
       );
       if (personToday.length >= 2) {
-        // Broadcast "Done and Done!"
-        for (const member of ALL5) {
-          const phone = PHONES[member];
-          if (phone) {
-            await sendSms(phone, `🎉🎉 ${person} is Done and Done! Both chores complete! 💪🏾🏠`);
-          }
+        // Let the kid know they're done for the day
+        if (kidPhone) {
+          await sendSms(kidPhone, `🎉🎉 ${person}, you're Done and Done! Both chores complete! 💪🏾🏠`);
         }
       }
     } else {

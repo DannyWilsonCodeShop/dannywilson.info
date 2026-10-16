@@ -72,6 +72,36 @@ aws lambda update-function-configuration \
 rm index.mjs points.zip
 echo "  ✅ Points updated"
 
+# Package kidReminder
+cp kidReminder.mjs index.mjs
+zip -q kidReminder.zip index.mjs
+aws lambda update-function-code \
+  --function-name FamilyChores-KidReminder \
+  --zip-file fileb://kidReminder.zip \
+  --region "$REGION" > /dev/null
+aws lambda update-function-configuration \
+  --function-name FamilyChores-KidReminder \
+  --handler index.handler \
+  --runtime nodejs20.x \
+  --region "$REGION" > /dev/null 2>&1 || true
+rm index.mjs kidReminder.zip
+echo "  ✅ KidReminder updated"
+
+# Package parentSummary
+cp parentSummary.mjs index.mjs
+zip -q parentSummary.zip index.mjs
+aws lambda update-function-code \
+  --function-name FamilyChores-ParentSummary \
+  --zip-file fileb://parentSummary.zip \
+  --region "$REGION" > /dev/null
+aws lambda update-function-configuration \
+  --function-name FamilyChores-ParentSummary \
+  --handler index.handler \
+  --runtime nodejs20.x \
+  --region "$REGION" > /dev/null 2>&1 || true
+rm index.mjs parentSummary.zip
+echo "  ✅ ParentSummary updated"
+
 echo ""
 echo "👤 Creating Cognito users..."
 USER_POOL_ID=$(echo "$OUTPUTS" | python3 -c "import json,sys; print([o['OutputValue'] for o in json.load(sys.stdin) if o['OutputKey']=='UserPoolId'][0])")

@@ -327,6 +327,78 @@ Resources:
       Principal: apigateway.amazonaws.com
       SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ChoresApi}/*'
 
+  # ============ LAMBDA: KID REMINDER (8pm) ============
+  KidReminderFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: FamilyChores-KidReminder
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 30
+      Environment:
+        Variables:
+          SHANE_PHONE: !Ref ShanePhone
+          AUSTIN_PHONE: !Ref AustinPhone
+          OLIVIA_PHONE: !Ref OliviaPhone
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: 'placeholder' });
+
+  KidReminderSchedule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: FamilyChores-KidReminder
+      Description: Remind kids at 8pm ET if chores not done
+      ScheduleExpression: 'cron(0 0 * * ? *)'
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt KidReminderFunction.Arn
+          Id: KidReminderTarget
+
+  KidReminderPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref KidReminderFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt KidReminderSchedule.Arn
+
+  # ============ LAMBDA: PARENT SUMMARY (9pm) ============
+  ParentSummaryFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: FamilyChores-ParentSummary
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 15
+      Environment:
+        Variables:
+          DANNY_PHONE: !Ref DannyPhone
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({ statusCode: 200, body: 'placeholder' });
+
+  ParentSummarySchedule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: FamilyChores-ParentSummary
+      Description: Send Danny a daily chore summary at 9pm ET
+      ScheduleExpression: 'cron(0 1 * * ? *)'
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt ParentSummaryFunction.Arn
+          Id: ParentSummaryTarget
+
+  ParentSummaryPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref ParentSummaryFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt ParentSummarySchedule.Arn
+
 Outputs:
   UserPoolId:
     Value: !Ref ChoreUserPool
